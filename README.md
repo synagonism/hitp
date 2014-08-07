@@ -7,7 +7,7 @@ hitp-description
 3. **toc**: automatically created expandable table-of-contents makes reading easy. 
 4. **preview**: same domain link-preview makes reading fast. 
 
-hitp-webpage:
+hitp-webpage (documentation)
 ===
 http://synagonism.net/hitp/
 
