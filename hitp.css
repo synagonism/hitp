@@ -1,8 +1,8 @@
 /*
- * version.10.last.minor: hitp.js (2014.08.05.10 minor 2014.08.06.10.2)
- * version.10.last: hitp.2014.08.05.10.js (valuenames)
- * version.9.last: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
- * version.8.previous.minor: hitp.css (2014.01.09.8 minor 2014.06.19.8.8)
+ * version.11.last.minor: hitp.css (2016.01.19.11.4)
+ * version.11.last.minorNo: hitp.2015.10.26.11.css (preferences)
+ * version.10.previous: hitp.2014.08.05.10.css (valuenames)
+ * version.9.previous: hitp.2014.08.02.9.css (NO jQuery, fixed popup)
  * version.8.previous: hitp.2014.01.09.8.css (toc on hovering)
  * version.7.previous: hitp.2013.11.06.7.css (tabs)
  * version.6.previous: hitp.2013.08.21.6.css (site-structure)
@@ -18,20 +18,20 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2015 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * http://synagonism.net/
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -53,7 +53,7 @@ body {
 }
 
 /*** CONTAINERS ***/
-#idSpliterDiv {
+#idDivSpliter {
   background-color: blue;
   position: absolute;
   width: 100%;
@@ -66,7 +66,7 @@ body {
   padding: 0px;
   z-index: -1; /* container */
 }
-#idSpliterLeftDiv {
+#idDivSpliterLeft {
   background: #dddddd; /* Old browsers */
   background: linear-gradient(to left, #dddddd, #eeeeee 100%); /* W3C */
   position: absolute;
@@ -78,7 +78,7 @@ body {
   z-index: 20; /* div left */
   overflow: auto;
 }
-#idSpliterBarDiv {
+#idDivSpliterBar {
   background: #aaaaaa;
   background: linear-gradient(to left, #aaaaaa, #dddddd 100%);
   position: absolute;
@@ -87,7 +87,7 @@ body {
   height: 100%;
   z-index: 10; /* div bar */
 }
-#idSpliterRightDiv {
+#idDivSpliterRight {
   background: white;
   position: absolute;
   right: 0px;
@@ -97,12 +97,16 @@ body {
   z-index: 0; /* div right */
   overflow: auto;
 }
-#idSpliterLeftDiv > input[type="button"] {
+#idDivSpliterLeft > input[type="button"] {
   padding: 2px 7px 2px 7px;
   margin-left: 5px;
   margin-bottom: 10px;
 }
-#idSpliterBarButonDiv {
+#idDivSpliterLeft  p {
+  text-indent: -8px;
+  margin-left: 8px;
+}
+#idDivSpliterBarButon {
   background: #999999;
   background: linear-gradient(to left, #999999, #dddddd 100%);
   position: relative;
@@ -111,7 +115,7 @@ body {
   width: 10px;
   cursor: pointer;
 }
-#idSpliterBarDivGhost {
+#idDivSpliterBarGhost {
   background: green;
   position: absolute;
   cursor: e-resize;
@@ -151,7 +155,8 @@ h1 {
   margin-left: 2px;
 }
 section > h1:before {
-  content: url('http://synagonism.net/misc/img/h1.24.png');
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMlNPgrmGEAAAGESURBVEjH7dY/aBRREMfxz513RowIMRAxCBKsrghPW+0sgukUERELG6uARRCxXF4n1hYi2AraWBj/VGKbQmRBRQQRCxsbQ4gWCXgWGeImmOT2QlTQKWfmN9+ZN7tvl//2Jy2ltGOznEYkDmAJ3bIsuzUADehZk1LauYVpWimldl3RQJ+wXZseXUqpWZbld4UpXMMo5vBcdlahhfvoyDqgMIzrOCE7HL49soX1QMuQZTuODsbwBa3wX8EpfIyCk3iNS5hdqbQBBJqVxAuyb/gasMcKgzHlTdnJyLyBu1jEgxV9YW9voJ92OvwzOIch3Ko0NI4X6OJJxT+/EahV6Wg/LuNigD5FZFb2Zo3ufOxwodcHphmQI3gVOzqIaYxEzr1VisI+TMTE6oG4jSLES7GDY/FCP1ujOYP2qmOrARrHo1j8HdlnHIrYgV+APsje9zvRW7zD1fDN4CUeKoxWNEfxdCsXY3sbLtvGeoHBPgvurt1BL1f+9o77F34Em78DMvTv/Ff8AMDAWZjHjM+WAAAAAElFTkSuQmCC);
+  color: #000000;
   display: inline-block;
   vertical-align: middle;
 }
@@ -168,7 +173,7 @@ h2 {
   margin-left: 2px;
 }
 section > h2:before {
-  content: url('http://synagonism.net/misc/img/h2.24.png');
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMtJ7RMU7cAAAGtSURBVEjHxdaxaxRBFMfxzxzBQiubiEEQsTGIrJWFf4HYqJWFhX+BiIjYCIJgY20hgiIoggo2RhFBQYSAlVkiGrSysNHCSgsPMjZvZW+5W3dzRxxYdmfm/ea7783Mm0laSlEUupSyLCf25ZxBmgbQB5i6QCYN0Mc2tQnb/rCvbjAtpGab2jwdTAspiiKFJrd5OWjotvSBNAFt2kFFXl1dPluWK5/JQ/J38iMy8hz5Mflj1NfIv8nL5MVoi2cUVvfqr0fr61sPYRF78ANz0XUex/El6vuwDXdwr6vntdClU6Rf+BmwZzHgRVzHkZrtEHexf9xWbFt1desT0b6Ek9iOG2N+8ihedvWoCk8m78AZnA7Q1+h7iw+jWy8v4BqOVXPTKXRluXIQ72OOduEc5sPmQSN7zeMFroZmUpIZG7qbuBzhGuI+Dof6Vc1+N97gIW53hdRBB/A0Jv4WvsWgsDPee/E6IFf6QJoereETLkTbEt7hCRbwPOCXRjZO/bMlBaVaY2qmkY2WOqha6mlSxywh43Ldhg+9f2nTLI6JLvpNO/j+z1G+qZeTWV+3qvIHDjuqHwZv+zAAAAAASUVORK5CYII=);
   display: inline-block;
   vertical-align: middle;
 }
@@ -185,7 +190,7 @@ h3 {
   margin-left: 2px;
 }
 section > h3:before {
-  content: url('http://synagonism.net/misc/img/h3.20.png');
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMxOjE9YjMAAAGESURBVDjL7dTNq01RGAbw3znXyfWRa2Ig14SYWbtkbKxWXZQwMTDh/gNuofZgd/8AH0VRhlIMKLukDJSJpKwTM4UwUCZm93DYJjudezt7I4eRd7JqPe/7rGc973oX/2MSkWVZ72+QTrfh3SzLprIs6/4ucVVVgxBCpwlfhS6+RsUpLGAGr3CilD+MikUcKeU7ICreo9J3+m24dRNLYxVjWK/bMYsD2ImPUbEHZ/BupGYWh3Gp3+8vNSpOKVUYJmm+VrQJH0r5i6i4jrulfG6kpofdeNrq8Zi9OdyPivU4iAsr8Je4iHN1E6eaPBZCmNnaP7QLxxGxGsfwGg9W1GzDPlzBbVSNirc8338SV7EWA2zEDdwp5csKS/kQj+rcH+LGEne/9c7iKALOl/JP2IsqKpbZFRWbcRnXIKX0uekdb6iv+xjPsFhj9zBfey4qnkTFFyS8wUIIYbptgtb8wfR1WsGmzv6EtHVaOyMnr6s7PEwpDSb5qXR+NTeE0Gn7J/6pmInFd24TaJHFmiO0AAAAAElFTkSuQmCC);
   display: inline-block;
   vertical-align: middle;
 }
@@ -202,7 +207,7 @@ h4 {
   margin-left: 2px;
 }
 section > h4:before {
-  content: url('http://synagonism.net/misc/img/h4.20.png');
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMzI2dgqHEAAAFHSURBVDjL7dQ9S51BEAXg516u1w9ELLQO2AZ2G5tAQNIKRi2sApYSUongHwh2FmkFSSlYWChIChv/gNULATWFjRYhhVgZI+a1mYSNXsFKJTjV7Ozs7DlndodnexDLOTefDJiUUiOl1HvXfjPn3A5/ET/wCwcYi/gSvhVnlrFWVVWNVkqpp2De6nTJCroxjhovMYrf2I2cEVxiqijWVfjtv4iLwu9xgWF8x1csYBtvClZ7OMJhxOpSgT9OJ+hvsYN+TGMi4gOYxTt8wH6Hwle3GoHX+IyfkVwHskakzeEE7ejF5E36pcZNqKpqHqvoCzkGsY6tAtEMNvAqmH7pIOctO0MOXT9G7ASfioOnBZM6+vBP81JKrfJzDGIzJFgLqkKW8/IFxKs5xoso1HPjo/WWi6Gcc/dTHAetR7u5kXNu3HNONP+/UXwN8Z5H7DF5u/wAAAAASUVORK5CYII=);
   display: inline-block;
   vertical-align: middle;
 }
@@ -219,7 +224,7 @@ h5 {
   margin-left: 2px;
 }
 section > h5:before {
-  content: url('http://synagonism.net/misc/img/h5.20.png');
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRM2FKKq+TsAAAD5SURBVDjL7dQxSkNREAXQ86PEgAGzD/F9EAsLwcbKyh24BCsrO7EUYiPYpBGMlRa2Fq5BRCQIaiMEtAkWiqCxmUJCiD8BLSRTXe6buTPcNwzj+JPI83xyhJrSrwyTUspSSrWeZlm/aTfxhHe0sBz8Dm4Dn6OLD9wVHeIAU1iN4lks4BMXmAu+OcCeyqAG62gHbuIs8G4Iz49q3wkOUcUrVoJvhfAlFocRXEIDbyHQxT2ybzk1bOGhqOgGbnCMDmYC7/XJreKlqHAHOa6xHdwj6ij1TLwfH/3jok/jNCw4QjmeGuHxGq5ixZ6j2UQR4cr49vz/05oNk/8Fn6M1rug22XwAAAAASUVORK5CYII=);
   display: inline-block;
   vertical-align: middle;
 }
@@ -236,7 +241,7 @@ h6 {
   margin-left: 2px;
 }
 section > h6:before {
-  content: url('http://synagonism.net/misc/img/h6.20.png');
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRM4Asj9YeQAAAFJSURBVDjL7dQ/S1xREAXw39v1D64JKa2thXubkDRiGqsIIaUg4gcQxEZsbBJC0kXtAsFGUKtYpA/5DLuNiDY2GrASBY3gPptZeIRk4xaChQMX5t2ZOffcOfMuj3bvllIqcs6NXutyzkW3eK0oiiH09wpclqWU0j/Ba7F+YwmnuMY+XkXOBxxUahZw1Wq1PqPRDbxjXzCI1ygxhudo42fkTOEG85WW1O56yzn8Cn8b38MfxjHe31WEp38I8Q2beIJLTMb+UrA9xAWWo76vglWv9rhelmUd49iI687iPJj/iNwZfMQLvMRK7FdJtauMG1jEHnZwhmfhr1WKrtEZy1EcdR23EOodppGwHuATEeuIcxxijuArVruKl3MewC6usIWBCG1Ej9/G9xucxKGfUKSUhnuZil7+vsbj2/VfK/7yYvWh3Ww2bx4k41uOzkmXwIjKMQAAAABJRU5ErkJggg==);
   display: inline-block;
   vertical-align: middle;
 }
@@ -359,6 +364,12 @@ td.borderNo {
 /*** INLINE text-content ***/
 /* a, dfn, br, b, span  */
 
+span.clsQuote {
+  background-color: #f7f7f7;
+  display: inline-block;
+  text-indent: 0px;
+  margin-left: 25px;
+}
 span.quote {
   display: inline-block;
   text-indent: 0px;
@@ -371,11 +382,19 @@ span.source {
 }
 
 /* hide-class: a-element */
-header > h1 > a.hide {
+header > h1 > a.clsHide,
+header > h1 > a.hide
+{
   color: #0F710A;
-  text-decoration:none;
   float:right;
+  text-decoration:none;
 }
+h1 > a.clsHide,
+h2 > a.clsHide,
+h3 > a.clsHide,
+h4 > a.clsHide,
+h5 > a.clsHide,
+h6 > a.clsHide,
 h1 > a.hide,
 h2 > a.hide,
 h3 > a.hide,
@@ -388,20 +407,35 @@ h6 > a.hide
   font-family: 'Times New Roman', Georgia, Times, serif, Dialog;
   text-decoration:none;
 }
+p > a.clsHide,
+address > a.clsHide,
+span > a.clsHide,
 p > a.hide,
 address > a.hide,
 span > a.hide
 {
   color: #fff9f0;
-  text-decoration:none;
   float:right;
+  text-decoration:none;
   text-indent: 0px;
 }
-table a.hide {
+table a.clsHide,
+table a.hide
+{
   color: #fff9f0;
   text-decoration:none;
 }
 
+h1:hover  > a.clsHide,
+h2:hover  > a.clsHide,
+h3:hover  > a.clsHide,
+h4:hover  > a.clsHide,
+h5:hover  > a.clsHide,
+h6:hover  > a.clsHide,
+p:hover  > a.clsHide,
+address:hover  > a.clsHide,
+span:hover > a.clsHide,
+table:hover a.clsHide,
 h1:hover  > a.hide,
 h2:hover  > a.hide,
 h3:hover  > a.hide,
@@ -418,6 +452,16 @@ table:hover a.hide
   text-decoration:none;
 }
 
+h1:hover  > a.clsHide:hover,
+h2:hover  > a.clsHide:hover,
+h3:hover  > a.clsHide:hover,
+h4:hover  > a.clsHide:hover,
+h5:hover  > a.clsHide:hover,
+h6:hover  > a.clsHide:hover,
+p:hover  > a.clsHide:hover,
+address:hover > a.clsHide:hover,
+span:hover > a.clsHide:hover,
+table:hover a.clsHide:hover,
 h1:hover  > a.hide:hover,
 h2:hover  > a.hide:hover,
 h3:hover  > a.hide:hover,
@@ -425,22 +469,47 @@ h4:hover  > a.hide:hover,
 h5:hover  > a.hide:hover,
 h6:hover  > a.hide:hover,
 p:hover  > a.hide:hover,
-address:hover  > a.hide:hover,
-span:hover > a.hide:hover
+address:hover > a.hide:hover,
+span:hover > a.hide:hover,
+table:hover a.hide:hover
 {
-  color: red;
+  color: #ee0000;
+  text-decoration:underline;
 }
 
 a:link {
-  color: #00007a;
+  color: #000000;
   text-decoration:none;
 }
 a:visited {
-  color: #00007a }
-a:hover,
+  color: #000000
+}
+h1:hover  > a,
+h2:hover  > a,
+h3:hover  > a,
+h4:hover  > a,
+h5:hover  > a,
+h6:hover  > a,
+p:hover  > a,
+address:hover > a,
+span:hover > a,
+table:hover a
+{
+  color: blue;
+}
+h1:hover  > a:hover,
+h2:hover  > a:hover,
+h3:hover  > a:hover,
+h4:hover  > a:hover,
+h5:hover  > a:hover,
+h6:hover  > a:hover,
+p:hover  > a:hover,
+address:hover > a:hover,
+span:hover > a:hover,
+table:hover a:hover,
 #idTocTree li a:hover {
-  color: #0000aa;
-  text-decoration: underline;
+  color: #ee0000;
+  text-decoration:underline;
 }
 
 #idPpath {
@@ -487,11 +556,13 @@ a:hover,
 span.clsSpanListIcon {
   color: navy;
   cursor:pointer;
-  font-size: 15px;
+  font-size: 14px;
+}
+span.clsSpanListIcon:hover {
+  color: #ee0000;
 }
 span.clsDiamond {
   color: navy;
-  font-size: 15px;
 }
 span.clsIconCollapse {
 }
@@ -502,7 +573,7 @@ span.clsIconCollapse {
   display: none;
   margin-left:auto;
   margin-right:auto;
-  max-width:44%;
+  width:44%;
   max-height:44%;
   padding: 10px;
   color: #000000;
@@ -536,7 +607,8 @@ span.clsIconCollapse {
 #idComment {
 }
 
-#idComment > h1 {
+#idComment > h1,
+#idSupport > h1 {
   background: #f1f1f1;
   border-top: 4px solid #f1f1f1;
   font-weight: bold;
@@ -677,16 +749,22 @@ span.clsIconCollapse {
 
 /*** CLASSES ***/
 
-.center {
+/* center */
+.clsCenter {
   text-align: center;
 }
-
-.centerBlock {
+.clsCenterBlock {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-
+.clsCenterInline {
+  display: block;
+  text-align: center;
+}
+.center {
+  text-align: center;
+}
 .centerInline {
   display: block;
   text-align: center;
@@ -697,22 +775,39 @@ span.clsIconCollapse {
   background: linear-gradient(to right, #bbbbbb, #ffffff);
   border-radius: 5px;
   font-size: 16px;
-  margin-left: 12px;
+  margin: 2px 0 5px 12px;
 }
 .clsBtn:hover {
   background: #e0f2f7;
+  color: red;
 }
 .clsEditor {
   background: transparent;
-  color: #999999
+  color: #999999;
 }
 
 /*** CLASS.COLOR ***/
-
+.clsColorBlue {
+  color: #0000ff;
+}
+.clsColorGreen {
+  color: #008000;
+}
+.clsColorGreenBg {
+  background-color: #008000;
+}
+.clsColorRed {
+  color: #ff0000;
+}
+.clsColorYellow {
+  color: #FFFF00;
+}
+.clsColorYellowBg {
+  background-color: #FFFF00;
+}
 .color-blue {
   color: #0000ff;
 }
-
 .color-green {
   color: #008000;
 }
@@ -729,6 +824,29 @@ span.clsIconCollapse {
   background-color: #FFFF00;
 }
 
+/* FONT */
+.clsFontGrExt {
+  font-family: "Palatino Linotype";
+}
+.clsFontGrMg {
+  font-family: MgPolNewTimes;
+  font-size: 16px;
+}
+.clsFontSerif {
+  font-family: Serif, "Times New Roman", Georgia;
+}
+.clsFontSansserif {
+  font-family: SansSerif, "Microsoft Sans Serif", Arial, Dialog, Tahoma;
+}
+.clsFontMonospaced {
+  font-family: Monospaced, "Courier New", Courier;
+}
+.clsFontScript {
+  font-family: Script "Monotype Corsiva";
+}
+.clsFontDecorative {
+  font-family: Wingdings;
+}
 .font-gr-ext {
   font-family: "Palatino Linotype";
 }
@@ -752,13 +870,35 @@ span.clsIconCollapse {
   font-family: Wingdings;
 }
 
+/* paperbookPage */
+.clsPagePb {
+  display: block;
+  text-align: right;
+  color: green;
+}
 .pbPage {
-  /* paperbookPage */
   display: block;
   text-align: right;
   color: #FF0000;/* Red */
 }
 
+.clsSizeSmall {
+  font-size: small;
+}
+.clsSizeSmallX {
+  font-size: x-small;
+}
+.clsSizeMedium {
+  font-size: large;
+}
+.clsSizeLarge {
+  font-size: large;
+  font-weight: bold;
+}
+.clsSizeLargeX {
+  font-size: x-large;
+  font-weight: bold;
+}
 .size-x-small {
   font-size: x-small;
 }
@@ -777,6 +917,17 @@ span.clsIconCollapse {
   font-weight: bold;
 }
 
+/*** Bold, Underline ***/
+.clsB {
+  font-weight: bold;
+}
+.clsBU {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.clsU {
+  text-decoration: underline;
+}
 .style-b {
   font-weight: bold;
 }
@@ -807,7 +958,6 @@ ul#idTabNamesUl li {
   width: 96px;
   line-height: 26px;
   overflow: hidden;
-  position: relative;
 }
 ul#idTabNamesUl li a {
   text-decoration: none;
@@ -835,8 +985,9 @@ ul#idTabNamesUl li.clsTabActive a:hover  {
   text-decoration: none;
   cursor: default;
 }
-#idTabContentcontainerDiv {
+#idDivTabContentcontainer {
   float: left;
   width: 100%;
   padding: 2px;
 }
+

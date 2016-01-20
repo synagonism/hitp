@@ -1,7 +1,8 @@
 /*
- * version.10.last.minor: hitp.js (2014.08.05.10 minor 2014.08.06.10.2)
- * version.10.last: hitp.2014.08.05.10.js (valuenames)
- * version.9.last: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
+ * version.11.last.minor: hitp.js (2015.12.17.11.5)
+ * version.11.last.minorNo: hitp.2015.10.26.11.js (preferences)
+ * version.10.previous: hitp.2014.08.05.10.js (valuenames)
+ * version.9.previous: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
  * version.8.previous.minor: hitp.js (2014.01.09.8 minor 2014.07.29.8.12)
  * version.8.previous: hitp.2014.01.09.8.js (toc on hovering)
  * version.7.previous: hitp.2013.11.06.7.js (tabs)
@@ -25,20 +26,20 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2015 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * http://synagonism.net/
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -51,13 +52,14 @@
 var oHitp = (function () {
 
   var oHitp = {
+    bFirefox: navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
     /** toc-tree variables */
     nTocIdTreeLi: 0,
     nPosSplitPrevious: 0,
     /* setting: the hitmenu contains absolute urls, because we see it from many pages.
      * Then we must know the ROOT of the site and create different menus.
      */
-    sPathMenuLocal: '/WebsiteSgm/hitpmenuLocal.html',
+    sPathMenuLocal: '/dWwwSgm/hitpmenuLocal.html',
     sPathMenuOnline: '/hitpmenu.html'
   };
 
@@ -65,19 +67,19 @@ var oHitp = (function () {
    * splitter related code.
    * INPUT: element-object with 2 div children.
    */
-  oHitp.fSplit = function (oElt) {
+  oHitp.fSplit = function (oHmlEltIn) {
     var nPosSplitCurrent = 222, /* setting */
-      oEltSpliterDiv = oElt,
-      oEltSpliterLeftDiv = oEltSpliterDiv.children[0],
-      oEltSpliterRightDiv = oEltSpliterDiv.children[1],
-      oEltSpliterBarDiv = document.createElement('div'),
-      oEltSpliterBarDivGhost, //we create it at startDraging
-      oEltSpliterBarButonDiv = document.createElement('div');
+      oHmlEltDivSpliter = oHmlEltIn,
+      oHmlEltDivSpliterLeft = oHmlEltDivSpliter.children[0],
+      oHmlEltDivSpliterRight = oHmlEltDivSpliter.children[1],
+      oHmlEltDivSpliterBar = document.createElement('div'),
+      oHmlEltDivSpliterBarGhost, //we create it at startDraging
+      oHmlEltDivSpliterBarButon = document.createElement('div');
 
-    function fDragPerform(event) {
-      var nIncr = event.pageX;
+    function fEvtDragMousemove(oEvtIn) {
+      var nIncr = oEvtIn.pageX;
 
-      oEltSpliterBarDivGhost.style.left = nIncr + 'px';
+      oHmlEltDivSpliterBarGhost.style.left = nIncr + 'px';
     }
 
     /* Perform actual splitting */
@@ -86,65 +88,65 @@ var oHitp = (function () {
 
       oHitp.nPosSplitPrevious = nPosSplitCurrent;
       nPosSplitCurrent = nPos;
-      nSizeB = oEltSpliterDiv.offsetWidth - nPos - 10 - 10; /* setting splitBar, padding */
-      oEltSpliterLeftDiv.style.width = nPos + 'px';
-      oEltSpliterBarDiv.style.left = nPos + 'px';
-      oEltSpliterRightDiv.style.width = nSizeB + 'px';
-      oEltSpliterRightDiv.style.left = nPos + 10 + 'px';
+      nSizeB = oHmlEltDivSpliter.offsetWidth - nPos - 10 - 10; /* setting splitBar, padding */
+      oHmlEltDivSpliterLeft.style.width = nPos + 'px';
+      oHmlEltDivSpliterBar.style.left = nPos + 'px';
+      oHmlEltDivSpliterRight.style.width = nSizeB + 'px';
+      oHmlEltDivSpliterRight.style.left = nPos + 10 + 'px';
       if (nPos === 0) {
-        oEltSpliterBarButonDiv.innerHTML = '<span><br />»</span>';
+        oHmlEltDivSpliterBarButon.innerHTML = '<span><br />»</span>'; //»▸⇒
       } else {
-        oEltSpliterBarButonDiv.innerHTML = '<span><br />«</span>';
+        oHmlEltDivSpliterBarButon.innerHTML = '<span><br />«</span>'; //sbl «◂‹⇐
       }
-      oEltSpliterBarDiv.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
-      oEltSpliterDiv.style['-khtml-user-select'] = 'all';
-      oEltSpliterDiv.style.MozUserSelect = 'text';
-      oEltSpliterDiv.style['-webkit-user-select'] = 'all';
+      oHmlEltDivSpliterBar.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
+      oHmlEltDivSpliter.style['-khtml-user-select'] = 'all';
+      oHmlEltDivSpliter.style['-webkit-user-select'] = 'all';
+      oHmlEltDivSpliter.style.MozUserSelect = 'text';
+      oHmlEltDivSpliter.style.userSelect = 'all';
     }
 
-    function fDragEnd(event) {
-      var nLeft = oEltSpliterBarDivGhost.offsetLeft;
+    // end event
+    function fEvtDragMouseup(oEvtIn) {
+      var nLeft = oHmlEltDivSpliterBarGhost.offsetLeft;
 
-      oEltSpliterBarDivGhost.parentNode.removeChild(oEltSpliterBarDivGhost);
-      oEltSpliterBarDivGhost = null;
-      document.removeEventListener("mousemove", fDragPerform);
-      document.removeEventListener("mouseup", fDragEnd);
+      oHmlEltDivSpliterBarGhost.parentNode.removeChild(oHmlEltDivSpliterBarGhost);
+      oHmlEltDivSpliterBarGhost = null;
+      document.removeEventListener('mousemove', fEvtDragMousemove);
+      document.removeEventListener('mouseup', fEvtDragMouseup);
       fTocSplit_to(nLeft);
     }
 
-    function fDragStart(evt) {
-      oEltSpliterBarDivGhost = document.createElement('div');
-      oEltSpliterBarDivGhost.id = 'idSpliterBarDivGhost';
-      oEltSpliterBarDivGhost.style.left = oEltSpliterBarDiv.style.left;
-      oEltSpliterDiv.insertBefore(oEltSpliterBarDivGhost, oEltSpliterRightDiv);
-      oEltSpliterDiv.style['-khtml-user-select'] = 'none';
-      oEltSpliterDiv.style['-webkit-user-select'] = 'none';
-      oEltSpliterDiv.style.MozUserSelect = 'none';
-      document.addEventListener("mousemove", fDragPerform);
-      document.addEventListener("mouseup", fDragEnd);
+    // start event
+    function fEvtDragMousedown(oEvtIn) {
+      oHmlEltDivSpliterBarGhost = document.createElement('div');
+      oHmlEltDivSpliterBarGhost.id = 'idDivSpliterBarGhost';
+      oHmlEltDivSpliterBarGhost.style.left = oHmlEltDivSpliterBar.style.left;
+      oHmlEltDivSpliter.insertBefore(oHmlEltDivSpliterBarGhost, oHmlEltDivSpliterRight);
+      oHmlEltDivSpliter.style['-khtml-user-select'] = 'none';
+      oHmlEltDivSpliter.style['-webkit-user-select'] = 'none';
+      oHmlEltDivSpliter.style.MozUserSelect = 'none';
+      oHmlEltDivSpliter.style.userSelect = 'none';
+      document.addEventListener('mousemove', fEvtDragMousemove);
+      document.addEventListener('mouseup', fEvtDragMouseup);
     }
 
-    oEltSpliterDiv.insertBefore(oEltSpliterBarDiv, oEltSpliterRightDiv);
-    oEltSpliterBarDiv.id = 'idSpliterBarDiv';
-    oEltSpliterBarDiv.style.height = '100%';
-    oEltSpliterBarDiv.addEventListener("mousedown", fDragStart);
-    oEltSpliterBarDiv.onmouseover = function () {
-      oEltSpliterBarDiv.style.background = '#cccccc';
-    };
-    oEltSpliterBarDiv.onmouseout = function () {
-      oEltSpliterBarDiv.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
-    };
+    oHmlEltDivSpliter.insertBefore(oHmlEltDivSpliterBar, oHmlEltDivSpliterRight);
+    oHmlEltDivSpliterBar.id = 'idDivSpliterBar';
+    oHmlEltDivSpliterBar.style.height = '100%';
+    oHmlEltDivSpliterBar.addEventListener('mousedown', fEvtDragMousedown);
+    oHmlEltDivSpliterBar.addEventListener('mouseenter', function () {
+      oHmlEltDivSpliterBar.style.background = 'green';
+    });
+    oHmlEltDivSpliterBar.addEventListener('mouseout', function () {
+      oHmlEltDivSpliterBar.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
+    });
 
-    oEltSpliterBarButonDiv.id = 'idSpliterBarButonDiv';
-    oEltSpliterBarDiv.appendChild(oEltSpliterBarButonDiv);
-    oEltSpliterBarButonDiv.addEventListener('mousedown', function (event) {
-      if (event.stopPropagation) {
-        event.stopPropagation();
-      } else {
-        event.cancelBubble = true;
-      }
+    oHmlEltDivSpliterBarButon.id = 'idDivSpliterBarButon';
+    oHmlEltDivSpliterBar.appendChild(oHmlEltDivSpliterBarButon);
+    oHmlEltDivSpliterBarButon.addEventListener('mousedown', function (oEvtIn) {
+      oEvtIn.stopPropagation();
       fTocSplit_to((nPosSplitCurrent === 0) ? oHitp.nPosSplitPrevious : 0);
-      oEltSpliterLeftDiv.scrollLeft = 0;
+      oHmlEltDivSpliterLeft.scrollLeft = 0;
     });
     fTocSplit_to(nPosSplitCurrent);
     //needed for proper zoom
@@ -166,52 +168,58 @@ var oHitp = (function () {
       nLvlThis, nLvlNext, nLvlPrev = 0, nLvlToc = 0, n, nJ,
       rHdng = /h\d/i,
       sUl = '', sHcnt, sHid, sHlvl,
-      oElt;
+      oHmlElt;
 
     for (n = 0; n < aElm.length; n += 1) {
-      oElt = aElm[n];
-      if (rHdng.test(oElt.nodeName)) {
-        aHdng.push(oElt);
+      oHmlElt = aElm[n];
+      if (rHdng.test(oHmlElt.nodeName)) {
+        aHdng.push(oHmlElt);
       }
       //and and the 'footer' element
-      if (oElt.nodeName.match(/footer/i)) {
-        aHdng.push(oElt);
+      if (oHmlElt.nodeName.match(/footer/i)) {
+        aHdng.push(oHmlElt);
       }
     }
     aElm = [];
 
     //the first heading is the title of doc
     sHcnt = aHdng[0].innerHTML;
+    sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href="#\w*">¶<\/a>/, '');
     sHcnt = sHcnt.replace(/\n {4}<a class="hide" href="#\w*">¶<\/a>/, '');
     sHcnt = sHcnt.replace(/<br\/*>/g, ' ');
-    sUl = '<ul><li><a href="#idHeader">' + sHcnt + '</a>';
+    sUl = '<ul><li><a class="clsPreview" href="#idHeader">' + sHcnt + '</a>';
 
     for (n = 1; n < aHdng.length; n += 1) {
-      oElt = aHdng[n];
+      oHmlElt = aHdng[n];
       //special footer case;
-      if (oElt.nodeName.match(/footer/i)) {
+      if (oHmlElt.nodeName.match(/footer/i)) {
         nLvlThis = 1;
         nLvlToc = 1;
-        sUl += '<li><a href="#idFooter">Footer</a></li>';
+        sUl += '<li><a class="clsPreview" href="#idFooter">Footer</a></li>';
         nLvlPrev = 1;
         continue;
       }
-      nLvlThis = oElt.nodeName.substr(1, 1);
+      nLvlThis = oHmlElt.nodeName.substr(1, 1);
       if (nLvlThis > nLvlPrev) {
         sUl += '<ul>'; //new list
         nLvlToc = 1 + parseInt(nLvlToc, 10);
       }
-      sHid = oElt.id;
+      sHid = oHmlElt.id;
       sHlvl = sHid.charAt(sHid.length - 1);
       sHid = sHid.replace(/(\w*)H\d/, '$1');
       /* removes from heading the "classHide" content */
-      sHcnt = oElt.innerHTML;
+      sHcnt = oHmlElt.innerHTML;
       /*jslint regexp: true*/
+      sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href=[^>]+>¶<\/a>/, '');
       sHcnt = sHcnt.replace(/\n {4}<a class="hide" href=[^>]+>¶<\/a>/, '');
       sHcnt = sHcnt.replace(/<[^>]+>/g, '');
       /*jslint regexp: false*/
       sHcnt = sHcnt.replace(/<br\/*>/g, ' ');
-      sUl += '<li><a href="#' + sHid + '">' + sHcnt + '</a>';
+      if (sHid === 'idComment') {
+        sUl += '<li><a href="#' + sHid + '">' + sHcnt + '</a>';
+      } else {
+        sUl += '<li><a class="clsPreview" href="#' + sHid + '">' + sHcnt + '</a>';
+      }
       if (aHdng[n + 1]) {
         nLvlNext = aHdng[n + 1].nodeName.substr(1, 1);
         if (aHdng[n + 1].nodeName.match(/footer/i)) {
@@ -240,27 +248,33 @@ var oHitp = (function () {
    * To create the expandable-toctree I read code from
    * http://www.dhtmlgoodies.com/
    */
-  oHitp.fToctreeToggleNode = function (event, sIdInput) {
+  oHitp.fToctreeToggleNode = function (oEvtIn, sIdLiIn) {
     var oNodeThis, oNodeParent;
 
-    if (sIdInput) {
-      if (!document.getElementById(sIdInput)) {
+    //<li id="idTocTreeLI2">
+    //  <span class="clsDiamond">◇</span>
+    //  <a href="#idDescription" class="clsTocTreeHighlight">Description</a>
+    //</li>
+    if (sIdLiIn) {
+      if (!document.getElementById(sIdLiIn)) {
         return;
       }
-      oNodeThis = document.getElementById(sIdInput).getElementsByTagName('span')[0];
+      oNodeThis = document.getElementById(sIdLiIn).getElementsByTagName('span')[0];
     } else {
       //this function is also the handler of onclick in toc icons.
       //Then, 'this' is the span element that contains the icons.
       oNodeThis = this;
     }
-    oNodeParent = oNodeThis.parentNode;/* ▽△◇,⋁⋀,▼▲◆,∇∆, */
-    if (oNodeThis.innerHTML === '▽') {
-      oNodeThis.innerHTML = '△';
+    oNodeParent = oNodeThis.parentNode;/* ⊕⊝⊙▽△◇,⇧⇩⇨⇦∧∨⋁⋀⇑⇓↥↧,▼▲◆,∇∆, sbl */
+    if (oNodeThis.innerHTML.indexOf('⇩') !== -1) {
+      oNodeThis.innerHTML = '';
       oNodeThis.setAttribute('class', 'clsSpanListIcon clsIconCollapse');
+      oNodeThis.innerHTML = '⇧';
       oNodeParent.getElementsByTagName('ul')[0].style.display = 'block';
-    } else if (oNodeThis.innerHTML === '△') {
-      oNodeThis.innerHTML = '▽';
+    } else if (oNodeThis.innerHTML.indexOf('⇧') !== -1) {
+      oNodeThis.innerHTML = '';
       oNodeThis.setAttribute('class', 'clsSpanListIcon');
+      oNodeThis.innerHTML = '⇩';
       oNodeParent.getElementsByTagName('ul')[0].style.display = 'none';
     }
     return false;
@@ -287,24 +301,24 @@ var oHitp = (function () {
   oHitp.fToctreeInit = function () {
     var aEltA, aSubnodes, aToctreeLIs,
       n,
-      oEltSpan, oToctreeUl;
+      oHmlEltSpan, oToctreeUl;
 
     oToctreeUl = document.getElementById('idTocTree');
     aToctreeLIs = oToctreeUl.getElementsByTagName('li'); /* Get an array of all menu items */
     for (n = 0; n < aToctreeLIs.length; n += 1) {
       oHitp.nTocIdTreeLi += 1;
       aSubnodes = aToctreeLIs[n].getElementsByTagName('ul');
-      oEltSpan = document.createElement('span');
-      oEltSpan.innerHTML = '▽';
-      oEltSpan.onclick = oHitp.fToctreeToggleNode;
-      oEltSpan.setAttribute('class', 'clsSpanListIcon');
+      oHmlEltSpan = document.createElement('span');
+      oHmlEltSpan.innerHTML = '⇩';
+      oHmlEltSpan.addEventListener('click', oHitp.fToctreeToggleNode);
+      oHmlEltSpan.setAttribute('class', 'clsSpanListIcon');
       if (aSubnodes.length === 0) {
-        oEltSpan.innerHTML = '◇';
-        oEltSpan.removeAttribute('class');
-        oEltSpan.setAttribute('class', 'clsDiamond');
+        oHmlEltSpan.innerHTML = '◇';
+        oHmlEltSpan.removeAttribute('class');
+        oHmlEltSpan.setAttribute('class', 'clsDiamond');
       }
       aEltA = aToctreeLIs[n].getElementsByTagName('a')[0];
-      aToctreeLIs[n].insertBefore(oEltSpan, aEltA);
+      aToctreeLIs[n].insertBefore(oHmlEltSpan, aEltA);
       if (!aToctreeLIs[n].id) {
         aToctreeLIs[n].id = 'idTocTreeLI' + oHitp.nTocIdTreeLi;
       }
@@ -312,9 +326,9 @@ var oHitp = (function () {
   };
 
   /** Highlights ONE item in toc-list */
-  oHitp.fToctreeHighlightNode = function (oEltSpliterLeftDiv, oElm) {
+  oHitp.fToctreeHighlightNode = function (oHmlEltDivSpliterLeft, oElm) {
     /* removes existing highlighting */
-    var aToctreeAs = oEltSpliterLeftDiv.getElementsByTagName('a'),
+    var aToctreeAs = oHmlEltDivSpliterLeft.getElementsByTagName('a'),
       n;
 
     for (n = 0; n < aToctreeAs.length; n += 1) {
@@ -325,7 +339,8 @@ var oHitp = (function () {
 
   /** Makes the display-style: block. */
   oHitp.fToctreeExpandAll = function (sIdToctree) {
-    var aSubnodes, aToctreeLIs = document.getElementById(sIdToctree).getElementsByTagName('li'),
+    var aSubnodes,
+      aToctreeLIs = document.getElementById(sIdToctree).getElementsByTagName('li'),
       n;
 
     for (n = 0; n < aToctreeLIs.length; n += 1) {
@@ -349,324 +364,398 @@ var oHitp = (function () {
   };
 
   /** expands all the parents only, of an element */
-  oHitp.fToctreeExpandParent = function (oElt) {
-    var oEltSpan, oEltUl;
+  oHitp.fToctreeExpandParent = function (oHmlEltIn) {
+    var oHmlEltSpan, oHmlEltUl;
 
     /** the parent of a-elm is li-elm with parent a ul-elm. */
-    oEltUl = oElt.parentNode.parentNode;
-    while (oEltUl.tagName === 'UL') {
-      oEltUl.style.display = 'block';
+    oHmlEltUl = oHmlEltIn.parentNode.parentNode;
+    while (oHmlEltUl.tagName === 'UL') {
+      oHmlEltUl.style.display = 'block';
       /* the parent is li-elm, its first-child is img */
-      oEltSpan = oEltUl.parentNode.firstChild;
-      if (oEltSpan.tagName === 'SPAN' && oEltSpan.innerHTML === '▽') {
-        oEltSpan.innerHTML = '△';
-        oEltSpan.setAttribute('class', 'clsSpanListIcon clsIconCollapse');
+      oHmlEltSpan = oHmlEltUl.parentNode.firstChild;
+      if (oHmlEltSpan.tagName === 'SPAN' && oHmlEltSpan.innerHTML.indexOf('⇩') !== -1) {
+        oHmlEltSpan.innerHTML = '⇧';
+        oHmlEltSpan.setAttribute('class', 'clsSpanListIcon clsIconCollapse');
       }
-      oEltUl = oEltUl.parentNode.parentNode;
+      oHmlEltUl = oHmlEltUl.parentNode.parentNode;
     }
   };
 
   /** this function puts on the page the toc by splitting it. */
   oHitp.fMakeToc = function () {
     var
-      oEltBody = document.body,
-      oEltSpliterDiv = document.createElement('div'), /* the general container*/
-      oEltSpliterRightDiv = document.createElement('div'),
-      oEltSpliterLeftDiv = document.createElement('div'),
-      oEltTabNamesUl = document.createElement('ul'),
-      oEltTabContentcontainerDiv = document.createElement('div'),
-      oEltTab1ContentDiv = document.createElement('div'),
-      //oEltTab2ContentDiv = document.createElement('div'),
-      oEltTocBtnCollapseall = document.createElement('input'),
-      oEltTocBtnExpandall = document.createElement('input'),
-      oEltPPath = document.createElement("p"),
-      oEltPNote = document.createElement("p"),
-      oEltDivPopup = document.createElement('div'),
-      oEltDivHitpmenu = document.createElement('div'),
-      oXhr = new XMLHttpRequest(),
+      fEvtPreviewMouseover,
+      fEvtPreviewMouseout,
+      fEvtPreviewOn,
+      fEvtPreviewOff,
+      fEvtTocposition,
+      fEvtTocpositionClick,
+      fEvtTocpositionHover,
+      oHmlEltBody = document.body,
+      oHmlEltDivSpliter = document.createElement('div'), /* the general container*/
+      oHmlEltDivSpliterRight = document.createElement('div'),
+      oHmlEltDivSpliterLeft = document.createElement('div'),
+      oHmlEltUlTabNames = document.createElement('ul'),
+      oHmlEltDivTabContentcnr = document.createElement('div'),
+      oHmlEltDivTab1Content = document.createElement('div'),
+      //oHmlEltDivTab2Content = document.createElement('div'),
+      oHmlEltBtnTocCollapseall = document.createElement('input'),
+      oHmlEltBtnTocExpandall = document.createElement('input'),
+      oHmlEltPPath = document.createElement('p'),
+      oHmlEltFrmPref = document.createElement('form'),
+      oHmlEltRdbPreviewOn,
+      oHmlEltRdbPreviewOff,
+      oHmlEltRdbTocpositionHover,
+      oHmlEltRdbTocpositionClick,
+      oHmlEltPNote = document.createElement('p'),
+      oHmlEltDivPopup = document.createElement('div'),
+      oHmlEltDivHitpmenu = document.createElement('div'),
+      oXHR = new XMLHttpRequest(),
       sContentOriginal = document.body.innerHTML, sIdTabActive, sPathMenu;
 
     oHitp.nTocIdTreeLi = 0;
-    oEltSpliterDiv.id = 'idSpliterDiv';
+    oHmlEltDivSpliter.id = 'idDivSpliter';
     /* remove from old-body its elements */
-    oEltBody.innerHTML = '';
-    oEltBody.appendChild(oEltSpliterDiv);
+    oHmlEltBody.innerHTML = '';
+    oHmlEltBody.appendChild(oHmlEltDivSpliter);
 
     /* set on right-splitter the old-body */
-    oEltSpliterRightDiv.id = 'idSpliterRightDiv';
-    oEltSpliterRightDiv.innerHTML = sContentOriginal;
-    oEltSpliterDiv.appendChild(oEltSpliterRightDiv);
+    oHmlEltDivSpliterRight.id = 'idDivSpliterRight';
+    oHmlEltDivSpliterRight.innerHTML = sContentOriginal;
+    oHmlEltDivSpliter.appendChild(oHmlEltDivSpliterRight);
 
     /* insert toc */
-    oEltSpliterLeftDiv.id = 'idSpliterLeftDiv';
+    oHmlEltDivSpliterLeft.id = 'idDivSpliterLeft';
 
     /* insert content on tab1 */
-    oEltTab1ContentDiv.id = 'idTab1ContentDiv';
-    oEltTab1ContentDiv.setAttribute('class', 'clsTabContent');
-    oEltTab1ContentDiv.innerHTML = oHitp.fCreateUl_with_headings();
-    oEltTab1ContentDiv.getElementsByTagName("ul")[0].setAttribute('id', 'idTocTree');
+    oHmlEltDivTab1Content.id = 'idDivTab1Content';
+    oHmlEltDivTab1Content.setAttribute('class', 'clsTabContent');
+    oHmlEltDivTab1Content.innerHTML = oHitp.fCreateUl_with_headings();
+    oHmlEltDivTab1Content.getElementsByTagName("ul")[0].setAttribute('id', 'idTocTree');
     /* insert collaplse-button */
-    oEltTocBtnCollapseall.setAttribute('id', 'idBtnCollapse_All');
-    oEltTocBtnCollapseall.setAttribute('type', 'button');
-    oEltTocBtnCollapseall.setAttribute('value', '△');
-    oEltTocBtnCollapseall.setAttribute('title', 'Collapse-All');
-    oEltTocBtnCollapseall.setAttribute('class', 'clsBtn');
-    oEltTocBtnCollapseall.onclick = function (event) {
+    oHmlEltBtnTocCollapseall.setAttribute('id', 'idBtnCollapse_All');
+    oHmlEltBtnTocCollapseall.setAttribute('type', 'button');
+    oHmlEltBtnTocCollapseall.setAttribute('value', '⇧');
+    oHmlEltBtnTocCollapseall.setAttribute('title', 'Collapse-All');
+    oHmlEltBtnTocCollapseall.setAttribute('class', 'clsBtn');
+    oHmlEltBtnTocCollapseall.addEventListener('click', function (oEvtIn) {
       oHitp.fToctreeCollapseAll('idTocTree');
-    };
-    oEltTab1ContentDiv.insertBefore(oEltTocBtnCollapseall, oEltTab1ContentDiv.firstChild);
+    });
+    oHmlEltDivTab1Content.insertBefore(oHmlEltBtnTocCollapseall, oHmlEltDivTab1Content.firstChild);
     /* insert expand-button */
-    oEltTocBtnExpandall.setAttribute('id', 'idBtnExp_All');
-    oEltTocBtnExpandall.setAttribute('type', 'button');
-    oEltTocBtnExpandall.setAttribute('value', '▽');
-    oEltTocBtnExpandall.setAttribute('title', 'Expand-All');
-    oEltTocBtnExpandall.setAttribute('class', 'clsBtn');
-    oEltTocBtnExpandall.onclick = function (event) {
+    oHmlEltBtnTocExpandall.setAttribute('id', 'idBtnExp_All');
+    oHmlEltBtnTocExpandall.setAttribute('type', 'button');
+    oHmlEltBtnTocExpandall.setAttribute('value', '⇩');
+    oHmlEltBtnTocExpandall.setAttribute('title', 'Expand-All');
+    oHmlEltBtnTocExpandall.setAttribute('class', 'clsBtn');
+    oHmlEltBtnTocExpandall.addEventListener('click', function (oEvtIn) {
       oHitp.fToctreeExpandAll('idTocTree');
-    };
-    oEltTab1ContentDiv.insertBefore(oEltTocBtnExpandall, oEltTab1ContentDiv.firstChild);
+    });
+    oHmlEltDivTab1Content.insertBefore(oHmlEltBtnTocExpandall, oHmlEltDivTab1Content.firstChild);
+    /* preferences */
+    oHmlEltDivTab1Content.appendChild(document.createElement('p'));
+    oHmlEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">Preferences</span>:<br/>' +
+      '&nbsp;&nbsp;1) <span class="clsU">Link-preview</span>:<br/>' +
+      '<input type="radio" id="idRdbPreviewOn" name="nameRdbPreview" checked/>Preview On (default)<br/>' +
+      '<input type="radio" id="idRdbPreviewOff" name="nameRdbPreview"/>Preview Off<br/>' +
+      '<br/>' +
+      '&nbsp;&nbsp;2) <span class="clsU">Show on ToC content-position by</span>:<br/>' +
+      '<input type="radio" id="idRdbTocpositionHover" name="nameRdbPosition" checked/>Hovering content (default)<br/>' +
+      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content';
+    oHmlEltDivTab1Content.appendChild(oHmlEltFrmPref);
     /* toc: add note at the end */
-    oEltPNote.innerHTML = '<span class="color-green style-b">Notes</span>: <br/>a) Clicking on ¶ or on ToC, you see the address of that text on address-bar. <br/>b) hovering a piece of text, you see its position on ToC. <br/>c) hovering a domain-link you see a preview.';
-    oEltTab1ContentDiv.appendChild(oEltPNote);
+    oHmlEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br/>' +
+      'a) Clicking on ¶ or on ToC, you see the address of that text on address-bar.<br/>' +
+      'b) Hovering content (default) OR clicking content, you see its position on ToC.<br/>' +
+      'c) Hovering a domain-link you see a preview (default).';
+    oHmlEltDivTab1Content.appendChild(oHmlEltPNote);
 
     /* inset tab1 on tabcontainer */
-    oEltTabContentcontainerDiv.id = 'idTabContentcontainerDiv';
+    oHmlEltDivTabContentcnr.id = 'idDivTabContentcontainer';
 
-    oEltTabContentcontainerDiv.appendChild(oEltTab1ContentDiv);
-    //oEltTab2ContentDiv.id = 'idTab2ContentDiv';
-    //oEltTab2ContentDiv.setAttribute('class', 'clsTabContent');
-    //oEltTabContentcontainerDiv.appendChild(oEltTab2ContentDiv);
+    oHmlEltDivTabContentcnr.appendChild(oHmlEltDivTab1Content);
+    //oHmlEltDivTab2Content.id = 'idTab2ContentDiv';
+    //oHmlEltDivTab2Content.setAttribute('class', 'clsTabContent');
+    //oHmlEltDivTabContentcnr.appendChild(oHmlEltDivTab2Content);
 
     /* insert tabcontainer on spliterLeft */
-    oEltSpliterLeftDiv.appendChild(oEltTabContentcontainerDiv);
+    oHmlEltDivSpliterLeft.appendChild(oHmlEltDivTabContentcnr);
 
     /* insert tabnames */
-    oEltTabNamesUl.id = 'idTabNamesUl';
-    oEltTabNamesUl.innerHTML = '<li class="clsTabActive"><a href="#idTab1contentDiv">Page-structure</a></li>';
+    oHmlEltUlTabNames.id = 'idTabNamesUl';
+    oHmlEltUlTabNames.innerHTML = '<li class="clsTabActive"><a href="#idTab1contentDiv">Page-structure</a></li>';
       //<li><a href="#idTab2contentDiv">Search</a></li>'
-    oEltSpliterLeftDiv.insertBefore(oEltTabNamesUl, oEltSpliterLeftDiv.firstChild);
+    oHmlEltDivSpliterLeft.insertBefore(oHmlEltUlTabNames, oHmlEltDivSpliterLeft.firstChild);
 
     /* insert page-path--element */
-    oEltPPath.id = 'idPpath';
-    oEltPPath.setAttribute('title', "© 2010-2014 Kaseluris.Nikos.1959");
+    oHmlEltPPath.id = 'idPpath';
+    oHmlEltPPath.setAttribute('title', "© 2010-2015 Kaseluris.Nikos.1959"); //nnn
     if (!document.getElementById("idMetaWebpage_path")) {
-      oEltPPath.innerHTML = 'ToC: ' + document.title;
+      oHmlEltPPath.innerHTML = 'ToC: ' + document.title;
     } else {
-      oEltPPath.innerHTML = document.getElementById("idMetaWebpage_path").innerHTML;
+      oHmlEltPPath.innerHTML = document.getElementById("idMetaWebpage_path").innerHTML;
     }
-    oEltSpliterLeftDiv.insertBefore(oEltPPath, oEltSpliterLeftDiv.firstChild);
+    oHmlEltDivSpliterLeft.insertBefore(oHmlEltPPath, oHmlEltDivSpliterLeft.firstChild);
 
     /* insert site-structure menu */
     if (location.hostname !== '') {
-      oEltDivHitpmenu.id = 'idHitpmenu';
+      oHmlEltDivHitpmenu.id = 'idHitpmenu';
       if (location.hostname === 'localhost') {
         sPathMenu = oHitp.sPathMenuLocal;
       } else {
         sPathMenu = oHitp.sPathMenuOnline;
       }
-      oXhr.open('GET', location.origin + sPathMenu, false);
-      oXhr.send(null);
-      if (oXhr.status === 200) {
-        oEltDivHitpmenu.innerHTML = oXhr.responseText;
-        oEltSpliterLeftDiv.insertBefore(oEltDivHitpmenu, oEltSpliterLeftDiv.firstChild);
-        oEltDivHitpmenu.onmouseover = function () {
-          oHitp.nPosSplitPrevious = oEltSpliterLeftDiv.offsetWidth;
-          oEltSpliterLeftDiv.style.width = window.innerWidth + 'px';
-        };
-        oEltDivHitpmenu.onmouseout = function () {
-          oEltSpliterLeftDiv.style.width = oHitp.nPosSplitPrevious + 'px';
-        };
+      oXHR.open('GET', location.origin + sPathMenu, false);
+      oXHR.send(null);
+      if (oXHR.status === 200) {
+        oHmlEltDivHitpmenu.innerHTML = oXHR.responseText;
+        oHmlEltDivSpliterLeft.insertBefore(oHmlEltDivHitpmenu, oHmlEltDivSpliterLeft.firstChild);
+        oHmlEltDivHitpmenu.addEventListener('mouseover', function () {
+          oHitp.nPosSplitPrevious = oHmlEltDivSpliterLeft.offsetWidth;
+          oHmlEltDivSpliterLeft.style.width = window.innerWidth + 'px';
+        });
+        oHmlEltDivHitpmenu.addEventListener('mouseout', function () {
+          oHmlEltDivSpliterLeft.style.width = oHitp.nPosSplitPrevious + 'px';
+        });
       }
     }
 
     /* clicking on a content-link first go to its location, this way the backbutton goes where we clicked. */
-    [].slice.call(document.querySelectorAll('#idSpliterRightDiv a')).forEach(function (oElt, nIndex, array) {
-      oElt.onclick = function (event) {
+    Array.prototype.slice.call(document.querySelectorAll('#idDivSpliterRight a')).forEach(function (oHmlEltIn, nIndex, array) {
+      oHmlEltIn.addEventListener('click', function (oEvtIn) {
         var sID,
-          oEltSec = oElt;
+          oHmlEltSec = oHmlEltIn;
 
-        while (!oEltSec.tagName.match(/^SECTION/i)) {
-          sID = oEltSec.id;
+        oEvtIn.preventDefault();
+        while (!oHmlEltSec.tagName.match(/^SECTION/i)) {
+          sID = oHmlEltSec.id;
           if (sID) {
             break;
           } else {
-            oEltSec = oEltSec.parentNode;
+            oHmlEltSec = oHmlEltSec.parentNode;
           }
         }
         sID = '#' + sID;
-        if (location.href.substring(location.href.indexOf('#')) !== sID) {
+        if (location.hash !== sID) {
           location.href = sID;
         }
-      };
+        location.href = oEvtIn.target.href;
+      });
     });
+
+    /* insert spliterLeft */
+    oHmlEltDivSpliter.insertBefore(oHmlEltDivSpliterLeft, oHmlEltDivSpliter.firstChild);
+    oHitp.fSplit(oHmlEltDivSpliter);
 
     /* on content get-id */
-    [].slice.call(document.querySelectorAll('*[id]')).forEach(function (oElt, nIndex, array) {
-      oElt.onmouseover = function (event) {
-        var sID = '',
-          oEltSec = oElt;
-        if (event.stopPropagation) {
-          event.stopPropagation();
+    oHmlEltRdbTocpositionHover = document.getElementById('idRdbTocpositionHover');
+    oHmlEltRdbTocpositionClick = document.getElementById('idRdbTocpositionClick');
+    fEvtTocposition = function (oEvtIn) {
+      var sID = '',
+        oHmlEltSec = oEvtIn.target;
+
+      oEvtIn.stopPropagation();
+
+      /* find the id of closest header */
+      /* first go where you click */
+      sID = '#' + oHmlEltSec.id;
+
+      /* find  section's id */
+      while (oHmlEltSec && !oHmlEltSec.tagName.match(/^SECTION/i)) {
+        oHmlEltSec = oHmlEltSec.parentNode;
+        if (!oHmlEltSec.tagName) {
+          break;
+        } else if (oHmlEltSec.tagName.match(/^HEADER/i)
+                || oHmlEltSec.tagName.match(/^FOOTER/i)) {
+          break;
+        }
+      }
+      if (oHmlEltSec.tagName) {
+        if (oHmlEltSec.tagName.match(/^HEADER/i)) {
+          sID = '#idHeader';
+        } else if (oHmlEltSec.tagName.match(/^FOOTER/i)) {
+          sID = '#idFooter';
         } else {
-          event.cancelBubble = true;
+          sID = '#' + oHmlEltSec.id;
         }
+      }
 
-        /* find the id of closest header */
-        /* first go where you click */
-        sID = '#' + oEltSec.id;
-
-        /* find  section's id */
-        while (oEltSec && !oEltSec.tagName.match(/^SECTION/i)) {
-          oEltSec = oEltSec.parentNode;
-          if (!oEltSec.tagName) {
-            break;
-          } else if (oEltSec.tagName.match(/^HEADER/i)
-                  || oEltSec.tagName.match(/^FOOTER/i)) {
-            break;
+      Array.prototype.slice.call(document.querySelectorAll('#idTocTree a')).forEach(function (oHmlEltIn, nIndex, array) {
+        if (oHmlEltIn.getAttribute('href') === sID) {
+          oHitp.fToctreeCollapseAll('idTocTree');
+          oHitp.fToctreeHighlightNode(oHmlEltDivSpliterLeft, oHmlEltIn);
+          oHitp.fToctreeExpandParent(oHmlEltIn);
+          oHmlEltIn.scrollIntoViewIfNeeded(true);
+          if (oHitp.bFirefox) {
+            oHmlEltIn.scrollIntoView({block: "end", behavior: "smooth"});
           }
+          document.getElementById("idDivSpliterLeft").scrollLeft = 0;
         }
-        if (oEltSec.tagName) {
-          if (oEltSec.tagName.match(/^HEADER/i)) {
-            sID = '#idHeader';
-          } else if (oEltSec.tagName.match(/^FOOTER/i)) {
-            sID = '#idFooter';
-          } else {
-            sID = '#' + oEltSec.id;
-          }
-        }
-
-        [].slice.call(document.querySelectorAll('#idSpliterLeftDiv a')).forEach(function (oElt, nIndex, array) {
-          if (oElt.getAttribute('href') === sID) {
-            oHitp.fToctreeCollapseAll('idTocTree');
-            oHitp.fToctreeHighlightNode(oEltSpliterLeftDiv, oElt);
-            oHitp.fToctreeExpandParent(oElt);
-            if (oElt.scrollIntoViewIfNeeded) {
-              oElt.scrollIntoViewIfNeeded();
-            } else {
-              oElt.scrollIntoView();
-            }
-            document.getElementById("idSpliterLeftDiv").scrollLeft = 0;
-          }
-        });
-      };
-    });
+      });
+    };
+    fEvtTocpositionClick = function (oEvtIn) {
+      Array.prototype.slice.call(document.querySelectorAll('*[id]')).forEach(function (oHmlEltIn, nIndex, array) {
+        oHmlEltIn.removeEventListener('mouseover', fEvtTocposition);
+        oHmlEltIn.addEventListener('click', fEvtTocposition);
+      });
+    };
+    fEvtTocpositionHover = function (oEvtIn) {
+      Array.prototype.slice.call(document.querySelectorAll('*[id]')).forEach(function (oHmlEltIn, nIndex, array) {
+        oHmlEltIn.removeEventListener('click', fEvtTocposition);
+        oHmlEltIn.addEventListener('mouseover', fEvtTocposition);
+      });
+    };
+    oHmlEltRdbTocpositionClick.addEventListener('click', fEvtTocpositionClick);
+    oHmlEltRdbTocpositionHover.addEventListener('click', fEvtTocpositionHover);
+    fEvtTocpositionHover();
 
     /* On TABS Click Event */
-    [].slice.call(document.querySelectorAll('ul#idTabNamesUl li')).forEach(function (oElt, nIndex, array) {
-      oElt.onclick = function () {
+    Array.prototype.slice.call(document.querySelectorAll('ul#idTabNamesUl li')).forEach(function (oHmlEltIn, nIndex, array) {
+      oHmlEltIn.addEventListener('click', function (oEvtIn) {
+        oEvtIn.preventDefault();
         //Remove any "active" class
         document.querySelector('.clsTabActive').classList.remove('clsTabActive');
         //Add "active" class to selected tab
-        oElt.classList.add('clsTabActive');
+        oHmlEltIn.classList.add('clsTabActive');
         //Hide all tab content
-        [].slice.call(document.getElementsByClassName('clsTabContent')).forEach(function (oElt, nIndex, array) {
-          oElt.style.display = 'none';
+        Array.prototype.slice.call(document.getElementsByClassName('clsTabContent')).forEach(function (oHmlEltIn, nIndex, array) {
+          oHmlEltIn.style.display = 'none';
         });
         //Show content of active tab
         sIdTabActive = document.querySelector('.clsTabActive a').getAttribute('href').substring(1);
         document.getElementById(sIdTabActive).style.display = 'block';
-        return false;
-      };
+//        return false;
+      });
     });
 
-    /* insert spliterLeft */
-    oEltSpliterDiv.insertBefore(oEltSpliterLeftDiv, oEltSpliterDiv.firstChild);
-
-    oHitp.fSplit(oEltSpliterDiv);
-
-    /* on links with class popupTrigger add this function
+    /* on links with clsPreview add this function
      * first insert popup container */
-    oEltDivPopup.id = 'idPopup';
-    document.body.appendChild(oEltDivPopup);
-    [].slice.call(document.querySelectorAll('a.popupTrigger')).forEach(function (oElt, nIndex, array) {
-      oElt.onmouseover = function (event) {
-        var sLoc, sId1, sId2,
-          nPy, nPx, nWh, nWw,
-          oDoc;
+    oHmlEltRdbPreviewOn = document.getElementById('idRdbPreviewOn');
+    oHmlEltRdbPreviewOff = document.getElementById('idRdbPreviewOff');
+    oHmlEltDivPopup.id = 'idPopup';
+    document.body.appendChild(oHmlEltDivPopup);
+    fEvtPreviewMouseover = function (oEvtIn) {
+      var sLoc, sId1, sId2,
+        nPy, nPx, nWh, nWw,
+        oDoc;
 
-        sId1 = this.href;
-        if (sId1.indexOf('#') > 0) {
-          sId2 = sId1.substring(sId1.indexOf("#") + 1);
-          sId1 = sId1.substring(0, sId1.indexOf("#"));
-        }
-        sLoc = location.href;
-        if (sLoc.indexOf('#') > 0) {
-          sLoc = sLoc.substring(0, sLoc.indexOf("#"));
-        }
-        /* internal-link */
-        if (sLoc === sId1) {
-          oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
-        } else {
-          oEltDivPopup.innerHTML = '';
-          oXhr = new XMLHttpRequest();
-          oXhr.open('GET', sId1, false);
-          oXhr.send(null);
-          if (oXhr.status === 200) {
-            if (sId2) {
-              //IF #fragment url, display only this element.
-              oDoc = (new DOMParser()).parseFromString(oXhr.responseText, 'text/html');
-              oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+      oEvtIn.preventDefault();
+      oEvtIn.stopPropagation();
+      nPx = oEvtIn.pageX;
+      nPy = oEvtIn.pageY;
+      nWh = window.innerHeight;
+      nWw = window.innerWidth;
+      sId1 = this.href;
+      if (sId1.indexOf('#') > 0) {
+        sId2 = sId1.substring(sId1.indexOf("#") + 1);
+        sId1 = sId1.substring(0, sId1.indexOf("#"));
+      }
+      sLoc = location.href;
+      if (sLoc.indexOf('#') > 0) {
+        sLoc = sLoc.substring(0, sLoc.indexOf("#"));
+      }
+      /* internal-link */
+      if (sLoc === sId1) {
+        oHmlEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
+      } else {
+        oHmlEltDivPopup.innerHTML = '';
+        oXHR = new XMLHttpRequest();
+        oXHR.open('GET', sId1, false);
+        oXHR.send(null);
+        if (oXHR.status === 200) {
+          if (sId2) {
+            //IF #fragment url, display only this element.
+            oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
+            oHmlEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+          } else {
+            //IF link to a picture, display it, not its code.
+            if (sId1.match(/(png|jpg|gif)$/)) {
+              var oImg = new Image();
+              var nIW, nIH, nPW, nPH;
+              nPW = nWw / 2.2;
+              nPH = nWh * 0.4;
+              oImg.src = sId1;
+              oImg.addEventListener('load', function() {
+                nIW = oImg.width;
+                nIH = oImg.height;
+                if (nIH > nPH) {
+                  nIW = (nIW * nPH) / nIH;
+                  nIH = nPH;
+                }
+                oHmlEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
+                  + '" width="' + nIW
+                  + '" height="' + nIH + '" /></p>';
+              });
             } else {
-              //IF link to a picture, display it, not its code.
-              if (sId1.match(/(png|jpg|gif)$/)) {
-                oEltDivPopup.innerHTML = '<img src="' + sId1 + '" />';
-              } else {
-                document.getElementById('idPopup').innerHTML = oXhr.responseText;
-              }
+              document.getElementById('idPopup').innerHTML = oXHR.responseText;
             }
           }
         }
-        nPx = event.pageX;
-        nPy = event.pageY;
-        nWh = window.innerHeight;
-        nWw = window.innerWidth;
-        oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
-        if (nPx < nWw / 2) {
-          oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
-        } else {
-          oEltDivPopup.style.left = 26 + 'px';
-        }
-        oEltDivPopup.style.overflow = 'auto';
-        oEltDivPopup.style.display = 'block';
-      };
-      oElt.onmouseout = function () {
-        oEltDivPopup.style.display = 'none';
-      };
-      //IF you prefer to close popup with click, instead of mouseout
-      //oElt.onclick = function () {
-        //oEltDivPopup.style.display = 'none';
-      //};
-    });
+      }
+
+      oHmlEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
+      if (nPx < nWw / 2) {
+        oHmlEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
+      } else {
+        oHmlEltDivPopup.style.left = 26 + 'px';
+      }
+      oHmlEltDivPopup.style.overflow = 'auto';
+      oHmlEltDivPopup.style.display = 'block';
+    };
+    fEvtPreviewMouseout = function (oEvtIn) {
+      oHmlEltDivPopup.style.display = 'none';
+    };
+    fEvtPreviewOn = function (oEvtIn) {
+      Array.prototype.slice.call(document.querySelectorAll('a.popupTrigger, a.clsPreview')).forEach(function (oHmlEltIn, nIndex, array) {
+        oHmlEltIn.addEventListener('mouseover', fEvtPreviewMouseover);
+        oHmlEltIn.addEventListener('mouseout', fEvtPreviewMouseout);
+        //IF you prefer to close popup with click, instead of mouseout
+        //oHmlEltIn.onclick = function () {
+          //oHmlEltDivPopup.style.display = 'none';
+        //};
+      });
+    };
+    fEvtPreviewOff = function (oEvtIn) {
+      Array.prototype.slice.call(document.querySelectorAll('a.popupTrigger, a.clsPreview')).forEach(function (oHmlEltIn, nIndex, array) {
+        oHmlEltIn.removeEventListener('mouseover', fEvtPreviewMouseover);
+        oHmlEltIn.removeEventListener('mouseout', fEvtPreviewMouseout);
+      });
+    };
+    fEvtPreviewOn();
+    oHmlEltRdbPreviewOn.addEventListener('click', fEvtPreviewOn);
+    oHmlEltRdbPreviewOff.addEventListener('click', fEvtPreviewOff);
 
     /* tree initialization */
     oHitp.fToctreeInit();
 
     /* what to do on clicking a link in toc */
-    [].slice.call(document.querySelectorAll("#idTocTree li > a")).forEach(function (oElt, nIndex, array) {
-      oElt.onclick = function (event) {
-        event.preventDefault();
-        location.href = '#' + event.target.href.split('#')[1];
-        oHitp.fToctreeHighlightNode(oEltSpliterLeftDiv, oElt);
-        return false;
-      };
-      /* sets as title-attribute the text of a-element */
-      oElt.title = oElt.textContent.replace(/\n/, ' ');
+    Array.prototype.slice.call(document.querySelectorAll("#idTocTree li > a")).forEach(function (oHmlEltIn, nIndex, array) {
+      oHmlEltIn.addEventListener('click', function (oEvtIn) {
+        oEvtIn.preventDefault();
+        location.href = '#' + oEvtIn.target.href.split('#')[1];
+        oHitp.fToctreeHighlightNode(oHmlEltDivSpliterLeft, oHmlEltIn);
+      });
     });
 
     oHitp.fToctreeExpandAll('idTocTree');
     oHitp.fToctreeCollapseAll('idTocTree');
     oHitp.fToctreeExpandFirst('idTocTree');
-    /* IF on idMetaWebpage_path paragraph we have and the classTocExpand
+    /* IF on idMetaWebpage_path paragraph we have and the clsTocExpand
      * then the toc expands-all */
     if (document.getElementById("idMetaWebpage_path")) {
-      if (document.getElementById("idMetaWebpage_path").getAttribute('class') === 'classTocExpand') {
+      if (document.getElementById("idMetaWebpage_path").getAttribute('class') === 'classTocExpand' ||
+          document.getElementById("idMetaWebpage_path").getAttribute('class') === 'clsTocExpand') {
         oHitp.fToctreeExpandAll('idTocTree');
       }
     }
 
+    window.onhashchange = function(oEvtIn) {
+      location.href = location.href;
+    };
+
     /* focus on right-div, Div can get the focus if it has tabindex attribute... on chrome */
-    document.getElementById('idSpliterRightDiv').setAttribute('tabindex', -1);
-    document.getElementById('idSpliterRightDiv').focus();
+    document.getElementById('idDivSpliterRight').setAttribute('tabindex', -1);
+    document.getElementById('idDivSpliterRight').focus();
   };
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -674,5 +763,4 @@ var oHitp = (function () {
   });
 
   return oHitp;
-  
 })();
