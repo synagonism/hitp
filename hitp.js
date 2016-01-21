@@ -1,9 +1,8 @@
 /*
- * version.11.last.minor: hitp.js (2015.12.17.11.5)
+ * version.11.last.minor: hitp.js (2016.01.20.11.6)
  * version.11.last.minorNo: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
  * version.9.previous: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
- * version.8.previous.minor: hitp.js (2014.01.09.8 minor 2014.07.29.8.12)
  * version.8.previous: hitp.2014.01.09.8.js (toc on hovering)
  * version.7.previous: hitp.2013.11.06.7.js (tabs)
  * version.6.previous: hitp.2013.08.21.6.js (site-structure)
@@ -26,7 +25,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2016 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * http://synagonism.net/
  *
@@ -59,7 +58,7 @@ var oHitp = (function () {
     /* setting: the hitmenu contains absolute urls, because we see it from many pages.
      * Then we must know the ROOT of the site and create different menus.
      */
-    sPathMenuLocal: '/dWwwSgm/hitpmenuLocal.html',
+    sPathMenuLocal: '/dWstSgm/hitpmenuLocal.html',
     sPathMenuOnline: '/hitpmenu.html'
   };
 
