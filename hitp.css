@@ -487,8 +487,9 @@ address:hover > a.hide:hover,
 span:hover > a.hide:hover,
 table:hover a.hide:hover
 {
-  color: #ee0000;
-  text-decoration:underline;
+  background: #ee0000;
+  color: #ffffff;
+  text-decoration:none;
 }
 
 a:link {
