@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.js (2016.01.24.12)
+ * version.12.last.minor: hitp.js (2016.01.24.12.1)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -70,6 +70,7 @@ body {
 #idDivCnrToc {
   background: #dddddd; /* Old browsers */
   background: linear-gradient(to left, #dddddd, #eeeeee 100%); /* W3C */
+  background: -webkit-linear-gradient(right,  #dddddd, #eeeeee 100%);
   position: absolute;
   left: 0px;
   line-height: 116%;
@@ -82,6 +83,7 @@ body {
 #idDivCnrBar {
   background: #aaaaaa;
   background: linear-gradient(to left, #aaaaaa, #dddddd 100%);
+  background: -webkit-linear-gradient(right,  #aaaaaa, #dddddd 100%);
   position: absolute;
   cursor: e-resize;
   width: 10px;
@@ -110,6 +112,7 @@ body {
 #idDivCnrBarBtn {
   background: #999999;
   background: linear-gradient(to left, #999999, #dddddd 100%);
+  background: -webkit-linear-gradient(right,  #999999, #dddddd 100%);
   position: relative;
   top: 42%;
   height: 59px;
@@ -133,6 +136,7 @@ header {
 header > h1 {
   background: #004900;
   background: linear-gradient(#004900, #287128);
+  background: -webkit-linear-gradient(#004900, #287128);
   border-top: 0px solid #000000;
   border-radius: 5px;
   color: #ffffff;
@@ -147,6 +151,7 @@ header > h1 {
 h1 {
   background: #f5f5f5; /*cff5f5 #d9ffff;*/
   background: linear-gradient(to bottom, #f5f5f5, #ffffff 26%);
+  background: -webkit-linear-gradient(top,  #f5f5f5, #ffffff 26%);
   border-radius: 2px;
   padding: 3px 0 0 5px;
   color: #000000;
@@ -165,6 +170,7 @@ section > h1:before {
 h2 {
   background: #fafafa;
   background: linear-gradient(to bottom, #fafafa, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #fafafa, #ffffff 50%);
   border-radius: 3px;
   padding: 3px 0 0 10px;
   color: #000000;
@@ -182,6 +188,7 @@ section > h2:before {
 h3 {
   background: #fafafa;
   background: linear-gradient(to bottom, #fafafa, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #fafafa, #ffffff 50%);
   border-radius: 3px;
   padding: 3px 0 0 15px;
   color: #000000;
@@ -199,6 +206,7 @@ section > h3:before {
 h4 {
   background: #fafafa;
   background: linear-gradient(to bottom, #fafafa, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #fafafa, #ffffff 50%);
   border-radius: 3px;
   padding: 3px 0 0 20px;
   color: #000000;
@@ -216,6 +224,7 @@ section > h4:before {
 h5 {
   background: #fafafa;
   background: linear-gradient(to bottom, #fafafa, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #fafafa, #ffffff 50%);
   border-radius: 3px;
   padding: 3px 0 0 25px;
   color: #000000;
@@ -233,6 +242,7 @@ section > h5:before {
 h6 {
   background: #fafafa;
   background: linear-gradient(to bottom, #fafafa, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #fafafa, #ffffff 50%);
   border-radius: 3px;
   padding: 3px 0 0 30px;
   color: #000000;
@@ -250,6 +260,7 @@ section > h6:before {
 p.h7 {
   background: #fafafa;
   background: linear-gradient(to bottom, #fafafa, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #fafafa, #ffffff 50%);
   border-top: 3px solid;
   border-radius: 5px;
   padding: 3px 0 0 5px;
@@ -263,6 +274,7 @@ p.h7 {
 p.h8 {
   background: #fafafa;
   background: linear-gradient(to bottom, #fafafa, #ffffff 50%);
+  background: -webkit-linear-gradient(top,  #fafafa, #ffffff 50%);
   border-top: 3px;
   border-radius: 5px;
   padding: 3px 0 0 5px;
@@ -279,6 +291,7 @@ p.h8 {
 footer {
   background-color: #f4f4f4;
   background: linear-gradient(to bottom, #efefef, #f8f8f8);
+  background: -webkit-linear-gradient(top,  #efefef, #f8f8f8);
   border-radius: 5px;
   padding: 2px;
   color: #000000;
@@ -620,6 +633,7 @@ table:hover a:hover,
 /*** HITP-MENU ***/
 #idHitpmenu {
   background: linear-gradient(#41A317, #347235);
+  background: -webkit-linear-gradient(#41A317, #347235);
   border-radius: 50px / 20px;
   font-size: 16px;
   width: 115px;
@@ -667,6 +681,7 @@ table:hover a:hover,
 }
 #idHitpmenu ul ul {
   background: linear-gradient(#41A317, #347235);
+  background: -webkit-linear-gradient(#41A317, #347235);
   position: absolute;
   visibility: hidden;
   top: 0px; /* same line on sub ul */
