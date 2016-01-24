@@ -1,6 +1,7 @@
 /*
- * version.11.last.minor: hitp.css (2016.01.19.11.4)
- * version.11.last.minorNo: hitp.2015.10.26.11.css (preferences)
+ * version.12.last.minor: hitp.js (2016.01.24.12)
+ * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
+ * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
  * version.9.previous: hitp.2014.08.02.9.css (NO jQuery, fixed popup)
  * version.8.previous: hitp.2014.01.09.8.css (toc on hovering)
@@ -53,7 +54,7 @@ body {
 }
 
 /*** CONTAINERS ***/
-#idDivSpliter {
+#idDivCnr {
   background-color: blue;
   position: absolute;
   width: 100%;
@@ -66,7 +67,7 @@ body {
   padding: 0px;
   z-index: -1; /* container */
 }
-#idDivSpliterLeft {
+#idDivCnrToc {
   background: #dddddd; /* Old browsers */
   background: linear-gradient(to left, #dddddd, #eeeeee 100%); /* W3C */
   position: absolute;
@@ -78,7 +79,7 @@ body {
   z-index: 20; /* div left */
   overflow: auto;
 }
-#idDivSpliterBar {
+#idDivCnrBar {
   background: #aaaaaa;
   background: linear-gradient(to left, #aaaaaa, #dddddd 100%);
   position: absolute;
@@ -87,7 +88,7 @@ body {
   height: 100%;
   z-index: 10; /* div bar */
 }
-#idDivSpliterRight {
+#idDivCnrCnt {
   background: white;
   position: absolute;
   right: 0px;
@@ -97,16 +98,16 @@ body {
   z-index: 0; /* div right */
   overflow: auto;
 }
-#idDivSpliterLeft > input[type="button"] {
+#idDivCnrToc > input[type="button"] {
   padding: 2px 7px 2px 7px;
   margin-left: 5px;
   margin-bottom: 10px;
 }
-#idDivSpliterLeft  p {
+#idDivCnrToc  p {
   text-indent: -8px;
   margin-left: 8px;
 }
-#idDivSpliterBarButon {
+#idDivCnrBarBtn {
   background: #999999;
   background: linear-gradient(to left, #999999, #dddddd 100%);
   position: relative;
@@ -115,7 +116,7 @@ body {
   width: 10px;
   cursor: pointer;
 }
-#idDivSpliterBarGhost {
+#idDivCnrBarGhost {
   background: green;
   position: absolute;
   cursor: e-resize;
@@ -484,30 +485,30 @@ a:link {
 a:visited {
   color: #000000
 }
-h1:hover  > a,
-h2:hover  > a,
-h3:hover  > a,
-h4:hover  > a,
-h5:hover  > a,
-h6:hover  > a,
-p:hover  > a,
-address:hover > a,
-span:hover > a,
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a,
+h6:hover a,
+p:hover a,
+address:hover a,
+span:hover a,
 table:hover a
 {
   color: blue;
 }
-h1:hover  > a:hover,
-h2:hover  > a:hover,
-h3:hover  > a:hover,
-h4:hover  > a:hover,
-h5:hover  > a:hover,
-h6:hover  > a:hover,
-p:hover  > a:hover,
-address:hover > a:hover,
-span:hover > a:hover,
+h1:hover a:hover,
+h2:hover a:hover,
+h3:hover a:hover,
+h4:hover a:hover,
+h5:hover a:hover,
+h6:hover a:hover,
+p:hover a:hover,
+address:hover a:hover,
+span:hover a:hover,
 table:hover a:hover,
-#idTocTree li a:hover {
+#idTocTri li a:hover {
   color: #ee0000;
   text-decoration:underline;
 }
@@ -515,56 +516,55 @@ table:hover a:hover,
 #idPpath {
   margin: 15px 0px 5px 25px;
 }
-.clsTocTreeHighlight {
+.clsTocTriHighlight {
   background-color: yellow;
 }
 
-#idTocTree {
+#idTocTri {
   margin: 0px;
   padding: 0px;
 }
-#idTocTree > li > ul > li > a {
+#idTocTri > li > ul > li > a {
   color: green;
 }
-#idTocTree > li > ul > li > ul > li > a {
+#idTocTri > li > ul > li > ul > li > a {
   color: blue;
 }
-#idTocTree > li > ul > li > ul > li > ul > li > a {
+#idTocTri > li > ul > li > ul > li > ul > li > a {
   color: indigo;
 }
-#idTocTree li a {
+#idTocTri li a {
   color: #000000;
   text-decoration: none;
   font-family: Calibri;
   font-size: 14px;
   padding-left: 1px;
 }
-#idTocTree > li > a {
+#idTocTri > li > a {
   color: green;
   font-size: 16px;
   font-weight: bold;
 }
-#idTocTree ul {
-  margin-left: 12px;
+#idTocTri ul {
+  margin-left: 14px;
   padding-left: 0px;
 }
-#idTocTree li {
+#idTocTri li {
   list-style-type: none;
   vertical-align: middle;
   white-space: nowrap;
 }
-span.clsSpanListIcon {
-  color: navy;
-  cursor:pointer;
-  font-size: 14px;
+.clsTocTriIcn {
+  cursor: pointer;
+  vertical-align: middle;
 }
-span.clsSpanListIcon:hover {
-  color: #ee0000;
+.clsTocTriIcn:hover {
+  background: #ee0000;
 }
-span.clsDiamond {
-  color: navy;
+.clsTocTriIcnLif {
+  vertical-align: middle;
 }
-span.clsIconCollapse {
+.clsTocTriIcnCol {
 }
 
 #idPopup {
@@ -771,10 +771,8 @@ span.clsIconCollapse {
 }
 
 .clsBtn {
-  background: #bbbbbb;
-  background: linear-gradient(to right, #bbbbbb, #ffffff);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
   margin: 2px 0 5px 12px;
 }
 .clsBtn:hover {
