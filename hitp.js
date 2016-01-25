@@ -50,11 +50,11 @@
  */
 
 var oHitp = (function () {
-  var sImgTocExp = 'imgToc1Exp15.png',
-    sImgTocCol = 'imgToc2Col15.png',
-    sImgTocLif = 'imgToc3Lif15.png',
-    sImgTocExpW = 'imgToc1Exp15w.png',
-    sImgTocColW = 'imgToc2Col15w.png';
+  var sImgTocExp = 'http://synagonism.github.io/hitp/imgToc1Exp15.png',
+    sImgTocCol = 'http://synagonism.github.io/hitp/imgToc2Col15.png',
+    sImgTocLif = 'http://synagonism.github.io/hitp/imgToc3Lif15.png',
+    sImgTocExpW = 'http://synagonism.github.io/hitp/imgToc1Exp15w.png',
+    sImgTocColW = 'http://synagonism.github.io/hitp/imgToc2Col15w.png';
 
   var oHitp = {
     /* config */ 
