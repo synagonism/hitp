@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.js (2016.01.24.12.1)
+ * version.12.last.minor: hitp.css (2016.01.26.12.3)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -19,7 +19,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2016 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * http://synagonism.net/
  *
@@ -416,7 +416,7 @@ h4 > a.hide,
 h5 > a.hide,
 h6 > a.hide
 {
-  color: #fff9f0;
+  color: #ffffff;
   float:right;
   font-family: 'Times New Roman', Georgia, Times, serif, Dialog;
   text-decoration:none;
@@ -428,7 +428,7 @@ p > a.hide,
 address > a.hide,
 span > a.hide
 {
-  color: #fff9f0;
+  color: #ffffff;
   float:right;
   text-decoration:none;
   text-indent: 0px;
@@ -436,7 +436,7 @@ span > a.hide
 table a.clsHide,
 table a.hide
 {
-  color: #fff9f0;
+  color: #ffffff;
   text-decoration:none;
 }
 
@@ -523,8 +523,8 @@ address:hover a:hover,
 span:hover a:hover,
 table:hover a:hover,
 #idTocTri li a:hover {
-  color: #ee0000;
-  text-decoration:underline;
+  background-color: #ee0000;
+  color: #ffffff;
 }
 
 #idPpath {
@@ -792,8 +792,8 @@ table:hover a:hover,
   margin: 2px 0 5px 12px;
 }
 .clsBtn:hover {
-  background: #e0f2f7;
-  color: red;
+  background-color: #ee0000;
+  color: #ffffff;
 }
 .clsEditor {
   background: transparent;
