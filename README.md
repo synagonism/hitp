@@ -7,9 +7,13 @@ hitp-description
 3. **toc**: automatically created expandable table-of-contents makes reading easy. 
 4. **preview**: same domain link-preview makes reading fast. 
 
-hitp-webpage (documentation)
+hitp-documentation
 ===
 http://synagonism.net/hitp/
+
+hitp-project-page
+===
+http://synagonism.github.io/hitp/hitp.html
 
 hitp-license
 ===
