@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.js (2016.01.25.12.1)
+ * version.12.last.minor: hitp.js (2016.01.28.12.3)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.js (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
@@ -50,11 +50,12 @@
  */
 
 var oHitp = (function () {
-  var sImgTocExp = 'http://synagonism.github.io/hitp/imgToc1Exp15.png',
-    sImgTocCol = 'http://synagonism.github.io/hitp/imgToc2Col15.png',
-    sImgTocLif = 'http://synagonism.github.io/hitp/imgToc3Lif15.png',
-    sImgTocExpW = 'http://synagonism.github.io/hitp/imgToc1Exp15w.png',
-    sImgTocColW = 'http://synagonism.github.io/hitp/imgToc2Col15w.png';
+  // 15x15 images black-white
+  var sImgTocExp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDzYiN8jfoAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAK0lEQVQoz2NgGHmAEUr/p0AvSQb8J1mCWAv+k6sRl0KSw+Q/BYFJmcbhCgBsWAv3IVPBNwAAAABJRU5ErkJggg==',
+    sImgTocExpW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDzcTfw3u2wAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAOklEQVQoz2NgGHmAkYGBgeH/////SdbIyMgI5xBrAE51hAwgaAEuBUR7DV0hyWEC00BOYDJQpHEYAwDmly/WC/CfiAAAAABJRU5ErkJggg==',
+    sImgTocCol = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDiw6lUvXGgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAKUlEQVQoz2NgGAXo4D+lGv9TauN/Sp36n1I//qc0cODqGCkIVcaRmPwAaXwL990+l5QAAAAASUVORK5CYII=',
+    sImgTocColW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDjMPDqIdpwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAQ0lEQVQoz+WQMRIAIAjDWs//f7kOnot6BVbNCCQDwHtIsvsWiHKB5kSSjAKHuF9rUhdTASfaQEa8BfqaofQZCADxIQOPwk++KQylWgAAAABJRU5ErkJggg==',
+    sImgTocLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEZCAYiR8g3XQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAL0lEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/lPdZor9THFoUxzPFKcw2gIAggAT7YryXnIAAAAASUVORK5CYII=';
 
   var oHitp = {
     /* config */ 

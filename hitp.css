@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (2016.01.26.12.3)
+ * version.12.last.minor: hitp.css (2016.01.27.12.4)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -487,7 +487,7 @@ address:hover > a.hide:hover,
 span:hover > a.hide:hover,
 table:hover a.hide:hover
 {
-  background: #ee0000;
+  background: blue;
   color: #ffffff;
   text-decoration:none;
 }
@@ -523,7 +523,7 @@ address:hover a:hover,
 span:hover a:hover,
 table:hover a:hover,
 #idTocTri li a:hover {
-  background-color: #ee0000;
+  background: blue;
   color: #ffffff;
 }
 
@@ -573,7 +573,7 @@ table:hover a:hover,
   vertical-align: middle;
 }
 .clsTocTriIcn:hover {
-  background: #ee0000;
+  background: blue;
 }
 .clsTocTriIcnLif {
   vertical-align: middle;
@@ -792,7 +792,7 @@ table:hover a:hover,
   margin: 2px 0 5px 12px;
 }
 .clsBtn:hover {
-  background-color: #ee0000;
+  background: blue;
   color: #ffffff;
 }
 .clsEditor {
