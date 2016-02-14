@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (2016.01.27.12.4)
+ * version.12.last.minor: hitp.css (2016.02.14.12.6)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -159,6 +159,7 @@ h1 {
   font-size: 20px;
   font-weight: bold;
   margin-left: 2px;
+  margin-right: 25px;
 }
 section > h1:before {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMlNPgrmGEAAAGESURBVEjH7dY/aBRREMfxz513RowIMRAxCBKsrghPW+0sgukUERELG6uARRCxXF4n1hYi2AraWBj/VGKbQmRBRQQRCxsbQ4gWCXgWGeImmOT2QlTQKWfmN9+ZN7tvl//2Jy2ltGOznEYkDmAJ3bIsuzUADehZk1LauYVpWimldl3RQJ+wXZseXUqpWZbld4UpXMMo5vBcdlahhfvoyDqgMIzrOCE7HL49soX1QMuQZTuODsbwBa3wX8EpfIyCk3iNS5hdqbQBBJqVxAuyb/gasMcKgzHlTdnJyLyBu1jEgxV9YW9voJ92OvwzOIch3Ko0NI4X6OJJxT+/EahV6Wg/LuNigD5FZFb2Zo3ufOxwodcHphmQI3gVOzqIaYxEzr1VisI+TMTE6oG4jSLES7GDY/FCP1ujOYP2qmOrARrHo1j8HdlnHIrYgV+APsje9zvRW7zD1fDN4CUeKoxWNEfxdCsXY3sbLtvGeoHBPgvurt1BL1f+9o77F34Em78DMvTv/Ff8AMDAWZjHjM+WAAAAAElFTkSuQmCC);
@@ -178,6 +179,7 @@ h2 {
   font-size: 16px;
   font-weight: bold;
   margin-left: 2px;
+  margin-right: 25px;
 }
 section > h2:before {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMtJ7RMU7cAAAGtSURBVEjHxdaxaxRBFMfxzxzBQiubiEEQsTGIrJWFf4HYqJWFhX+BiIjYCIJgY20hgiIoggo2RhFBQYSAlVkiGrSysNHCSgsPMjZvZW+5W3dzRxxYdmfm/ea7783Mm0laSlEUupSyLCf25ZxBmgbQB5i6QCYN0Mc2tQnb/rCvbjAtpGab2jwdTAspiiKFJrd5OWjotvSBNAFt2kFFXl1dPluWK5/JQ/J38iMy8hz5Mflj1NfIv8nL5MVoi2cUVvfqr0fr61sPYRF78ANz0XUex/El6vuwDXdwr6vntdClU6Rf+BmwZzHgRVzHkZrtEHexf9xWbFt1desT0b6Ek9iOG2N+8ihedvWoCk8m78AZnA7Q1+h7iw+jWy8v4BqOVXPTKXRluXIQ72OOduEc5sPmQSN7zeMFroZmUpIZG7qbuBzhGuI+Dof6Vc1+N97gIW53hdRBB/A0Jv4WvsWgsDPee/E6IFf6QJoereETLkTbEt7hCRbwPOCXRjZO/bMlBaVaY2qmkY2WOqha6mlSxywh43Ldhg+9f2nTLI6JLvpNO/j+z1G+qZeTWV+3qvIHDjuqHwZv+zAAAAAASUVORK5CYII=);
@@ -196,6 +198,7 @@ h3 {
   font-size: 14px;
   font-weight: bold;
   margin-left: 2px;
+  margin-right: 25px;
 }
 section > h3:before {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMxOjE9YjMAAAGESURBVDjL7dTNq01RGAbw3znXyfWRa2Ig14SYWbtkbKxWXZQwMTDh/gNuofZgd/8AH0VRhlIMKLukDJSJpKwTM4UwUCZm93DYJjudezt7I4eRd7JqPe/7rGc973oX/2MSkWVZ72+QTrfh3SzLprIs6/4ucVVVgxBCpwlfhS6+RsUpLGAGr3CilD+MikUcKeU7ICreo9J3+m24dRNLYxVjWK/bMYsD2ImPUbEHZ/BupGYWh3Gp3+8vNSpOKVUYJmm+VrQJH0r5i6i4jrulfG6kpofdeNrq8Zi9OdyPivU4iAsr8Je4iHN1E6eaPBZCmNnaP7QLxxGxGsfwGg9W1GzDPlzBbVSNirc8338SV7EWA2zEDdwp5csKS/kQj+rcH+LGEne/9c7iKALOl/JP2IsqKpbZFRWbcRnXIKX0uekdb6iv+xjPsFhj9zBfey4qnkTFFyS8wUIIYbptgtb8wfR1WsGmzv6EtHVaOyMnr6s7PEwpDSb5qXR+NTeE0Gn7J/6pmInFd24TaJHFmiO0AAAAAElFTkSuQmCC);
@@ -214,6 +217,7 @@ h4 {
   font-size: 14px;
   font-weight: bold;
   margin-left: 2px;
+  margin-right: 25px;
 }
 section > h4:before {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRMzI2dgqHEAAAFHSURBVDjL7dQ9S51BEAXg516u1w9ELLQO2AZ2G5tAQNIKRi2sApYSUongHwh2FmkFSSlYWChIChv/gNULATWFjRYhhVgZI+a1mYSNXsFKJTjV7Ozs7DlndodnexDLOTefDJiUUiOl1HvXfjPn3A5/ET/wCwcYi/gSvhVnlrFWVVWNVkqpp2De6nTJCroxjhovMYrf2I2cEVxiqijWVfjtv4iLwu9xgWF8x1csYBtvClZ7OMJhxOpSgT9OJ+hvsYN+TGMi4gOYxTt8wH6Hwle3GoHX+IyfkVwHskakzeEE7ejF5E36pcZNqKpqHqvoCzkGsY6tAtEMNvAqmH7pIOctO0MOXT9G7ASfioOnBZM6+vBP81JKrfJzDGIzJFgLqkKW8/IFxKs5xoso1HPjo/WWi6Gcc/dTHAetR7u5kXNu3HNONP+/UXwN8Z5H7DF5u/wAAAAASUVORK5CYII=);
@@ -232,6 +236,7 @@ h5 {
   font-size: 14px;
   font-weight: bold;
   margin-left: 2px;
+  margin-right: 25px;
 }
 section > h5:before {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRM2FKKq+TsAAAD5SURBVDjL7dQxSkNREAXQ86PEgAGzD/F9EAsLwcbKyh24BCsrO7EUYiPYpBGMlRa2Fq5BRCQIaiMEtAkWiqCxmUJCiD8BLSRTXe6buTPcNwzj+JPI83xyhJrSrwyTUspSSrWeZlm/aTfxhHe0sBz8Dm4Dn6OLD9wVHeIAU1iN4lks4BMXmAu+OcCeyqAG62gHbuIs8G4Iz49q3wkOUcUrVoJvhfAlFocRXEIDbyHQxT2ybzk1bOGhqOgGbnCMDmYC7/XJreKlqHAHOa6xHdwj6ij1TLwfH/3jok/jNCw4QjmeGuHxGq5ixZ6j2UQR4cr49vz/05oNk/8Fn6M1rug22XwAAAAASUVORK5CYII=);
@@ -250,6 +255,7 @@ h6 {
   font-size: 14px;
   font-weight: bold;
   margin-left: 2px;
+  margin-right: 25px;
 }
 section > h6:before {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90ICRM4Asj9YeQAAAFJSURBVDjL7dQ/S1xREAXw39v1D64JKa2thXubkDRiGqsIIaUg4gcQxEZsbBJC0kXtAsFGUKtYpA/5DLuNiDY2GrASBY3gPptZeIRk4xaChQMX5t2ZOffcOfMuj3bvllIqcs6NXutyzkW3eK0oiiH09wpclqWU0j/Ba7F+YwmnuMY+XkXOBxxUahZw1Wq1PqPRDbxjXzCI1ygxhudo42fkTOEG85WW1O56yzn8Cn8b38MfxjHe31WEp38I8Q2beIJLTMb+UrA9xAWWo76vglWv9rhelmUd49iI687iPJj/iNwZfMQLvMRK7FdJtauMG1jEHnZwhmfhr1WKrtEZy1EcdR23EOodppGwHuATEeuIcxxijuArVruKl3MewC6usIWBCG1Ej9/G9xucxKGfUKSUhnuZil7+vsbj2/VfK/7yYvWh3Ww2bx4k41uOzkmXwIjKMQAAAABJRU5ErkJggg==);
@@ -270,6 +276,7 @@ p.h7 {
   font-weight: bold;
   margin-left: 40px;
   text-indent: 0px;
+  margin-right: 25px;
 }
 p.h8 {
   background: #fafafa;
@@ -284,6 +291,7 @@ p.h8 {
   font-weight: bold;
   margin-left: 50px;
   text-indent: 0px;
+  margin-right: 25px;
 }
 
 /**** FOOTER-ELEMENTS ***/
@@ -334,20 +342,7 @@ code {
 p {
   text-indent: -25px;
   margin-left: 25px;
-}
-p.center {
-  text-align: center;
-  text-indent: 0px;
-}
-p.font12 {
-  font-size: 12px;
-}
-p.indent {
-  text-indent: 0px;
-  margin-left: 25px;
-}
-p.right {
-  text-align: right;
+  margin-right: 25px;
 }
 
 table {
@@ -361,17 +356,9 @@ td {
   padding-left:5px;
   white-space:wrap;
 }
-td.footer {
-  border: none;
-}
 td.clrBgTurq {
   background-color: #00ffff;/* Turquoise */
   text-align: center;
-}
-td.borderNo {
-  border: none;
-  padding-left:5px;
-  white-space:wrap;
 }
 
 
@@ -384,15 +371,10 @@ span.clsQuote {
   text-indent: 0px;
   margin-left: 25px;
 }
-span.quote {
-  display: inline-block;
-  text-indent: 0px;
-  margin-left: 25px;
-}
 
-span.source {
-  background-color: #F6E3CE;
-  font-size: 12px;
+
+ul {
+  margin-right: 25px;
 }
 
 /* hide-class: a-element */
@@ -403,67 +385,28 @@ header > h1 > a.hide
   float:right;
   text-decoration:none;
 }
-h1 > a.clsHide,
-h2 > a.clsHide,
-h3 > a.clsHide,
-h4 > a.clsHide,
-h5 > a.clsHide,
-h6 > a.clsHide,
-h1 > a.hide,
-h2 > a.hide,
-h3 > a.hide,
-h4 > a.hide,
-h5 > a.hide,
-h6 > a.hide
+h1 a.clsHide,
+h2 a.clsHide,
+h3 a.clsHide,
+h4 a.clsHide,
+h5 a.clsHide,
+h6 a.clsHide,
+table a.clsHide,
+ul a.clsHide
 {
   color: #ffffff;
   float:right;
   font-family: 'Times New Roman', Georgia, Times, serif, Dialog;
   text-decoration:none;
 }
-p > a.clsHide,
-address > a.clsHide,
-span > a.clsHide,
-p > a.hide,
-address > a.hide,
-span > a.hide
+p a.clsHide,
+address a.clsHide,
+span a.clsHide
 {
   color: #ffffff;
   float:right;
   text-decoration:none;
   text-indent: 0px;
-}
-table a.clsHide,
-table a.hide
-{
-  color: #ffffff;
-  text-decoration:none;
-}
-
-h1:hover  > a.clsHide,
-h2:hover  > a.clsHide,
-h3:hover  > a.clsHide,
-h4:hover  > a.clsHide,
-h5:hover  > a.clsHide,
-h6:hover  > a.clsHide,
-p:hover  > a.clsHide,
-address:hover  > a.clsHide,
-span:hover > a.clsHide,
-table:hover a.clsHide,
-h1:hover  > a.hide,
-h2:hover  > a.hide,
-h3:hover  > a.hide,
-h4:hover  > a.hide,
-h5:hover  > a.hide,
-h6:hover  > a.hide,
-p:hover  > a.hide,
-address:hover  > a.hide,
-span:hover > a.hide,
-table:hover a.hide
-{
-  color: gray;
-  font-family: 'Times New Roman', Georgia, Times, serif, Dialog;
-  text-decoration:none;
 }
 
 h1:hover  > a.clsHide:hover,
@@ -476,16 +419,7 @@ p:hover  > a.clsHide:hover,
 address:hover > a.clsHide:hover,
 span:hover > a.clsHide:hover,
 table:hover a.clsHide:hover,
-h1:hover  > a.hide:hover,
-h2:hover  > a.hide:hover,
-h3:hover  > a.hide:hover,
-h4:hover  > a.hide:hover,
-h5:hover  > a.hide:hover,
-h6:hover  > a.hide:hover,
-p:hover  > a.hide:hover,
-address:hover > a.hide:hover,
-span:hover > a.hide:hover,
-table:hover a.hide:hover
+ul:hover a.clsHide:hover
 {
   background: blue;
   color: #ffffff;
@@ -508,7 +442,8 @@ h6:hover a,
 p:hover a,
 address:hover a,
 span:hover a,
-table:hover a
+table:hover a,
+ul:hover a
 {
   color: blue;
 }
@@ -778,13 +713,6 @@ table:hover a:hover,
   display: block;
   text-align: center;
 }
-.center {
-  text-align: center;
-}
-.centerInline {
-  display: block;
-  text-align: center;
-}
 
 .clsBtn {
   border-radius: 5px;
@@ -819,24 +747,6 @@ table:hover a:hover,
 .clsColorYellowBg {
   background-color: #FFFF00;
 }
-.color-blue {
-  color: #0000ff;
-}
-.color-green {
-  color: #008000;
-}
-.color-green-bg {
-  background-color: #008000;
-}
-.color-red {
-  color: #ff0000;
-}
-.color-yellow {
-  color: #FFFF00;
-}
-.color-yellow-bg {
-  background-color: #FFFF00;
-}
 
 /* FONT */
 .clsFontGrExt {
@@ -861,39 +771,16 @@ table:hover a:hover,
 .clsFontDecorative {
   font-family: Wingdings;
 }
-.font-gr-ext {
-  font-family: "Palatino Linotype";
-}
-.font-grmg {
-  font-family: MgPolNewTimes;
-  font-size: 16px;
-}
-.font-serif {
-  font-family: Serif, "Times New Roman", Georgia;
-}
-.font-sansserif {
-  font-family: SansSerif, "Microsoft Sans Serif", Arial, Dialog, Tahoma;
-}
-.font-monospaced {
-  font-family: Monospaced, "Courier New", Courier;
-}
-.font-script {
-  font-family: Script "Monotype Corsiva";
-}
-.font-decorative {
-  font-family: Wingdings;
-}
 
 /* paperbookPage */
 .clsPagePb {
   display: block;
+  margin-right: 25px;
   text-align: right;
   color: green;
 }
-.pbPage {
-  display: block;
-  text-align: right;
-  color: #FF0000;/* Red */
+p .clsPagePb {
+  margin-right: 0px;
 }
 
 .clsSizeSmall {
@@ -913,23 +800,6 @@ table:hover a:hover,
   font-size: x-large;
   font-weight: bold;
 }
-.size-x-small {
-  font-size: x-small;
-}
-.size-small {
-  font-size: small;
-}
-.size-medium {
-  font-size: large;
-}
-.size-large {
-  font-size: large;
-  font-weight: bold;
-}
-.size-x-large {
-  font-size: x-large;
-  font-weight: bold;
-}
 
 /*** Bold, Underline ***/
 .clsB {
@@ -940,16 +810,6 @@ table:hover a:hover,
   text-decoration: underline;
 }
 .clsU {
-  text-decoration: underline;
-}
-.style-b {
-  font-weight: bold;
-}
-.style-bu {
-  font-weight: bold;
-  text-decoration: underline;
-}
-.style-u {
   text-decoration: underline;
 }
 
