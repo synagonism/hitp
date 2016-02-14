@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.js (2016.01.28.12.3)
+ * version.12.last.minor: hitp.js (2016.02.03.12.6)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.js (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
@@ -67,7 +67,8 @@ var oHitp = (function () {
     sCfgPathMenuLocal: '/dWstSgm/hitpmenuLocal.html',
     sCfgPathMenuOnline: '/hitpmenu.html',
 
-    bFirefox: navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
+    bEdge: navigator.userAgent.indexOf('Edge/') > -1,
+    bFirefox: navigator.userAgent.indexOf('Firefox/') > -1,
 
     /* toc-tree li unique ids */
     nTocTriIdLi: 0,
@@ -273,7 +274,7 @@ var oHitp = (function () {
 
     /* insert page-path--element */
     oEltPPath.id = 'idPpath';
-    oEltPPath.setAttribute('title', "© 2010-2015 Kaseluris.Nikos.1959"); //nnn
+    oEltPPath.setAttribute('title', "© 2010-2016 Kaseluris.Nikos.1959"); //nnn
     if (!document.getElementById("idMetaWebpage_path")) {
       oEltPPath.innerHTML = 'ToC: ' + document.title;
     } else {
@@ -369,9 +370,12 @@ var oHitp = (function () {
           oHitp.fTocTriCollapseAll();
           oHitp.fTocTriHighlightNode(oEltDivCnrToc, oEltAIn);
           oHitp.fTocTriExpandParent(oEltAIn);
-          oEltAIn.scrollIntoViewIfNeeded(true);
-          if (oHitp.bFirefox) {
+          if (oEltAIn.scrollIntoViewIfNeeded) {
+            oEltAIn.scrollIntoViewIfNeeded(true)
+          } else if (oHitp.bFirefox) {
             oEltAIn.scrollIntoView({block: "end", behavior: "smooth"});
+          } else {
+            oEltAIn.scrollIntoView(true);
           }
           document.getElementById("idDivCnrToc").scrollLeft = 0;
         }
