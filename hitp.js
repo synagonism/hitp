@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.js (2016.02.03.12.6)
+ * version.12.last.minor: hitp.js (2016.02.21.12.7)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.js (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
@@ -579,8 +579,7 @@ var oHitp = (function () {
 
     //the first heading is the title of doc
     sHcnt = aHdng[0].innerHTML;
-    sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href="#\w*">¶<\/a>/, '');
-    sHcnt = sHcnt.replace(/\n {4}<a class="hide" href="#\w*">¶<\/a>/, '');
+    sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href=[^<]+<\/a>/, '');
     sHcnt = sHcnt.replace(/<br\/*>/g, ' ');
     sUl = '<ul><li><a class="clsPreview" href="#idHeader">' + sHcnt + '</a>';
 
@@ -605,8 +604,7 @@ var oHitp = (function () {
       /* removes from heading the "classHide" content */
       sHcnt = oElt.innerHTML;
       /*jslint regexp: true*/
-      sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href=[^>]+>¶<\/a>/, '');
-      sHcnt = sHcnt.replace(/\n {4}<a class="hide" href=[^>]+>¶<\/a>/, '');
+      sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href=[^<]+<\/a>/, '');
       sHcnt = sHcnt.replace(/<[^>]+>/g, '');
       /*jslint regexp: false*/
       sHcnt = sHcnt.replace(/<br\/*>/g, ' ');
