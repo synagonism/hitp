@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.js (2016.02.21.12.7)
+ * version.12.last.minor: hitp.js (2016.02.23.12.8)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.js (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
@@ -250,7 +250,7 @@ var oHitp = (function () {
     oEltDivTab1Content.appendChild(oEltFrmPref);
     /* toc: add note at the end */
     oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br/>' +
-      'a) Clicking on ¶ or on ToC, you see the address of that text on address-bar.<br/>' +
+      'a) Clicking on LINK-ICON or on ToC, you see the address of that text on address-bar.<br/>' +
       'b) Hovering content (default) OR clicking content, you see its position on ToC.<br/>' +
       'c) Hovering a domain-link you see a preview (default).';
     oEltDivTab1Content.appendChild(oEltPNote);
