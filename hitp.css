@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (2016.02.23.12.7)
+ * version.12.last.minor: hitp.css (2016.02.25.12.8)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -341,6 +341,11 @@ code {
 
 p {
   text-indent: -25px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+p.clsIndent {
+  text-indent: 0px;
   margin-left: 25px;
   margin-right: 25px;
 }
