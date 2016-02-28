@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.js (2016.02.23.12.8)
+ * version.12.last.minor: hitp.js (2016.02.28.12.9)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.js (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
@@ -240,13 +240,14 @@ var oHitp = (function () {
     /* preferences */
     oEltDivTab1Content.appendChild(document.createElement('p'));
     oEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">Preferences</span>:<br/>' +
-      '&nbsp;&nbsp;1) <span class="clsU">Link-preview</span>:<br/>' +
+      '<fieldset><legend><span class="clsColorGreen">Link-preview</span>:</legend>' +
       '<input type="radio" id="idRdbPreviewOn" name="nameRdbPreview" checked/>Preview On (default)<br/>' +
       '<input type="radio" id="idRdbPreviewOff" name="nameRdbPreview"/>Preview Off<br/>' +
-      '<br/>' +
-      '&nbsp;&nbsp;2) <span class="clsU">Show on ToC content-position by</span>:<br/>' +
+      '</fieldset>' +
+      '<fieldset><legend><span class="clsColorGreen">Show on ToC content-position by</span>:</legend>' +
       '<input type="radio" id="idRdbTocpositionHover" name="nameRdbPosition" checked/>Hovering content (default)<br/>' +
-      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content';
+      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content' +
+      '</fieldset>';
     oEltDivTab1Content.appendChild(oEltFrmPref);
     /* toc: add note at the end */
     oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br/>' +
