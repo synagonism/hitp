@@ -241,13 +241,14 @@ var oHitp = (function () {
     /* preferences */
     oEltDivTab1Content.appendChild(document.createElement('p'));
     oEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">Preferences</span>:<br/>' +
-      '&nbsp;&nbsp;1) <span class="clsU">Link-preview</span>:<br/>' +
+      '<fieldset><legend><span class="clsColorGreen">Link-preview</span>:</legend>' +
       '<input type="radio" id="idRdbPreviewOn" name="nameRdbPreview" checked/>Preview On (default)<br/>' +
       '<input type="radio" id="idRdbPreviewOff" name="nameRdbPreview"/>Preview Off<br/>' +
-      '<br/>' +
-      '&nbsp;&nbsp;2) <span class="clsU">Show on ToC content-position by</span>:<br/>' +
+      '</fieldset>' +
+      '<fieldset><legend><span class="clsColorGreen">Show on ToC content-position by</span>:</legend>' +
       '<input type="radio" id="idRdbTocpositionHover" name="nameRdbPosition" checked/>Hovering content (default)<br/>' +
-      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content';
+      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content' +
+      '</fieldset>';
     oEltDivTab1Content.appendChild(oEltFrmPref);
     /* toc: add note at the end */
     oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br/>' +
@@ -425,72 +426,72 @@ var oHitp = (function () {
     document.body.appendChild(oEltDivPopup);
     fEvtPreviewMouseover = function (oEvtIn) {
       sTmt = setTimeout(function(){
-				var sLoc, sId1, sId2,
-					nPy, nPx, nWh, nWw,
-					oDoc;
+        var sLoc, sId1, sId2,
+          nPy, nPx, nWh, nWw,
+          oDoc;
 
-				oEvtIn.preventDefault();
-				oEvtIn.stopPropagation();
-				nPx = oEvtIn.pageX;
-				nPy = oEvtIn.pageY;
-				nWh = window.innerHeight;
-				nWw = window.innerWidth;
-				sId1 = this.href;
-				if (sId1.indexOf('#') > 0) {
-					sId2 = sId1.substring(sId1.indexOf("#") + 1);
-					sId1 = sId1.substring(0, sId1.indexOf("#"));
-				}
-				sLoc = location.href;
-				if (sLoc.indexOf('#') > 0) {
-					sLoc = sLoc.substring(0, sLoc.indexOf("#"));
-				}
-				/* internal-link */
-				if (sLoc === sId1) {
-					oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
-				} else {
-					oEltDivPopup.innerHTML = '';
-					oXHR = new XMLHttpRequest();
-					oXHR.open('GET', sId1, false);
-					oXHR.send(null);
-					if (oXHR.status === 200) {
-						if (sId2) {
-							//IF #fragment url, display only this element.
-							oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
-							oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
-						} else {
-							//IF link to a picture, display it, not its code.
-							if (sId1.match(/(png|jpg|gif)$/)) {
-								var oImg = new Image();
-								var nIW, nIH, nPW, nPH;
-								nPW = nWw / 2.2;
-								nPH = nWh * 0.4;
-								oImg.src = sId1;
-								oImg.addEventListener('load', function() {
-									nIW = oImg.width;
-									nIH = oImg.height;
-									if (nIH > nPH) {
-										nIW = (nIW * nPH) / nIH;
-										nIH = nPH;
-									}
-									oEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
-										+ '" width="' + nIW
-										+ '" height="' + nIH + '" /></p>';
-								});
-							} else {
-								document.getElementById('idPopup').innerHTML = oXHR.responseText;
-							}
-						}
-					}
-				}
+        oEvtIn.preventDefault();
+        oEvtIn.stopPropagation();
+        nPx = oEvtIn.pageX;
+        nPy = oEvtIn.pageY;
+        nWh = window.innerHeight;
+        nWw = window.innerWidth;
+        sId1 = oEvtIn.target.href;
+        if (sId1.indexOf('#') > 0) {
+          sId2 = sId1.substring(sId1.indexOf("#") + 1);
+          sId1 = sId1.substring(0, sId1.indexOf("#"));
+        }
+        sLoc = location.href;
+        if (sLoc.indexOf('#') > 0) {
+          sLoc = sLoc.substring(0, sLoc.indexOf("#"));
+        }
+        /* internal-link */
+        if (sLoc === sId1) {
+          oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
+        } else {
+          oEltDivPopup.innerHTML = '';
+          oXHR = new XMLHttpRequest();
+          oXHR.open('GET', sId1, false);
+          oXHR.send(null);
+          if (oXHR.status === 200) {
+            if (sId2) {
+              //IF #fragment url, display only this element.
+              oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
+              oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+            } else {
+              //IF link to a picture, display it, not its code.
+              if (sId1.match(/(png|jpg|gif)$/)) {
+                var oImg = new Image();
+                var nIW, nIH, nPW, nPH;
+                nPW = nWw / 2.2;
+                nPH = nWh * 0.4;
+                oImg.src = sId1;
+                oImg.addEventListener('load', function() {
+                  nIW = oImg.width;
+                  nIH = oImg.height;
+                  if (nIH > nPH) {
+                    nIW = (nIW * nPH) / nIH;
+                    nIH = nPH;
+                  }
+                  oEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
+                    + '" width="' + nIW
+                    + '" height="' + nIH + '" /></p>';
+                });
+              } else {
+                document.getElementById('idPopup').innerHTML = oXHR.responseText;
+              }
+            }
+          }
+        }
 
-				oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
-				if (nPx < nWw / 2) {
-					oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
-				} else {
-					oEltDivPopup.style.left = 26 + 'px';
-				}
-				oEltDivPopup.style.overflow = 'auto';
-				oEltDivPopup.style.display = 'block';
+        oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
+        if (nPx < nWw / 2) {
+          oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
+        } else {
+          oEltDivPopup.style.left = 26 + 'px';
+        }
+        oEltDivPopup.style.overflow = 'auto';
+        oEltDivPopup.style.display = 'block';
       },459);
     };
     fEvtPreviewMouseout = function (oEvtIn) {
