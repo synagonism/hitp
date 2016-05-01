@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (2016.02.28.12.9)
+ * version.12.last.minor: hitp.css (2016-05-01.12-10)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -473,6 +473,20 @@ address:hover a,
 span:hover a,
 table:hover a,
 ul:hover a
+{
+  color: DodgerBlue;
+}
+h1:hover a.clsPreview,
+h2:hover a.clsPreview,
+h3:hover a.clsPreview,
+h4:hover a.clsPreview,
+h5:hover a.clsPreview,
+h6:hover a.clsPreview,
+p:hover a.clsPreview,
+address:hover a.clsPreview,
+span:hover a.clsPreview,
+table:hover a.clsPreview,
+ul:hover a.clsPreview
 {
   color: blue;
 }
