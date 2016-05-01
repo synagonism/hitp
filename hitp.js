@@ -1,6 +1,5 @@
 /*
- * SYNAGONISM.NET VERSION with old features
- * version.12.last.minor: hitp.js (2016-04-30.12-10)
+ * version.12.last.minor: hitp.js (2016-05-01.12-11)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.js (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
@@ -59,7 +58,7 @@ var oHitp = (function () {
     sImgTocLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEZCAYiR8g3XQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAL0lEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/lPdZor9THFoUxzPFKcw2gIAggAT7YryXnIAAAAASUVORK5CYII=';
 
   var oHitp = {
-    /* config */ 
+    /* config */
     nCfgPosSplitPrev: 272,
     /**
      * config: the hitmenu contains absolute urls, because we see it from many pages.
@@ -242,14 +241,13 @@ var oHitp = (function () {
     /* preferences */
     oEltDivTab1Content.appendChild(document.createElement('p'));
     oEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">Preferences</span>:<br/>' +
-      '<fieldset><legend><span class="clsColorGreen">Link-preview</span>:</legend>' +
+      '&nbsp;&nbsp;1) <span class="clsU">Link-preview</span>:<br/>' +
       '<input type="radio" id="idRdbPreviewOn" name="nameRdbPreview" checked/>Preview On (default)<br/>' +
       '<input type="radio" id="idRdbPreviewOff" name="nameRdbPreview"/>Preview Off<br/>' +
-      '</fieldset>' +
-      '<fieldset><legend><span class="clsColorGreen">Show on ToC content-position by</span>:</legend>' +
+      '<br/>' +
+      '&nbsp;&nbsp;2) <span class="clsU">Show on ToC content-position by</span>:<br/>' +
       '<input type="radio" id="idRdbTocpositionHover" name="nameRdbPosition" checked/>Hovering content (default)<br/>' +
-      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content' +
-      '</fieldset>';
+      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content';
     oEltDivTab1Content.appendChild(oEltFrmPref);
     /* toc: add note at the end */
     oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br/>' +
@@ -427,73 +425,73 @@ var oHitp = (function () {
     document.body.appendChild(oEltDivPopup);
     fEvtPreviewMouseover = function (oEvtIn) {
       sTmt = setTimeout(function(){
-        var sLoc, sId1, sId2,
-          nPy, nPx, nWh, nWw,
-          oDoc;
+				var sLoc, sId1, sId2,
+					nPy, nPx, nWh, nWw,
+					oDoc;
 
-        oEvtIn.preventDefault();
-        oEvtIn.stopPropagation();
-        nPx = oEvtIn.pageX;
-        nPy = oEvtIn.pageY;
-        nWh = window.innerHeight;
-        nWw = window.innerWidth;
-        sId1 = oEvtIn.target.href;
-        if (sId1.indexOf('#') > 0) {
-          sId2 = sId1.substring(sId1.indexOf("#") + 1);
-          sId1 = sId1.substring(0, sId1.indexOf("#"));
-        }
-        sLoc = location.href;
-        if (sLoc.indexOf('#') > 0) {
-          sLoc = sLoc.substring(0, sLoc.indexOf("#"));
-        }
-        /* internal-link */
-        if (sLoc === sId1) {
-          oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
-        } else {
-          oEltDivPopup.innerHTML = '';
-          oXHR = new XMLHttpRequest();
-          oXHR.open('GET', sId1, false);
-          oXHR.send(null);
-          if (oXHR.status === 200) {
-            if (sId2) {
-              //IF #fragment url, display only this element.
-              oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
-              oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
-            } else {
-              //IF link to a picture, display it, not its code.
-              if (sId1.match(/(png|jpg|gif)$/)) {
-                var oImg = new Image();
-                var nIW, nIH, nPW, nPH;
-                nPW = nWw / 2.2;
-                nPH = nWh * 0.4;
-                oImg.src = sId1;
-                oImg.addEventListener('load', function() {
-                  nIW = oImg.width;
-                  nIH = oImg.height;
-                  if (nIH > nPH) {
-                    nIW = (nIW * nPH) / nIH;
-                    nIH = nPH;
-                  }
-                  oEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
-                    + '" width="' + nIW
-                    + '" height="' + nIH + '" /></p>';
-                });
-              } else {
-                document.getElementById('idPopup').innerHTML = oXHR.responseText;
-              }
-            }
-          }
-        }
+				oEvtIn.preventDefault();
+				oEvtIn.stopPropagation();
+				nPx = oEvtIn.pageX;
+				nPy = oEvtIn.pageY;
+				nWh = window.innerHeight;
+				nWw = window.innerWidth;
+				sId1 = this.href;
+				if (sId1.indexOf('#') > 0) {
+					sId2 = sId1.substring(sId1.indexOf("#") + 1);
+					sId1 = sId1.substring(0, sId1.indexOf("#"));
+				}
+				sLoc = location.href;
+				if (sLoc.indexOf('#') > 0) {
+					sLoc = sLoc.substring(0, sLoc.indexOf("#"));
+				}
+				/* internal-link */
+				if (sLoc === sId1) {
+					oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
+				} else {
+					oEltDivPopup.innerHTML = '';
+					oXHR = new XMLHttpRequest();
+					oXHR.open('GET', sId1, false);
+					oXHR.send(null);
+					if (oXHR.status === 200) {
+						if (sId2) {
+							//IF #fragment url, display only this element.
+							oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
+							oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+						} else {
+							//IF link to a picture, display it, not its code.
+							if (sId1.match(/(png|jpg|gif)$/)) {
+								var oImg = new Image();
+								var nIW, nIH, nPW, nPH;
+								nPW = nWw / 2.2;
+								nPH = nWh * 0.4;
+								oImg.src = sId1;
+								oImg.addEventListener('load', function() {
+									nIW = oImg.width;
+									nIH = oImg.height;
+									if (nIH > nPH) {
+										nIW = (nIW * nPH) / nIH;
+										nIH = nPH;
+									}
+									oEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
+										+ '" width="' + nIW
+										+ '" height="' + nIH + '" /></p>';
+								});
+							} else {
+								document.getElementById('idPopup').innerHTML = oXHR.responseText;
+							}
+						}
+					}
+				}
 
-        oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
-        if (nPx < nWw / 2) {
-          oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
-        } else {
-          oEltDivPopup.style.left = 26 + 'px';
-        }
-        oEltDivPopup.style.overflow = 'auto';
-        oEltDivPopup.style.display = 'block';
-      },599);
+				oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
+				if (nPx < nWw / 2) {
+					oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
+				} else {
+					oEltDivPopup.style.left = 26 + 'px';
+				}
+				oEltDivPopup.style.overflow = 'auto';
+				oEltDivPopup.style.display = 'block';
+      },459);
     };
     fEvtPreviewMouseout = function (oEvtIn) {
       clearTimeout(sTmt);
@@ -586,7 +584,6 @@ var oHitp = (function () {
     //the first heading is the title of doc
     sHcnt = aHdng[0].innerHTML;
     sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href=[^<]+<\/a>/, '');
-    sHcnt = sHcnt.replace(/\n {4}<a class="hide" href=[^<]+<\/a>/, '');
     sHcnt = sHcnt.replace(/<br\/*>/g, ' ');
     sUl = '<ul><li><a class="clsPreview" href="#idHeader">' + sHcnt + '</a>';
 
@@ -612,7 +609,6 @@ var oHitp = (function () {
       sHcnt = oElt.innerHTML;
       /*jslint regexp: true*/
       sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href=[^<]+<\/a>/, '');
-      sHcnt = sHcnt.replace(/\n {4}<a class="hide" href=[^<]+<\/a>/, '');
       sHcnt = sHcnt.replace(/<[^>]+>/g, '');
       /*jslint regexp: false*/
       sHcnt = sHcnt.replace(/<br\/*>/g, ' ');
@@ -789,7 +785,7 @@ var oHitp = (function () {
     }
   };
 
-  /** 
+  /**
    * Expands all the parents ONLY, of an element with link to a heading.
    */
   oHitp.fTocTriExpandParent = function (oEltAIn) {
