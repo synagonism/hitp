@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (12-11.2016-05-22)
+ * version.12.last.minor: hitp.css (12-12.2016-05-22)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -47,7 +47,7 @@ body {
   background-color: #ffffff;
   font-family: 'Times New Roman', Georgia, Times, serif, Dialog;
   font-size: 114%;
-  line-height: 1.4;
+  line-height: 1.3;
   width: 100%;
   height: 100%;
   margin: 0px;
@@ -391,6 +391,7 @@ h4 > a.clsHide,
 h5 > a.clsHide,
 h6 > a.clsHide,
 table > a.clsHide,
+ol > a.clsHide,
 ul > a.clsHide
 {
   height: 24px;
