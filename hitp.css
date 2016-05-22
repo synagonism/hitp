@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (2016-05-01.12-10)
+ * version.12.last.minor: hitp.css (12-11.2016-05-22)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -46,7 +46,8 @@
 body {
   background-color: #ffffff;
   font-family: 'Times New Roman', Georgia, Times, serif, Dialog;
-  font-size: 109%;
+  font-size: 114%;
+  line-height: 1.4;
   width: 100%;
   height: 100%;
   margin: 0px;
@@ -377,7 +378,7 @@ span.clsQuote {
   margin-left: 25px;
 }
 
-
+ol,
 ul {
   margin-right: 25px;
 }
@@ -415,7 +416,9 @@ h5:hover > a.clsHide,
 h6:hover > a.clsHide,
 p:hover > a.clsHide,
 address:hover > a.clsHide,
-table:hover > a.clsHide
+table:hover > a.clsHide,
+ol:hover > a.clsHide,
+ul:hover > a.clsHide
 {
   font-size: 0px;
   height: 24px;
@@ -432,6 +435,7 @@ h6:hover > a.clsHide:hover,
 p:hover > a.clsHide:hover,
 address:hover > a.clsHide:hover,
 table:hover > a.clsHide:hover,
+ol:hover > a.clsHide:hover,
 ul:hover > a.clsHide:hover
 {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAE4ElEQVRIx51WbWjVVRj/Peeeuc27uU334hZqriCiRP1SCGIEgUaRmmUzrCiDVi4w/FCWFixCK7VXCWRWUDRLzIkVCEWfit4R7EUhXTLddqfz7sV57/3/z/N7+nDvrkZTygcezu8cfuc55/mf5+UvKEj73uGW0QzXRorZAgiuQAywkgS6K8tlxwsrqncDBUPPfTKyr+d0tOzKzE580oxa3/XSfdXL5fk9Qy3dqbjTOaEIXIFCYEJcnJuB2ZiOBpR5YSIhRb4ZHM0wc5pf5dPnQhuNgEFAEHm/BDYBLsxJ8FzWZPXCCk6rFHR+MyYjGeUkL0U+DW4ko20+CjYbMEDF4Ao3VXBCDEBj43CW7t3WOtZXeQcAt94wmW27zrjUSEC5dwW+IQo226kSJEEUxsvgOCjSYzHea61DfZXH+UhxtDcCALy9phb1lYJMHIp8VcIpbXxBeEH+hYMq06OB7z8xXeqqPEmT1a/3sXVnPw+fyAkA7ni0gclSkThWkoTSkPcgEAw0BrqC/gNroBsajd3O1gZXX+3tfE7d4vYTBtDVV4pr6+iz33qyDoB7YFGljWWDYxj3QAkzgpfROChm1pZgZu0kjGWJLZ+eQfuqOmQiIooV5ZOAphoPABhIx4DlbRYPuNwnUlUxI08PRwTJbfsHpH1VAxdcl5QXW+qYSgfue3qG1FR49g/F3PXVoJR6cPwNvCpBJQRiF8e+AW40o3DOGBTODNjwYT82P9g0nhf84udh99nGWSiflGAqHbmVr3ajJulpas5gCI7wQRVKzcdvPolgBjkzHLjloatwy41VMjAc8ZW9KWx+sAlmJiLCbV39su6uek4p9+hPx3LPy8dYnUzAoBIMhMGJCryGggeS98DMkBqK2fFks5vbnMT5rPKdzwfc1kdm5PNMhO2dp9zGlY10Cee6+3JYvf1PViUTTsxgOp7pBgXhQ1DQFAIBzXA6HaPjqWsxtzmJWIn2zpPY8vCsYiJv+uAEDv4yhG9/HcLUao/jfVlUV3jACNWLy5HBTOBCHMCgCLFi4GwOHeuuwfzmCgDAovWHcP2M0uKmrXt60HZnI5wpAhWpwRymlDuYEhr0H5q3GeCjKCDhFOdzlMeWNHL+NZWIlbL4mUP0jnhjb494AX/vOYdnW65GsswLSJoGEQEZMF6VWaxWhYKoNPgQB1jCkM0Em9OcdACw5+sUewYyrqm2FGXeuPmjY+77t25Gsszjy58HmYtiV5oouVCjiH9hAaBqcHEcoHGEEhew88BfAID7b2vEo0um42TfCLK5HA7tXIDkZI+fjg6h9bXDSJYYqDEYFXQCrHGEOA5INMx7YL1AKyGG7t4xO3ZqzBbf1CAL50y1ijJnWx+/XspLvf14JG33bvrB6mpKxIxGqtDUaDohNlLioKM+RIpE4eGTpc4d+KYXISjfXDfPrbljFgDwhz/Ours3fIfpdWUwJa2QaJdoSkUcIsDnorjbOzSNR8qUcsEX3/ZiYDCD1hXX4pcjaWz/+CjqakphGqD/o3NmI3RL07KDLfVT2Gn5wLVCIEguqGVzCp9wMrksYRfatQhgdmG8eK2ABSYCd3pYVgkAXLX0YNfUimgpzMH+W0u+JEdAQASD5xJdvftvX168WO3iAy1lJbo24aVZ7Ap/JgTQYMezsdtx5uBduwHgbzI+mKKIJU7yAAAAAElFTkSuQmCC) no-repeat;
