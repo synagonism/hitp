@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (12-15.2016-05-24)
+ * version.12.last.minor: hitp.css (12-16.2016-05-29)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -331,7 +331,7 @@ footer > td {
 
 code {
   display: inline-block;
-  background: #FFFFFF;
+  background-color: #f9f9f9;
   color: #000000;
   border: 1px solid #98AFC7;
   border-left: 3px solid #98AFC7;
