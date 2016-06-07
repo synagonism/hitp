@@ -1,5 +1,5 @@
 /*
- * version.12.last.minor: hitp.css (12-16.2016-05-29)
+ * version.12.last.minor: hitp.css (12-17.2016-06-06)
  * version.12.last.minorNo (11.9): hitp.2016.01.24.12.css (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.css (preferences)
  * version.10.previous: hitp.2014.08.05.10.css (valuenames)
@@ -408,6 +408,15 @@ address > a.clsHide
   float:right;
   text-indent: 0px;
 }
+div > a.clsHide
+{
+  height: 24px;
+  width: 24px;
+  color: #ffffff;
+  float:right;
+  margin-right: 25px;
+  margin-top: -25px;
+}
 
 h1:hover > a.clsHide,
 h2:hover > a.clsHide,
@@ -416,6 +425,7 @@ h4:hover > a.clsHide,
 h5:hover > a.clsHide,
 h6:hover > a.clsHide,
 p:hover > a.clsHide,
+div:hover > a.clsHide,
 address:hover > a.clsHide,
 table:hover > a.clsHide,
 ol:hover > a.clsHide,
@@ -434,6 +444,7 @@ h4:hover > a.clsHide:hover,
 h5:hover > a.clsHide:hover,
 h6:hover > a.clsHide:hover,
 p:hover > a.clsHide:hover,
+div:hover > a.clsHide:hover,
 address:hover > a.clsHide:hover,
 table:hover > a.clsHide:hover,
 ol:hover > a.clsHide:hover,
