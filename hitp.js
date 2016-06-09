@@ -1,6 +1,8 @@
 /*
- * version.12.last.minor: hitp.js (2016-05-01.12-11)
- * version.12.last.minorNo (11.9): hitp.2016.01.24.12.js (toc-icn-img)
+ * version.14.last.minor: hitp.js (14.2016-06-09)
+ * version.14.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
+ * version.13.previous (12-11): hitp.13.2016-06-07.js (preview)
+ * version.12.previous (11.9): hitp.2016.01.24.12.js (toc-icn-img)
  * version.11.previous: hitp.2015.10.26.11.js (preferences)
  * version.10.previous: hitp.2014.08.05.10.js (valuenames)
  * version.9.previous: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
