@@ -1,5 +1,5 @@
 /*
- * version.14.last.minor: hitp.css (14-1.2016-06-14)
+ * version.14.last.minor: hitp.css (14-2.2016-07-04)
  * version.14.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.previous (12-17): hitp.13.2016-06-07.css (preview)
  * version.12.previous (11.9): hitp.2016.01.24.12.css (toc-icn-img)
@@ -353,6 +353,11 @@ p.clsIndent {
   margin-right: 25px;
 }
 
+pre {
+  margin-left: 25px;
+  padding-left:5px;
+}
+
 table {
   border-collapse:collapse;
   margin-left: 25px;
@@ -487,6 +492,7 @@ h4:hover a,
 h5:hover a,
 h6:hover a,
 p:hover a,
+pre:hover a,
 address:hover a,
 span:hover a,
 table:hover a,
@@ -515,6 +521,7 @@ h4:hover a:hover,
 h5:hover a:hover,
 h6:hover a:hover,
 p:hover a:hover,
+pre:hover a:hover,
 address:hover a:hover,
 span:hover a:hover,
 table:hover a:hover,
