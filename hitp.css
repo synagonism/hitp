@@ -1,14 +1,14 @@
 /*
- * version.14.last.minor: hitp.css (14-2.2016-07-04)
- * version.14.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
- * version.13.previous (12-17): hitp.13.2016-06-07.css (preview)
- * version.12.previous (11.9): hitp.2016.01.24.12.css (toc-icn-img)
- * version.11.previous: hitp.2015.10.26.11.css (preferences)
- * version.10.previous: hitp.2014.08.05.10.css (valuenames)
- * version.9.previous: hitp.2014.08.02.9.css (NO jQuery, fixed popup)
- * version.8.previous: hitp.2014.01.09.8.css (toc on hovering)
- * version.7.previous: hitp.2013.11.06.7.css (tabs)
- * version.6.previous: hitp.2013.08.21.6.css (site-structure)
+ * version.14.last.minor: hitp.css (14-3.2016-07-10)
+ * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
+ * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
+ * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
+ * version.11.2015-10-26: hitp.2015.10.26.11.css (preferences)
+ * version.10.2014-08-05: hitp.2014.08.05.10.css (valuenames)
+ * version.9.2014-08-02: hitp.2014.08.02.9.css (NO jQuery, fixed popup)
+ * version.8.2014-01-09: hitp.2014.01.09.8.css (toc on hovering)
+ * version.7.2013-11-06: hitp.2013.11.06.7.css (tabs)
+ * version.6.2013-08-21: hitp.2013.08.21.6.css (site-structure)
  * version.previous: hitp.2013.08.09.css (heading icons)
  * version.previous: hitp.2013.06.29.css (hitp-dir)
  * version.previous: /hit/hit.2013.06.18.css (last name)
@@ -153,8 +153,8 @@ header > h1 {
 
 h1 {
   background: #f5f5f5; /*cff5f5 #d9ffff;*/
-  background: linear-gradient(to bottom, #f5f5f5, #ffffff 50%);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #ffffff 50%);
+  background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+  background: -webkit-linear-gradient(top,  #f5f5f5, #ffffff);
   border-radius: 2px;
   padding: 3px 0 0 5px;
   color: #005500;
@@ -173,8 +173,8 @@ section > h1:before {
 
 h2 {
   background: #f7f7f7;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff 60%);
-  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff 60%);
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff);
   border-radius: 3px;
   padding: 3px 0 0 10px;
   color: #000077;
@@ -192,8 +192,8 @@ section > h2:before {
 
 h3 {
   background: #f7f7f7;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff 60%);
-  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff 60%);
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff);
   border-radius: 3px;
   padding: 3px 0 0 15px;
   color: #550000;
@@ -211,8 +211,8 @@ section > h3:before {
 
 h4 {
   background: #f7f7f7;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff 60%);
-  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff 60%);
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff);
   border-radius: 3px;
   padding: 3px 0 0 20px;
   color: #000000;
@@ -230,8 +230,8 @@ section > h4:before {
 
 h5 {
   background: #f7f7f7;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff 60%);
-  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff 60%);
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff);
   border-radius: 3px;
   padding: 3px 0 0 25px;
   color: #000000;
@@ -249,8 +249,8 @@ section > h5:before {
 
 h6 {
   background: #f7f7f7;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff 60%);
-  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff 60%);
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff);
   border-radius: 3px;
   padding: 3px 0 0 30px;
   color: #000000;
@@ -268,8 +268,8 @@ section > h6:before {
 
 p.h7 {
   background: #f7f7f7;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff 60%);
-  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff 60%);
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff);
   border-top: 3px solid;
   border-radius: 5px;
   padding: 3px 0 0 5px;
@@ -283,8 +283,8 @@ p.h7 {
 }
 p.h8 {
   background: #f7f7f7;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff 60%);
-  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff 60%);
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: -webkit-linear-gradient(top,  #f7f7f7, #ffffff);
   border-top: 3px;
   border-radius: 5px;
   padding: 3px 0 0 5px;
