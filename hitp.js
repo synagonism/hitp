@@ -1,14 +1,14 @@
 /*
- * version.14.last.minor: hitp.js (14.2016-06-09)
- * version.14.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
- * version.13.previous (12-11): hitp.13.2016-06-07.js (preview)
- * version.12.previous (11.9): hitp.2016.01.24.12.js (toc-icn-img)
- * version.11.previous: hitp.2015.10.26.11.js (preferences)
- * version.10.previous: hitp.2014.08.05.10.js (valuenames)
- * version.9.previous: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
- * version.8.previous: hitp.2014.01.09.8.js (toc on hovering)
- * version.7.previous: hitp.2013.11.06.7.js (tabs)
- * version.6.previous: hitp.2013.08.21.6.js (site-structure)
+ * version.14-1.2016-07-20.last.minor: hitp.js
+ * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
+ * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
+ * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
+ * version.11.2015-10-26: hitp.2015.10.26.11.js (preferences)
+ * version.10.2014-08-05: hitp.2014.08.05.10.js (valuenames)
+ * version.9.2014-08-02: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
+ * version.8.2014-01-09: hitp.2014.01.09.8.js (toc on hovering)
+ * version.7.2013-11-06: hitp.2013.11.06.7.js (tabs)
+ * version.6.2013-08-21: hitp.2013.08.21.6.js (site-structure)
  * version.previous: hitp.2013.07.15.js (toc-ul-specific, hitp-obj)
  * version.previous: /hitp/hitp.2013.06.29.js (hitp-dir)
  * version.previous: toc.2013.05.30.js (section id)
@@ -808,8 +808,136 @@ var oHitp = (function () {
     }
   };
 
+  /**
+   * Created: {2016.07.20}
+   * Makes u-lists with clsTreeUl, trees (collapsible).
+   */
+  oHitp.oTreeUl = (function(){
+
+    var oTreeUl = {};
+
+    /**
+     * We have to call this function once to make all clsTreeUl-lists trees.
+     */
+    oTreeUl.fTruCreate = function(){
+      // find all clsTreeUl-lists
+      var
+        aLi,
+        aUl = document.getElementsByClassName('clsTreeUl'),
+        aUlSub,
+        n, n2,
+        oEltImg;
+
+      for (n = 0; n < aUl.length; n++){
+        // add the-clsTreeUl to the-sub-lists
+        aSubul = aUl[n].getElementsByTagName('ul');
+        for (n2 = 0; n2 < aSubul.length; n2++){
+          aSubul[n2].className = 'clsTreeUl';
+        }
+
+        // on first li:
+        // add node-image
+        // add event-listener
+        aLi = aUl[n].getElementsByTagName('li');
+        for (n2 = 0; n2 < aLi.length; n2++){
+          if (aLi[n2].parentNode === aUl[n]){
+            aUlSub = aLi[n2].getElementsByTagName('ul');
+            oEltImg = document.createElement('img');
+            oEltImg.setAttribute('src', 'imgTreeNodeCollapse.png');
+            oEltImg.setAttribute('class', 'clsTreeUlIcn');
+            if (aUlSub.length === 0) {
+              oEltImg.setAttribute('src', 'imgTreeNodeLeaf.png');
+              oEltImg.setAttribute('class', 'clsTreeUlIcnLif');
+            } else {
+              oEltImg.addEventListener('click', fCreateClickListener(aLi[n2]));
+              oEltImg.addEventListener('mouseover', function(oEvtIn){
+                var oEltImg = this;
+                  sImgsrc = oEltImg.src;
+                if (sImgsrc.indexOf('imgTreeNodeExpand.png') !== -1) {
+                  oEltImg.setAttribute('src', 'imgTreeNodeExpandW.png');
+                } else {
+                  oEltImg.setAttribute('src', 'imgTreeNodeCollapseW.png');
+                }
+              });
+              oEltImg.addEventListener('mouseout', function(oEvtIn){
+                var oEltImg = this;
+                  sImgsrc = oEltImg.src;
+                if (sImgsrc.indexOf('imgTreeNodeExpandW.png') !== -1) {
+                  oEltImg.setAttribute('src', 'imgTreeNodeExpand.png');
+                } else {
+                  oEltImg.setAttribute('src', 'imgTreeNodeCollapse.png');
+                }
+              });
+            }
+            aLi[n2].insertBefore(oEltImg, aLi[n2].firstChild);
+
+            // collapse the-lists within this listitem
+            fTruToggle_li(aLi[n2]);
+          }
+          // first-level expand
+          if (aLi[n2].parentNode.parentNode.nodeName !== 'LI') {
+            fTruToggle_li(aLi[n2]);
+          }
+        }
+      }
+    };
+
+    /**
+     * Returns a-click-listener that toggles the input listitem.
+     *
+     * @input {object} oLiIn The-listitem to toggle
+     */
+    function fCreateClickListener(oLiIn){
+      return function(oEvtIn){
+        var oLi = (oEvtIn.target.parentNode);
+        if (oLi == oLiIn) fTruToggle_li(oLiIn);
+      };
+    }
+
+    /**
+     * Expands or Collapses an-input-listitem.
+     *
+     * @input {object} oLiIn The-listitem to toggle
+     */
+    function fTruToggle_li(oLiIn){
+      var
+        aUl,
+        // determine whether to expand or collaple
+        bCollapsed = oLiIn.className.match(/(^| )clsTreeUlCollapsed( |$)/),
+        n,
+        oLi;
+
+      // find uls of input li
+      aUl = oLiIn.getElementsByTagName('ul');
+      for (n = 0; n < aUl.length; n++){
+        // toggle display of first-level ul
+        oLi = aUl[n];
+        while (oLi.nodeName != 'LI') {
+          oLi = oLi.parentNode;
+        }
+        if (oLi == oLiIn) {
+          aUl[n].style.display = bCollapsed ? 'block' : 'none';
+        }
+      }
+
+      oLiIn.removeAttribute('class');
+      if (aUl.length > 0){
+        if (bCollapsed) {
+          oLiIn.className = 'clsTreeUlExpanded';
+          oLiIn.firstChild.setAttribute('src', 'imgTreeNodeCollapse.png');
+        } else {
+          oLiIn.className = 'clsTreeUlCollapsed';
+          oLiIn.firstChild.setAttribute('src', 'imgTreeNodeExpand.png');
+        }
+      }
+    }
+
+    return oTreeUl;
+  })();
+
   document.addEventListener('DOMContentLoaded', function () {
     oHitp.fTocCnrInsert();
+    oHitp.oTreeUl.fTruCreate();
   });
 
   return oHitp;
