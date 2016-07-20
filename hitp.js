@@ -853,7 +853,7 @@ var oHitp = (function () {
               oEltImg.addEventListener('mouseover', function(oEvtIn){
                 var oEltImg = this;
                   sImgsrc = oEltImg.src;
-                if (sImgsrc.indexOf('imgTreeNodeExpand.png') !== -1) {
+                if (sImgsrc.indexOf('imgTreeNodeExpand.png') > 0) {
                   oEltImg.setAttribute('src', 'imgTreeNodeExpandW.png');
                 } else {
                   oEltImg.setAttribute('src', 'imgTreeNodeCollapseW.png');
@@ -862,7 +862,10 @@ var oHitp = (function () {
               oEltImg.addEventListener('mouseout', function(oEvtIn){
                 var oEltImg = this;
                   sImgsrc = oEltImg.src;
-                if (sImgsrc.indexOf('imgTreeNodeExpandW.png') !== -1) {
+                if ((sImgsrc.indexOf('imgTreeNodeExpand.png')
+                   || sImgsrc.indexOf('imgTreeNodeCollapse.png')) > 0) {
+                  //do nothing
+                } else if (sImgsrc.indexOf('imgTreeNodeExpandW.png') > 0) {
                   oEltImg.setAttribute('src', 'imgTreeNodeExpand.png');
                 } else {
                   oEltImg.setAttribute('src', 'imgTreeNodeCollapse.png');
