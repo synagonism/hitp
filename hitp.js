@@ -53,11 +53,18 @@
 
 var oHitp = (function () {
   // 15x15 images black-white
-  var sImgTocExp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDzYiN8jfoAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAK0lEQVQoz2NgGHmAEUr/p0AvSQb8J1mCWAv+k6sRl0KSw+Q/BYFJmcbhCgBsWAv3IVPBNwAAAABJRU5ErkJggg==',
+  var
+    sImgTocExp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDzYiN8jfoAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAK0lEQVQoz2NgGHmAEUr/p0AvSQb8J1mCWAv+k6sRl0KSw+Q/BYFJmcbhCgBsWAv3IVPBNwAAAABJRU5ErkJggg==',
     sImgTocExpW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDzcTfw3u2wAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAOklEQVQoz2NgGHmAkYGBgeH/////SdbIyMgI5xBrAE51hAwgaAEuBUR7DV0hyWEC00BOYDJQpHEYAwDmly/WC/CfiAAAAABJRU5ErkJggg==',
     sImgTocCol = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDiw6lUvXGgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAKUlEQVQoz2NgGAXo4D+lGv9TauN/Sp36n1I//qc0cODqGCkIVcaRmPwAaXwL990+l5QAAAAASUVORK5CYII=',
     sImgTocColW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEbDjMPDqIdpwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAQ0lEQVQoz+WQMRIAIAjDWs//f7kOnot6BVbNCCQDwHtIsvsWiHKB5kSSjAKHuF9rUhdTASfaQEa8BfqaofQZCADxIQOPwk++KQylWgAAAABJRU5ErkJggg==',
-    sImgTocLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEZCAYiR8g3XQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAL0lEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/lPdZor9THFoUxzPFKcw2gIAggAT7YryXnIAAAAASUVORK5CYII=';
+    sImgTocLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEZCAYiR8g3XQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAL0lEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/lPdZor9THFoUxzPFKcw2gIAggAT7YryXnIAAAAASUVORK5CYII=',
+
+    sImgTreeExp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALBAMAAABbgmoVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACRQTFRFtLS0tLS0tLS0AAAAtLS019fX8/Pz9PT09fX19vb29/f3+Pj4NWr6kwAAAAN0Uk5TK7P9wooeBQAAAD9JREFUCNdjYFRxcVFkYBBdvXv3UgEGrVVAoMDgPXPyzNkOcKrZ2LgbSHU0d4Co8uLyagcGrbS0tCwFmD6IKQDp1Rkw4TcKYgAAAABJRU5ErkJggg==',
+    sImgTreeExpW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALAQMAAACTYuVlAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AcUByMlRykYWQAAAAZQTFRFD2u4////YqsNIQAAAAFiS0dEAIgFHUgAAAASSURBVAjXY2CAARYwkocxYAAAA0AAMIyhTDwAAAAASUVORK5CYII=',
+    sImgTreeCol = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALBAMAAABbgmoVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACRQTFRFtLS0tLS0tLS0AAAAtLS019fX8/Pz9PT09fX19vb29/f3+Pj4NWr6kwAAAAN0Uk5TK7P9wooeBQAAAD9JREFUCNdjYFRxcVFkYBBdvXv3UgEGrVVAoMDgPXPmzNkOcKrZ2LgbSHV0dICo8vLyagcGrbS0tCwFmD6IKQDtKxlF/vrVqgAAAABJRU5ErkJggg==',
+    sImgTreeColW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALAQMAAACTYuVlAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AcUByIy3eGs3wAAAAZQTFRFD2u4////YqsNIQAAAAFiS0dEAf8CLd4AAAAPSURBVAgdY2BABfIMaAAAAjAAIGnfTCkAAAAASUVORK5CYII=',
+    sImgTreeLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALBAMAAABbgmoVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACFQTFRFtLS0tLS0tLS0tLS019fX8/Pz9PT09fX19vb29/f3+Pj455sweAAAAAN0Uk5TK7P9wooeBQAAADpJREFUCNdjYFQ2NlZkYBCZtWrVFAEGzZlAoMBg1dHR0WUAp8rLy6sQVFpaWpYBg2ZoaGikAkwfxBQAh28WoXzLiiQAAAAASUVORK5CYII=';
 
   var oHitp = {
     /* config */
@@ -843,32 +850,32 @@ var oHitp = (function () {
           if (aLi[n2].parentNode === aUl[n]){
             aUlSub = aLi[n2].getElementsByTagName('ul');
             oEltImg = document.createElement('img');
-            oEltImg.setAttribute('src', 'imgTreeNodeCollapse.png');
+            oEltImg.setAttribute('src', sImgTreeCol);
             oEltImg.setAttribute('class', 'clsTreeUlIcn');
             if (aUlSub.length === 0) {
-              oEltImg.setAttribute('src', 'imgTreeNodeLeaf.png');
+              oEltImg.setAttribute('src', sImgTreeLif);
               oEltImg.setAttribute('class', 'clsTreeUlIcnLif');
             } else {
               oEltImg.addEventListener('click', fCreateClickListener(aLi[n2]));
               oEltImg.addEventListener('mouseover', function(oEvtIn){
                 var oEltImg = this;
                   sImgsrc = oEltImg.src;
-                if (sImgsrc.indexOf('imgTreeNodeExpand.png') > 0) {
-                  oEltImg.setAttribute('src', 'imgTreeNodeExpandW.png');
+                if (sImgsrc.indexOf(sImgTreeExp) > 0) {
+                  oEltImg.setAttribute('src', sImgTreeExpW);
                 } else {
-                  oEltImg.setAttribute('src', 'imgTreeNodeCollapseW.png');
+                  oEltImg.setAttribute('src', sImgTreeColW);
                 }
               });
               oEltImg.addEventListener('mouseout', function(oEvtIn){
                 var oEltImg = this;
                   sImgsrc = oEltImg.src;
-                if ((sImgsrc.indexOf('imgTreeNodeExpand.png')
-                   || sImgsrc.indexOf('imgTreeNodeCollapse.png')) > 0) {
+                if ((sImgsrc.indexOf(sImgTreeExp)
+                   || sImgsrc.indexOf(sImgTreeCol)) > 0) {
                   //do nothing
-                } else if (sImgsrc.indexOf('imgTreeNodeExpandW.png') > 0) {
-                  oEltImg.setAttribute('src', 'imgTreeNodeExpand.png');
+                } else if (sImgsrc.indexOf(sImgTreeExpW) > 0) {
+                  oEltImg.setAttribute('src', sImgTreeExp);
                 } else {
-                  oEltImg.setAttribute('src', 'imgTreeNodeCollapse.png');
+                  oEltImg.setAttribute('src', sImgTreeCol);
                 }
               });
             }
@@ -927,10 +934,10 @@ var oHitp = (function () {
       if (aUl.length > 0){
         if (bCollapsed) {
           oLiIn.className = 'clsTreeUlExpanded';
-          oLiIn.firstChild.setAttribute('src', 'imgTreeNodeCollapse.png');
+          oLiIn.firstChild.setAttribute('src', sImgTreeCol);
         } else {
           oLiIn.className = 'clsTreeUlCollapsed';
-          oLiIn.firstChild.setAttribute('src', 'imgTreeNodeExpand.png');
+          oLiIn.firstChild.setAttribute('src', sImgTreeExp);
         }
       }
     }
