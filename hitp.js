@@ -860,7 +860,7 @@ var oHitp = (function () {
               oEltImg.addEventListener('mouseover', function(oEvtIn){
                 var oEltImg = this;
                   sImgsrc = oEltImg.src;
-                if (sImgsrc.indexOf(sImgTreeExp) > 0) {
+                if (sImgsrc.indexOf(sImgTreeExp) === 0) {
                   oEltImg.setAttribute('src', sImgTreeExpW);
                 } else {
                   oEltImg.setAttribute('src', sImgTreeColW);
@@ -870,9 +870,9 @@ var oHitp = (function () {
                 var oEltImg = this;
                   sImgsrc = oEltImg.src;
                 if ((sImgsrc.indexOf(sImgTreeExp)
-                   || sImgsrc.indexOf(sImgTreeCol)) > 0) {
+                   || sImgsrc.indexOf(sImgTreeCol)) === 0) {
                   //do nothing
-                } else if (sImgsrc.indexOf(sImgTreeExpW) > 0) {
+                } else if (sImgsrc.indexOf(sImgTreeExpW) === 0) {
                   oEltImg.setAttribute('src', sImgTreeExp);
                 } else {
                   oEltImg.setAttribute('src', sImgTreeCol);
