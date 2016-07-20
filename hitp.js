@@ -869,12 +869,10 @@ var oHitp = (function () {
               oEltImg.addEventListener('mouseout', function(oEvtIn){
                 var oEltImg = this;
                   sImgsrc = oEltImg.src;
-                if ((sImgsrc.indexOf(sImgTreeExp)
-                   || sImgsrc.indexOf(sImgTreeCol)) === 0) {
-                  //do nothing
-                } else if (sImgsrc.indexOf(sImgTreeExpW) === 0) {
+                if (sImgsrc.indexOf(sImgTreeExpW) === 0) {
                   oEltImg.setAttribute('src', sImgTreeExp);
-                } else {
+                }
+                if (sImgsrc.indexOf(sImgTreeColW) === 0) {
                   oEltImg.setAttribute('src', sImgTreeCol);
                 }
               });
