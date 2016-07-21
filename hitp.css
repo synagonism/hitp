@@ -1,5 +1,5 @@
 /*
- * version.14-3.2016-07-20.last.minor: hitp.css
+ * version.14-4.2016-07-21.last.minor: hitp.css
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
@@ -969,14 +969,14 @@ ul#idTabNamesUl li.clsTabActive a:hover  {
 
 .clsTreeUl > li > ul > li,
 .clsTreeUl > li > ul > li > a {
-  color: green;
+  color: green !important;
 }
 .clsTreeUl > li > ul > li > ul > li,
 .clsTreeUl > li > ul > li > ul > li > a {
-  color: blue;
+  color: blue !important;
 }
 .clsTreeUl > li > ul > li > ul > li > ul > li,
 .clsTreeUl > li > ul > li > ul > li > ul > li > a {
-  color: indigo;
+  color: indigo !important;
 }
 
