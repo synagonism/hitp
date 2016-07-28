@@ -1,5 +1,5 @@
 /*
- * version.14-4.2016-07-21.last.minor: hitp.css
+ * version.14-5.2016-07-28.last.minor: hitp.css
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
@@ -383,10 +383,9 @@ td.clrBgTurq {
 /* a, dfn, br, b, span  */
 
 span.clsQuote {
-  background-color: #f7f7f7;
+  background-color: #ededed;
   display: inline-block;
   text-indent: 0px;
-  margin-left: 25px;
 }
 
 ol,
