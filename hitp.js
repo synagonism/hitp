@@ -1,5 +1,5 @@
 /*
- * version.14-4.2016-08-05.last.minor: hitp.js
+ * version.14-5.2016-08-06.last.minor: hitp.js
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
@@ -898,8 +898,17 @@ var oHitp = (function () {
      */
     function fCreateClickListener(oLiIn){
       return function(oEvtIn){
-        var oLi = (oEvtIn.target.parentNode);
+        var
+          oEltImg = oEvtIn.target,
+          oLi = (oEvtIn.target.parentNode),
+          sImgsrc = oEltImg.src;
+
         if (oLi == oLiIn) fTruToggle_li(oLiIn);
+        if (sImgsrc === sImgTriExpW) {
+          oEltImg.setAttribute('src', sImgTriColW);
+        } else if (sImgsrc === sImgTriColW) {
+          oEltImg.setAttribute('src', sImgTriExpW);
+        }
       };
     }
 
