@@ -1,5 +1,5 @@
 /*
- * version.14-6.2016-09-16.last.minor: hitp.js
+ * version.14-7.2016-09-19.last.minor: hitp.js
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
@@ -95,7 +95,7 @@ var oHitp = (function () {
       fEvtTocpositionClick,
       fEvtTocpositionHover,
       oEltBody = document.body,
-      oEltDivCnr = document.createElement('div'), /* the general container*/
+      oEltDivCnr = document.createElement('div'), /*the general container*/
       oEltDivCnrCnt = document.createElement('div'),
       oEltDivCnrToc = document.createElement('div'),
       oEltUlTabNames = document.createElement('ul'),
@@ -156,7 +156,7 @@ var oHitp = (function () {
         }
         oEltDivCnrBar.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
         oEltDivCnr.style['-khtml-user-select'] = 'all';
-        oEltDivCnr.style['-webkit-user-select'] = 'all';
+        oEltDivCnr.style['-webkit-user-select'] = 'text';
         oEltDivCnr.style.MozUserSelect = 'text';
         oEltDivCnr.style.userSelect = 'all';
       }
