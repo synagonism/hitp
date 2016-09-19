@@ -60,12 +60,6 @@ var oHitp = (function () {
     sImgTriCol = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgECjgUZVCA5AAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAJElEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/jOMgqEGAHh9CvY8kiv5AAAAAElFTkSuQmCC',
     sImgTriColW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgFCB0EKyzzbAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAALElEQVQoz2NgGJTg/////ynSSLIB6BqINgCXQoIGEFKAU55Yp5EdiKNgIAEAGRcr1WI1jZQAAAAASUVORK5CYII=',
     sImgTriLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEZCAYiR8g3XQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAL0lEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/lPdZor9THFoUxzPFKcw2gIAggAT7YryXnIAAAAASUVORK5CYII=';
-//    arrow with tale
-//    sImgTriExp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AceByIEfebZIgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAMklEQVQoz2NgGKzgPz5JJkpMHgaa/1MaiP9J5OM14D8ZLoMr/I9PIyORLmCkegobOAAAwI4N//45MrwAAAAASUVORK5CYII=',
-//    sImgTriExpW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AceByc0JkgdywAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAOUlEQVQoz2NgGJTg//////HJM1Fi+FDXTChwCKpDlyDEx2sALjZRBqDT6ICRGBcwMjIyUj2FDRwAAAEGN9hu/jkBAAAAAElFTkSuQmCC',
-//    sImgTriCol = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AceByQUNgtuwAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANUlEQVQoz2NgGKzgPz5JRiI1MpJj439iXIDLxv/EegGbgv/EhsF/CsRID20mSuJxiGoeOAAA4KkO/L9tLXsAAAAASUVORK5CYII=',
-//    sImgTriColW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AceByYJZztgmwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAN0lEQVQoz2NgGJTg//////HJMxKjkZGRkZFkG9FpkpyKi02UHwnx8UoQK0ZWaDNREpVDVPPAAQCvdDvSnStzswAAAABJRU5ErkJggg==',
-//    sImgTriLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AceBzcYXlJjeQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAOUlEQVQoz2NgGKzgPz5JRiI1MpJj439iXIDLxv/EegGbgv/EhsF/CsQos5liP5MU2jSJZ5KdSl8AAHDnGOxy3aP9AAAAAElFTkSuQmCC';
 
   var oHitp = {
     /* config */
@@ -108,8 +102,9 @@ var oHitp = (function () {
       oEltFrmPref = document.createElement('form'),
       oEltRdbPreviewOn,
       oEltRdbPreviewOff,
-      oEltRdbTocpositionHover,
-      oEltRdbTocpositionClick,
+      oEltRdbFontMono,
+      oEltRdbFontSerif,
+      oEltRdbFontSSerif,
       oEltPNote = document.createElement('p'),
       oEltDivPopup = document.createElement('div'),
       oEltDivHitpmenu = document.createElement('div'),
@@ -250,20 +245,21 @@ var oHitp = (function () {
     oEltDivTab1Content.insertBefore(oEltBtnTocExpandall, oEltDivTab1Content.firstChild);
     /* preferences */
     oEltDivTab1Content.appendChild(document.createElement('p'));
-    oEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">Preferences</span>:<br/>' +
+    oEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">PREFERENCES</span>:<br>' +
       '<fieldset><legend><span class="clsColorGreen">Link-preview</span>:</legend>' +
-      '<input type="radio" id="idRdbPreviewOn" name="nameRdbPreview" checked/>Preview On (default)<br/>' +
-      '<input type="radio" id="idRdbPreviewOff" name="nameRdbPreview"/>Preview Off<br/>' +
+      '<input type="radio" id="idRdbPreviewOn" name="nameRdbPreview" checked/>Preview On (default)<br>' +
+      '<input type="radio" id="idRdbPreviewOff" name="nameRdbPreview"/>Preview Off<br>' +
       '</fieldset>' +
-      '<fieldset><legend><span class="clsColorGreen">Show on ToC content-position by</span>:</legend>' +
-      '<input type="radio" id="idRdbTocpositionHover" name="nameRdbPosition" checked/>Hovering content (default)<br/>' +
-      '<input type="radio" id="idRdbTocpositionClick" name="nameRdbPosition"/>Clicking content' +
+      '<fieldset><legend><span class="clsColorGreen">Fonts</span>:</legend>' +
+      '<input type="radio" id="idRdbFontMono" name="nameRdbFont" checked/>Mono (default)<br>' +
+      '<input type="radio" id="idRdbFontSerif" name="nameRdbFont"/>Serif<br>' +
+      '<input type="radio" id="idRdbFontSSerif" name="nameRdbFont"/>Sans-serif' +
       '</fieldset>';
     oEltDivTab1Content.appendChild(oEltFrmPref);
     /* toc: add note at the end */
-    oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br/>' +
-      'a) Clicking on LINK-ICON or on ToC, you see the address of that text on address-bar.<br/>' +
-      'b) Hovering content (default) OR clicking content, you see its position on ToC.<br/>' +
+    oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br>' +
+      'a) Clicking on LINK-ICON or on ToC, you see the address of that text on address-bar.<br>' +
+      'b) Clicking on content, you see its position on ToC.<br>' +
       'c) Hovering a domain-link you see a preview (default).';
     oEltDivTab1Content.appendChild(oEltPNote);
 
@@ -345,8 +341,6 @@ var oHitp = (function () {
     fSplitDynamic(oEltDivCnr);
 
     /* on content get-id */
-    oEltRdbTocpositionHover = document.getElementById('idRdbTocpositionHover');
-    oEltRdbTocpositionClick = document.getElementById('idRdbTocpositionClick');
     fEvtTocposition = function (oEvtIn) {
       var sID = '',
         oEltSec = oEvtIn.target;
@@ -393,21 +387,9 @@ var oHitp = (function () {
         }
       });
     };
-    fEvtTocpositionClick = function (oEvtIn) {
-      Array.prototype.slice.call(document.querySelectorAll('*[id]')).forEach(function (oEltIn, nIndex, array) {
-        oEltIn.removeEventListener('mouseover', fEvtTocposition);
-        oEltIn.addEventListener('click', fEvtTocposition);
-      });
-    };
-    fEvtTocpositionHover = function (oEvtIn) {
-      Array.prototype.slice.call(document.querySelectorAll('*[id]')).forEach(function (oEltIn, nIndex, array) {
-        oEltIn.removeEventListener('click', fEvtTocposition);
-        oEltIn.addEventListener('mouseover', fEvtTocposition);
-      });
-    };
-    oEltRdbTocpositionClick.addEventListener('click', fEvtTocpositionClick);
-    oEltRdbTocpositionHover.addEventListener('click', fEvtTocpositionHover);
-    fEvtTocpositionHover();
+    Array.prototype.slice.call(document.querySelectorAll('*[id]')).forEach(function (oEltIn, nIndex, array) {
+      oEltIn.addEventListener('click', fEvtTocposition);
+    });
 
     /* On TABS Click Event */
     Array.prototype.slice.call(document.querySelectorAll('ul#idTabNamesUl li')).forEach(function (oEltIn, nIndex, array) {
@@ -527,6 +509,21 @@ var oHitp = (function () {
     fEvtPreviewOn();
     oEltRdbPreviewOn.addEventListener('click', fEvtPreviewOn);
     oEltRdbPreviewOff.addEventListener('click', fEvtPreviewOff);
+
+    /* change font */
+    oEltRdbFontMono = document.getElementById('idRdbFontMono');
+    oEltRdbFontSerif = document.getElementById('idRdbFontSerif');
+    oEltRdbFontSSerif = document.getElementById('idRdbFontSSerif');
+    oEltRdbFontMono.addEventListener('click', function(oEvtIn) {
+      oEltBody.style.fontFamily = 'fntUbuntuMono, "Courier New", "Lucida Console"';      
+    });
+    oEltRdbFontSerif.addEventListener('click', function(oEvtIn) {
+      oEltBody.style.fontFamily = '"Times New Roman", Georgia';      
+    });
+    oEltRdbFontSSerif.addEventListener('click', function(oEvtIn) {
+      oEltBody.style.fontFamily = 'Arial, Verdana';      
+    });
+
 
     /* tree initialization */
     oHitp.fTocTriInit();
