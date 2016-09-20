@@ -381,6 +381,8 @@ var oHitp = (function () {
             oEltAIn.scrollIntoViewIfNeeded(true)
           } else if (oHitp.bFirefox) {
             oEltAIn.scrollIntoView({block: "end", behavior: "smooth"});
+          } else {
+            oEltAIn.scrollIntoView(false);
           }
           document.getElementById("idDivCnrToc").scrollLeft = 0;
         }
