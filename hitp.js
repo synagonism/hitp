@@ -76,6 +76,9 @@ var oHitp = (function () {
 
     /* toc-tree li unique ids */
     nTocTriIdLi: 0,
+
+    sQrAClk: 'idFoo',
+    sQrAClkLast: '',
   };
 
   /** Splits the-body and puts the-toc on the left. */
@@ -85,9 +88,7 @@ var oHitp = (function () {
       fEvtPreviewMouseout,
       fEvtPreviewOn,
       fEvtPreviewOff,
-      fEvtTocposition,
-      fEvtTocpositionClick,
-      fEvtTocpositionHover,
+      fEvtClickContent,
       oEltBody = document.body,
       oEltDivCnr = document.createElement('div'), /*the general container*/
       oEltDivCnrCnt = document.createElement('div'),
@@ -341,7 +342,7 @@ var oHitp = (function () {
     fSplitDynamic(oEltDivCnr);
 
     /* on content get-id */
-    fEvtTocposition = function (oEvtIn) {
+    fEvtClickContent = function (oEvtIn) {
       var sID = '',
         oEltSec = oEvtIn.target;
 
@@ -370,7 +371,7 @@ var oHitp = (function () {
           sID = '#' + oEltSec.id;
         }
       }
-
+      /* on toc highlight the-found-id */
       Array.prototype.slice.call(document.querySelectorAll('#idTocTri a')).forEach(function (oEltAIn, nIndex, array) {
         if (oEltAIn.getAttribute('href') === sID) {
           oHitp.fTocTriCollapseAll();
@@ -380,15 +381,29 @@ var oHitp = (function () {
             oEltAIn.scrollIntoViewIfNeeded(true)
           } else if (oHitp.bFirefox) {
             oEltAIn.scrollIntoView({block: "end", behavior: "smooth"});
-          } else {
-            oEltAIn.scrollIntoView(true);
           }
           document.getElementById("idDivCnrToc").scrollLeft = 0;
         }
       });
+      /* on found-id on a-elt add clsClickCnt */
+      oHitp.sQrAClkLast = oHitp.sQrAClk;
+      oHitp.sQrAClk = '#' + oEvtIn.target.id + ' a';
+      var oElt = oEvtIn.target;
+      while (oHitp.sQrAClk == '# a') {
+        oElt = oElt.parentNode;
+        oHitp.sQrAClk = '#' + oElt.id + ' a';
+      }
+      if (oHitp.sQrAClkLast !== oHitp.sQrAClk) {
+        Array.prototype.slice.call(document.querySelectorAll(oHitp.sQrAClk)).forEach(function (oEltAIn, nIndex, array) {
+          oEltAIn.classList.add('clsClickCnt');
+        });
+        Array.prototype.slice.call(document.querySelectorAll(oHitp.sQrAClkLast)).forEach(function (oEltAIn, nIndex, array) {
+          oEltAIn.classList.remove('clsClickCnt');
+        });
+      }
     };
-    Array.prototype.slice.call(document.querySelectorAll('*[id]')).forEach(function (oEltIn, nIndex, array) {
-      oEltIn.addEventListener('click', fEvtTocposition);
+    Array.prototype.slice.call(document.querySelectorAll('#idDivCnrCnt *[id]')).forEach(function (oEltIn, nIndex, array) {
+      oEltIn.addEventListener('click', fEvtClickContent);
     });
 
     /* On TABS Click Event */
