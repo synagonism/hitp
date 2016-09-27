@@ -516,6 +516,7 @@ a.clsPreview:hover {
 #idTocTri {
   margin: 0px;
   padding: 0px;
+  line-height: 1.5;
 }
 #idTocTri > li > ul > li > a {
   color: green;
