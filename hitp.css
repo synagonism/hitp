@@ -1,5 +1,5 @@
 /*
- * version.14-8.2016-09-20.last.minor: hitp.css
+ * version.14-9.2016-09-27.last.minor: hitp.css
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
@@ -493,20 +493,17 @@ a.clsClickCnt {
 a.clsClickCnt.clsPreview {
   color: blue;
 }
-h1:hover a:hover,
-h2:hover a:hover,
-h3:hover a:hover,
-h4:hover a:hover,
-h5:hover a:hover,
-h6:hover a:hover,
-p:hover a:hover,
-pre:hover a:hover,
-address:hover a:hover,
-span:hover a:hover,
-table:hover a:hover,
-#idTocTri li a:hover {
+a.clsClicked {
   background: blue;
-  color: #ffffff;
+  color: white !important;
+}
+a:hover {
+  background: DodgerBlue;
+  color: white !important;
+}
+a.clsPreview:hover {
+  background: blue;
+  color: #ffffff !important;
 }
 
 #idPpath {

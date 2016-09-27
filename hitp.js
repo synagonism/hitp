@@ -1,5 +1,5 @@
 /*
- * version.14-7.2016-09-19.last.minor: hitp.js
+ * version.14-8.2016-09-27.last.minor: hitp.js
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
@@ -84,12 +84,10 @@ var oHitp = (function () {
   /** Splits the-body and puts the-toc on the left. */
   oHitp.fTocCnrInsert = function () {
     var
-      fEvtPreviewMouseover,
-      fEvtPreviewMouseout,
-      fEvtPreviewOn,
-      fEvtPreviewOff,
+      fEvtPreview,
       fEvtClickContent,
       oEltBody = document.body,
+      oEltAClicked = oEltBody,
       oEltDivCnr = document.createElement('div'), /*the general container*/
       oEltDivCnrCnt = document.createElement('div'),
       oEltDivCnrToc = document.createElement('div'),
@@ -101,8 +99,6 @@ var oHitp = (function () {
       oEltBtnTocExpandall = document.createElement('input'),
       oEltPPath = document.createElement('p'),
       oEltFrmPref = document.createElement('form'),
-      oEltRdbPreviewOn,
-      oEltRdbPreviewOff,
       oEltRdbFontMono,
       oEltRdbFontSerif,
       oEltRdbFontSSerif,
@@ -112,8 +108,7 @@ var oHitp = (function () {
       oXHR = new XMLHttpRequest(),
       sCfgPathMenu,
       sContentOriginal = document.body.innerHTML,
-      sIdTabActive,
-      sTmt;
+      sIdTabActive;
 
     /**
      * Inserts a splitter-bar which changes dynamically the-width of toc and content.
@@ -247,10 +242,6 @@ var oHitp = (function () {
     /* preferences */
     oEltDivTab1Content.appendChild(document.createElement('p'));
     oEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">PREFERENCES</span>:<br>' +
-      '<fieldset><legend><span class="clsColorGreen">Link-preview</span>:</legend>' +
-      '<input type="radio" id="idRdbPreviewOn" name="nameRdbPreview" checked/>Preview On (default)<br>' +
-      '<input type="radio" id="idRdbPreviewOff" name="nameRdbPreview"/>Preview Off<br>' +
-      '</fieldset>' +
       '<fieldset><legend><span class="clsColorGreen">Fonts</span>:</legend>' +
       '<input type="radio" id="idRdbFontMono" name="nameRdbFont" checked/>Mono (default)<br>' +
       '<input type="radio" id="idRdbFontSerif" name="nameRdbFont"/>Serif<br>' +
@@ -259,9 +250,9 @@ var oHitp = (function () {
     oEltDivTab1Content.appendChild(oEltFrmPref);
     /* toc: add note at the end */
     oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br>' +
-      'a) Clicking on LINK-ICON or on ToC, you see the address of that text on address-bar.<br>' +
-      'b) Clicking on content, you see its position on ToC.<br>' +
-      'c) Hovering a domain-link you see a preview (default).';
+      'a) Clicking on LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
+      'b) Clicking on content, shows its position on ToC, shows the-links, and removes preview-window.<br>' +
+      'c) Clicking a-BLUE-link shows a-preview, and with SECOND click goes to destination.';
     oEltDivTab1Content.appendChild(oEltPNote);
 
     /* inset tab1 on tabcontainer */
@@ -316,24 +307,47 @@ var oHitp = (function () {
 
     /* clicking on a content-link first go to its location, this way the backbutton goes where we clicked. */
     Array.prototype.slice.call(document.querySelectorAll('#idDivCnrCnt a')).forEach(function (oEltIn, nIndex, array) {
+
       oEltIn.addEventListener('click', function (oEvtIn) {
-        var sID,
-          oEltSec = oEltIn;
+        var
+          oEltSec = oEltIn,
+          sID;
 
         oEvtIn.preventDefault();
-        while (!oEltSec.tagName.match(/^SECTION/i)) {
-          sID = oEltSec.id;
-          if (sID) {
-            break;
-          } else {
-            oEltSec = oEltSec.parentNode;
+
+        function fGo_where_clicked() {
+          // first, go to where you clicked
+          while (!oEltSec.tagName.match(/^SECTION/i)) {
+            sID = oEltSec.id;
+            if (sID) {
+              break;
+            } else {
+              oEltSec = oEltSec.parentNode;
+            }
+          }
+          sID = '#' + sID;
+          if (location.hash !== sID) {
+            location.href = sID;
           }
         }
-        sID = '#' + sID;
-        if (location.hash !== sID) {
-          location.href = sID;
+
+        // if has clsPreview popup
+        if (oEltIn.className.match(/(^| )clsPreview( |$)/)) {
+          if (oEltIn.className.match(/(^| )clsClicked( |$)/)) {
+            oEltIn.classList.remove('clsClicked');
+            fGo_where_clicked();
+            location.href = oEltIn.href;
+          } else {
+            oEltAClicked.classList.remove('clsClicked');
+            oEltAClicked = oEltIn;
+            oEltIn.classList.add('clsClicked');
+            //popup
+            fEvtPreview(oEvtIn);
+          }
+        } else {
+          fGo_where_clicked();
+          location.href = oEltIn.href;
         }
-        location.href = oEvtIn.target.href;
       });
     });
 
@@ -347,6 +361,10 @@ var oHitp = (function () {
         oEltSec = oEvtIn.target;
 
       oEvtIn.stopPropagation();
+
+      oEltAClicked.classList.remove('clsClicked');
+      // remove popup
+      oEltDivPopup.style.display = 'none';
 
       /* find the id of closest header */
       /* first go where you click */
@@ -427,105 +445,78 @@ var oHitp = (function () {
       });
     });
 
-    /* on links with clsPreview add this function
-     * first insert popup container */
-    oEltRdbPreviewOn = document.getElementById('idRdbPreviewOn');
-    oEltRdbPreviewOff = document.getElementById('idRdbPreviewOff');
+    /* insert popup container */
     oEltDivPopup.id = 'idPopup';
     document.body.appendChild(oEltDivPopup);
-    fEvtPreviewMouseover = function (oEvtIn) {
-      sTmt = setTimeout(function(){
-        var sLoc, sId1, sId2,
-          nPy, nPx, nWh, nWw,
-          oDoc;
+    /* on links with clsPreview add this event-listener */
+    fEvtPreview = function (oEvtIn) {
+      var sLoc, sId1, sId2,
+        nPy, nPx, nWh, nWw,
+        oDoc;
 
-        oEvtIn.preventDefault();
-        oEvtIn.stopPropagation();
-        nPx = oEvtIn.pageX;
-        nPy = oEvtIn.pageY;
-        nWh = window.innerHeight;
-        nWw = window.innerWidth;
-        sId1 = oEvtIn.target.href;
-        if (sId1.indexOf('#') > 0) {
-          sId2 = sId1.substring(sId1.indexOf("#") + 1);
-          sId1 = sId1.substring(0, sId1.indexOf("#"));
-        }
-        sLoc = location.href;
-        if (sLoc.indexOf('#') > 0) {
-          sLoc = sLoc.substring(0, sLoc.indexOf("#"));
-        }
-        /* internal-link */
-        if (sLoc === sId1) {
-          oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
-        } else {
-          oEltDivPopup.innerHTML = '';
-          oXHR = new XMLHttpRequest();
-          oXHR.open('GET', sId1, false);
-          oXHR.send(null);
-          if (oXHR.status === 200) {
-            if (sId2) {
-              //IF #fragment url, display only this element.
-              oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
-              oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+      oEvtIn.preventDefault();
+      oEvtIn.stopPropagation();
+      nPx = oEvtIn.pageX;
+      nPy = oEvtIn.pageY;
+      nWh = window.innerHeight;
+      nWw = window.innerWidth;
+      sId1 = oEvtIn.target.href;
+      if (sId1.indexOf('#') > 0) {
+        sId2 = sId1.substring(sId1.indexOf("#") + 1);
+        sId1 = sId1.substring(0, sId1.indexOf("#"));
+      }
+      sLoc = location.href;
+      if (sLoc.indexOf('#') > 0) {
+        sLoc = sLoc.substring(0, sLoc.indexOf("#"));
+      }
+      /* internal-link */
+      if (sLoc === sId1) {
+        oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
+      } else {
+        oEltDivPopup.innerHTML = '';
+        oXHR = new XMLHttpRequest();
+        oXHR.open('GET', sId1, false);
+        oXHR.send(null);
+        if (oXHR.status === 200) {
+          if (sId2) {
+            //IF #fragment url, display only this element.
+            oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
+            oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+          } else {
+            //IF link to a picture, display it, not its code.
+            if (sId1.match(/(png|jpg|gif)$/)) {
+              var oImg = new Image();
+              var nIW, nIH, nPW, nPH;
+              nPW = nWw / 2.2;
+              nPH = nWh * 0.4;
+              oImg.src = sId1;
+              oImg.addEventListener('load', function() {
+                nIW = oImg.width;
+                nIH = oImg.height;
+                if (nIH > nPH) {
+                  nIW = (nIW * nPH) / nIH;
+                  nIH = nPH;
+                }
+                oEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
+                  + '" width="' + nIW
+                  + '" height="' + nIH + '" /></p>';
+              });
             } else {
-              //IF link to a picture, display it, not its code.
-              if (sId1.match(/(png|jpg|gif)$/)) {
-                var oImg = new Image();
-                var nIW, nIH, nPW, nPH;
-                nPW = nWw / 2.2;
-                nPH = nWh * 0.4;
-                oImg.src = sId1;
-                oImg.addEventListener('load', function() {
-                  nIW = oImg.width;
-                  nIH = oImg.height;
-                  if (nIH > nPH) {
-                    nIW = (nIW * nPH) / nIH;
-                    nIH = nPH;
-                  }
-                  oEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
-                    + '" width="' + nIW
-                    + '" height="' + nIH + '" /></p>';
-                });
-              } else {
-                document.getElementById('idPopup').innerHTML = oXHR.responseText;
-              }
+              document.getElementById('idPopup').innerHTML = oXHR.responseText;
             }
           }
         }
+      }
 
-        oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
-        if (nPx < nWw / 2) {
-          oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
-        } else {
-          oEltDivPopup.style.left = 26 + 'px';
-        }
-        oEltDivPopup.style.overflow = 'auto';
-        oEltDivPopup.style.display = 'block';
-      },459);
+      oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
+      if (nPx < nWw / 2) {
+        oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
+      } else {
+        oEltDivPopup.style.left = 26 + 'px';
+      }
+      oEltDivPopup.style.overflow = 'auto';
+      oEltDivPopup.style.display = 'block';
     };
-    fEvtPreviewMouseout = function (oEvtIn) {
-      clearTimeout(sTmt);
-      oEltDivPopup.style.display = 'none';
-    };
-    fEvtPreviewOn = function (oEvtIn) {
-      Array.prototype.slice.call(document.querySelectorAll('a.popupTrigger, a.clsPreview')).forEach(function (oEltIn, nIndex, array) {
-        oEltIn.addEventListener('mouseover', fEvtPreviewMouseover);
-        oEltIn.addEventListener('mouseout', fEvtPreviewMouseout);
-        //IF you prefer to close popup with click, instead of mouseout
-        //oEltIn.onclick = function () {
-          //oEltDivPopup.style.display = 'none';
-        //};
-      });
-    };
-    fEvtPreviewOff = function (oEvtIn) {
-      Array.prototype.slice.call(document.querySelectorAll('a.popupTrigger, a.clsPreview')).forEach(function (oEltIn, nIndex, array) {
-        oEltIn.removeEventListener('mouseover', fEvtPreviewMouseover);
-        oEltIn.removeEventListener('mouseout', fEvtPreviewMouseout);
-      });
-    };
-    fEvtPreviewOn();
-    oEltRdbPreviewOn.addEventListener('click', fEvtPreviewOn);
-    oEltRdbPreviewOff.addEventListener('click', fEvtPreviewOff);
 
     /* change font */
     oEltRdbFontMono = document.getElementById('idRdbFontMono');
@@ -549,8 +540,24 @@ var oHitp = (function () {
     Array.prototype.slice.call(document.querySelectorAll("#idTocTri li > a")).forEach(function (oEltIn, nIndex, array) {
       oEltIn.addEventListener('click', function (oEvtIn) {
         oEvtIn.preventDefault();
-        location.href = '#' + oEvtIn.target.href.split('#')[1];
-        oHitp.fTocTriHighlightNode(oEltDivCnrToc, oEltIn);
+        if (oEltIn.className.match(/(^| )clsPreview( |$)/)) {
+          if (oEltIn.className.match(/(^| )clsClicked( |$)/)) {
+            oEltIn.classList.remove('clsClicked');
+            oEltDivPopup.style.display = 'none';
+            location.href = '#' + oEvtIn.target.href.split('#')[1];
+            oHitp.fTocTriHighlightNode(oEltDivCnrToc, oEltIn);
+          } else {
+            oEltAClicked.classList.remove('clsClicked');
+            oEltAClicked = oEltIn;
+            oEltIn.classList.add('clsClicked');
+            //popup
+            fEvtPreview(oEvtIn);
+          }
+        } else {
+          oEltDivPopup.style.display = 'none';
+          location.href = '#' + oEvtIn.target.href.split('#')[1];
+          oHitp.fTocTriHighlightNode(oEltDivCnrToc, oEltIn);
+        }
       });
     });
 
@@ -730,9 +737,9 @@ var oHitp = (function () {
       n;
 
     for (n = 0; n < aTocTriAs.length; n += 1) {
-      aTocTriAs[n].removeAttribute('class');
+      aTocTriAs[n].classList.remove('clsTocTriHighlight');
     }
-    oElm.setAttribute('class', 'clsTocTriHighlight');
+    oElm.classList.add('clsTocTriHighlight');
   };
 
   /**
