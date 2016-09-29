@@ -1,5 +1,5 @@
 /*
- * version.14-9.2016-09-27.last.minor: hitp.css
+ * version.14-10.2016-09-29.last.minor: hitp.css
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
@@ -487,23 +487,27 @@ a:link {
 a:visited {
   color: #000000
 }
-a.clsClickCnt {
-  color: DodgerBlue;
-}
 a.clsClickCnt.clsPreview {
   color: blue;
 }
-a.clsClicked {
-  background: blue;
-  color: white !important;
+a.clsClickCnt {
+  color: DodgerBlue;
 }
-a:hover {
+a.clsClicked.clsPreview {
+  background: blue;
+  color: white;
+}
+a.clsClicked {
   background: DodgerBlue;
-  color: white !important;
+  color: white;
 }
 a.clsPreview:hover {
   background: blue;
   color: #ffffff !important;
+}
+a:hover {
+  background: DodgerBlue;
+  color: white !important;
 }
 
 #idPpath {

@@ -1,5 +1,5 @@
 /*
- * version.14-8.2016-09-27.last.minor: hitp.js
+ * version.14-9.2016-09-29.last.minor: hitp.js
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
@@ -305,9 +305,8 @@ var oHitp = (function () {
       }
     }
 
-    /* clicking on a content-link first go to its location, this way the backbutton goes where we clicked. */
+    /* clicking on content-link first go to its location, this way the backbutton goes where we clicked. */
     Array.prototype.slice.call(document.querySelectorAll('#idDivCnrCnt a')).forEach(function (oEltIn, nIndex, array) {
-
       oEltIn.addEventListener('click', function (oEvtIn) {
         var
           oEltSec = oEltIn,
@@ -331,22 +330,18 @@ var oHitp = (function () {
           }
         }
 
-        // if has clsPreview popup
-        if (oEltIn.className.match(/(^| )clsPreview( |$)/)) {
-          if (oEltIn.className.match(/(^| )clsClicked( |$)/)) {
-            oEltIn.classList.remove('clsClicked');
-            fGo_where_clicked();
-            location.href = oEltIn.href;
-          } else {
-            oEltAClicked.classList.remove('clsClicked');
-            oEltAClicked = oEltIn;
-            oEltIn.classList.add('clsClicked');
-            //popup
-            fEvtPreview(oEvtIn);
-          }
-        } else {
+        if (oEltIn.className.match(/(^| )clsClicked( |$)/)) {
+          oEltIn.classList.remove('clsClicked');
           fGo_where_clicked();
           location.href = oEltIn.href;
+        } else {
+          oEltAClicked.classList.remove('clsClicked');
+          oEltAClicked = oEltIn;
+          oEltIn.classList.add('clsClicked');
+          if (oEltIn.className.match(/(^| )clsPreview( |$)/)) {
+            // if has clsPreview popup
+            fEvtPreview(oEvtIn);
+          }
         }
       });
     });
@@ -355,14 +350,16 @@ var oHitp = (function () {
     oEltDivCnr.insertBefore(oEltDivCnrToc, oEltDivCnr.firstChild);
     fSplitDynamic(oEltDivCnr);
 
-    /* on content get-id */
+    /* on content get-id, highlight toc, highlight links, remove popup, remove clicked link */
     fEvtClickContent = function (oEvtIn) {
       var sID = '',
         oEltSec = oEvtIn.target;
 
       oEvtIn.stopPropagation();
+      if (oEvtIn.target.nodeName !== 'A') {
+        oEltAClicked.classList.remove('clsClicked');
+      }
 
-      oEltAClicked.classList.remove('clsClicked');
       // remove popup
       oEltDivPopup.style.display = 'none';
 
