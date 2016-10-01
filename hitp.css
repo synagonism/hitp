@@ -1,5 +1,5 @@
 /*
- * version.14-11.2016-09-30.last.minor: hitp.css
+ * version.14-12.2016-10-01.last.minor: hitp.css
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
@@ -48,7 +48,6 @@
   font-family: "fntUbuntuMono";
   font-style:  normal;
   font-weight: normal;
-  src: url("ubuntum0.eot");
   src: url("UbuntuMono-Regular.ttf");
 }
 
@@ -497,11 +496,11 @@ a.clsClickCnt {
 }
 a.clsClicked.clsPreview {
   background: blue;
-  color: white;
+  color: white !important;
 }
 a.clsClicked {
   background: DodgerBlue;
-  color: white;
+  color: white !important;
 }
 a.clsPreview:hover {
   background: blue;
