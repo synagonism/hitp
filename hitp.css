@@ -1,5 +1,5 @@
 /*
- * version.14-12.2016-10-01.last.minor: hitp.css
+ * version.14-14.2016-10-03.last.minor: hitp.css
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
@@ -413,7 +413,7 @@ ul > a.clsHide
   height: 24px;
   width: 24px;
   color: #ffffff;
-  float:right;
+  float: right;
 }
 p > a.clsHide,
 address > a.clsHide
@@ -421,7 +421,7 @@ address > a.clsHide
   height: 24px;
   width: 24px;
   color: #ffffff;
-  float:right;
+  float: right;
   text-indent: 0px;
 }
 div > a.clsHide
@@ -429,7 +429,7 @@ div > a.clsHide
   height: 24px;
   width: 24px;
   color: #ffffff;
-  float:right;
+  float: right;
   margin-right: 25px;
   margin-top: -25px;
 }
@@ -545,7 +545,7 @@ a:hover {
   font-weight: bold;
 }
 #idTocTri ul {
-  margin-left: 14px;
+  margin-left: 11px;
   padding-left: 0px;
 }
 #idTocTri li {
@@ -556,12 +556,14 @@ a:hover {
 .clsTocTriIcn {
   cursor: pointer;
   vertical-align: middle;
+  padding-right: 5px;
 }
 .clsTocTriIcn:hover {
   background: blue;
 }
 .clsTocTriIcnLif {
   vertical-align: middle;
+  padding-right: 5px;
 }
 .clsTocTriIcnCol {
 }
@@ -960,4 +962,3 @@ ul#idTabNamesUl li.clsTabActive a:hover  {
 .clsTreeUl > li > ul > li > ul > li > ul > li > a {
   color: indigo !important;
 }
-
