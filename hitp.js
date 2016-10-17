@@ -1,5 +1,5 @@
 /*
- * version.14-9.2016-09-29.last.minor: hitp.js
+ * version.14-10.2016-10-17.last.minor: hitp.js
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
@@ -394,8 +394,6 @@ var oHitp = (function () {
           oHitp.fTocTriExpandParent(oEltAIn);
           if (oEltAIn.scrollIntoViewIfNeeded) {
             oEltAIn.scrollIntoViewIfNeeded(true)
-          } else if (oHitp.bFirefox) {
-            oEltAIn.scrollIntoView({block: "end", behavior: "smooth"});
           } else {
             oEltAIn.scrollIntoView(false);
           }
