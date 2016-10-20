@@ -1,5 +1,5 @@
 /*
- * version.14-10.2016-10-17.last.minor: hitp.js
+ * version.14-11.2016-10-20.last.minor: hitp.js
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
@@ -146,10 +146,10 @@ var oHitp = (function () {
           oEltDivCnrBarBtn.innerHTML = '<span><br />«</span>'; //sbl «◂‹⇐
         }
         oEltDivCnrBar.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
-        oEltDivCnr.style['-khtml-user-select'] = 'all';
+        oEltDivCnr.style['-khtml-user-select'] = 'text';
         oEltDivCnr.style['-webkit-user-select'] = 'text';
         oEltDivCnr.style.MozUserSelect = 'text';
-        oEltDivCnr.style.userSelect = 'all';
+        oEltDivCnr.style.userSelect = 'text';
       }
 
       // end event
