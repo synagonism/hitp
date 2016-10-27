@@ -1,5 +1,6 @@
 /*
- * version.14-11.2016-10-20.last.minor: hitp.js
+ * version.15.2016-10-27.last.minor: hitp.css
+ * version.15.2016-10-27.last.minorNo (14-9): hitp.15.2016-10-27.css (any-machine)
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
  * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
@@ -52,377 +53,443 @@
  */
 
 var oHitp = (function () {
-  // 15x15 images black-white imgToc3Exp15.png, imgToc3Col15.png, imgToc3lif15.png
-  var
-    // arrow NO tail
-    sImgTriExp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgECjcPaK1VxwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAJElEQVQoz2NgGAVDEPynVN1/Si34T6HLMBT+JzcM/tM6EOkMAJmzCvbzF78lAAAAAElFTkSuQmCC',
-    sImgTriExpW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgFCB024/ui7AAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAALElEQVQoz2NgGAVDDfz///8/ReoIGUDQAlwKiHUZhkKiNaJrIFkj2TbSDQAAne8r1R/pdz8AAAAASUVORK5CYII=',
-    sImgTriCol = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgECjgUZVCA5AAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAJElEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/jOMgqEGAHh9CvY8kiv5AAAAAElFTkSuQmCC',
-    sImgTriColW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgFCB0EKyzzbAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAALElEQVQoz2NgGJTg/////ynSSLIB6BqINgCXQoIGEFKAU55Yp5EdiKNgIAEAGRcr1WI1jZQAAAAASUVORK5CYII=',
-    sImgTriLif = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AEZCAYiR8g3XQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAL0lEQVQoz2NgGKzgP6Ua/1Nq439KnfqfUj/+pzRw/lPdZor9THFoUxzPFKcw2gIAggAT7YryXnIAAAAASUVORK5CYII=';
 
   var oHitp = {
     /* config */
-    nCfgPosSplitPrev: parseInt(window.outerWidth * 0.25),
+    nCfgTocWidth: 25, // % of window width
     /**
-     * config: the hitmenu contains absolute urls, because we see it from many pages.
-     * Then we must know the ROOT of the site and create different menus.
+     * filSite-structure contains absolute urls, because we see it from many pages.
+     * Then we must-know the-homepage of the-site and create different menus.
      */
-    sCfgPathMenuLocal: '/dWstSgm/hitpmenuLocal.html',
-    sCfgPathMenuOnline: '/hitpmenu.html',
+    sCfgHomeLocal: '/dWstSgm/',
 
     bEdge: navigator.userAgent.indexOf('Edge/') > -1,
     bFirefox: navigator.userAgent.indexOf('Firefox/') > -1,
+    bSite: false,
 
-    /* toc-tree li unique ids */
-    nTocTriIdLi: 0,
+    oEltClicked: document.body,
 
     sQrAClk: 'idFoo',
     sQrAClkLast: '',
   };
 
-  /** Splits the-body and puts the-toc on the left. */
-  oHitp.fTocCnrInsert = function () {
+  /** 
+   * Creates new containers and inserts them in the-body-element:
+   * - Top-cnr for the-title and menus.
+   * - Body-cnr for the-toc and page-content.
+   * - Width-cnr for managing toc-width.
+   * - Site-cnr for containing the-site-strucute.
+   * - Preview-cnr to display link-previews.
+   */
+  oHitp.fContainersInsert = function () {
     var
+      bServer = location.hostname !== '', //to display site-structure and homepage
       fEvtPreview,
       fEvtClickContent,
       oEltBody = document.body,
-      oEltAClicked = oEltBody,
-      oEltDivCnr = document.createElement('div'), /*the general container*/
-      oEltDivCnrCnt = document.createElement('div'),
-      oEltDivCnrToc = document.createElement('div'),
-      oEltUlTabNames = document.createElement('ul'),
-      oEltDivTabContentcnr = document.createElement('div'),
-      oEltDivTab1Content = document.createElement('div'),
-      //oEltDivTab2Content = document.createElement('div'),
-      oEltBtnTocCollapseall = document.createElement('input'),
-      oEltBtnTocExpandall = document.createElement('input'),
-      oEltPPath = document.createElement('p'),
-      oEltFrmPref = document.createElement('form'),
-      oEltRdbFontMono,
-      oEltRdbFontSerif,
-      oEltRdbFontSSerif,
-      oEltPNote = document.createElement('p'),
-      oEltDivPopup = document.createElement('div'),
-      oEltDivHitpmenu = document.createElement('div'),
+      oEltCnrTopDiv = document.createElement('div'),
+      oEltCnrBodDiv = document.createElement('div'), /*the content and toc container*/
+      oEltCnrBodCntDiv = document.createElement('div'),
+      oEltCnrBodTocDiv = document.createElement('div'),
+      oEltCnrWidthCntDiv = document.createElement('div'),
+      oEltCnrSiteCntDiv = document.createElement('div'),
+      oEltCnrPreviewDiv = document.createElement('div'),
+      oEltTopSiteIcnI = document.createElement('i'),
+      oEltTopTitleP = document.createElement('p'),
+      oEltTopHomeIcnI = document.createElement('i'),
+      oEltTopWidthIcnI = document.createElement('i'),
+      oEltSiteTreeUl,
+      oEltTocTabNamesUl = document.createElement('ul'),
+      oEltTocTabContentcnrDiv = document.createElement('div'),
+      oEltTocTab1ContentDiv = document.createElement('div'),
+      //oEltTocTab2ContentDiv = document.createElement('div'),
+      oEltTocCpsallBtn = document.createElement('input'),
+      oEltTocExpallBtn = document.createElement('input'),
+      oEltTocPathP = document.createElement('p'),
+      oEltTocPrefDiv = document.createElement('div'),
+      oEltTocNoteP = document.createElement('p'),
       oXHR = new XMLHttpRequest(),
-      sCfgPathMenu,
-      sContentOriginal = document.body.innerHTML,
+      sPathSitemenu,
+      sContentOriginal = oEltBody.innerHTML,
       sIdTabActive;
 
-    /**
-     * Inserts a splitter-bar which changes dynamically the-width of toc and content.
-     * INPUT: the-div-container with 2 div children, the-toc-cnr and the-content-cnr.
-     */
-    fSplitDynamic = function (oEltIn) {
-      var nPosSplitCurrent = oHitp.nCfgPosSplitPrev,
-        oEltDivCnr = oEltIn,
-        oEltDivCnrToc = oEltDivCnr.children[0], //toc-container
-        oEltDivCnrCnt = oEltDivCnr.children[1], //content-container
-        oEltDivCnrBar = document.createElement('div'),
-        oEltDivCnrBarGhost, //we create it at startDraging
-        oEltDivCnrBarBtn = document.createElement('div');
+    oEltCnrTopDiv.id = 'idCnrTopDiv';
+    oEltCnrBodDiv.id = 'idCnrBodDiv';
 
-      function fEvtDragMousemove(oEvtIn) {
-        var nIncr = oEvtIn.pageX;
-
-        oEltDivCnrBarGhost.style.left = nIncr + 'px';
+    // title-text
+    oEltTopTitleP.innerHTML = document.getElementsByTagName('title')[0].innerHTML;
+    oEltTopTitleP.id = 'idTopTitleP';
+    //width
+    oEltTopWidthIcnI.setAttribute('class', 'clsFa clsFaArrowsH clsTopIcn clsColorWhite clsFloatRight clsTtp clsPosRight');
+    //to show a-tooltip on an-element:
+    // - set clsTtp on element
+    // - set tooltip (<span class="clsTtp">Page-structure width</span>) inside the-element
+    // - on element click add clsClicked and clsTtpShow
+    oEltTopWidthIcnI.innerHTML = '<span class="clsTtp">Page-structure width</span>';
+    oEltTopWidthIcnI.addEventListener('click', function (oEvtIn) {
+      if (oEltTopWidthIcnI.className.indexOf('clsClicked') > -1) {
+        oEltCnrWidthCntDiv.style.display = 'block';
+        oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+      } else {
+        oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+        oHitp.oEltClicked = oEltTopWidthIcnI;
+        oEltTopWidthIcnI.classList.add('clsClicked', 'clsTtpShow');
       }
+    });
+    // width-content
+    oEltCnrWidthCntDiv.id = 'idCnrWidthCntDiv';
+    oEltCnrWidthCntDiv.innerHTML = '<p id="idWidthCntP" class="clsCenter">close <i class="clsFa clsFaClose clsFloatRight clsColorWhite clsTopIcn"></i></p>' +
+      '<fieldset><legend>Page-structure-width:</legend>' +
+      '<input type="radio" id="idRdbWidth0" name="nameRdbWidth">0 %<br>' +
+      '<input type="radio" id="idRdbWidth10" name="nameRdbWidth">10 %<br>' +
+      '<input type="radio" id="idRdbWidth20" name="nameRdbWidth">20 %<br>' +
+      '<input type="radio" id="idRdbWidth25" name="nameRdbWidth" checked>25 % (default)<br>' +
+      '<input type="radio" id="idRdbWidth30" name="nameRdbWidth">30 %<br>' +
+      '<input type="radio" id="idRdbWidth40" name="nameRdbWidth">40 %<br>' +
+      '<input type="radio" id="idRdbWidth50" name="nameRdbWidth">50 %<br>' +
+      '<input type="radio" id="idRdbWidth100" name="nameRdbWidth">100 %<br>' +
+      '</fieldset>';
+    oEltCnrTopDiv.appendChild(oEltTopTitleP);
+    oEltCnrTopDiv.appendChild(oEltTopWidthIcnI);
+    oEltTopTitleP.addEventListener('click', function(oEvtIn) {
+      oEltCnrPreviewDiv.style.display = 'none'; // remove popup
+      oEltCnrSiteCntDiv.style.display = 'none'; // remove site-content
+      oEltCnrWidthCntDiv.style.display = 'none'; // remove width-content
+      oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked'); // remove tooltip clicks
+    });
 
-      /* Perform actual splitting */
-      function fTocSplit_to(nPos) {
-        var nSizeB;
-
-        oHitp.nCfgPosSplitPrev = nPosSplitCurrent;
-        nPosSplitCurrent = nPos;
-        nSizeB = oEltDivCnr.offsetWidth - nPos - 10 - 10; /* splitBar, padding */
-        oEltDivCnrToc.style.width = nPos + 'px';
-        oEltDivCnrBar.style.left = nPos + 'px';
-        oEltDivCnrCnt.style.width = nSizeB + 'px';
-        oEltDivCnrCnt.style.left = nPos + 10 + 'px';
-        if (nPos === 0) {
-          oEltDivCnrBarBtn.innerHTML = '<span><br />»</span>'; //»▸⇒
-        } else {
-          oEltDivCnrBarBtn.innerHTML = '<span><br />«</span>'; //sbl «◂‹⇐
-        }
-        oEltDivCnrBar.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
-        oEltDivCnr.style['-khtml-user-select'] = 'text';
-        oEltDivCnr.style['-webkit-user-select'] = 'text';
-        oEltDivCnr.style.MozUserSelect = 'text';
-        oEltDivCnr.style.userSelect = 'text';
-      }
-
-      // end event
-      function fEvtDragMouseup(oEvtIn) {
-        var nLeft = oEltDivCnrBarGhost.offsetLeft;
-
-        oEltDivCnrBarGhost.parentNode.removeChild(oEltDivCnrBarGhost);
-        oEltDivCnrBarGhost = null;
-        document.removeEventListener('mousemove', fEvtDragMousemove);
-        document.removeEventListener('mouseup', fEvtDragMouseup);
-        fTocSplit_to(nLeft);
-      }
-
-      // start event
-      function fEvtDragMousedown(oEvtIn) {
-        oEltDivCnrBarGhost = document.createElement('div');
-        oEltDivCnrBarGhost.id = 'idDivCnrBarGhost';
-        oEltDivCnrBarGhost.style.left = oEltDivCnrBar.style.left;
-        oEltDivCnr.insertBefore(oEltDivCnrBarGhost, oEltDivCnrCnt);
-        oEltDivCnr.style['-khtml-user-select'] = 'none';
-        oEltDivCnr.style['-webkit-user-select'] = 'none';
-        oEltDivCnr.style.MozUserSelect = 'none';
-        oEltDivCnr.style.userSelect = 'none';
-        document.addEventListener('mousemove', fEvtDragMousemove);
-        document.addEventListener('mouseup', fEvtDragMouseup);
-      }
-
-      oEltDivCnr.insertBefore(oEltDivCnrBar, oEltDivCnrCnt);
-      oEltDivCnrBar.id = 'idDivCnrBar';
-      oEltDivCnrBar.style.height = '100%';
-      oEltDivCnrBar.addEventListener('mousedown', fEvtDragMousedown);
-      oEltDivCnrBar.addEventListener('mouseenter', function () {
-        oEltDivCnrBar.style.background = 'green';
-      });
-      oEltDivCnrBar.addEventListener('mouseout', function () {
-        oEltDivCnrBar.style.background = 'linear-gradient(to left, #aaaaaa, #dddddd 100%)';
-      });
-
-      oEltDivCnrBarBtn.id = 'idDivCnrBarBtn';
-      oEltDivCnrBar.appendChild(oEltDivCnrBarBtn);
-      oEltDivCnrBarBtn.addEventListener('mousedown', function (oEvtIn) {
-        oEvtIn.stopPropagation();
-        fTocSplit_to((nPosSplitCurrent === 0) ? oHitp.nCfgPosSplitPrev : 0);
-        oEltDivCnrToc.scrollLeft = 0;
-      });
-      fTocSplit_to(nPosSplitCurrent);
-      //needed for proper zoom
-      window.addEventListener("resize", function () {
-        fTocSplit_to(nPosSplitCurrent);
-      });
-    };
-
-    oHitp.nTocTriIdLi = 0;
-    oEltDivCnr.id = 'idDivCnr';
-    /* remove from old-body its elements */
     oEltBody.innerHTML = '';
-    oEltBody.appendChild(oEltDivCnr);
+    oEltBody.appendChild(oEltCnrTopDiv);
+    oEltBody.appendChild(oEltCnrBodDiv);
+    oEltBody.appendChild(oEltCnrWidthCntDiv);
+    document.getElementById('idWidthCntP').addEventListener('click', function(oEvtIn) {
+      oEltCnrWidthCntDiv.style.display = 'none';
+    });
+    document.getElementById('idRdbWidth0').addEventListener('click', function(oEvtIn) {
+      fTocWidth(0);
+      oHitp.nCfgTocWidth = 0;
+    });
+    document.getElementById('idRdbWidth10').addEventListener('click', function(oEvtIn) {
+      fTocWidth(10);
+      oHitp.nCfgTocWidth = 10;
+    });
+    document.getElementById('idRdbWidth20').addEventListener('click', function(oEvtIn) {
+      fTocWidth(20);
+      oHitp.nCfgTocWidth = 20;
+    });
+    document.getElementById('idRdbWidth25').addEventListener('click', function(oEvtIn) {
+      fTocWidth(25);
+      oHitp.nCfgTocWidth = 25;
+    });
+    document.getElementById('idRdbWidth30').addEventListener('click', function(oEvtIn) {
+      fTocWidth(30);
+      oHitp.nCfgTocWidth = 30;
+    });
+    document.getElementById('idRdbWidth40').addEventListener('click', function(oEvtIn) {
+      fTocWidth(40);
+      oHitp.nCfgTocWidth = 40;
+    });
+    document.getElementById('idRdbWidth50').addEventListener('click', function(oEvtIn) {
+      fTocWidth(50);
+      oHitp.nCfgTocWidth = 50;
+    });
+    document.getElementById('idRdbWidth100').addEventListener('click', function(oEvtIn) {
+      fTocWidth(100);
+      oHitp.nCfgTocWidth = 100;
+    });
 
-    /* set on right-splitter the old-body */
-    oEltDivCnrCnt.id = 'idDivCnrCnt';
-    oEltDivCnrCnt.innerHTML = sContentOriginal;
-    oEltDivCnr.appendChild(oEltDivCnrCnt);
+    /* site-structure menu */
+    if (bServer) {
+      if (location.hostname === 'localhost') {
+        sPathSitemenu = oHitp.sCfgHomeLocal + 'filSite-structureLocal.html';
+      } else {
+        sPathSitemenu = '/filSite-structure.html';
+      }
+      oXHR.open('GET', location.origin + sPathSitemenu, true);
+      oXHR.send(null);
+      oXHR.onreadystatechange = function () {
+        if (oXHR.readyState === 4) {   // DONE
+          if (oXHR.status === 200) { // OK
+            oEltSiteTreeUl = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
+            oEltSiteTreeUl = oEltSiteTreeUl.querySelector('ul');
+            oEltSiteTreeUl.setAttribute('id', 'idSiteTreeUl');
+
+            // site-icn
+            oEltTopSiteIcnI.setAttribute('class', 'clsFa clsFaMenu clsTopIcn clsColorWhite clsFloatLeft clsTtp');
+            oEltTopSiteIcnI.innerHTML = '<span class="clsTtp">Site-structure</span>';
+            oEltTopSiteIcnI.addEventListener('click', function (oEvtIn) {
+              if (oEltTopSiteIcnI.className.indexOf('clsClicked') > -1) {
+                oEltCnrSiteCntDiv.style.display = 'block';
+                oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+              } else {
+                oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+                oHitp.oEltClicked = oEltTopSiteIcnI;
+                oEltTopSiteIcnI.classList.add('clsClicked', 'clsTtpShow');
+              }
+            });
+            // home-icn
+            oEltTopHomeIcnI.setAttribute('class', 'clsFa clsFaHome clsTopIcn clsColorWhite clsFloatLeft clsTtp');
+            oEltTopHomeIcnI.innerHTML = '<span class="clsTtp">Home-webpage</span>';
+            oEltTopHomeIcnI.addEventListener('click', function (oEvtIn) {
+              if (oEltTopHomeIcnI.className.indexOf('clsClicked') > -1) {
+                oEltTopHomeIcnI.classList.remove('clsClicked');
+                oHitp.oEltClicked.classList.remove('clsTtpShow');
+                if (bServer) {
+                  if (location.hostname === 'localhost') {
+                    location.href = location.origin + oHitp.sCfgHomeLocal;
+                  } else {
+                    location.href = location.origin;
+                  }
+                }
+              } else {
+                oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+                oHitp.oEltClicked = oEltTopHomeIcnI;
+                oEltTopHomeIcnI.classList.add('clsClicked', 'clsTtpShow');
+              }
+            });
+            //site-content
+            oEltCnrSiteCntDiv.id = 'idCnrSiteCntDiv';
+            oEltCnrSiteCntDiv.innerHTML =
+              '<p id="idSiteCntP1" class="clsCenter">close <i class="clsFa clsFaClose clsFloatRight clsColorWhite clsTopIcn"></i></p>' +
+              '<p id="idSiteCntP2" class="clsCenter">Site-structure</p>';
+            oEltCnrSiteCntDiv.appendChild(oEltSiteTreeUl);
+            oEltCnrTopDiv.insertBefore(oEltTopHomeIcnI, oEltCnrTopDiv.firstChild);
+            oEltCnrTopDiv.insertBefore(oEltTopSiteIcnI, oEltCnrTopDiv.firstChild);
+            oEltBody.appendChild(oEltCnrSiteCntDiv);
+            document.getElementById('idSiteCntP1').addEventListener('click', function(oEvtIn) {
+              oEltCnrSiteCntDiv.style.display = 'none';
+            });
+            oHitp.oTreeUl.fTruCreate(oEltSiteTreeUl);
+            oHitp.bSite = true;
+          }
+        }
+      };
+    }
+
+    /* set on content-container the original-body content */
+    oEltCnrBodCntDiv.id = 'idCnrBodCntDiv';
+    oEltCnrBodCntDiv.innerHTML = sContentOriginal;
+    oEltCnrBodDiv.appendChild(oEltCnrBodCntDiv);
 
     /* insert toc */
-    oEltDivCnrToc.id = 'idDivCnrToc';
+    oEltCnrBodTocDiv.id = 'idCnrBodTocDiv';
 
     /* insert content on tab1 */
-    oEltDivTab1Content.id = 'idDivTab1Content';
-    oEltDivTab1Content.setAttribute('class', 'clsTabContent');
-    oEltDivTab1Content.innerHTML = oHitp.fTocTriCreate();
-    oEltDivTab1Content.getElementsByTagName("ul")[0].setAttribute('id', 'idTocTri');
+    oEltTocTab1ContentDiv.id = 'idTocTab1ContentDiv';
+    oEltTocTab1ContentDiv.setAttribute('class', 'clsTabContent');
+    oEltTocTab1ContentDiv.innerHTML = oHitp.fTocTriCreate();
     /* insert collaplse-button */
-    oEltBtnTocCollapseall.setAttribute('id', 'idBtnCollapse_All');
-    oEltBtnTocCollapseall.setAttribute('type', 'button');
-    oEltBtnTocCollapseall.setAttribute('value', 'Collapse-All');
-    oEltBtnTocCollapseall.setAttribute('class', 'clsBtn');
-    oEltBtnTocCollapseall.addEventListener('click', function (oEvtIn) {
-      oHitp.fTocTriCollapseAll();
+    oEltTocCpsallBtn.setAttribute('id', 'idBtnCollapse_All');
+    oEltTocCpsallBtn.setAttribute('type', 'button');
+    oEltTocCpsallBtn.setAttribute('value', 'Collapse-All');
+    oEltTocCpsallBtn.setAttribute('class', 'clsBtn');
+    oEltTocCpsallBtn.addEventListener('click', function (oEvtIn) {
+      if (oEltTocCpsallBtn.className.indexOf('clsClicked') > -1) {
+        oHitp.oTreeUl.fTruCollapseAll();
+        oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+      } else {
+        oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+        oHitp.oEltClicked = oEltTocCpsallBtn;
+        oEltTocCpsallBtn.classList.add('clsClicked', 'clsTtpShow');
+      }
     });
-    oEltDivTab1Content.insertBefore(oEltBtnTocCollapseall, oEltDivTab1Content.firstChild);
+    oEltTocTab1ContentDiv.insertBefore(oEltTocCpsallBtn, oEltTocTab1ContentDiv.firstChild);
     /* insert expand-button */
-    oEltBtnTocExpandall.setAttribute('id', 'idBtnExp_All');
-    oEltBtnTocExpandall.setAttribute('type', 'button');
-    oEltBtnTocExpandall.setAttribute('value', 'Expand-All');
-    oEltBtnTocExpandall.setAttribute('class', 'clsBtn');
-    oEltBtnTocExpandall.addEventListener('click', function (oEvtIn) {
-      oHitp.fTocTriExpandAll();
+    oEltTocExpallBtn.setAttribute('id', 'idBtnExp_All');
+    oEltTocExpallBtn.setAttribute('type', 'button');
+    oEltTocExpallBtn.setAttribute('value', 'Expand-All');
+    oEltTocExpallBtn.setAttribute('class', 'clsBtn');
+    oEltTocExpallBtn.addEventListener('click', function (oEvtIn) {
+      if (oEltTocExpallBtn.className.indexOf('clsClicked') > -1) {
+        oHitp.oTreeUl.fTruExpandAll();
+        oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+      } else {
+        oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+        oHitp.oEltClicked = oEltTocExpallBtn;
+        oEltTocExpallBtn.classList.add('clsClicked', 'clsTtpShow');
+      }
     });
-    oEltDivTab1Content.insertBefore(oEltBtnTocExpandall, oEltDivTab1Content.firstChild);
+    oEltTocTab1ContentDiv.insertBefore(oEltTocExpallBtn, oEltTocTab1ContentDiv.firstChild);
     /* preferences */
-    oEltDivTab1Content.appendChild(document.createElement('p'));
-    oEltFrmPref.innerHTML = '<span class="clsColorGreen clsB">PREFERENCES</span>:<br>' +
+    oEltTocTab1ContentDiv.appendChild(document.createElement('p'));
+    oEltTocPrefDiv.innerHTML = '<span class="clsColorGreen clsB">PREFERENCES</span>:<br>' +
       '<fieldset><legend><span class="clsColorGreen">Fonts</span>:</legend>' +
       '<input type="radio" id="idRdbFontMono" name="nameRdbFont" checked/>Mono (default)<br>' +
       '<input type="radio" id="idRdbFontSerif" name="nameRdbFont"/>Serif<br>' +
       '<input type="radio" id="idRdbFontSSerif" name="nameRdbFont"/>Sans-serif' +
       '</fieldset>';
-    oEltDivTab1Content.appendChild(oEltFrmPref);
+    oEltTocTab1ContentDiv.appendChild(oEltTocPrefDiv);
     /* toc: add note at the end */
-    oEltPNote.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br>' +
-      'a) Clicking on LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
-      'b) Clicking on content, shows its position on ToC, shows the-links, and removes preview-window.<br>' +
-      'c) Clicking a-BLUE-link shows a-preview, and with SECOND click goes to destination.';
-    oEltDivTab1Content.appendChild(oEltPNote);
+    oEltTocNoteP.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br>' +
+      'a) Clicking on CONTENT, shows its position on ToC, the-links, the-address-link-icon <i class="clsFa clsFaLink clsImgLnkIcn"></i>, and removes ontop windows and highlights.<br>' +
+      'b) Clicking on ADDRESS-LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
+      'c) Clicking <span class="clsColorBlue">a-BLUE-LINK</span> shows a-preview.<br>' +
+      'd) SECOND-click, usually, does the-events attached to components.';
+    oEltTocTab1ContentDiv.appendChild(oEltTocNoteP);
 
     /* inset tab1 on tabcontainer */
-    oEltDivTabContentcnr.id = 'idDivTabContentcontainer';
+    oEltTocTabContentcnrDiv.id = 'idTocTabContentcnrDiv';
+    oEltTocTabContentcnrDiv.appendChild(oEltTocTab1ContentDiv);
+    //oEltTocTab2ContentDiv.id = 'idTab2ContentDiv';
+    //oEltTocTab2ContentDiv.setAttribute('class', 'clsTabContent');
+    //oEltTocTabContentcnrDiv.appendChild(oEltTocTab2ContentDiv);
 
-    oEltDivTabContentcnr.appendChild(oEltDivTab1Content);
-    //oEltDivTab2Content.id = 'idTab2ContentDiv';
-    //oEltDivTab2Content.setAttribute('class', 'clsTabContent');
-    //oEltDivTabContentcnr.appendChild(oEltDivTab2Content);
-
-    /* insert tabcontainer on spliterLeft */
-    oEltDivCnrToc.appendChild(oEltDivTabContentcnr);
+    /* insert tabcontainer on toc-container */
+    oEltCnrBodTocDiv.appendChild(oEltTocTabContentcnrDiv);
 
     /* insert tabnames */
-    oEltUlTabNames.id = 'idTabNamesUl';
-    oEltUlTabNames.innerHTML = '<li class="clsTabActive"><a href="#idTab1contentDiv">Page-structure</a></li>';
+    oEltTocTabNamesUl.id = 'idTocTabNamesUl';
+    oEltTocTabNamesUl.innerHTML = '<li class="clsTabActive"><a href="#idTocTab1ContentDiv">Page-structure</a></li>';
       //<li><a href="#idTab2contentDiv">Search</a></li>'
-    oEltDivCnrToc.insertBefore(oEltUlTabNames, oEltDivCnrToc.firstChild);
+    oEltCnrBodTocDiv.insertBefore(oEltTocTabNamesUl, oEltCnrBodTocDiv.firstChild);
 
     /* insert page-path--element */
-    oEltPPath.id = 'idPpath';
-    oEltPPath.setAttribute('title', "© 2010-2016 Kaseluris.Nikos.1959"); //nnn
+    oEltTocPathP.id = 'idTocPathP';
+    oEltTocPathP.setAttribute('title', "© 2010-2016 Kaseluris.Nikos.1959"); //nnn
     if (!document.getElementById("idMetaWebpage_path")) {
-      oEltPPath.innerHTML = 'ToC: ' + document.title;
+      oEltTocPathP.innerHTML = 'ToC: ' + document.title;
     } else {
-      oEltPPath.innerHTML = document.getElementById("idMetaWebpage_path").innerHTML;
+      oEltTocPathP.innerHTML = document.getElementById("idMetaWebpage_path").innerHTML;
     }
-    oEltDivCnrToc.insertBefore(oEltPPath, oEltDivCnrToc.firstChild);
+    oEltCnrBodTocDiv.insertBefore(oEltTocPathP, oEltCnrBodTocDiv.firstChild);
 
-    /* insert site-structure menu */
-    if (location.hostname !== '') {
-      oEltDivHitpmenu.id = 'idHitpmenu';
-      if (location.hostname === 'localhost') {
-        sCfgPathMenu = oHitp.sCfgPathMenuLocal;
-      } else {
-        sCfgPathMenu = oHitp.sCfgPathMenuOnline;
-      }
-      oXHR.open('GET', location.origin + sCfgPathMenu, false);
-      oXHR.send(null);
-      if (oXHR.status === 200) {
-        oEltDivHitpmenu.innerHTML = oXHR.responseText;
-        oEltDivCnrToc.insertBefore(oEltDivHitpmenu, oEltDivCnrToc.firstChild);
-        oEltDivHitpmenu.addEventListener('mouseover', function () {
-          oHitp.nCfgPosSplitPrev = oEltDivCnrToc.offsetWidth;
-          oEltDivCnrToc.style.width = window.innerWidth + 'px';
-        });
-        oEltDivHitpmenu.addEventListener('mouseout', function () {
-          oEltDivCnrToc.style.width = oHitp.nCfgPosSplitPrev + 'px';
-        });
-      }
-    }
-
-    /* clicking on content-link first go to its location, this way the backbutton goes where we clicked. */
-    Array.prototype.slice.call(document.querySelectorAll('#idDivCnrCnt a')).forEach(function (oEltIn, nIndex, array) {
+    /* clicking on content-link first go to its location,
+     * this way the backbutton goes where we clicked. */
+    Array.prototype.slice.call(document.querySelectorAll('#idCnrBodCntDiv a')).forEach(function (oEltIn, nIndex, array) {
       oEltIn.addEventListener('click', function (oEvtIn) {
         var
-          oEltSec = oEltIn,
-          sID;
+          oEltScn = oEltIn,
+          sIdScn;
 
         oEvtIn.preventDefault();
 
         function fGo_where_clicked() {
           // first, go to where you clicked
-          while (!oEltSec.tagName.match(/^SECTION/i)) {
-            sID = oEltSec.id;
-            if (sID) {
+          while (!oEltScn.tagName.match(/^SECTION/i)) {
+            sIdScn = oEltScn.id;
+            if (sIdScn) {
               break;
             } else {
-              oEltSec = oEltSec.parentNode;
+              oEltScn = oEltScn.parentNode;
             }
           }
-          sID = '#' + sID;
-          if (location.hash !== sID) {
-            location.href = sID;
+          sIdScn = '#' + sIdScn;
+          if (location.hash !== sIdScn) {
+            location.href = sIdScn;
           }
         }
 
-        if (oEltIn.className.match(/(^| )clsClicked( |$)/)) {
+        if (oEltIn.className.indexOf('clsClicked') > -1) {
           oEltIn.classList.remove('clsClicked');
           fGo_where_clicked();
           location.href = oEltIn.href;
         } else {
-          oEltAClicked.classList.remove('clsClicked');
-          oEltAClicked = oEltIn;
+//          if (oHitp.oEltClicked.href !== oEltIn.href) {
+            oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+//          }
+          oHitp.oEltClicked.classList.remove('clsTtpShow', 'clsTriClicked');
+          oHitp.oEltClicked = oEltIn;
           oEltIn.classList.add('clsClicked');
-          if (oEltIn.className.match(/(^| )clsPreview( |$)/)) {
-            // if has clsPreview popup
+          if (oEltIn.className.indexOf('clsPreview') > -1) {
+            fEvtClickContent(oEvtIn);
             fEvtPreview(oEvtIn);
           }
         }
       });
     });
 
-    /* insert spliterLeft */
-    oEltDivCnr.insertBefore(oEltDivCnrToc, oEltDivCnr.firstChild);
-    fSplitDynamic(oEltDivCnr);
+    /* insert toc-cnr on body-cnr */
+    oEltCnrBodDiv.insertBefore(oEltCnrBodTocDiv, oEltCnrBodDiv.firstChild);
+
+    /* Sets width of toc-cnr */
+    function fTocWidth(nPercentIn) {
+      var
+        nWidthCnt,
+        nWidthToc;
+
+      nWidthToc = parseInt(window.outerWidth * (nPercentIn / 100));
+      nWidthCnt = oEltCnrBodDiv.offsetWidth - nWidthToc;
+      oEltCnrBodTocDiv.style.width = nWidthToc + 'px';
+      oEltCnrBodCntDiv.style.width = nWidthCnt + 'px';
+      oEltCnrBodCntDiv.style.left = nWidthToc + 'px';
+    }
+    fTocWidth(oHitp.nCfgTocWidth);
+    //needed for proper zoom
+    window.addEventListener("resize", function () {
+      fTocWidth(oHitp.nCfgTocWidth);
+    });
 
     /* on content get-id, highlight toc, highlight links, remove popup, remove clicked link */
     fEvtClickContent = function (oEvtIn) {
-      var sID = '',
-        oEltSec = oEvtIn.target;
+      var sIdScn = '',
+        oEltScn = oEvtIn.target;
 
-      oEvtIn.stopPropagation();
       if (oEvtIn.target.nodeName !== 'A') {
-        oEltAClicked.classList.remove('clsClicked');
+        oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow');
       }
 
-      // remove popup
-      oEltDivPopup.style.display = 'none';
+      oEltCnrPreviewDiv.style.display = 'none'; // remove popup
+      oEltCnrSiteCntDiv.style.display = 'none'; // remove site-content
+      oEltCnrWidthCntDiv.style.display = 'none'; // remove width-content
 
-      /* find the id of closest header */
-      /* first go where you click */
-      sID = '#' + oEltSec.id;
-
-      /* find  section's id */
-      while (oEltSec && !oEltSec.tagName.match(/^SECTION/i)) {
-        oEltSec = oEltSec.parentNode;
-        if (!oEltSec.tagName) {
+      /* find id of enclosing SECTION, this is-stored on toc */
+      sIdScn = '#' + oEltScn.id;
+      while (oEltScn && !oEltScn.tagName.match(/^SECTION/i)) {
+        oEltScn = oEltScn.parentNode;
+        if (!oEltScn.tagName) {
           break;
-        } else if (oEltSec.tagName.match(/^HEADER/i)
-                || oEltSec.tagName.match(/^FOOTER/i)) {
+        } else if (oEltScn.tagName.match(/^HEADER/i)
+                || oEltScn.tagName.match(/^FOOTER/i)) {
           break;
         }
       }
-      if (oEltSec.tagName) {
-        if (oEltSec.tagName.match(/^HEADER/i)) {
-          sID = '#idHeader';
-        } else if (oEltSec.tagName.match(/^FOOTER/i)) {
-          sID = '#idFooter';
+      if (oEltScn.tagName) {
+        if (oEltScn.tagName.match(/^HEADER/i)) {
+          sIdScn = '#idHeader';
+        } else if (oEltScn.tagName.match(/^FOOTER/i)) {
+          sIdScn = '#idFooter';
         } else {
-          sID = '#' + oEltSec.id;
+          sIdScn = '#' + oEltScn.id;
         }
       }
+
       /* on toc highlight the-found-id */
       Array.prototype.slice.call(document.querySelectorAll('#idTocTri a')).forEach(function (oEltAIn, nIndex, array) {
-        if (oEltAIn.getAttribute('href') === sID) {
-          oHitp.fTocTriCollapseAll();
-          oHitp.fTocTriHighlightNode(oEltDivCnrToc, oEltAIn);
-          oHitp.fTocTriExpandParent(oEltAIn);
+        if (oEltAIn.getAttribute('href') === sIdScn) {
+          oHitp.oTreeUl.fTruExpandParent(oEltAIn);
+          oHitp.fTocTriHighlightNode(oEltCnrBodTocDiv, oEltAIn);
           if (oEltAIn.scrollIntoViewIfNeeded) {
             oEltAIn.scrollIntoViewIfNeeded(true)
           } else {
             oEltAIn.scrollIntoView(false);
           }
-          document.getElementById("idDivCnrToc").scrollLeft = 0;
+          document.getElementById("idCnrBodTocDiv").scrollLeft = 0;
         }
       });
+
       /* on found-id on a-elt add clsClickCnt */
       oHitp.sQrAClkLast = oHitp.sQrAClk;
-      oHitp.sQrAClk = '#' + oEvtIn.target.id + ' a';
       var oElt = oEvtIn.target;
+      oHitp.sQrAClk = '#' + oElt.id + ' a';
       while (oHitp.sQrAClk == '# a') {
         oElt = oElt.parentNode;
         oHitp.sQrAClk = '#' + oElt.id + ' a';
       }
       if (oHitp.sQrAClkLast !== oHitp.sQrAClk) {
-        Array.prototype.slice.call(document.querySelectorAll(oHitp.sQrAClk)).forEach(function (oEltAIn, nIndex, array) {
-          oEltAIn.classList.add('clsClickCnt');
-        });
         Array.prototype.slice.call(document.querySelectorAll(oHitp.sQrAClkLast)).forEach(function (oEltAIn, nIndex, array) {
           oEltAIn.classList.remove('clsClickCnt');
         });
+        Array.prototype.slice.call(document.querySelectorAll(oHitp.sQrAClk)).forEach(function (oEltAIn, nIndex, array) {
+          oEltAIn.classList.add('clsClickCnt');
+        });
       }
     };
-    Array.prototype.slice.call(document.querySelectorAll('#idDivCnrCnt *[id]')).forEach(function (oEltIn, nIndex, array) {
+    Array.prototype.slice.call(document.querySelectorAll('#idCnrBodCntDiv *[id]')).forEach(function (oEltIn, nIndex, array) {
       oEltIn.addEventListener('click', fEvtClickContent);
     });
 
     /* On TABS Click Event */
-    Array.prototype.slice.call(document.querySelectorAll('ul#idTabNamesUl li')).forEach(function (oEltIn, nIndex, array) {
+    Array.prototype.slice.call(document.querySelectorAll('ul#idTocTabNamesUl li')).forEach(function (oEltIn, nIndex, array) {
       oEltIn.addEventListener('click', function (oEvtIn) {
         oEvtIn.preventDefault();
         //Remove any "active" class
@@ -441,8 +508,8 @@ var oHitp = (function () {
     });
 
     /* insert popup container */
-    oEltDivPopup.id = 'idPopup';
-    document.body.appendChild(oEltDivPopup);
+    oEltCnrPreviewDiv.id = 'idCnrPreviewDiv';
+    oEltBody.appendChild(oEltCnrPreviewDiv);
     /* on links with clsPreview add this event-listener */
     fEvtPreview = function (oEvtIn) {
       var sLoc, sId1, sId2,
@@ -466,9 +533,9 @@ var oHitp = (function () {
       }
       /* internal-link */
       if (sLoc === sId1) {
-        oEltDivPopup.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
+        oEltCnrPreviewDiv.innerHTML = '<section>' + document.getElementById(sId2).innerHTML + '</section>';
       } else {
-        oEltDivPopup.innerHTML = '';
+        oEltCnrPreviewDiv.innerHTML = '';
         oXHR = new XMLHttpRequest();
         oXHR.open('GET', sId1, false);
         oXHR.send(null);
@@ -476,7 +543,7 @@ var oHitp = (function () {
           if (sId2) {
             //IF #fragment url, display only this element.
             oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
-            oEltDivPopup.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+            oEltCnrPreviewDiv.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
           } else {
             //IF link to a picture, display it, not its code.
             if (sId1.match(/(png|jpg|gif)$/)) {
@@ -492,79 +559,73 @@ var oHitp = (function () {
                   nIW = (nIW * nPH) / nIH;
                   nIH = nPH;
                 }
-                oEltDivPopup.innerHTML = '<p class="clsCenter"><img src="' + sId1
+                oEltCnrPreviewDiv.innerHTML = '<p class="clsCenter"><img src="' + sId1
                   + '" width="' + nIW
                   + '" height="' + nIH + '" /></p>';
               });
             } else {
-              document.getElementById('idPopup').innerHTML = oXHR.responseText;
+              document.getElementById('idCnrPreviewDiv').innerHTML = oXHR.responseText;
             }
           }
         }
       }
 
-      oEltDivPopup.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
+      oEltCnrPreviewDiv.style.top = (nWh / 2) - (nWh * 0.44 / 2)  + 'px'; //the height of popup is 44% of window
       if (nPx < nWw / 2) {
-        oEltDivPopup.style.left = (nWw / 2) + 9 + 'px';
+        oEltCnrPreviewDiv.style.left = (nWw / 2) + 9 + 'px';
       } else {
-        oEltDivPopup.style.left = 26 + 'px';
+        oEltCnrPreviewDiv.style.left = 26 + 'px';
       }
-      oEltDivPopup.style.overflow = 'auto';
-      oEltDivPopup.style.display = 'block';
+      oEltCnrPreviewDiv.style.overflow = 'auto';
+      oEltCnrPreviewDiv.style.display = 'block';
     };
 
     /* change font */
-    oEltRdbFontMono = document.getElementById('idRdbFontMono');
-    oEltRdbFontSerif = document.getElementById('idRdbFontSerif');
-    oEltRdbFontSSerif = document.getElementById('idRdbFontSSerif');
-    oEltRdbFontMono.addEventListener('click', function(oEvtIn) {
+    document.getElementById('idRdbFontMono').addEventListener('click', function(oEvtIn) {
       oEltBody.style.fontFamily = 'fntUbuntuMono, "Courier New", "Lucida Console"';      
     });
-    oEltRdbFontSerif.addEventListener('click', function(oEvtIn) {
+    document.getElementById('idRdbFontSerif').addEventListener('click', function(oEvtIn) {
       oEltBody.style.fontFamily = '"Times New Roman", Georgia';      
     });
-    oEltRdbFontSSerif.addEventListener('click', function(oEvtIn) {
+    document.getElementById('idRdbFontSSerif').addEventListener('click', function(oEvtIn) {
       oEltBody.style.fontFamily = 'Arial, Verdana';      
     });
-
-
-    /* tree initialization */
-    oHitp.fTocTriInit();
 
     /* what to do on clicking a link in toc */
     Array.prototype.slice.call(document.querySelectorAll("#idTocTri li > a")).forEach(function (oEltIn, nIndex, array) {
       oEltIn.addEventListener('click', function (oEvtIn) {
         oEvtIn.preventDefault();
-        if (oEltIn.className.match(/(^| )clsPreview( |$)/)) {
-          if (oEltIn.className.match(/(^| )clsClicked( |$)/)) {
+        oHitp.oEltClicked.classList.remove('clsTtpShow');
+        if (oEltIn.className.indexOf('clsPreview') > -1) {
+          if (oEltIn.className.indexOf('clsClicked') > -1) {
             oEltIn.classList.remove('clsClicked');
-            oEltDivPopup.style.display = 'none';
+            oEltCnrPreviewDiv.style.display = 'none';
             location.href = '#' + oEvtIn.target.href.split('#')[1];
-            oHitp.fTocTriHighlightNode(oEltDivCnrToc, oEltIn);
+            oHitp.fTocTriHighlightNode(oEltCnrBodTocDiv, oEltIn);
           } else {
-            oEltAClicked.classList.remove('clsClicked');
-            oEltAClicked = oEltIn;
+            oHitp.oEltClicked.classList.remove('clsClicked');
+            oHitp.oEltClicked = oEltIn;
             oEltIn.classList.add('clsClicked');
             //popup
             fEvtPreview(oEvtIn);
           }
         } else {
-          oEltDivPopup.style.display = 'none';
+          oEltCnrPreviewDiv.style.display = 'none';
           location.href = '#' + oEvtIn.target.href.split('#')[1];
-          oHitp.fTocTriHighlightNode(oEltDivCnrToc, oEltIn);
+          oHitp.fTocTriHighlightNode(oEltCnrBodTocDiv, oEltIn);
         }
       });
     });
 
-    oHitp.fTocTriExpandAll();
-    oHitp.fTocTriCollapseAll();
-    oHitp.fTocTriExpandFirst();
+    oHitp.oTreeUl.fTruExpandAll();
+    oHitp.oTreeUl.fTruCollapseAll();
+    oHitp.oTreeUl.fTruExpandFirst();
     /* IF on idMetaWebpage_path paragraph we have and the clsTocExpand
      * then the toc expands-all */
     if (document.getElementById("idMetaWebpage_path")) {
       if (document.getElementById("idMetaWebpage_path").getAttribute('class') === 'classTocExpand' ||
           document.getElementById("idMetaWebpage_path").getAttribute('class') === 'clsTocExpand') {
-        oHitp.fTocTriExpandAll();
+        oHitp.oTreeUl.fTruExpandAll();
       }
     }
 
@@ -573,15 +634,15 @@ var oHitp = (function () {
     };
 
     /* focus on right-div, Div can get the focus if it has tabindex attribute... on chrome */
-    document.getElementById('idDivCnrCnt').setAttribute('tabindex', -1);
-    document.getElementById('idDivCnrCnt').focus();
+    document.getElementById('idCnrBodCntDiv').setAttribute('tabindex', -1);
+    document.getElementById('idCnrBodCntDiv').focus();
   };
 
-  /** 2013.07.17
+  /**
+   * created: {2013.07.17}
    * Returns a string html-ul-element that holds the-toc-tree with the-headings of the-page.
-   * <ul>
-   *   <li><a href="#heading">heading</a><li>
-   *   <li><a href="#heading">heading</a>
+   * ul id="idTocTri" class="clsTreeUl">
+   *   <li><a class="clsPreview" href="#idHeader">SynAgonism</a>
    *     <ul>
    *       <li><a href="#heading">heading</a><li>
    *       <li><a href="#heading">heading</a><li>
@@ -612,7 +673,7 @@ var oHitp = (function () {
     sHcnt = aHdng[0].innerHTML;
     sHcnt = sHcnt.replace(/\n {4}<a class="clsHide" href=[^<]+<\/a>/, '');
     sHcnt = sHcnt.replace(/<br\/*>/g, ' ');
-    sUl = '<ul><li><a class="clsPreview" href="#idHeader">' + sHcnt + '</a>';
+    sUl = '<ul id="idTocTri" class="clsTreeUl"><li><a class="clsPreview" href="#idHeader">' + sHcnt + '</a>';
 
     for (n = 1; n < aHdng.length; n += 1) {
       oElt = aHdng[n];
@@ -662,195 +723,48 @@ var oHitp = (function () {
       }
       nLvlPrev = nLvlThis;
     }
-    sUl += '</li></ul>';
+    sUl += '</li></ul></li></ul>';
     return sUl;
   };
 
-  /** Makes the display-style: none. */
-  oHitp.fTocTriCollapseAll = function () {
-    var aSubnodes,
-      aTocTriLIs = document.getElementById('idTocTri').getElementsByTagName('li'),
-      n;
-
-    for (n = 0; n < aTocTriLIs.length; n += 1) {
-      aSubnodes = aTocTriLIs[n].getElementsByTagName('ul');
-      if (aSubnodes.length > 0 && aSubnodes[0].style.display === 'block') {
-        oHitp.fTocTriEvtToggleNode(false, aTocTriLIs[n].id);
-      }
-    }
-  };
-
-  /**
-   * Expands, collaples a-toc-tree node and puts the correct icon.
-   * It is also an-event-listener for toc-tree-icons.
-   *
-   * To create the expandable-toctree I read code from
-   * http://www.dhtmlgoodies.com/
-   */
-  oHitp.fTocTriEvtToggleNode = function (oEvtIn, sIdLiIn) {
-    var oEltImg, oNodePnt;
-
-    //<li id="idTocTriLi2">
-    //  <img src="imgToc1Exp17" />
-    //  <a href="#idDescription" class="clsTocTriHighlight">Description</a>
-    //</li>
-    if (sIdLiIn) {
-      if (!document.getElementById(sIdLiIn)) {
-        return;
-      }
-      oEltImg = document.getElementById(sIdLiIn).getElementsByTagName('img')[0];
-    } else {
-      //this function is also the event-listener of onclick in toc icons.
-      //Then, 'this' is the img element.
-      oEltImg = this;
-    }
-    oNodePnt = oEltImg.parentNode;/* ⊕⊝⊙▽△◇,⇧⇩⇨⇦∧∨⋁⋀⇑⇓↥↧,▼▲◆,∇∆ */
-    if (oEltImg.src.indexOf(sImgTriExpW) !== -1) {
-      oEltImg.setAttribute('src', sImgTriColW);
-      oEltImg.setAttribute('class', 'clsTocTriIcn');
-      oNodePnt.getElementsByTagName('ul')[0].style.display = 'block';
-    } else if (oEltImg.src.indexOf(sImgTriExp) !== -1) {
-      oEltImg.setAttribute('src', sImgTriCol);
-      oEltImg.setAttribute('class', 'clsTocTriIcn');
-      oNodePnt.getElementsByTagName('ul')[0].style.display = 'block';
-    } else if (oEltImg.src.indexOf(sImgTriColW) !== -1) {
-      oEltImg.setAttribute('src', sImgTriExpW);
-      oEltImg.setAttribute('class', 'clsTocTriIcn');
-      oNodePnt.getElementsByTagName('ul')[0].style.display = 'none';
-    } else if (oEltImg.src.indexOf(sImgTriCol) !== -1) {
-      oEltImg.setAttribute('src', sImgTriExp);
-      oEltImg.setAttribute('class', 'clsTocTriIcn');
-      oNodePnt.getElementsByTagName('ul')[0].style.display = 'none';
-    }
-    return false;
-  };
-
   /** Highlights ONE item in toc-list */
-  oHitp.fTocTriHighlightNode = function (oEltDivCnrToc, oElm) {
+  oHitp.fTocTriHighlightNode = function (oEltCnrBodTocDiv, oElm) {
     /* removes existing highlighting */
-    var aTocTriAs = oEltDivCnrToc.getElementsByTagName('a'),
+    var aTocTriA = oEltCnrBodTocDiv.getElementsByTagName('a'),
       n;
 
-    for (n = 0; n < aTocTriAs.length; n += 1) {
-      aTocTriAs[n].classList.remove('clsTocTriHighlight');
+    for (n = 0; n < aTocTriA.length; n += 1) {
+      aTocTriA[n].classList.remove('clsTocTriHighlight');
     }
     oElm.classList.add('clsTocTriHighlight');
   };
 
   /**
-   * Inserts images with onclick events, before a-elements.
-   * Sets ids on li-elements.
-   */
-  oHitp.fTocTriInit = function () {
-    var aEltA, aSubnodes, aTocTriLIs,
-      n,
-      oEltImg, oTocTriUl;
-
-    oTocTriUl = document.getElementById('idTocTri');
-    aTocTriLIs = oTocTriUl.getElementsByTagName('li');
-    for (n = 0; n < aTocTriLIs.length; n += 1) {
-      oHitp.nTocTriIdLi += 1;
-      aSubnodes = aTocTriLIs[n].getElementsByTagName('ul');
-      oEltImg = document.createElement('img');
-      oEltImg.setAttribute('src', sImgTriExp);
-      oEltImg.setAttribute('class', 'clsTocTriIcn');
-      if (aSubnodes.length === 0) {
-        oEltImg.setAttribute('src', sImgTriLif);
-        oEltImg.setAttribute('class', 'clsTocTriIcnLif');
-      } else {
-        oEltImg.addEventListener('click', oHitp.fTocTriEvtToggleNode);
-        oEltImg.addEventListener('mouseover', function(oEvtIn){
-          var oEltImg = this;
-            sImgsrc = oEltImg.src;
-          if (sImgsrc.indexOf(sImgTriExp) !== -1) {
-            oEltImg.setAttribute('src', sImgTriExpW);
-          } else {
-            oEltImg.setAttribute('src', sImgTriColW);
-          }
-        });
-        oEltImg.addEventListener('mouseout', function(oEvtIn){
-          var oEltImg = this;
-            sImgsrc = oEltImg.src;
-          if (sImgsrc.indexOf(sImgTriExpW) !== -1) {
-            oEltImg.setAttribute('src', sImgTriExp);
-          } else {
-            oEltImg.setAttribute('src', sImgTriCol);
-          }
-        });
-      }
-      aEltA = aTocTriLIs[n].getElementsByTagName('a')[0];
-      aTocTriLIs[n].insertBefore(oEltImg, aEltA);
-      if (!aTocTriLIs[n].id) {
-        aTocTriLIs[n].id = 'idTocTriLi' + oHitp.nTocTriIdLi;
-      }
-    }
-  };
-
-  /** Makes the display-style: block. */
-  oHitp.fTocTriExpandAll = function () {
-    var aSubnodes,
-      aTocTriLIs = document.getElementById('idTocTri').getElementsByTagName('li'),
-      n;
-
-    for (n = 0; n < aTocTriLIs.length; n += 1) {
-      aSubnodes = aTocTriLIs[n].getElementsByTagName('ul');
-      if (aSubnodes.length > 0 && aSubnodes[0].style.display !== 'block') {
-        oHitp.fTocTriEvtToggleNode(false, aTocTriLIs[n].id);
-      }
-    }
-  };
-
-  /** Expands the first children. */
-  oHitp.fTocTriExpandFirst = function () {
-    var aTocTriLIs, aSubnodes;
-
-    aTocTriLIs = document.getElementById('idTocTri').getElementsByTagName('li');
-    /* expand the first ul-element */
-    aSubnodes = aTocTriLIs[0].getElementsByTagName('ul');
-    if (aSubnodes.length > 0 && aSubnodes[0].style.display !== 'block') {
-      oHitp.fTocTriEvtToggleNode(false, aTocTriLIs[0].id);
-    }
-  };
-
-  /**
-   * Expands all the parents ONLY, of an element with link to a heading.
-   */
-  oHitp.fTocTriExpandParent = function (oEltAIn) {
-    var oEltImg, oEltUl;
-
-    /** the parent of a-link-elm is li-elm with parent a ul-elm. */
-    oEltUl = oEltAIn.parentNode.parentNode;
-    while (oEltUl.tagName === 'UL') {
-      oEltUl.style.display = 'block';
-      /* the parent is li-elm, its first-child is img */
-      oEltImg = oEltUl.parentNode.firstChild;
-      if (oEltImg.tagName === 'IMG' && oEltImg.src.indexOf(sImgTriExp) !== -1) {
-        oEltImg.setAttribute('src', sImgTriCol);
-        oEltImg.setAttribute('class', 'clsTocTriIcn');
-      }
-      oEltUl = oEltUl.parentNode.parentNode;
-    }
-  };
-
-  /**
    * Created: {2016.07.20}
-   * Makes u-lists with clsTreeUl, trees (collapsible).
+   * Makes u-lists with clsTreeUl, collapsible-trees.
    */
   oHitp.oTreeUl = (function(){
 
     var oTreeUl = {};
 
     /**
-     * We have to call this function once to make all clsTreeUl-lists trees.
+     * Creates one-clsTreeUl-list tree.
+     * If no input, creates ALL lists of the-doc trees.
      */
-    oTreeUl.fTruCreate = function(){
+    oTreeUl.fTruCreate = function(oUlIn){
       // find all clsTreeUl-lists
       var
         aLi,
-        aUl = document.getElementsByClassName('clsTreeUl'),
+        aUl,
         aUlSub,
         n, n2,
-        oEltImg;
+        oEltI;
+
+      if (oUlIn) {
+        aUl = [oUlIn];
+      } else {
+        aUl = document.querySelectorAll('.clsTreeUl');
+      }
 
       for (n = 0; n < aUl.length; n++){
         // add the-clsTreeUl to the-sub-lists
@@ -864,114 +778,168 @@ var oHitp = (function () {
         // add event-listener
         aLi = aUl[n].getElementsByTagName('li');
         for (n2 = 0; n2 < aLi.length; n2++){
-          if (aLi[n2].parentNode === aUl[n]){
-            aUlSub = aLi[n2].getElementsByTagName('ul');
-            oEltImg = document.createElement('img');
-            oEltImg.setAttribute('src', sImgTriCol);
-            oEltImg.setAttribute('class', 'clsTreeUlIcn');
-            if (aUlSub.length === 0) {
-              oEltImg.setAttribute('src', sImgTriLif);
-              oEltImg.setAttribute('class', 'clsTreeUlIcnLif');
-            } else {
-              oEltImg.addEventListener('click', fCreateClickListener(aLi[n2]));
-              oEltImg.addEventListener('mouseover', function(oEvtIn){
-                var oEltImg = this;
-                  sImgsrc = oEltImg.src;
-                if (sImgsrc.indexOf(sImgTriExp) === 0) {
-                  oEltImg.setAttribute('src', sImgTriExpW);
-                } else {
-                  oEltImg.setAttribute('src', sImgTriColW);
-                }
-              });
-              oEltImg.addEventListener('mouseout', function(oEvtIn){
-                var oEltImg = this;
-                  sImgsrc = oEltImg.src;
-                if (sImgsrc.indexOf(sImgTriExpW) === 0) {
-                  oEltImg.setAttribute('src', sImgTriExp);
-                }
-                if (sImgsrc.indexOf(sImgTriColW) === 0) {
-                  oEltImg.setAttribute('src', sImgTriCol);
-                }
-              });
-            }
-            aLi[n2].insertBefore(oEltImg, aLi[n2].firstChild);
-
-            // collapse the-lists within this listitem
-            fTruToggle_li(aLi[n2]);
+          aUlSub = aLi[n2].getElementsByTagName('ul');
+          oEltI = document.createElement('i');
+          oEltI.setAttribute('class', 'clsFa clsFaCrcCol');
+          if (aUlSub.length === 0) {
+            oEltI.setAttribute('class', 'clsFa clsFaCrc');
+          } else {
+            oEltI.addEventListener('click', fTruListenerClickCreate(aLi[n2]));
           }
+          aLi[n2].insertBefore(oEltI, aLi[n2].firstChild);
+
+          // collapse the-lists within this listitem
+          oTreeUl.fTruToggleLi(aLi[n2]);
+
           // first-level expand
           if (aLi[n2].parentNode.parentNode.nodeName !== 'LI') {
-            fTruToggle_li(aLi[n2]);
+            oTreeUl.fTruToggleLi(aLi[n2]);
           }
         }
       }
     };
 
     /**
-     * Returns a-click-listener that toggles the input listitem.
-     *
-     * @input {object} oLiIn The-listitem to toggle
-     */
-    function fCreateClickListener(oLiIn){
-      return function(oEvtIn){
-        var
-          oEltImg = oEvtIn.target,
-          oLi = (oEvtIn.target.parentNode),
-          sImgsrc = oEltImg.src;
-
-        if (oLi == oLiIn) fTruToggle_li(oLiIn);
-        if (sImgsrc === sImgTriExpW) {
-          oEltImg.setAttribute('src', sImgTriColW);
-        } else if (sImgsrc === sImgTriColW) {
-          oEltImg.setAttribute('src', sImgTriExpW);
-        }
-      };
-    }
-
-    /**
      * Expands or Collapses an-input-listitem.
      *
-     * @input {object} oLiIn The-listitem to toggle
+     * @input {object} oEltLiIn The-listitem to toggle
      */
-    function fTruToggle_li(oLiIn){
+    oTreeUl.fTruToggleLi = function(oEltLiIn){
       var
         aUl,
         // determine whether to expand or collaple
-        bCollapsed = oLiIn.className.match(/(^| )clsTreeUlCollapsed( |$)/),
+        bCollapsed = oEltLiIn.firstChild.className.indexOf('clsFaCrcExp') > -1,
         n,
-        oLi;
+        oEltLi;
 
       // find uls of input li
-      aUl = oLiIn.getElementsByTagName('ul');
+      aUl = oEltLiIn.getElementsByTagName('ul');
       for (n = 0; n < aUl.length; n++){
         // toggle display of first-level ul
-        oLi = aUl[n];
-        while (oLi.nodeName != 'LI') {
-          oLi = oLi.parentNode;
+        oEltLi = aUl[n];
+        while (oEltLi.nodeName != 'LI') {
+          oEltLi = oEltLi.parentNode;
         }
-        if (oLi == oLiIn) {
+        if (oEltLi == oEltLiIn) {
           aUl[n].style.display = bCollapsed ? 'block' : 'none';
         }
       }
 
-      oLiIn.removeAttribute('class');
       if (aUl.length > 0){
         if (bCollapsed) {
-          oLiIn.className = 'clsTreeUlExpanded';
-          oLiIn.firstChild.setAttribute('src', sImgTriCol);
+          if (oEltLiIn.firstChild.tagName === 'I') {
+            oEltLiIn.firstChild.classList.remove('clsFaCrcExp');
+            oEltLiIn.firstChild.classList.add('clsFaCrcCol');
+          }
         } else {
-          oLiIn.className = 'clsTreeUlCollapsed';
-          oLiIn.firstChild.setAttribute('src', sImgTriExp);
+          if (oEltLiIn.firstChild.tagName === 'I') {
+            oEltLiIn.firstChild.classList.remove('clsFaCrcCol');
+            oEltLiIn.firstChild.classList.add('clsFaCrcExp');
+          }
         }
       }
+    };
+
+    /** Makes the display-style: none. */
+    oTreeUl.fTruCollapseAll = function () {
+      var aSubnodes,
+        aTocTriLI = document.getElementById('idTocTri').getElementsByTagName('li'),
+        n;
+
+      for (n = 0; n < aTocTriLI.length; n += 1) {
+        aSubnodes = aTocTriLI[n].getElementsByTagName('ul');
+        if (aSubnodes.length > 0 && aSubnodes[0].style.display === 'block') {
+          oHitp.oTreeUl.fTruToggleLi(aTocTriLI[n]);
+        }
+      }
+    };
+
+    /** Makes the display-style: block. */
+    oTreeUl.fTruExpandAll = function () {
+      var aSubnodes,
+        aTocTriLI = document.getElementById('idTocTri').getElementsByTagName('li'),
+        n;
+
+      for (n = 0; n < aTocTriLI.length; n += 1) {
+        aSubnodes = aTocTriLI[n].getElementsByTagName('ul');
+        if (aSubnodes.length > 0 && aSubnodes[0].style.display === 'none') {
+          oHitp.oTreeUl.fTruToggleLi(aTocTriLI[n]);
+        }
+      }
+    };
+
+    /** Expands the first children. */
+    oTreeUl.fTruExpandFirst = function () {
+      var aTocTriLI, aSubnodes;
+
+      aTocTriLI = document.getElementById('idTocTri').getElementsByTagName('li');
+      /* expand the first ul-element */
+      aSubnodes = aTocTriLI[0].getElementsByTagName('ul');
+      if (aSubnodes.length > 0 && aSubnodes[0].style.display === 'none') {
+        oHitp.oTreeUl.fTruToggleLi(aTocTriLI[0]);
+      }
+    };
+
+    /**
+     * Expands all the parents ONLY, of an element with link to a heading.
+     */
+    oTreeUl.fTruExpandParent = function (oEltAIn) {
+      var oEltI, oEltUl;
+
+      oHitp.oTreeUl.fTruCollapseAll();
+      /** the parent of a-link-elm is li-elm with parent a ul-elm. */
+      oEltUl = oEltAIn.parentNode.parentNode;
+      while (oEltUl.tagName === 'UL') {
+        oEltUl.style.display = 'block';
+        /* the parent is li-elm, its first-child is img */
+        oEltI = oEltUl.parentNode.firstChild;
+        if (oEltI.tagName === 'I' && oEltI.className.indexOf('clsFaCrcExp') > -1) {
+          oEltI.classList.remove('clsFaCrcExp');
+          oEltI.classList.add('clsFaCrcCol');
+        }
+        oEltUl = oEltUl.parentNode.parentNode;
+      }
+    };
+
+    /**
+     * Returns a-click-listener that toggles the input listitem.
+     *
+     * @input {object} oEltLiIn The-listitem to toggle
+     */
+    function fTruListenerClickCreate(oEltLiIn){
+      return function(oEvtIn){
+        var
+          oEltI = oEvtIn.target,
+          oEltLi = (oEvtIn.target.parentNode),
+          sIcls = oEltI.className;
+
+        if (sIcls.indexOf('clsTriClicked') > -1) {
+          oHitp.oEltClicked.classList.remove('clsTriClicked');
+          oEltI.classList.remove('clsTriClicked');
+          if (oEltLi == oEltLiIn) oTreeUl.fTruToggleLi(oEltLiIn);
+          if (sIcls.indexOf('clsFaCrcExp') > -1) {
+            oEltI.classList.remove('clsFaCrcExp');
+            oEltI.classList.add('clsFaCrcCol');
+          } else if (sIcls.indexOf('clsFaCrcCol') > -1) {
+            oEltI.classList.remove('clsFaCrcCol');
+            oEltI.classList.add('clsFaCrcExp');
+          }
+        } else {
+          oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+          oHitp.oEltClicked = oEltI;
+          oEltI.classList.add('clsTriClicked');
+        }
+      };
     }
 
     return oTreeUl;
   })();
 
   document.addEventListener('DOMContentLoaded', function () {
-    oHitp.fTocCnrInsert();
-    oHitp.oTreeUl.fTruCreate();
+    oHitp.fContainersInsert();
+    if (!oHitp.bSite) {
+      oHitp.oTreeUl.fTruCreate();
+    }
   });
 
   return oHitp;
