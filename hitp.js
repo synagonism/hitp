@@ -1,5 +1,5 @@
 /*
- * version.15-1.2016-10-29.last.minor: hitp.css
+ * version.15-2.2016-10-29.last.minor: hitp.css
  * version.15.2016-10-27.last.minorNo (14-9): hitp.15.2016-10-27.css (any-machine)
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
@@ -261,6 +261,21 @@ var oHitp = (function () {
             });
             oHitp.oTreeUl.fTruCreate(oEltSiteTreeUl);
             oHitp.bSite = true;
+            /* on a-links, first highlight */
+            Array.prototype.slice.call(document.querySelectorAll('#idSiteTreeUl a')).forEach(function (oEltIn, nIndex, array) {
+              oEltIn.addEventListener('click', function (oEvtIn) {
+                oEvtIn.preventDefault();
+
+                if (oEltIn.className.indexOf('clsClicked') > -1) {
+                  oEltIn.classList.remove('clsClicked');
+                  location.href = oEltIn.href;
+                } else {
+                  oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+                  oHitp.oEltClicked = oEltIn;
+                  oEltIn.classList.add('clsClicked');
+                }
+              });
+            });
           }
         }
       };
@@ -635,7 +650,7 @@ var oHitp = (function () {
     document.getElementById('idCnrBodCntDiv').focus();
 
     /* clicking on a-links, first highlight */
-    Array.prototype.slice.call(document.querySelectorAll('#idTocPathP a, #idSiteTreeUl a')).forEach(function (oEltIn, nIndex, array) {
+    Array.prototype.slice.call(document.querySelectorAll('#idTocPathP a')).forEach(function (oEltIn, nIndex, array) {
       oEltIn.addEventListener('click', function (oEvtIn) {
         oEvtIn.preventDefault();
 
