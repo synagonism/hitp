@@ -1,5 +1,5 @@
 /*
- * version.15.2016-10-27.last.minor: hitp.css
+ * version.15-1.2016-10-29.last.minor: hitp.css
  * version.15.2016-10-27.last.minorNo (14-14): hitp.15.2016-10-27.css (any-machine)
  * version.14.2016-06-09 (13): hitp.14.2016-06-09.css (title-content-tree)
  * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
@@ -52,7 +52,7 @@ html{box-sizing:border-box}
   font-family: "fntUbuntuMonoRgr";
   font-style:  normal;
   font-weight: normal;
-  src: url("UbuntuMonoRegular.ttf");
+  src: url("filFntUbuntuMonoRegular.ttf");
 }
 
 body {
@@ -398,9 +398,6 @@ footer > table {
   margin-left:auto;
   margin-right:auto;
 }
-footer > td {
-  border: none!important;
-}
 
 /********************************************************/
 /**** ELEMENTS ***/
@@ -711,13 +708,17 @@ p .clsPagePb {
 .clsSizeLarge {font-size: large; font-weight: bold;}
 .clsSizeLargeX {font-size: x-large; font-weight: bold;}
 
-/* class.Bold, class.Underline */
+/* class.Bold, class.UNDERLINE */
 .clsB {/* use strong element, not this */font-weight: bold;}
 .clsBU {font-weight: bold; text-decoration: underline;}
 .clsU {text-decoration: underline;}
 
+/* class.FLOAT */
 .clsFloatLeft {float: left;}
 .clsFloatRight {float: right;}
+
+/* class.BORDER */
+clsBorderNo {border: none;}
 
 /********************************************************/
 /***  TABS ***/
@@ -844,7 +845,7 @@ ul#idTocTabNamesUl li.clsTabActive a:hover  {
 /* Icons Font Awesome 4.6.3 - http://fontawesome.io/license */
 @font-face {
   font-family: 'IcnFontAwesome';
-  src: url('IcnFa463.woff2?v=4.6.3') format('woff2');
+  src: url('filIcnFa463.woff2?v=4.6.3') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
