@@ -1,5 +1,5 @@
 /*
- * version.15.2016-10-27.last.minor: hitp.css
+ * version.15-1.2016-10-29.last.minor: hitp.css
  * version.15.2016-10-27.last.minorNo (14-9): hitp.15.2016-10-27.css (any-machine)
  * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
  * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
@@ -384,10 +384,7 @@ var oHitp = (function () {
           fGo_where_clicked();
           location.href = oEltIn.href;
         } else {
-//          if (oHitp.oEltClicked.href !== oEltIn.href) {
-            oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
-//          }
-          oHitp.oEltClicked.classList.remove('clsTtpShow', 'clsTriClicked');
+          oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
           oHitp.oEltClicked = oEltIn;
           oEltIn.classList.add('clsClicked');
           if (oEltIn.className.indexOf('clsPreview') > -1) {
@@ -636,6 +633,22 @@ var oHitp = (function () {
     /* focus on right-div, Div can get the focus if it has tabindex attribute... on chrome */
     document.getElementById('idCnrBodCntDiv').setAttribute('tabindex', -1);
     document.getElementById('idCnrBodCntDiv').focus();
+
+    /* clicking on a-links, first highlight */
+    Array.prototype.slice.call(document.querySelectorAll('#idTocPathP a, #idSiteTreeUl a')).forEach(function (oEltIn, nIndex, array) {
+      oEltIn.addEventListener('click', function (oEvtIn) {
+        oEvtIn.preventDefault();
+
+        if (oEltIn.className.indexOf('clsClicked') > -1) {
+          oEltIn.classList.remove('clsClicked');
+          location.href = oEltIn.href;
+        } else {
+          oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+          oHitp.oEltClicked = oEltIn;
+          oEltIn.classList.add('clsClicked');
+        }
+      });
+    });
   };
 
   /**
