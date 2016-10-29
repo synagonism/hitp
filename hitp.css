@@ -467,10 +467,8 @@ a.clsHide {
   color: white !important;
   float: right;
 }
-div > a.clsHide {
-  margin-right: 5px;
-  margin-top: -25px;
-}
+p > a.clsHide {text-indent: 0px;}
+div > a.clsHide {margin-right: 5px; margin-top: -25px;}
 a.clsHide.clsClickCnt:before {
   font: normal normal normal 22px/1 IcnFontAwesome;
   content: "\f0c1"; /* link-icon */
