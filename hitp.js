@@ -1,15 +1,15 @@
 /*
- * version.15-2.2016-10-29.last.minor: hitp.css
- * version.15.2016-10-27.last.minorNo (14-9): hitp.15.2016-10-27.css (any-machine)
- * version.14.2016-06-09.last.minorNo (13): hitp.14.2016-06-09.js (table-content-tree)
- * version.13.2016-06-07 (12-11): hitp.13.2016-06-07.js (preview)
- * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.js (toc-icn-img)
- * version.11.2015-10-26: hitp.2015.10.26.11.js (preferences)
- * version.10.2014-08-05: hitp.2014.08.05.10.js (valuenames)
- * version.9.2014-08-02: hitp.2014.08.02.9.js (NO jQuery, fixed popup)
- * version.8.2014-01-09: hitp.2014.01.09.8.js (toc on hovering)
- * version.7.2013-11-06: hitp.2013.11.06.7.js (tabs)
- * version.6.2013-08-21: hitp.2013.08.21.6.js (site-structure)
+ * version.15-3.2016-10-30.dynamic: hitp.js
+ * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
+ * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
+ * version.13.2016-06-07.preview (12-11): hitp.13.2016-06-07.js
+ * version.12.2016-01-24.toc-icn-img (11.9): hitp.2016.01.24.12.js
+ * version.11.2015-10-26.preferences: hitp.2015.10.26.11.js
+ * version.10.2014-08-05.valuenames: hitp.2014.08.05.10.js
+ * version.9.2014-08-02.no-jQuery: hitp.2014.08.02.9.js
+ * version.8.2014-01-09.toc-on-hovering: hitp.2014.01.09.8.js
+ * version.7.2013-11-06.tabs: hitp.2013.11.06.7.js
+ * version.6.2013-08-21.site-structure: hitp.2013.08.21.6.js
  * version.previous: hitp.2013.07.15.js (toc-ul-specific, hitp-obj)
  * version.previous: /hitp/hitp.2013.06.29.js (hitp-dir)
  * version.previous: toc.2013.05.30.js (section id)
@@ -629,18 +629,6 @@ var oHitp = (function () {
       });
     });
 
-    oHitp.oTreeUl.fTruExpandAll();
-    oHitp.oTreeUl.fTruCollapseAll();
-    oHitp.oTreeUl.fTruExpandFirst();
-    /* IF on idMetaWebpage_path paragraph we have and the clsTocExpand
-     * then the toc expands-all */
-    if (document.getElementById("idMetaWebpage_path")) {
-      if (document.getElementById("idMetaWebpage_path").getAttribute('class') === 'classTocExpand' ||
-          document.getElementById("idMetaWebpage_path").getAttribute('class') === 'clsTocExpand') {
-        oHitp.oTreeUl.fTruExpandAll();
-      }
-    }
-
     window.onhashchange = function(oEvtIn) {
       location.href = location.href;
     };
@@ -967,6 +955,13 @@ var oHitp = (function () {
     oHitp.fContainersInsert();
     if (!oHitp.bSite) {
       oHitp.oTreeUl.fTruCreate();
+    }
+    /* IF on idMetaWebpage_path paragraph we have and the clsTocExpand
+     * then the toc expands-all */
+    if (document.getElementById("idMetaWebpage_path")) {
+      if (document.getElementById("idMetaWebpage_path").getAttribute('class') === 'clsTocExpand') {
+        oHitp.oTreeUl.fTruExpandAll();
+      }
     }
   });
 
