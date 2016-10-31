@@ -1,5 +1,5 @@
 /*
- * version.15-3.2016-10-30.dynamic: hitp.js
+ * version.15-4.2016-10-31.dynamic: hitp.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
  * version.13.2016-06-07.preview (12-11): hitp.13.2016-06-07.js
@@ -273,6 +273,7 @@ var oHitp = (function () {
                   oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
                   oHitp.oEltClicked = oEltIn;
                   oEltIn.classList.add('clsClicked');
+                  fEvtPreview(oEvtIn);
                 }
               });
             });
@@ -618,7 +619,6 @@ var oHitp = (function () {
             oHitp.oEltClicked.classList.remove('clsClicked');
             oHitp.oEltClicked = oEltIn;
             oEltIn.classList.add('clsClicked');
-            //popup
             fEvtPreview(oEvtIn);
           }
         } else {
@@ -649,6 +649,7 @@ var oHitp = (function () {
           oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
           oHitp.oEltClicked = oEltIn;
           oEltIn.classList.add('clsClicked');
+          fEvtPreview(oEvtIn);
         }
       });
     });
