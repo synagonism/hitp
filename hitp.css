@@ -1,5 +1,5 @@
 /*
- * version.15-2.2016-10-30.dynamic: hitp.css
+ * version.15-3.2016-10-31.dynamic: hitp.css
  * version.15.2016-10-27.any-machine (14-14): hitp.15.2016-10-27.css
  * version.14.2016-06-09.title-content-tree (13): hitp.14.2016-06-09.css
  * version.13.2016-06-07.preview (12-17): hitp.13.2016-06-07.css
@@ -92,9 +92,8 @@ body {
   padding: 0px;
 }
 #idCnrBodTocDiv {
-  background: #dddddd; /* Old browsers */
-  background: linear-gradient(to left, #bbb, #eeeeee 100%); /* W3C */
-  background: -webkit-linear-gradient(right,  #bbb, #eeeeee 100%);
+  background: #eee;
+  background: linear-gradient(to right, #fff, #eee);
   position: absolute;
   left: 0px;
   line-height: 116%;
@@ -212,7 +211,6 @@ header {
 header > h1 {
   background: #004900;
   background: linear-gradient(#004900, #287128);
-  background: -webkit-linear-gradient(#004900, #287128);
   border-top: 0px solid #000000;
   border-radius: 5px;
   color: white;
@@ -227,7 +225,6 @@ header > h1 {
 h1 {
   background: #f5f5f5; /*cff5f5 #d9ffff;*/
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 2px;
   padding: 3px 0 0 5px;
   color: #005500;
@@ -247,7 +244,6 @@ section > h1:before {
 h2 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 10px;
   color: #000077;
@@ -266,7 +262,6 @@ section > h2:before {
 h3 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 15px;
   color: #550000;
@@ -285,7 +280,6 @@ section > h3:before {
 h4 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 20px;
   color: #000000;
@@ -304,7 +298,6 @@ section > h4:before {
 h5 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 25px;
   color: #000000;
@@ -323,7 +316,6 @@ section > h5:before {
 h6 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 30px;
   color: #000000;
@@ -342,7 +334,6 @@ section > h6:before {
 p.h7 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-top: 3px solid;
   border-radius: 5px;
   padding: 3px 0 0 5px;
@@ -357,7 +348,6 @@ p.h7 {
 p.h8 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-top: 3px;
   border-radius: 5px;
   padding: 3px 0 0 5px;
@@ -376,7 +366,6 @@ p.h8 {
 footer {
   background-color: #f4f4f4;
   background: linear-gradient(to bottom, #efefef, #f8f8f8);
-  background: -webkit-linear-gradient(top,  #efefef, #f8f8f8);
   border-radius: 5px;
   padding: 2px;
   color: #000000;
@@ -733,7 +722,6 @@ ul#idTocTabNamesUl {
   width: 100%;
 }
 ul#idTocTabNamesUl li {
-  background: #eeeeee;
   float: left;
   margin-left: 3px;
   padding: 0;
@@ -759,7 +747,7 @@ ul#idTocTabNamesUl li.clsTabActive {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-right: 1px solid black;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #fff;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   border-left: 1px solid black;
