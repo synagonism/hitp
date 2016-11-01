@@ -92,8 +92,8 @@ body {
   padding: 0px;
 }
 #idCnrBodTocDiv {
-  background: #eee;
-  background: linear-gradient(to right, #fff, #eee);
+  background: #f1f1f1;
+  background: linear-gradient(to right, #fff, #e1e1e1);
   position: absolute;
   left: 0px;
   line-height: 116%;
@@ -102,7 +102,7 @@ body {
   font-size: 14px;
   z-index: 20; /* div left */
   overflow: auto;
-  box-shadow: 10px 0 10px -7px gray;
+  box-shadow: 10px 0 10px -5px gray;
 }
 #idCnrBodCntDiv {
   background: white;
