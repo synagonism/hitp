@@ -277,6 +277,9 @@ var oHitp = (function () {
                 }
               });
             });
+            Array.prototype.slice.call(document.querySelectorAll('#idSiteTreeUl i')).forEach(function (oEltIn, nIndex, array) {
+              oEltIn.classList.add('clsColorWhite');
+            });
           }
         }
       };
