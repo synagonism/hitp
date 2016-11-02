@@ -1,5 +1,5 @@
 /*
- * version.15-4.2016-10-31.dynamic: hitp.js
+ * version.15-5.2016-11-02.dynamic: hitp.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
  * version.13.2016-06-07.preview (12-11): hitp.13.2016-06-07.js
@@ -598,7 +598,7 @@ var oHitp = (function () {
 
     /* change font */
     document.getElementById('idRdbFontMono').addEventListener('click', function(oEvtIn) {
-      oEltBody.style.fontFamily = 'fntUbuntuMono, "Courier New", "Lucida Console"';      
+      oEltBody.style.fontFamily = 'fntUbuntuMonoRgr, "Courier New", "Lucida Console"';      
     });
     document.getElementById('idRdbFontSerif').addEventListener('click', function(oEvtIn) {
       oEltBody.style.fontFamily = '"Times New Roman", Georgia';      
