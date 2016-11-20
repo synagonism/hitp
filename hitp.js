@@ -1,5 +1,5 @@
 /*
- * version.15-5.2016-11-02.dynamic: hitp.js
+ * version.15-6.2016-11-20.dynamic: hitp.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
  * version.13.2016-06-07.preview (12-11): hitp.13.2016-06-07.js
@@ -538,7 +538,12 @@ var oHitp = (function () {
       nPy = oEvtIn.pageY;
       nWh = window.innerHeight;
       nWw = window.innerWidth;
-      sId1 = oEvtIn.target.href;
+      if (oEvtIn.target.nodeName === 'IMG') {
+        // links on img-elements
+        sId1 = oEvtIn.target.parentNode.href;
+      } else {
+        sId1 = oEvtIn.target.href;
+      }
       if (sId1.indexOf('#') > 0) {
         sId2 = sId1.substring(sId1.indexOf("#") + 1);
         sId1 = sId1.substring(0, sId1.indexOf("#"));
