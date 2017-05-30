@@ -1,5 +1,5 @@
 /*
- * version.15-6.2016-11-20.dynamic: hitp.js
+ * version.15-7.2017-05-30.dynamic: hitp.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
  * version.13.2016-06-07.preview (12-11): hitp.13.2016-06-07.js
@@ -73,7 +73,7 @@ var oHitp = (function () {
     sQrAClkLast: '',
   };
 
-  /** 
+  /**
    * Creates new containers and inserts them in the-body-element:
    * - Top-cnr for the-title and menus.
    * - Body-cnr for the-toc and page-content.
@@ -500,8 +500,49 @@ var oHitp = (function () {
         });
       }
     };
+    // on content get-id, highlight toc
+    fEvtMouseoverContent = function (oEvtIn) {
+      var sIdScn = '',
+        oEltScn = oEvtIn.target;
+
+      // find id of enclosing SECTION, this is-stored on toc
+      sIdScn = '#' + oEltScn.id;
+      while (oEltScn && !oEltScn.tagName.match(/^SECTION/i)) {
+        oEltScn = oEltScn.parentNode;
+        if (!oEltScn.tagName) {
+          break;
+        } else if (oEltScn.tagName.match(/^HEADER/i)
+                || oEltScn.tagName.match(/^FOOTER/i)) {
+          break;
+        }
+      }
+      if (oEltScn.tagName) {
+        if (oEltScn.tagName.match(/^HEADER/i)) {
+          sIdScn = '#idHeader';
+        } else if (oEltScn.tagName.match(/^FOOTER/i)) {
+          sIdScn = '#idFooter';
+        } else {
+          sIdScn = '#' + oEltScn.id;
+        }
+      }
+
+      /* on toc highlight the-found-id */
+      Array.prototype.slice.call(document.querySelectorAll('#idTocTri a')).forEach(function (oEltAIn, nIndex, array) {
+        if (oEltAIn.getAttribute('href') === sIdScn) {
+          oHitp.oTreeUl.fTruExpandParent(oEltAIn);
+          oHitp.fTocTriHighlightNode(oEltCnrBodTocDiv, oEltAIn);
+          if (oEltAIn.scrollIntoViewIfNeeded) {
+            oEltAIn.scrollIntoViewIfNeeded(true)
+          } else {
+            oEltAIn.scrollIntoView(false);
+          }
+          document.getElementById("idCnrBodTocDiv").scrollLeft = 0;
+        }
+      });
+    };
     Array.prototype.slice.call(document.querySelectorAll('#idCnrBodCntDiv *[id]')).forEach(function (oEltIn, nIndex, array) {
       oEltIn.addEventListener('click', fEvtClickContent);
+      oEltIn.addEventListener('mouseover', fEvtMouseoverContent);
     });
 
     /* On TABS Click Event */
@@ -603,13 +644,13 @@ var oHitp = (function () {
 
     /* change font */
     document.getElementById('idRdbFontMono').addEventListener('click', function(oEvtIn) {
-      oEltBody.style.fontFamily = 'fntUbuntuMonoRgr, "Courier New", "Lucida Console"';      
+      oEltBody.style.fontFamily = 'fntUbuntuMonoRgr, "Courier New", "Lucida Console"';
     });
     document.getElementById('idRdbFontSerif').addEventListener('click', function(oEvtIn) {
-      oEltBody.style.fontFamily = '"Times New Roman", Georgia';      
+      oEltBody.style.fontFamily = '"Times New Roman", Georgia';
     });
     document.getElementById('idRdbFontSSerif').addEventListener('click', function(oEvtIn) {
-      oEltBody.style.fontFamily = 'Arial, Verdana';      
+      oEltBody.style.fontFamily = 'Arial, Verdana';
     });
 
     /* what to do on clicking a link in toc */
