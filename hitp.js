@@ -412,6 +412,10 @@ var oHitp = (function () {
       }
       function fSuggest(bAheadIn) {
         var
+          //the-letters of namidx.X.json files
+          aIdx = ['A','B','C','D','E','F','G','H',
+                  'I','J','K','L','M','N','O','P',
+                  'Q','R','S','T','U','V','W','X','Y','Z'],
           aSuggestions,
           nL, //length on input-elt value
           sLi, //text of first suggestion
@@ -419,7 +423,8 @@ var oHitp = (function () {
           sNamidxLast = '',
           sPathNames, //localhost or online
           sSuggestions = '',
-          sIptvalue = oEltTabCntSrcIpt.value.toLowerCase();
+          sIptvalue = oEltTabCntSrcIpt.value.toUpperCase(),
+          sIdx = sIptvalue.charAt(0);
 
         if (sIptvalue.length > 0){
           if (location.hostname === 'localhost') {
@@ -427,7 +432,15 @@ var oHitp = (function () {
           } else {
             sPathNames = location.origin + '/dirMiwMcs/';
           }
-          sNamidx = 'namidx.' + sIptvalue.charAt(0).toUpperCase() + '.json';
+          //if sIptvalue belongs a-z, then namidx.X.json
+          //else namidx.ZZZ.json
+          //when sIdx will become 2-letter
+          //firs we will-check for 2-letters and then for 1 letter
+          if (aIdx.includes(sIdx)) {
+            sNamidx = 'namidx.' + sIdx + '.json';
+          } else {
+            sNamidx = 'namidx.ZZZ.json';
+          }
           //IF sNamidx is different from last, get it
           if (sNamidx !== sNamidxLast) {
             oXHR = new XMLHttpRequest();
@@ -439,7 +452,7 @@ var oHitp = (function () {
                 aSuggestions = JSON.parse(oXHR.responseText);
                 //
                 for (var i=0; i < aSuggestions.length; i++) {
-                  var sName = aSuggestions[i][0].toLowerCase();
+                  var sName = aSuggestions[i][0].toUpperCase();
                   //add matching-suggestions
                   if (sName.indexOf(sIptvalue) == 0) {
                     sSuggestions = sSuggestions +
@@ -465,7 +478,7 @@ var oHitp = (function () {
           } else {
             sNamidxLast = sNamidx;
             for (var i=0; i < aSuggestions.length; i++) {
-              var sName = aSuggestions[i][0].toLowerCase();
+              var sName = aSuggestions[i][0].toUpperCase();
               //add matching-suggestions
               if (sName.indexOf(sIptvalue) == 0) {
                 sSuggestions = sSuggestions +
