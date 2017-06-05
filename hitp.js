@@ -427,7 +427,7 @@ var oHitp = (function () {
           } else {
             sPathNames = location.origin + '/dirMiwMcs/';
           }
-          sNamidx = 'namidx.' + sIptvalue.charAt(0) + '.json';
+          sNamidx = 'namidx.' + sIptvalue.charAt(0).toUpperCase() + '.json';
           //IF sNamidx is different from last, get it
           if (sNamidx !== sNamidxLast) {
             oXHR = new XMLHttpRequest();
