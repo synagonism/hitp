@@ -1,0 +1,7 @@
+// COMMENT the-lines with '//'
+
+//../hitp/index.html
+//dirTchInf/filMcsLjs.html
+dirTchInf/filMcsBcnnet.html
+
+dirTchInf/filMcsGit-repo.html

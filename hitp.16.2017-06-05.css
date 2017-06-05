@@ -1,9 +1,9 @@
 /*
- * version.15.2016-10-27.last.minor: hitp.css
- * version.15.2016-10-27.last.minorNo (14-14): hitp.15.2016-10-27.css (any-machine)
- * version.14.2016-06-09 (13): hitp.14.2016-06-09.css (title-content-tree)
- * version.13.2016-06-07 (12-17): hitp.13.2016-06-07.css (preview)
- * version.12.2016-01-24 (11.9): hitp.2016.01.24.12.css (toc-icn-img)
+ * version.16.2017-06-05.search (15-9): hitp.16.2017-06-05.css
+ * version.15.2016-10-27.any-machine (14-14): hitp.15.2016-10-27.css
+ * version.14.2016-06-09.title-content-tree (13): hitp.14.2016-06-09.css
+ * version.13.2016-06-07.preview (12-17): hitp.13.2016-06-07.css
+ * version.12.2016-01-24.toc-icn-img (11.9): hitp.2016.01.24.12.css
  * version.11.2015-10-26: hitp.2015.10.26.11.css (preferences)
  * version.10.2014-08-05: hitp.2014.08.05.10.css (valuenames)
  * version.9.2014-08-02: hitp.2014.08.02.9.css (NO jQuery, fixed popup)
@@ -52,7 +52,7 @@ html{box-sizing:border-box}
   font-family: "fntUbuntuMonoRgr";
   font-style:  normal;
   font-weight: normal;
-  src: url("UbuntuMonoRegular.ttf");
+  src: url("filFntUbuntuMonoRegular.ttf");
 }
 
 body {
@@ -80,7 +80,7 @@ body {
   text-align: center;
   z-index: 999;
 }
-#idCnrBodDiv {
+#idCnrMainDiv {
   position: fixed;
   width: 100%;
   height: calc(100% - 26px);
@@ -91,10 +91,9 @@ body {
   margin: 0px;
   padding: 0px;
 }
-#idCnrBodTocDiv {
-  background: #dddddd; /* Old browsers */
-  background: linear-gradient(to left, #bbb, #eeeeee 100%); /* W3C */
-  background: -webkit-linear-gradient(right,  #bbb, #eeeeee 100%);
+#idCnrMainPginfDiv {
+  background: #f1f1f1;
+  background: linear-gradient(to right, #fff, #e9e9e9);
   position: absolute;
   left: 0px;
   line-height: 116%;
@@ -103,9 +102,9 @@ body {
   font-size: 14px;
   z-index: 20; /* div left */
   overflow: auto;
-  box-shadow: 10px 0 10px -7px gray;
+  box-shadow: 10px 0 10px -5px gray;
 }
-#idCnrBodCntDiv {
+#idCnrMainPgcntDiv {
   background: white;
   position: absolute;
   right: 0px;
@@ -115,12 +114,12 @@ body {
   z-index: 0; /* div right */
   overflow: auto;
 }
-#idCnrBodTocDiv > input[type="button"] {
+#idCnrMainPginfDiv > input[type="button"] {
   padding: 2px 7px 2px 7px;
   margin-left: 5px;
   margin-bottom: 10px;
 }
-#idCnrBodTocDiv  p {
+#idCnrMainPginfDiv  p {
   text-indent: -8px;
   margin-left: 8px;
 }
@@ -145,7 +144,7 @@ body {
   line-height: 26px;
   overflow: hidden;
 }
-#idCnrSiteCntDiv {
+#idCnrSiteDiv {
   display: none;
   background-color: #004900;
   color: white !important;
@@ -164,7 +163,7 @@ body {
   from{left:-300px; opacity:0}
   to{left:0; opacity:1}
 }
-#idCnrWidthCntDiv {
+#idCnrWidthDiv {
   display: none;
   background-color: #004900;
   color: white;
@@ -181,8 +180,8 @@ body {
   from{right:-300px; opacity:0}
   to{right:0; opacity:1}
 }
-#idCnrSiteCntDiv > p,
-#idCnrWidthCntDiv > p {
+#idCnrSiteDiv > p,
+#idCnrWidthDiv > p {
   background-color: green;
   user-select: none;
   cursor: pointer;
@@ -191,7 +190,7 @@ body {
 }
 #idSiteCntP2 {
   background-color: #004900 !important;
-  cursor: default;
+  cursor: default !important;
   margin-top: 10px !important;
 }
 #idSiteTreeUl {
@@ -212,7 +211,6 @@ header {
 header > h1 {
   background: #004900;
   background: linear-gradient(#004900, #287128);
-  background: -webkit-linear-gradient(#004900, #287128);
   border-top: 0px solid #000000;
   border-radius: 5px;
   color: white;
@@ -227,7 +225,6 @@ header > h1 {
 h1 {
   background: #f5f5f5; /*cff5f5 #d9ffff;*/
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 2px;
   padding: 3px 0 0 5px;
   color: #005500;
@@ -247,7 +244,6 @@ section > h1:before {
 h2 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 10px;
   color: #000077;
@@ -266,10 +262,9 @@ section > h2:before {
 h3 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 15px;
-  color: #550000;
+  color: indigo;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 18px;
   font-weight: bold;
@@ -285,10 +280,9 @@ section > h3:before {
 h4 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 20px;
-  color: #000000;
+  color: violet;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 18px;
   font-weight: bold;
@@ -304,12 +298,11 @@ section > h4:before {
 h5 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 25px;
-  color: #000000;
+  color: red;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-left: 2px;
   margin-right: 5px;
@@ -323,12 +316,11 @@ section > h5:before {
 h6 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 30px;
-  color: #000000;
+  color: orange;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-left: 2px;
   margin-right: 5px;
@@ -342,13 +334,12 @@ section > h6:before {
 p.h7 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-top: 3px solid;
   border-radius: 5px;
   padding: 3px 0 0 5px;
   color: #000000;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin-left: 40px;
   text-indent: 0px;
@@ -357,13 +348,12 @@ p.h7 {
 p.h8 {
   background: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5, #fff);
-  background: -webkit-linear-gradient(top,  #f5f5f5, #fff);
   border-top: 3px;
   border-radius: 5px;
   padding: 3px 0 0 5px;
   color: #000000;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin-left: 50px;
   text-indent: 0px;
@@ -376,7 +366,6 @@ p.h8 {
 footer {
   background-color: #f4f4f4;
   background: linear-gradient(to bottom, #efefef, #f8f8f8);
-  background: -webkit-linear-gradient(top,  #efefef, #f8f8f8);
   border-radius: 5px;
   padding: 2px;
   color: #000000;
@@ -398,23 +387,9 @@ footer > table {
   margin-left:auto;
   margin-right:auto;
 }
-footer > td {
-  border: none!important;
-}
 
 /********************************************************/
 /**** ELEMENTS ***/
-
-p {
-  text-indent: -25px;
-  margin-left: 25px;
-  margin-right: 5px;
-}
-p.clsIndent {
-  text-indent: 0px;
-  margin-left: 25px;
-  margin-right: 5px;
-}
 
 code {
   display: inline-block;
@@ -425,6 +400,21 @@ code {
   font-size: 16px;
   padding: 0 3px 0 3px;
   text-indent: 0px;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  text-indent: -25px;
+  margin-left: 25px;
+  margin-right: 5px;
+}
+p.clsIndent {
+  text-indent: 0px;
+  margin-left: 25px;
+  margin-right: 5px;
 }
 
 pre {
@@ -441,7 +431,6 @@ table {
 td {
   border: 1px solid black;
   padding-left:5px;
-  white-space:wrap;
 }
 td.clrBgTurq {
   background-color: #00ffff;/* Turquoise */
@@ -450,8 +439,8 @@ td.clrBgTurq {
 td.clsBorderNo {
   border: none;
   padding-left:5px;
-  white-space:wrap;
 }
+
 /********************************************************/
 /*** INLINE text-content ***/
 /* a, dfn, br, b, span  */
@@ -466,9 +455,13 @@ ol, ul {margin-right: 5px;}
 
 /* hide-class: a-element */
 a.clsHide {
-  background: white !important;
+  height: 24px;
+  width: 24px;
   color: white !important;
   float: right;
+}
+p > a.clsHide {
+  text-indent: 0px;
 }
 div > a.clsHide {
   margin-right: 5px;
@@ -532,10 +525,22 @@ a.clsClicked {
   color: white !important;
 }
 
-#idTocPathP {
+#idPginfPathP {
   margin: 5px 0px 5px 25px;
   padding-left: 3px;
   font-weight: bold;
+}
+#idTabCntSrcP {
+  margin: 5px 0px 5px 5px;
+  padding-left: 3px;
+  font-weight: bold;
+}
+#idTabCntSrcIpt {
+  border: 0.5px solid black;
+  width: 100%;
+}
+#idTabCntSrcOl {
+  margin: 10px 0px 5px -2px;
 }
 #idTocTri.clsTreeUl {
   margin-top: 0px;
@@ -711,18 +716,22 @@ p .clsPagePb {
 .clsSizeLarge {font-size: large; font-weight: bold;}
 .clsSizeLargeX {font-size: x-large; font-weight: bold;}
 
-/* class.Bold, class.Underline */
+/* class.Bold, class.UNDERLINE */
 .clsB {/* use strong element, not this */font-weight: bold;}
 .clsBU {font-weight: bold; text-decoration: underline;}
 .clsU {text-decoration: underline;}
 
+/* class.FLOAT */
 .clsFloatLeft {float: left;}
 .clsFloatRight {float: right;}
+
+/* class.BORDER */
+.clsBorderNo {border: none;}
 
 /********************************************************/
 /***  TABS ***/
 
-ul#idTocTabNamesUl {
+ul#idPginfTabHeadersUl {
   margin: 0px;
   padding: 0px;
   float: left;
@@ -731,8 +740,7 @@ ul#idTocTabNamesUl {
   border-bottom: 1px solid black; /* the big line */
   width: 100%;
 }
-ul#idTocTabNamesUl li {
-  background: #eeeeee;
+ul#idPginfTabHeadersUl li {
   float: left;
   margin-left: 3px;
   padding: 0;
@@ -741,40 +749,42 @@ ul#idTocTabNamesUl li {
   line-height: 26px;
   overflow: hidden;
 }
-ul#idTocTabNamesUl li a {
+ul#idPginfTabHeadersUl li a {
+  color: #005500;
   text-decoration: none;
-  color: green;
   display: block;
   font-weight: bold;
   padding: 0 0 0 4px;
   outline: none;
   width: 110px;
 }
-ul#idTocTabNamesUl li a:hover {
+ul#idPginfTabHeadersUl li a:hover {
   text-decoration: underline;
 }
-ul#idTocTabNamesUl li.clsTabActive {
+ul#idPginfTabHeadersUl li.clsTabActive {
+  background-color: lightgrey;
+  background: linear-gradient(to bottom, lightgray, white);
   border-top: 1px solid black;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-right: 1px solid black;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid white;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   border-left: 1px solid black;
 }
-ul#idTocTabNamesUl li.clsTabActive a:hover  {
+ul#idPginfTabHeadersUl li.clsTabActive a:hover  {
   text-decoration: none;
   cursor: default;
 }
-#idTocTabContentcnrDiv {
+#idTabCntDiv {
   float: left;
   width: 100%;
   padding: 2px;
 }
 
 /********************************************************/
-/***  TREE-UL ***/
+/***  TREE-UL COLLAPSIBLE ***/
 
 .clsTreeUl {
   margin-left: -27px;
@@ -788,6 +798,7 @@ ul#idTocTabNamesUl li.clsTabActive a:hover  {
 
 .clsTreeUl li li{
   padding-left: 0px;
+  list-style-type: none;
 }
 
 .clsTreeUl .clsFaCrcCol,
@@ -844,7 +855,7 @@ ul#idTocTabNamesUl li.clsTabActive a:hover  {
 /* Icons Font Awesome 4.6.3 - http://fontawesome.io/license */
 @font-face {
   font-family: 'IcnFontAwesome';
-  src: url('IcnFa463.woff2?v=4.6.3') format('woff2');
+  src: url('filIcnFa463.woff2?v=4.6.3') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
