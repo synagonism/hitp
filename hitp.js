@@ -242,6 +242,7 @@ var oHitp = (function () {
 
         if (oEltIn.className.indexOf('clsClicked') > -1) {
           oEltIn.classList.remove('clsClicked');
+          fCnrOntopRemove();
           location.href = oEltIn.href;
         } else {
           oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
@@ -788,34 +789,36 @@ var oHitp = (function () {
       } else {
         oEltCnrPreviewDiv.innerHTML = '';
         oXHR = new XMLHttpRequest();
-        oXHR.open('GET', sId1, false);
+        oXHR.open('GET', sId1, true);
         oXHR.send(null);
-        if (oXHR.status === 200) {
-          if (sId2) {
-            //IF #fragment url, display only this element.
-            oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
-            oEltCnrPreviewDiv.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
-          } else {
-            //IF link to a picture, display it, not its code.
-            if (sId1.match(/(png|jpg|gif)$/)) {
-              var oImg = new Image();
-              var nIW, nIH, nPW, nPH;
-              nPW = nWw / 2.2;
-              nPH = nWh * 0.4;
-              oImg.src = sId1;
-              oImg.addEventListener('load', function() {
-                nIW = oImg.width;
-                nIH = oImg.height;
-                if (nIH > nPH) {
-                  nIW = (nIW * nPH) / nIH;
-                  nIH = nPH;
-                }
-                oEltCnrPreviewDiv.innerHTML = '<p class="clsCenter"><img src="' + sId1
-                  + '" width="' + nIW
-                  + '" height="' + nIH + '" /></p>';
-              });
+        oXHR.onreadystatechange = function () {
+          if (oXHR.readyState === 4 && oXHR.status === 200) { //DONE, OK
+            if (sId2) {
+              //IF #fragment url, display only this element.
+              oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
+              oEltCnrPreviewDiv.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
             } else {
-              document.getElementById('idCnrPreviewDiv').innerHTML = oXHR.responseText;
+              //IF link to a picture, display it, not its code.
+              if (sId1.match(/(png|jpg|gif)$/)) {
+                var oImg = new Image();
+                var nIW, nIH, nPW, nPH;
+                nPW = nWw / 2.2;
+                nPH = nWh * 0.4;
+                oImg.src = sId1;
+                oImg.addEventListener('load', function() {
+                  nIW = oImg.width;
+                  nIH = oImg.height;
+                  if (nIH > nPH) {
+                    nIW = (nIW * nPH) / nIH;
+                    nIH = nPH;
+                  }
+                  oEltCnrPreviewDiv.innerHTML = '<p class="clsCenter"><img src="' + sId1
+                    + '" width="' + nIW
+                    + '" height="' + nIH + '" /></p>';
+                });
+              } else {
+                document.getElementById('idCnrPreviewDiv').innerHTML = oXHR.responseText;
+              }
             }
           }
         }
