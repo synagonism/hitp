@@ -530,16 +530,16 @@ a.clsClicked {
   padding-left: 3px;
   font-weight: bold;
 }
-#idTabCntSrcP {
+#idTabCntSrchP {
   margin: 5px 0px 5px 5px;
   padding-left: 3px;
   font-weight: bold;
 }
-#idTabCntSrcIpt {
+#idTabCntSrchIpt {
   border: 0.5px solid black;
   width: 100%;
 }
-#idTabCntSrcOl {
+#idTabCntSrchOl {
   margin: 10px 0px 5px -2px;
 }
 #idTocTri.clsTreeUl {

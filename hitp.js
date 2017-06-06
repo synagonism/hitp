@@ -1,4 +1,5 @@
 /*
+ * version.16-1-0.2017-06-06.search-icon
  * version.16.2017-06-05.search (15-6): hitp.16.2017-06-05.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
@@ -29,7 +30,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2010-2017 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * http://synagonism.net/
  *
@@ -98,25 +99,26 @@ var oHitp = (function () {
       oEltCnrSiteDiv = document.createElement('div'),
       oEltCnrPreviewDiv = document.createElement('div'),
       oEltTopSiteIcnI = document.createElement('i'),
-      oEltTopTitleP = document.createElement('p'),
       oEltTopHomeIcnI = document.createElement('i'),
+      oEltTopTitleP = document.createElement('p'),
+      oEltTopSearchIcnI = document.createElement('i'),
       oEltTopWidthIcnI = document.createElement('i'),
       oEltSiteTreeUl,
       //Page-info-cnr contains: PathP, TabNamesUl, TabCntDiv,
       oEltPginfPathP = document.createElement('p'),
       oEltPginfTabHeadersUl = document.createElement('ul'),
-      //Tab-content contains: TabCntToc, TabCntSrc
+      //Tab-content contains: TabCntToc, TabCntSrch
       oEltPginfTabCntDiv = document.createElement('div'),
       oEltTabCntTocDiv = document.createElement('div'),
       oEltTabCntTocCpsBtn = document.createElement('input'),
       oEltTabCntTocExpBtn = document.createElement('input'),
       oEltTabCntTocPrfDiv = document.createElement('div'),
       oEltTabCntTocNotP = document.createElement('p'),
-      oEltTabCntSrcDiv = document.createElement('div'),
-      oEltTabCntSrcP = document.createElement('p'),
-      oEltTabCntSrcIpt = document.createElement('input'),
-      oEltTabCntSrcOl = document.createElement('ol'),
-      sTabCntSrcOl =
+      oEltTabCntSrchDiv = document.createElement('div'),
+      oEltTabCntSrchP = document.createElement('p'),
+      oEltTabCntSrchIpt = document.createElement('input'),
+      oEltTabCntSrchOl = document.createElement('ol'),
+      sTabCntSrchOl =
         '<li>You can-search for a-structured-concept of Kaseluris.Nikos.1959 WORLDVIEW.</li>' +
         '<li>Today his online-worldview contains ABOUT 2,000 structured-concepts with 4,000 names.</li>' +
         '<li>The major concepts are-related to "javascript" and "blockchain-network".</li>' +
@@ -133,7 +135,7 @@ var oHitp = (function () {
     //top-title-text
     oEltTopTitleP.innerHTML = document.getElementsByTagName('title')[0].innerHTML;
     oEltTopTitleP.id = 'idTopTitleP';
-    //width
+    //width-icon
     oEltTopWidthIcnI.setAttribute('class', 'clsFa clsFaArrowsH clsTopIcn clsColorWhite clsFloatRight clsTtp clsPosRight');
     //to show a-tooltip on an-element:
     //- set clsTtp on element
@@ -163,14 +165,35 @@ var oHitp = (function () {
       '<input type="radio" id="idRdbWidth50" name="nameRdbWidth">50 %<br>' +
       '<input type="radio" id="idRdbWidth100" name="nameRdbWidth">100 %<br>' +
       '</fieldset>';
+    //width-icon
+    oEltTopSearchIcnI.setAttribute('class', 'clsFa clsFaSearch clsTopIcn clsColorWhite clsFloatRight clsPosRight');
+    oEltTopSearchIcnI.addEventListener('click', function (oEvtIn) {
+      fCnrOntopRemove();
+      //Remove active-class from first-child-elt of PginfTabHeaders
+      document.getElementById('idPginfTabHeadersUl')
+        .firstElementChild.classList.remove('clsTabActive');
+      //Add active-class on second-child-element of PginfTabHeaders
+      document.getElementById('idPginfTabHeadersUl')
+        .childNodes[1].classList.add('clsTabActive');
+      //Hide tab-content from TabCntToc
+      document.getElementById('idTabCntTocDiv').style.display = 'none';
+      //Show tab-content on TabCntSrch
+      document.getElementById('idTabCntSrchDiv').style.display = 'block';
+      //on TabCntSrch focus input-element
+      oEltTabCntSrchIpt.focus();
+    });
     oEltCnrTopDiv.appendChild(oEltTopTitleP);
     oEltCnrTopDiv.appendChild(oEltTopWidthIcnI);
+    oEltCnrTopDiv.appendChild(oEltTopSearchIcnI);
     oEltTopTitleP.addEventListener('click', function(oEvtIn) {
+      fCnrOntopRemove();
+    });
+    function fCnrOntopRemove() {
       oEltCnrPreviewDiv.style.display = 'none'; //remove popup-cnr
       oEltCnrSiteDiv.style.display = 'none'; //remove site-cnr
       oEltCnrWidthDiv.style.display = 'none'; //remove width-cnr
       oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked'); //remove tooltip clicks
-    });
+    }
 
     oEltBody.innerHTML = '';
     oEltBody.appendChild(oEltCnrTopDiv);
@@ -364,30 +387,30 @@ var oHitp = (function () {
     //insert TabCntToc in TabCnt
     oEltPginfTabCntDiv.id = 'idTabCntDiv';
     oEltPginfTabCntDiv.appendChild(oEltTabCntTocDiv);
-    //TabCntSrc
-    oEltTabCntSrcDiv.id = 'idTabCntSrcDiv';
-    oEltTabCntSrcDiv.setAttribute('class', 'clsTabCnt');
-    oEltTabCntSrcP.id = 'idTabCntSrcP';
-    oEltTabCntSrcP.innerHTML =
+    //TabCntSrch
+    oEltTabCntSrchDiv.id = 'idTabCntSrchDiv';
+    oEltTabCntSrchDiv.setAttribute('class', 'clsTabCnt');
+    oEltTabCntSrchP.id = 'idTabCntSrchP';
+    oEltTabCntSrchP.innerHTML =
       'Type NAME of structured-concept-(mcs)';
-    oEltTabCntSrcP.setAttribute('class', 'clsCenter');
-    oEltTabCntSrcIpt.id = 'idTabCntSrcIpt';
+    oEltTabCntSrchP.setAttribute('class', 'clsCenter');
+    oEltTabCntSrchIpt.id = 'idTabCntSrchIpt';
 
     //on enter, go to concept
-    oEltTabCntSrcIpt.addEventListener('keydown', function (oEvtIn) {
+    oEltTabCntSrchIpt.addEventListener('keydown', function (oEvtIn) {
       var
         aLi, //list of elements of suggestion
         aLit, //arry of texts of elements
         sLoc = '';
       if (oEvtIn.keyCode === 13) { //enter key
-        if (oEltTabCntSrcIpt.value.length > 0
-         && oEltTabCntSrcIpt.value.endsWith(',')) {
+        if (oEltTabCntSrchIpt.value.length > 0
+         && oEltTabCntSrchIpt.value.endsWith(',')) {
           //a whole name is typed, go this location
-          aLi = oEltTabCntSrcOl.getElementsByTagName('li');
+          aLi = oEltTabCntSrchOl.getElementsByTagName('li');
           for (var n = 0; n < aLi.length; n++) {
-            //<a class="clsPreviw" href="...">oEltTabCntSrcIpt.value</a>
+            //<a class="clsPreviw" href="...">oEltTabCntSrchIpt.value</a>
             sLoc = aLi[n].innerHTML;
-            if (sLoc.indexOf(oEltTabCntSrcIpt.value) !== -1) {
+            if (sLoc.indexOf(oEltTabCntSrchIpt.value) !== -1) {
               sLoc = sLoc.substring(sLoc.indexOf('href="')+6,
                                     sLoc.lastIndexOf('"'));
               break;
@@ -400,7 +423,7 @@ var oHitp = (function () {
       }
     });
     //on typing, suggest
-    oEltTabCntSrcIpt.addEventListener('keyup', function (oEvtIn) {
+    oEltTabCntSrchIpt.addEventListener('keyup', function (oEvtIn) {
       var iKeyCode = oEvtIn.keyCode;
       if (iKeyCode == 8 || iKeyCode == 46) {
         fSuggest(false); //no typeahead
@@ -423,7 +446,7 @@ var oHitp = (function () {
           sNamidxLast = '',
           sPathNames, //localhost or online
           sSuggestions = '',
-          sIptvalue = oEltTabCntSrcIpt.value.toUpperCase(),
+          sIptvalue = oEltTabCntSrchIpt.value.toUpperCase(),
           sIdx = sIptvalue.charAt(0);
 
         if (sIptvalue.length > 0){
@@ -461,16 +484,16 @@ var oHitp = (function () {
                       aSuggestions[i][0] + '</li>';
                   }
                 }
-                oEltTabCntSrcOl.innerHTML = sSuggestions;
+                oEltTabCntSrchOl.innerHTML = sSuggestions;
                 if (bAheadIn) {
-                  nL = oEltTabCntSrcIpt.value.length,
-                  sLi = oEltTabCntSrcOl.getElementsByTagName('li')[0].innerHTML;
+                  nL = oEltTabCntSrchIpt.value.length,
+                  sLi = oEltTabCntSrchOl.getElementsByTagName('li')[0].innerHTML;
                   sLi = sLi.substring(sLi.indexOf('>')+1,sLi.lastIndexOf('<'));
-                  oEltTabCntSrcIpt.value = sLi;
-                  oEltTabCntSrcIpt.setSelectionRange(nL, sLi.length);
+                  oEltTabCntSrchIpt.value = sLi;
+                  oEltTabCntSrchIpt.setSelectionRange(nL, sLi.length);
                 }
-                //Clicking on TabCntSrcOl-links, first highlight
-                Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrcOl a')).forEach(function (oEltIn, nIndex, array) {
+                //Clicking on TabCntSrchOl-links, first highlight
+                Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
                   fEventLink(oEltIn);
                 });
               }
@@ -487,31 +510,31 @@ var oHitp = (function () {
                   aSuggestions[i][0] + '</li>';
               }
             }
-            oEltTabCntSrcOl.innerHTML = sSuggestions;
+            oEltTabCntSrchOl.innerHTML = sSuggestions;
             if (bAheadIn) {
-              nL = oEltTabCntSrcIpt.value.length,
-              sLi = oEltTabCntSrcOl.getElementsByTagName('li')[0].innerHTML;
+              nL = oEltTabCntSrchIpt.value.length,
+              sLi = oEltTabCntSrchOl.getElementsByTagName('li')[0].innerHTML;
               sLi = sLi.substring(sLi.indexOf('>')+1,sLi.lastIndexOf('<'));
-              oEltTabCntSrcIpt.value = sLi;
-              oEltTabCntSrcIpt.setSelectionRange(nL, sLi.length);
+              oEltTabCntSrchIpt.value = sLi;
+              oEltTabCntSrchIpt.setSelectionRange(nL, sLi.length);
             }
           }
         } else {
           //no input value, display this:
-          oEltTabCntSrcOl.innerHTML = sTabCntSrcOl;
+          oEltTabCntSrchOl.innerHTML = sTabCntSrchOl;
         }
-        //Clicking on TabCntSrcOl-links, first highlight
-        Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrcOl a')).forEach(function (oEltIn, nIndex, array) {
+        //Clicking on TabCntSrchOl-links, first highlight
+        Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
           fEventLink(oEltIn);
         });
       }
     });
-    oEltTabCntSrcOl.id = 'idTabCntSrcOl';
-    oEltTabCntSrcOl.innerHTML = sTabCntSrcOl;
-    oEltTabCntSrcDiv.appendChild(oEltTabCntSrcP);
-    oEltTabCntSrcDiv.appendChild(oEltTabCntSrcIpt);
-    oEltTabCntSrcDiv.appendChild(oEltTabCntSrcOl);
-    oEltPginfTabCntDiv.appendChild(oEltTabCntSrcDiv);
+    oEltTabCntSrchOl.id = 'idTabCntSrchOl';
+    oEltTabCntSrchOl.innerHTML = sTabCntSrchOl;
+    oEltTabCntSrchDiv.appendChild(oEltTabCntSrchP);
+    oEltTabCntSrchDiv.appendChild(oEltTabCntSrchIpt);
+    oEltTabCntSrchDiv.appendChild(oEltTabCntSrchOl);
+    oEltPginfTabCntDiv.appendChild(oEltTabCntSrchDiv);
 
     //insert tab-cnr IN page-info-cnr
     oEltCnrMainPginfDiv.appendChild(oEltPginfTabCntDiv);
@@ -520,7 +543,7 @@ var oHitp = (function () {
     oEltPginfTabHeadersUl.id = 'idPginfTabHeadersUl';
     oEltPginfTabHeadersUl.innerHTML =
       '<li class="clsTabActive"><a href="#idTabCntTocDiv">Page-ToC</a></li>' +
-      '<li><a href="#idTabCntSrcDiv">Search</a></li>';
+      '<li><a href="#idTabCntSrchDiv">Search</a></li>';
     oEltCnrMainPginfDiv.insertBefore(oEltPginfTabHeadersUl, oEltCnrMainPginfDiv.firstChild);
 
     //insert page-path-elt IN page-info-cnr
@@ -721,12 +744,14 @@ var oHitp = (function () {
         //Show content of active tab
         sIdTabActive = document.querySelector('.clsTabActive a').getAttribute('href').substring(1);
         document.getElementById(sIdTabActive).style.display = 'block';
-        if (sIdTabActive === 'idTabCntSrcDiv') {
-          oEltTabCntSrcIpt.focus();
+        if (sIdTabActive === 'idTabCntSrchDiv') {
+          //on TabCntSrch focus input-element
+          oEltTabCntSrchIpt.focus();
         }
         //return false;
       });
     });
+    document.getElementById('idTabCntSrchDiv').style.display = 'none';
 
     //insert popup-container
     oEltCnrPreviewDiv.id = 'idCnrPreviewDiv';
@@ -850,8 +875,8 @@ var oHitp = (function () {
     document.getElementById('idCnrMainPgcntDiv').setAttribute('tabindex', -1);
     document.getElementById('idCnrMainPgcntDiv').focus();
 
-    //Clicking on PginfPathP-links and TabCntSrcOl-links, first highlight
-    Array.prototype.slice.call(document.querySelectorAll('#idPginfPathP a,#idTabCntSrcOl a')).forEach(function (oEltIn, nIndex, array) {
+    //Clicking on PginfPathP-links and TabCntSrchOl-links, first highlight
+    Array.prototype.slice.call(document.querySelectorAll('#idPginfPathP a,#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
       fEventLink(oEltIn);
     });
   };
