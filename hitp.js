@@ -1,4 +1,5 @@
 /*
+ * version.16-2-0.2017-06-07.search-toc-show-easy
  * version.16-1-2.2017-06-07.search-icon
  * version.16.2017-06-05.search (15-6): hitp.16.2017-06-05.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
@@ -170,6 +171,22 @@ var oHitp = (function () {
     oEltTopSearchIcnI.setAttribute('class', 'clsFa clsFaSearch clsTopIcn clsColorWhite clsFloatRight clsPosRight');
     oEltTopSearchIcnI.addEventListener('click', function (oEvtIn) {
       fCnrOntopRemove();
+      fCnrSearchShow();
+    });
+    oEltCnrTopDiv.appendChild(oEltTopTitleP);
+    oEltCnrTopDiv.appendChild(oEltTopWidthIcnI);
+    oEltCnrTopDiv.appendChild(oEltTopSearchIcnI);
+    oEltTopTitleP.addEventListener('click', function(oEvtIn) {
+      fCnrOntopRemove();
+      fCnrSearchShow();
+    });
+    function fCnrOntopRemove() {
+      oEltCnrPreviewDiv.style.display = 'none'; //remove popup-cnr
+      oEltCnrSiteDiv.style.display = 'none'; //remove site-cnr
+      oEltCnrWidthDiv.style.display = 'none'; //remove width-cnr
+      oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked'); //remove tooltip clicks
+    }
+    function fCnrSearchShow() {
       //Remove active-class from first-child-elt of PginfTabHeaders
       document.getElementById('idPginfTabHeadersUl')
         .firstElementChild.classList.remove('clsTabActive');
@@ -182,18 +199,18 @@ var oHitp = (function () {
       document.getElementById('idTabCntSrchDiv').style.display = 'block';
       //on TabCntSrch focus input-element
       oEltTabCntSrchIpt.focus();
-    });
-    oEltCnrTopDiv.appendChild(oEltTopTitleP);
-    oEltCnrTopDiv.appendChild(oEltTopWidthIcnI);
-    oEltCnrTopDiv.appendChild(oEltTopSearchIcnI);
-    oEltTopTitleP.addEventListener('click', function(oEvtIn) {
-      fCnrOntopRemove();
-    });
-    function fCnrOntopRemove() {
-      oEltCnrPreviewDiv.style.display = 'none'; //remove popup-cnr
-      oEltCnrSiteDiv.style.display = 'none'; //remove site-cnr
-      oEltCnrWidthDiv.style.display = 'none'; //remove width-cnr
-      oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked'); //remove tooltip clicks
+    }
+    function fCnrTocShow() {
+      //Remove active-class from second-child-elt of PginfTabHeaders
+      document.getElementById('idPginfTabHeadersUl')
+        .childNodes[1].classList.remove('clsTabActive');
+      //Add active-class on second-child-element of PginfTabHeaders
+      document.getElementById('idPginfTabHeadersUl')
+        .childNodes[0].classList.add('clsTabActive');
+      //Hide tab-content from TabCntSrch
+      document.getElementById('idTabCntSrchDiv').style.display = 'none';
+      //Show tab-content on TabCntToc
+      document.getElementById('idTabCntTocDiv').style.display = 'block';
     }
 
     oEltBody.innerHTML = '';
@@ -633,6 +650,7 @@ var oHitp = (function () {
       oEltCnrPreviewDiv.style.display = 'none'; //remove popup
       oEltCnrSiteDiv.style.display = 'none'; //remove site-content
       oEltCnrWidthDiv.style.display = 'none'; //remove width-content
+      fCnrTocShow();
 
       /* find id of enclosing SECTION, this is-stored on toc */
       sIdScn = '#' + oEltScn.id;
