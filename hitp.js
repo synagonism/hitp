@@ -1,5 +1,5 @@
 /*
- * version.16-1-1.2017-06-07.search-icon
+ * version.16-1-2.2017-06-07.search-icon
  * version.16.2017-06-05.search (15-6): hitp.16.2017-06-05.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
@@ -123,7 +123,8 @@ var oHitp = (function () {
         '<li>Today his online-worldview contains ABOUT 2,000 structured-concepts with 4,000 names.</li>' +
         '<li>The major concepts are-related to "<span class="clsColorRed">javascript</span>" and "<span class="clsColorRed">blockchain-network</span>".</li>' +
         '<li>Structured-concept-searching demonstrates THE-POWER of structured-concepts. Compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
-        '<li><a class="clsPreview" href="../../../#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. His offline-worldview contains more than 100,000 of them. <a class="clsPreview" href="../../../#idSupport">Support him</a> to continue publishing.</li>',
+        '<li><a class="clsPreview" href="../../../#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. His offline-worldview contains more than 100,000 of them. <a class="clsPreview" href="../../../#idSupport">Support him</a> to continue publishing.</li>' +
+        '<li>This site uses 3 types of searching: <br>- Word-Site-Search from Site-Menu, <br>- Word-Page-Search by hitting Ctrl+F and <br>- Structured-Concept-Search here.</li>',
       oXHR = new XMLHttpRequest(),
       sPathSitemenu,
       sContentOriginal = oEltBody.innerHTML,
