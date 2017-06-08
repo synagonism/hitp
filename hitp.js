@@ -1,4 +1,5 @@
 /*
+ * version.16-3-0.2017-06-08.key-space
  * version.16-2-0.2017-06-07.search-toc-show-easy
  * version.16-1-2.2017-06-07.search-icon
  * version.16.2017-06-05.search (15-6): hitp.16.2017-06-05.js
@@ -398,10 +399,11 @@ var oHitp = (function () {
     oEltTabCntTocDiv.appendChild(oEltTabCntTocPrfDiv);
     //TabCntToc: end-note
     oEltTabCntTocNotP.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br>' +
-      'a) Clicking on CONTENT, shows its position on ToC, the-links, the-address-link-icon <i class="clsFa clsFaLink clsImgLnkIcn"></i>, and removes ontop windows and highlights.<br>' +
-      'b) Clicking on ADDRESS-LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
-      'c) Clicking <span class="clsColorBlue">a-BLUE-LINK</span> shows a-preview.<br>' +
-      'd) SECOND-CLICK, usually, does the-events attached to components in-order-to work well on touch-screens.';
+      'a) Clicking on CONTENT, shows its ToC position, the-links, the-address-link-icon <i class="clsFa clsFaLink clsImgLnkIcn"></i>, and removes ontop windows and highlights.<br>' +
+      'b) Clicking on TITLE|Search-Icon, shows SEARCH-Tab.<br>' +
+      'e) Clicking on ADDRESS-LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
+      'd) Clicking <span class="clsColorBlue">a-BLUE-LINK</span> shows a-preview.<br>' +
+      'f) SECOND-CLICK, usually, does the-events attached to components in-order-to work well on touch-screens.';
     oEltTabCntTocDiv.appendChild(oEltTabCntTocNotP);
     //insert TabCntToc in TabCnt
     oEltPginfTabCntDiv.id = 'idTabCntDiv';
@@ -422,8 +424,7 @@ var oHitp = (function () {
         aLit, //arry of texts of elements
         sLoc = '';
       if (oEvtIn.keyCode === 13) { //enter key
-        if (oEltTabCntSrchIpt.value.length > 0
-         && oEltTabCntSrchIpt.value.endsWith(',')) {
+        if (oEltTabCntSrchIpt.value.length > 0) {
           //a whole name is typed, go this location
           aLi = oEltTabCntSrchOl.getElementsByTagName('li');
           for (var n = 0; n < aLi.length; n++) {
@@ -443,13 +444,17 @@ var oHitp = (function () {
     });
     //on typing, suggest
     oEltTabCntSrchIpt.addEventListener('keyup', function (oEvtIn) {
-      var iKeyCode = oEvtIn.keyCode;
-      if (iKeyCode == 8 || iKeyCode == 46) {
+      var
+        sKey = oEvtIn.key;
+      if (sKey === 'Backspace' || sKey === 'Delete') {
         fSuggest(false); //no typeahead
-      } else if (iKeyCode < 32 || (iKeyCode >= 33 && iKeyCode < 46)
-             || (iKeyCode >= 112 && iKeyCode <= 123)) {
-        //ignore
-      } else {
+      } else if (
+          //https://unicode-table.com/en/blocks/
+          sKey.match(/[\u0020-\u007E]/i) || //some basic-latin
+          sKey.match(/[\u00A1-\u00FF]/i) || //some Latin-1 Supplement
+          sKey.match(/[\u0100-\u017F]/i) || //Latin Extended-A
+          sKey.match(/[\u0180-\u024F]/i)    //Latin Extended-A
+        ) {
         fSuggest(true); //typeahead
       }
       function fSuggest(bAheadIn) {
@@ -496,11 +501,21 @@ var oHitp = (function () {
                 for (var i=0; i < aSuggestions.length; i++) {
                   var sName = aSuggestions[i][0].toUpperCase();
                   //add matching-suggestions
-                  if (sName.indexOf(sIptvalue) == 0) {
-                    sSuggestions = sSuggestions +
-                      '<li><a class="clsPreview" href="' + sPathNames +
-                      aSuggestions[i][1] + '">' +
-                      aSuggestions[i][0] + '</li>';
+                  if (sIptvalue.endsWith(' ')) {
+                    if (sName === sIptvalue.trim()) {
+                      sSuggestions = sSuggestions +
+                        '<li><a class="clsPreview" href="' + sPathNames +
+                        aSuggestions[i][1] + '">' +
+                        aSuggestions[i][0] + '</li>';
+                      break;
+                    }
+                  } else {
+                    if (sName.indexOf(sIptvalue) == 0) {
+                      sSuggestions = sSuggestions +
+                        '<li><a class="clsPreview" href="' + sPathNames +
+                        aSuggestions[i][1] + '">' +
+                        aSuggestions[i][0] + '</li>';
+                    }
                   }
                 }
                 oEltTabCntSrchOl.innerHTML = sSuggestions;
@@ -519,14 +534,24 @@ var oHitp = (function () {
             }
           } else {
             sNamidxLast = sNamidx;
+console.log(aSuggestions)
             for (var i=0; i < aSuggestions.length; i++) {
               var sName = aSuggestions[i][0].toUpperCase();
               //add matching-suggestions
-              if (sName.indexOf(sIptvalue) == 0) {
-                sSuggestions = sSuggestions +
-                  '<li><a class="clsPreview" href="' + sPathNames +
-                  aSuggestions[i][1] + '">' +
-                  aSuggestions[i][0] + '</li>';
+              if (sIptvalue.endsWith(' ')) {
+                if (sName === sIptvalue.trim()) {
+                  sSuggestions = sSuggestions +
+                    '<li><a class="clsPreview" href="' + sPathNames +
+                    aSuggestions[i][1] + '">' +
+                    aSuggestions[i][0] + '</li>';
+                }
+              } else {
+                if (sName.indexOf(sIptvalue) == 0) {
+                  sSuggestions = sSuggestions +
+                    '<li><a class="clsPreview" href="' + sPathNames +
+                    aSuggestions[i][1] + '">' +
+                    aSuggestions[i][0] + '</li>';
+                }
               }
             }
             oEltTabCntSrchOl.innerHTML = sSuggestions;
