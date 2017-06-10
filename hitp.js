@@ -1,4 +1,5 @@
 /*
+ * version.16-3-1.2017-06-10: type after type-ahead, title's-help
  * version.16-3-0.2017-06-08.key-space
  * version.16-2-0.2017-06-07.search-toc-show-easy
  * version.16-1-2.2017-06-07.search-icon
@@ -122,6 +123,7 @@ var oHitp = (function () {
       oEltTabCntSrchOl = document.createElement('ol'),
       sTabCntSrchOl =
         '<li>You can-search for a-structured-concept of Kaseluris.Nikos.1959 WORLDVIEW.</li>' +
+        "<li>Type AFTER computer's typing-ahead text.</li>" +
         '<li>Today his online-worldview contains ABOUT 2,000 structured-concepts with 4,000 names.</li>' +
         '<li>The major concepts are-related to "<span class="clsColorRed">javascript</span>" and "<span class="clsColorRed">blockchain-network</span>".</li>' +
         '<li>Structured-concept-searching demonstrates THE-POWER of structured-concepts. Compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
@@ -138,7 +140,7 @@ var oHitp = (function () {
     //top-title-text
     oEltTopTitleP.innerHTML = document.getElementsByTagName('title')[0].innerHTML;
     oEltTopTitleP.id = 'idTopTitleP';
-    oEltTopTitleP.setAttribute('title', 'Clicking shows Search-Tab');
+    oEltTopTitleP.setAttribute('title', 'Clicking Title, shows Search-Tab');
     //width-icon
     oEltTopWidthIcnI.setAttribute('class', 'clsFa clsFaArrowsH clsTopIcn clsColorWhite clsFloatRight clsTtp clsPosRight');
     //to show a-tooltip on an-element:
@@ -522,10 +524,13 @@ var oHitp = (function () {
                 oEltTabCntSrchOl.innerHTML = sSuggestions;
                 if (bAheadIn) {
                   nL = oEltTabCntSrchIpt.value.length,
-                  sLi = oEltTabCntSrchOl.getElementsByTagName('li')[0].innerHTML;
-                  sLi = sLi.substring(sLi.indexOf('>')+1,sLi.lastIndexOf('<'));
-                  oEltTabCntSrchIpt.value = sLi;
-                  oEltTabCntSrchIpt.setSelectionRange(nL, sLi.length);
+                  sLi = oEltTabCntSrchOl.getElementsByTagName('li')[0];
+                  if (sLi) {
+                    sLi = sLi.innerHTML;
+                    sLi = sLi.substring(sLi.indexOf('>')+1,sLi.lastIndexOf('<'));
+                    oEltTabCntSrchIpt.value = sLi;
+                    oEltTabCntSrchIpt.setSelectionRange(nL, sLi.length);
+                  }
                 }
                 //Clicking on TabCntSrchOl-links, first highlight
                 Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
