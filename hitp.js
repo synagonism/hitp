@@ -1,5 +1,5 @@
 /*
- * version.16-3-1.2017-06-10: type after type-ahead, title's-help
+ * version.16-3-2.2017-06-10: type after type-ahead, title-help, cnrInf-width
  * version.16-3-0.2017-06-08.key-space
  * version.16-2-0.2017-06-07.search-toc-show-easy
  * version.16-1-2.2017-06-07.search-icon
@@ -60,7 +60,7 @@ var oHitp = (function () {
 
   var oHitp = {
     /** config variables */
-    nCfgTocWidth: 25, //% of window width
+    nCfgTocWidth: 30, //% of window width
     /**
      * filSite-structure contains absolute urls, because we see it from many pages.
      * Then we must-know the-homepage of the-site and create different menus.
