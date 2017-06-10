@@ -165,8 +165,8 @@ var oHitp = (function () {
       '<input type="radio" id="idRdbWidth0" name="nameRdbWidth">0 %<br>' +
       '<input type="radio" id="idRdbWidth10" name="nameRdbWidth">10 %<br>' +
       '<input type="radio" id="idRdbWidth20" name="nameRdbWidth">20 %<br>' +
-      '<input type="radio" id="idRdbWidth25" name="nameRdbWidth" checked>25 % (default)<br>' +
-      '<input type="radio" id="idRdbWidth30" name="nameRdbWidth">30 %<br>' +
+      '<input type="radio" id="idRdbWidth25" name="nameRdbWidth">25 %<br>' +
+      '<input type="radio" id="idRdbWidth30" name="nameRdbWidth" checked>30 % (default)<br>' +
       '<input type="radio" id="idRdbWidth40" name="nameRdbWidth">40 %<br>' +
       '<input type="radio" id="idRdbWidth50" name="nameRdbWidth">50 %<br>' +
       '<input type="radio" id="idRdbWidth100" name="nameRdbWidth">100 %<br>' +
