@@ -138,6 +138,7 @@ var oHitp = (function () {
     //top-title-text
     oEltTopTitleP.innerHTML = document.getElementsByTagName('title')[0].innerHTML;
     oEltTopTitleP.id = 'idTopTitleP';
+    oEltTopTitleP.setAttribute('title', 'Clicking shows Search-Tab');
     //width-icon
     oEltTopWidthIcnI.setAttribute('class', 'clsFa clsFaArrowsH clsTopIcn clsColorWhite clsFloatRight clsTtp clsPosRight');
     //to show a-tooltip on an-element:
@@ -534,7 +535,6 @@ var oHitp = (function () {
             }
           } else {
             sNamidxLast = sNamidx;
-console.log(aSuggestions)
             for (var i=0; i < aSuggestions.length; i++) {
               var sName = aSuggestions[i][0].toUpperCase();
               //add matching-suggestions
