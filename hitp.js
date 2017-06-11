@@ -1,5 +1,5 @@
 /*
- * version.16-3-2.2017-06-10: type after type-ahead, title-help, cnrInf-width
+ * version.16-3-3.2017-06-11: type after type-ahead, title-help, cnrInf-width
  * version.16-3-0.2017-06-08.key-space
  * version.16-2-0.2017-06-07.search-toc-show-easy
  * version.16-1-2.2017-06-07.search-icon
@@ -140,7 +140,7 @@ var oHitp = (function () {
     //top-title-text
     oEltTopTitleP.innerHTML = document.getElementsByTagName('title')[0].innerHTML;
     oEltTopTitleP.id = 'idTopTitleP';
-    oEltTopTitleP.setAttribute('title', 'Clicking Title, shows Search-Tab');
+    oEltTopTitleP.setAttribute('title', 'Clicking TITLE shows Search-Tab, clicking CONTENT shows ToC-Tab');
     //width-icon
     oEltTopWidthIcnI.setAttribute('class', 'clsFa clsFaArrowsH clsTopIcn clsColorWhite clsFloatRight clsTtp clsPosRight');
     //to show a-tooltip on an-element:
