@@ -1,5 +1,5 @@
 /*
- * version.16-3-3.2017-06-11: type after type-ahead, title-help, cnrInf-width
+ * version.16-3-4.2017-06-14: type after type-ahead, title-help, cnrInf-width
  * version.16-3-0.2017-06-08.key-space
  * version.16-2-0.2017-06-07.search-toc-show-easy
  * version.16-1-2.2017-06-07.search-icon
@@ -352,6 +352,7 @@ var oHitp = (function () {
     oEltCnrMainPgcntDiv.id = 'idCnrMainPgcntDiv';
     oEltCnrMainPgcntDiv.innerHTML = sContentOriginal;
     oEltCnrMainDiv.appendChild(oEltCnrMainPgcntDiv);
+    oEltCnrMainPgcntDiv.setAttribute('title', 'Clicking TITLE shows Search-Tab');
 
     //insert page-info-cnr
     oEltCnrMainPginfDiv.id = 'idCnrMainPginfDiv';
