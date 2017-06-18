@@ -1,5 +1,5 @@
 /*
- * version.16-3-4.2017-06-14: type after type-ahead, title-help, cnrInf-width
+ * version.16-3-5.2017-06-18: type after type-ahead, title-help, cnrInf-width
  * version.16-3-0.2017-06-08.key-space
  * version.16-2-0.2017-06-07.search-toc-show-easy
  * version.16-1-2.2017-06-07.search-icon
@@ -123,7 +123,7 @@ var oHitp = (function () {
       oEltTabCntSrchOl = document.createElement('ol'),
       sTabCntSrchOl =
         '<li>You can-search for a-structured-concept of Kaseluris.Nikos.1959 WORLDVIEW.</li>' +
-        "<li>Type AFTER computer's typing-ahead text.</li>" +
+        '<li><span class="clsColorRed">Type AFTER</span> computer\'s typing-ahead text.</li>' +
         '<li>Today his online-worldview contains ABOUT 2,000 structured-concepts with 4,000 names.</li>' +
         '<li>The major concepts are-related to "<span class="clsColorRed">javascript</span>" and "<span class="clsColorRed">blockchain-network</span>".</li>' +
         '<li>Structured-concept-searching demonstrates THE-POWER of structured-concepts. Compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
