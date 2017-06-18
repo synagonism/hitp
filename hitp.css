@@ -1,5 +1,5 @@
 /*
- * version.16-0-1.2017-06-10 (tab width): hitp.css
+ * version.16-0-2.2017-06-18 (tab width): hitp.css
  * version.16.2017-06-05.search (15-9): hitp.16.2017-06-05.css
  * version.15.2016-10-27.any-machine (14-14): hitp.15.2016-10-27.css
  * version.14.2016-06-09.title-content-tree (13): hitp.14.2016-06-09.css
@@ -452,7 +452,10 @@ span.clsQuote {
   text-indent: 0px;
 }
 
-ol, ul {margin-right: 5px;}
+ol, ul {
+  margin-left: 15px;
+  margin-right: 5px;
+}
 
 /* hide-class: a-element */
 a.clsHide {
