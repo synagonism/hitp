@@ -1,4 +1,5 @@
 /*
+ * version.16-4-0.2017-06-2: greek search
  * version.16-3-5.2017-06-18: type after type-ahead, title-help, cnrInf-width
  * version.16-3-0.2017-06-08.key-space
  * version.16-2-0.2017-06-07.search-toc-show-easy
@@ -457,7 +458,8 @@ var oHitp = (function () {
           sKey.match(/[\u0020-\u007E]/i) || //some basic-latin
           sKey.match(/[\u00A1-\u00FF]/i) || //some Latin-1 Supplement
           sKey.match(/[\u0100-\u017F]/i) || //Latin Extended-A
-          sKey.match(/[\u0180-\u024F]/i)    //Latin Extended-A
+          sKey.match(/[\u0180-\u024F]/i) || //Latin Extended-B
+          sKey.match(/[\u0370-\u03FF]/i)    //Greek and Coptic
         ) {
         fSuggest(true); //typeahead
       }
@@ -466,7 +468,10 @@ var oHitp = (function () {
           //the-letters of namidx.X.json files
           aIdx = ['A','B','C','D','E','F','G','H',
                   'I','J','K','L','M','N','O','P',
-                  'Q','R','S','T','U','V','W','X','Y','Z'],
+                  'Q','R','S','T','U','V','W','X','Y','Z',
+                  'Α','Β','Γ','Δ','Ε','Ζ','Η','Θ','Ι','Κ','Λ','Μ',
+                  'Ν','Ξ','Ο','Π','Ρ','Σ','Τ','Υ','Φ','Χ','Ψ','Ω'
+                 ],
           aSuggestions,
           nL, //length on input-elt value
           sLi, //text of first suggestion
@@ -478,6 +483,7 @@ var oHitp = (function () {
           sIdx = sIptvalue.charAt(0);
 
         if (sIptvalue.length > 0){
+console.log(sIptvalue)
           if (location.hostname === 'localhost') {
             sPathNames = location.origin + oHitp.sCfgHomeLocal + 'dirMiwMcs/';
           } else {
