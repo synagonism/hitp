@@ -1,9 +1,8 @@
 /*
- * version.16-4-0.2017-06-2: greek search
+ * version.16-4-1.2017-06-23: greek search
  * version.16-3-5.2017-06-18: type after type-ahead, title-help, cnrInf-width
- * version.16-3-0.2017-06-08.key-space
- * version.16-2-0.2017-06-07.search-toc-show-easy
- * version.16-1-2.2017-06-07.search-icon
+ * version.16-2-0.2017-06-07: search-toc-show-easy
+ * version.16-1-2.2017-06-07: search-icon
  * version.16.2017-06-05.search (15-6): hitp.16.2017-06-05.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
@@ -72,6 +71,17 @@ var oHitp = (function () {
     bFirefox: navigator.userAgent.indexOf('Firefox/') > -1,
     //existance of site-structure menu
     bSite: false,
+
+    /**
+     * Find key of object given value
+     */
+    fObjvalRKey: function(oIn, valIn) {
+      return Object.keys(oIn).find(
+        function(key){
+          return oIn[key] === valIn
+        }
+      );
+    },
 
     oEltClicked: document.body,
 
@@ -466,12 +476,18 @@ var oHitp = (function () {
       function fSuggest(bAheadIn) {
         var
           //the-letters of namidx.X.json files
-          aIdx = ['A','B','C','D','E','F','G','H',
-                  'I','J','K','L','M','N','O','P',
-                  'Q','R','S','T','U','V','W','X','Y','Z',
-                  'Α','Β','Γ','Δ','Ε','Ζ','Η','Θ','Ι','Κ','Λ','Μ',
-                  'Ν','Ξ','Ο','Π','Ρ','Σ','Τ','Υ','Φ','Χ','Ψ','Ω'
-                 ],
+          oIdxNam = {
+            engA:'A', engB:'B', engC:'C', engD:'D', engE:'E', engF:'F',
+            engG:'G', engH:'H', engI:'I', engJ:'J', engK:'K', engL:'L',
+            engM:'M', engN:'N', engO:'O', engP:'P', engQ:'Q', engR:'R',
+            engS:'S', engT:'T', engU:'U', engV:'V', engW:'W', engX:'X',
+            engY:'Y', engZ:'Z',
+            ellAl:'Α', ellBe:'Β', ellGa:'Γ', ellDe:'Δ', ellEp:'Ε', ellZe:'Ζ',
+            ellEt:'Η', ellTh:'Θ', ellIo:'Ι', ellKa:'Κ', ellLa:'Λ', ellMu:'Μ',
+            ellNu:'Ν', ellXi:'Ξ', ellOn:'Ο', ellPi:'Π', ellRh:'Ρ', ellSi:'Σ',
+            ellTa:'Τ', ellUp:'Υ', ellPh:'Φ', ellCh:'Χ', ellPs:'Ψ', ellOm:'Ω',
+            ZZZ:'ZZZ'
+          },
           aSuggestions,
           nL, //length on input-elt value
           sLi, //text of first suggestion
@@ -483,7 +499,6 @@ var oHitp = (function () {
           sIdx = sIptvalue.charAt(0);
 
         if (sIptvalue.length > 0){
-console.log(sIptvalue)
           if (location.hostname === 'localhost') {
             sPathNames = location.origin + oHitp.sCfgHomeLocal + 'dirMiwMcs/';
           } else {
@@ -493,8 +508,8 @@ console.log(sIptvalue)
           //else namidx.ZZZ.json
           //when sIdx will become 2-letter
           //firs we will-check for 2-letters and then for 1 letter
-          if (aIdx.includes(sIdx)) {
-            sNamidx = 'namidx.' + sIdx + '.json';
+          if (Object.values(oIdxNam).includes(sIdx)) {
+            sNamidx = 'namidx.' + oHitp.fObjvalRKey(oIdxNam, sIdx) + '.json';
           } else {
             sNamidx = 'namidx.ZZZ.json';
           }
