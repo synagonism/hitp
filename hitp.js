@@ -135,7 +135,7 @@ var oHitp = (function () {
       oEltTabCntSrchOl = document.createElement('ol'),
       sTabCntSrchOl =
         '<li>You can-search for a-structured-concept of Kaseluris.Nikos.1959 WORLDVIEW.</li>' +
-        '<li>On 2017-10 his online-worldview contains ABOUT 4,000 structured-concepts with 9,000 names.</li>' +
+        '<li>On 2017-10 his online-worldview contained ABOUT 4,000 structured-concepts with 9,000 names.</li>' +
         '<li>The major concepts are-related to "<span class="clsColorRed">javascript</span>" and "<span class="clsColorRed">blockchain-network</span>".</li>' +
         '<li>Structured-concept-searching demonstrates THE-POWER of structured-concepts. Compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
         '<li><a class="clsPreview" href="../../../#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. His offline-worldview contains more than 100,000 of them. <a class="clsPreview" href="../../../#idSupport">Support him</a> to continue publishing.</li>' +
