@@ -1,8 +1,4 @@
 /*
- * version.16-4-1.2017-06-23: greek search
- * version.16-3-5.2017-06-18: type after type-ahead, title-help, cnrInf-width
- * version.16-2-0.2017-06-07: search-toc-show-easy
- * version.16-1-2.2017-06-07: search-icon
  * version.16.2017-06-05.search (15-6): hitp.16.2017-06-05.js
  * version.15.2016-10-27.any-machine (14-9): hitp.15.2016-10-27.js
  * version.14.2016-06-09.table-content-tree (13): hitp.14.2016-06-09.js
@@ -33,7 +29,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2010-2017 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2017 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * http://synagonism.net/
  *
@@ -60,7 +56,7 @@ var oHitp = (function () {
 
   var oHitp = {
     /** config variables */
-    nCfgTocWidth: 30, //% of window width
+    nCfgTocWidth: 25, //% of window width
     /**
      * filSite-structure contains absolute urls, because we see it from many pages.
      * Then we must-know the-homepage of the-site and create different menus.
@@ -71,17 +67,6 @@ var oHitp = (function () {
     bFirefox: navigator.userAgent.indexOf('Firefox/') > -1,
     //existance of site-structure menu
     bSite: false,
-
-    /**
-     * Find key of object given value
-     */
-    fObjvalRKey: function(oIn, valIn) {
-      return Object.keys(oIn).find(
-        function(key){
-          return oIn[key] === valIn
-        }
-      );
-    },
 
     oEltClicked: document.body,
 
@@ -113,33 +98,30 @@ var oHitp = (function () {
       oEltCnrSiteDiv = document.createElement('div'),
       oEltCnrPreviewDiv = document.createElement('div'),
       oEltTopSiteIcnI = document.createElement('i'),
-      oEltTopHomeIcnI = document.createElement('i'),
       oEltTopTitleP = document.createElement('p'),
-      oEltTopSearchIcnI = document.createElement('i'),
+      oEltTopHomeIcnI = document.createElement('i'),
       oEltTopWidthIcnI = document.createElement('i'),
       oEltSiteTreeUl,
       //Page-info-cnr contains: PathP, TabNamesUl, TabCntDiv,
       oEltPginfPathP = document.createElement('p'),
       oEltPginfTabHeadersUl = document.createElement('ul'),
-      //Tab-content contains: TabCntToc, TabCntSrch
+      //Tab-content contains: TabCntToc, TabCntSrc
       oEltPginfTabCntDiv = document.createElement('div'),
       oEltTabCntTocDiv = document.createElement('div'),
       oEltTabCntTocCpsBtn = document.createElement('input'),
       oEltTabCntTocExpBtn = document.createElement('input'),
       oEltTabCntTocPrfDiv = document.createElement('div'),
       oEltTabCntTocNotP = document.createElement('p'),
-      oEltTabCntSrchDiv = document.createElement('div'),
-      oEltTabCntSrchP = document.createElement('p'),
-      oEltTabCntSrchIpt = document.createElement('input'),
-      oEltTabCntSrchOl = document.createElement('ol'),
-      sTabCntSrchOl =
+      oEltTabCntSrcDiv = document.createElement('div'),
+      oEltTabCntSrcP = document.createElement('p'),
+      oEltTabCntSrcIpt = document.createElement('input'),
+      oEltTabCntSrcOl = document.createElement('ol'),
+      sTabCntSrcOl =
         '<li>You can-search for a-structured-concept of Kaseluris.Nikos.1959 WORLDVIEW.</li>' +
-        '<li><span class="clsColorRed">Type AFTER</span> computer\'s typing-ahead text.</li>' +
         '<li>Today his online-worldview contains ABOUT 2,000 structured-concepts with 4,000 names.</li>' +
-        '<li>The major concepts are-related to "<span class="clsColorRed">javascript</span>" and "<span class="clsColorRed">blockchain-network</span>".</li>' +
+        '<li>The major concepts are-related to "javascript" and "blockchain-network".</li>' +
         '<li>Structured-concept-searching demonstrates THE-POWER of structured-concepts. Compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
-        '<li><a class="clsPreview" href="../../../#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. His offline-worldview contains more than 100,000 of them. <a class="clsPreview" href="../../../#idSupport">Support him</a> to continue publishing.</li>' +
-        '<li>This site uses 3 types of searching: <br>- Word-Site-Search from Site-Menu, <br>- Word-Page-Search by hitting Ctrl+F and <br>- Structured-Concept-Search here.</li>',
+        '<li><a class="clsPreview" href="../../../#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. His offline-worldview contains more than 100,000 of them. <a class="clsPreview" href="../../../#idSupport">Support him</a> to continue publishing.</li>',
       oXHR = new XMLHttpRequest(),
       sPathSitemenu,
       sContentOriginal = oEltBody.innerHTML,
@@ -151,8 +133,7 @@ var oHitp = (function () {
     //top-title-text
     oEltTopTitleP.innerHTML = document.getElementsByTagName('title')[0].innerHTML;
     oEltTopTitleP.id = 'idTopTitleP';
-    oEltTopTitleP.setAttribute('title', 'Clicking TITLE shows Search-Tab, clicking CONTENT shows ToC-Tab');
-    //width-icon
+    //width
     oEltTopWidthIcnI.setAttribute('class', 'clsFa clsFaArrowsH clsTopIcn clsColorWhite clsFloatRight clsTtp clsPosRight');
     //to show a-tooltip on an-element:
     //- set clsTtp on element
@@ -176,57 +157,20 @@ var oHitp = (function () {
       '<input type="radio" id="idRdbWidth0" name="nameRdbWidth">0 %<br>' +
       '<input type="radio" id="idRdbWidth10" name="nameRdbWidth">10 %<br>' +
       '<input type="radio" id="idRdbWidth20" name="nameRdbWidth">20 %<br>' +
-      '<input type="radio" id="idRdbWidth25" name="nameRdbWidth">25 %<br>' +
-      '<input type="radio" id="idRdbWidth30" name="nameRdbWidth" checked>30 % (default)<br>' +
+      '<input type="radio" id="idRdbWidth25" name="nameRdbWidth" checked>25 % (default)<br>' +
+      '<input type="radio" id="idRdbWidth30" name="nameRdbWidth">30 %<br>' +
       '<input type="radio" id="idRdbWidth40" name="nameRdbWidth">40 %<br>' +
       '<input type="radio" id="idRdbWidth50" name="nameRdbWidth">50 %<br>' +
       '<input type="radio" id="idRdbWidth100" name="nameRdbWidth">100 %<br>' +
       '</fieldset>';
-    //width-icon
-    oEltTopSearchIcnI.setAttribute('class', 'clsFa clsFaSearch clsTopIcn clsColorWhite clsFloatRight clsPosRight');
-    oEltTopSearchIcnI.addEventListener('click', function (oEvtIn) {
-      fCnrOntopRemove();
-      fCnrSearchShow();
-    });
     oEltCnrTopDiv.appendChild(oEltTopTitleP);
     oEltCnrTopDiv.appendChild(oEltTopWidthIcnI);
-    oEltCnrTopDiv.appendChild(oEltTopSearchIcnI);
     oEltTopTitleP.addEventListener('click', function(oEvtIn) {
-      fCnrOntopRemove();
-      fCnrSearchShow();
-    });
-    function fCnrOntopRemove() {
       oEltCnrPreviewDiv.style.display = 'none'; //remove popup-cnr
       oEltCnrSiteDiv.style.display = 'none'; //remove site-cnr
       oEltCnrWidthDiv.style.display = 'none'; //remove width-cnr
       oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked'); //remove tooltip clicks
-    }
-    function fCnrSearchShow() {
-      //Remove active-class from first-child-elt of PginfTabHeaders
-      document.getElementById('idPginfTabHeadersUl')
-        .firstElementChild.classList.remove('clsTabActive');
-      //Add active-class on second-child-element of PginfTabHeaders
-      document.getElementById('idPginfTabHeadersUl')
-        .childNodes[1].classList.add('clsTabActive');
-      //Hide tab-content from TabCntToc
-      document.getElementById('idTabCntTocDiv').style.display = 'none';
-      //Show tab-content on TabCntSrch
-      document.getElementById('idTabCntSrchDiv').style.display = 'block';
-      //on TabCntSrch focus input-element
-      oEltTabCntSrchIpt.focus();
-    }
-    function fCnrTocShow() {
-      //Remove active-class from second-child-elt of PginfTabHeaders
-      document.getElementById('idPginfTabHeadersUl')
-        .childNodes[1].classList.remove('clsTabActive');
-      //Add active-class on second-child-element of PginfTabHeaders
-      document.getElementById('idPginfTabHeadersUl')
-        .childNodes[0].classList.add('clsTabActive');
-      //Hide tab-content from TabCntSrch
-      document.getElementById('idTabCntSrchDiv').style.display = 'none';
-      //Show tab-content on TabCntToc
-      document.getElementById('idTabCntTocDiv').style.display = 'block';
-    }
+    });
 
     oEltBody.innerHTML = '';
     oEltBody.appendChild(oEltCnrTopDiv);
@@ -275,7 +219,6 @@ var oHitp = (function () {
 
         if (oEltIn.className.indexOf('clsClicked') > -1) {
           oEltIn.classList.remove('clsClicked');
-          fCnrOntopRemove();
           location.href = oEltIn.href;
         } else {
           oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
@@ -363,7 +306,6 @@ var oHitp = (function () {
     oEltCnrMainPgcntDiv.id = 'idCnrMainPgcntDiv';
     oEltCnrMainPgcntDiv.innerHTML = sContentOriginal;
     oEltCnrMainDiv.appendChild(oEltCnrMainPgcntDiv);
-    oEltCnrMainPgcntDiv.setAttribute('title', 'Clicking TITLE shows Search-Tab');
 
     //insert page-info-cnr
     oEltCnrMainPginfDiv.id = 'idCnrMainPginfDiv';
@@ -414,38 +356,38 @@ var oHitp = (function () {
     oEltTabCntTocDiv.appendChild(oEltTabCntTocPrfDiv);
     //TabCntToc: end-note
     oEltTabCntTocNotP.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br>' +
-      'a) Clicking on CONTENT, shows its ToC position, the-links, the-address-link-icon <i class="clsFa clsFaLink clsImgLnkIcn"></i>, and removes ontop windows and highlights.<br>' +
-      'b) Clicking on TITLE|Search-Icon, shows SEARCH-Tab.<br>' +
-      'e) Clicking on ADDRESS-LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
-      'd) Clicking <span class="clsColorBlue">a-BLUE-LINK</span> shows a-preview.<br>' +
-      'f) SECOND-CLICK, usually, does the-events attached to components in-order-to work well on touch-screens.';
+      'a) Clicking on CONTENT, shows its position on ToC, the-links, the-address-link-icon <i class="clsFa clsFaLink clsImgLnkIcn"></i>, and removes ontop windows and highlights.<br>' +
+      'b) Clicking on ADDRESS-LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
+      'c) Clicking <span class="clsColorBlue">a-BLUE-LINK</span> shows a-preview.<br>' +
+      'd) SECOND-CLICK, usually, does the-events attached to components in-order-to work well on touch-screens.';
     oEltTabCntTocDiv.appendChild(oEltTabCntTocNotP);
     //insert TabCntToc in TabCnt
     oEltPginfTabCntDiv.id = 'idTabCntDiv';
     oEltPginfTabCntDiv.appendChild(oEltTabCntTocDiv);
-    //TabCntSrch
-    oEltTabCntSrchDiv.id = 'idTabCntSrchDiv';
-    oEltTabCntSrchDiv.setAttribute('class', 'clsTabCnt');
-    oEltTabCntSrchP.id = 'idTabCntSrchP';
-    oEltTabCntSrchP.innerHTML =
+    //TabCntSrc
+    oEltTabCntSrcDiv.id = 'idTabCntSrcDiv';
+    oEltTabCntSrcDiv.setAttribute('class', 'clsTabCnt');
+    oEltTabCntSrcP.id = 'idTabCntSrcP';
+    oEltTabCntSrcP.innerHTML =
       'Type NAME of structured-concept-(mcs)';
-    oEltTabCntSrchP.setAttribute('class', 'clsCenter');
-    oEltTabCntSrchIpt.id = 'idTabCntSrchIpt';
+    oEltTabCntSrcP.setAttribute('class', 'clsCenter');
+    oEltTabCntSrcIpt.id = 'idTabCntSrcIpt';
 
     //on enter, go to concept
-    oEltTabCntSrchIpt.addEventListener('keydown', function (oEvtIn) {
+    oEltTabCntSrcIpt.addEventListener('keydown', function (oEvtIn) {
       var
         aLi, //list of elements of suggestion
         aLit, //arry of texts of elements
         sLoc = '';
       if (oEvtIn.keyCode === 13) { //enter key
-        if (oEltTabCntSrchIpt.value.length > 0) {
+        if (oEltTabCntSrcIpt.value.length > 0
+         && oEltTabCntSrcIpt.value.endsWith(',')) {
           //a whole name is typed, go this location
-          aLi = oEltTabCntSrchOl.getElementsByTagName('li');
+          aLi = oEltTabCntSrcOl.getElementsByTagName('li');
           for (var n = 0; n < aLi.length; n++) {
-            //<a class="clsPreviw" href="...">oEltTabCntSrchIpt.value</a>
+            //<a class="clsPreviw" href="...">oEltTabCntSrcIpt.value</a>
             sLoc = aLi[n].innerHTML;
-            if (sLoc.indexOf(oEltTabCntSrchIpt.value) !== -1) {
+            if (sLoc.indexOf(oEltTabCntSrcIpt.value) !== -1) {
               sLoc = sLoc.substring(sLoc.indexOf('href="')+6,
                                     sLoc.lastIndexOf('"'));
               break;
@@ -458,36 +400,18 @@ var oHitp = (function () {
       }
     });
     //on typing, suggest
-    oEltTabCntSrchIpt.addEventListener('keyup', function (oEvtIn) {
-      var
-        sKey = oEvtIn.key;
-      if (sKey === 'Backspace' || sKey === 'Delete') {
+    oEltTabCntSrcIpt.addEventListener('keyup', function (oEvtIn) {
+      var iKeyCode = oEvtIn.keyCode;
+      if (iKeyCode == 8 || iKeyCode == 46) {
         fSuggest(false); //no typeahead
-      } else if (
-          //https://unicode-table.com/en/blocks/
-          sKey.match(/[\u0020-\u007E]/i) || //some basic-latin
-          sKey.match(/[\u00A1-\u00FF]/i) || //some Latin-1 Supplement
-          sKey.match(/[\u0100-\u017F]/i) || //Latin Extended-A
-          sKey.match(/[\u0180-\u024F]/i) || //Latin Extended-B
-          sKey.match(/[\u0370-\u03FF]/i)    //Greek and Coptic
-        ) {
+      } else if (iKeyCode < 32 || (iKeyCode >= 33 && iKeyCode < 46)
+             || (iKeyCode >= 112 && iKeyCode <= 123)) {
+        //ignore
+      } else {
         fSuggest(true); //typeahead
       }
       function fSuggest(bAheadIn) {
         var
-          //the-letters of namidx.X.json files
-          oIdxNam = {
-            engA:'A', engB:'B', engC:'C', engD:'D', engE:'E', engF:'F',
-            engG:'G', engH:'H', engI:'I', engJ:'J', engK:'K', engL:'L',
-            engM:'M', engN:'N', engO:'O', engP:'P', engQ:'Q', engR:'R',
-            engS:'S', engT:'T', engU:'U', engV:'V', engW:'W', engX:'X',
-            engY:'Y', engZ:'Z',
-            ellAl:'Α', ellBe:'Β', ellGa:'Γ', ellDe:'Δ', ellEp:'Ε', ellZe:'Ζ',
-            ellEt:'Η', ellTh:'Θ', ellIo:'Ι', ellKa:'Κ', ellLa:'Λ', ellMu:'Μ',
-            ellNu:'Ν', ellXi:'Ξ', ellOn:'Ο', ellPi:'Π', ellRh:'Ρ', ellSi:'Σ',
-            ellTa:'Τ', ellUp:'Υ', ellPh:'Φ', ellCh:'Χ', ellPs:'Ψ', ellOm:'Ω',
-            ZZZ:'ZZZ'
-          },
           aSuggestions,
           nL, //length on input-elt value
           sLi, //text of first suggestion
@@ -495,8 +419,7 @@ var oHitp = (function () {
           sNamidxLast = '',
           sPathNames, //localhost or online
           sSuggestions = '',
-          sIptvalue = oEltTabCntSrchIpt.value.toUpperCase(),
-          sIdx = sIptvalue.charAt(0);
+          sIptvalue = oEltTabCntSrcIpt.value.toLowerCase();
 
         if (sIptvalue.length > 0){
           if (location.hostname === 'localhost') {
@@ -504,15 +427,7 @@ var oHitp = (function () {
           } else {
             sPathNames = location.origin + '/dirMiwMcs/';
           }
-          //if sIptvalue belongs a-z, then namidx.X.json
-          //else namidx.ZZZ.json
-          //when sIdx will become 2-letter
-          //firs we will-check for 2-letters and then for 1 letter
-          if (Object.values(oIdxNam).includes(sIdx)) {
-            sNamidx = 'namidx.' + oHitp.fObjvalRKey(oIdxNam, sIdx) + '.json';
-          } else {
-            sNamidx = 'namidx.ZZZ.json';
-          }
+          sNamidx = 'namidx.' + sIptvalue.charAt(0).toUpperCase() + '.json';
           //IF sNamidx is different from last, get it
           if (sNamidx !== sNamidxLast) {
             oXHR = new XMLHttpRequest();
@@ -524,38 +439,25 @@ var oHitp = (function () {
                 aSuggestions = JSON.parse(oXHR.responseText);
                 //
                 for (var i=0; i < aSuggestions.length; i++) {
-                  var sName = aSuggestions[i][0].toUpperCase();
+                  var sName = aSuggestions[i][0].toLowerCase();
                   //add matching-suggestions
-                  if (sIptvalue.endsWith(' ')) {
-                    if (sName === sIptvalue.trim()) {
-                      sSuggestions = sSuggestions +
-                        '<li><a class="clsPreview" href="' + sPathNames +
-                        aSuggestions[i][1] + '">' +
-                        aSuggestions[i][0] + '</li>';
-                      break;
-                    }
-                  } else {
-                    if (sName.indexOf(sIptvalue) == 0) {
-                      sSuggestions = sSuggestions +
-                        '<li><a class="clsPreview" href="' + sPathNames +
-                        aSuggestions[i][1] + '">' +
-                        aSuggestions[i][0] + '</li>';
-                    }
+                  if (sName.indexOf(sIptvalue) == 0) {
+                    sSuggestions = sSuggestions +
+                      '<li><a class="clsPreview" href="' + sPathNames +
+                      aSuggestions[i][1] + '">' +
+                      aSuggestions[i][0] + '</li>';
                   }
                 }
-                oEltTabCntSrchOl.innerHTML = sSuggestions;
+                oEltTabCntSrcOl.innerHTML = sSuggestions;
                 if (bAheadIn) {
-                  nL = oEltTabCntSrchIpt.value.length,
-                  sLi = oEltTabCntSrchOl.getElementsByTagName('li')[0];
-                  if (sLi) {
-                    sLi = sLi.innerHTML;
-                    sLi = sLi.substring(sLi.indexOf('>')+1,sLi.lastIndexOf('<'));
-                    oEltTabCntSrchIpt.value = sLi;
-                    oEltTabCntSrchIpt.setSelectionRange(nL, sLi.length);
-                  }
+                  nL = oEltTabCntSrcIpt.value.length,
+                  sLi = oEltTabCntSrcOl.getElementsByTagName('li')[0].innerHTML;
+                  sLi = sLi.substring(sLi.indexOf('>')+1,sLi.lastIndexOf('<'));
+                  oEltTabCntSrcIpt.value = sLi;
+                  oEltTabCntSrcIpt.setSelectionRange(nL, sLi.length);
                 }
-                //Clicking on TabCntSrchOl-links, first highlight
-                Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
+                //Clicking on TabCntSrcOl-links, first highlight
+                Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrcOl a')).forEach(function (oEltIn, nIndex, array) {
                   fEventLink(oEltIn);
                 });
               }
@@ -563,49 +465,40 @@ var oHitp = (function () {
           } else {
             sNamidxLast = sNamidx;
             for (var i=0; i < aSuggestions.length; i++) {
-              var sName = aSuggestions[i][0].toUpperCase();
+              var sName = aSuggestions[i][0].toLowerCase();
               //add matching-suggestions
-              if (sIptvalue.endsWith(' ')) {
-                if (sName === sIptvalue.trim()) {
-                  sSuggestions = sSuggestions +
-                    '<li><a class="clsPreview" href="' + sPathNames +
-                    aSuggestions[i][1] + '">' +
-                    aSuggestions[i][0] + '</li>';
-                }
-              } else {
-                if (sName.indexOf(sIptvalue) == 0) {
-                  sSuggestions = sSuggestions +
-                    '<li><a class="clsPreview" href="' + sPathNames +
-                    aSuggestions[i][1] + '">' +
-                    aSuggestions[i][0] + '</li>';
-                }
+              if (sName.indexOf(sIptvalue) == 0) {
+                sSuggestions = sSuggestions +
+                  '<li><a class="clsPreview" href="' + sPathNames +
+                  aSuggestions[i][1] + '">' +
+                  aSuggestions[i][0] + '</li>';
               }
             }
-            oEltTabCntSrchOl.innerHTML = sSuggestions;
+            oEltTabCntSrcOl.innerHTML = sSuggestions;
             if (bAheadIn) {
-              nL = oEltTabCntSrchIpt.value.length,
-              sLi = oEltTabCntSrchOl.getElementsByTagName('li')[0].innerHTML;
+              nL = oEltTabCntSrcIpt.value.length,
+              sLi = oEltTabCntSrcOl.getElementsByTagName('li')[0].innerHTML;
               sLi = sLi.substring(sLi.indexOf('>')+1,sLi.lastIndexOf('<'));
-              oEltTabCntSrchIpt.value = sLi;
-              oEltTabCntSrchIpt.setSelectionRange(nL, sLi.length);
+              oEltTabCntSrcIpt.value = sLi;
+              oEltTabCntSrcIpt.setSelectionRange(nL, sLi.length);
             }
           }
         } else {
           //no input value, display this:
-          oEltTabCntSrchOl.innerHTML = sTabCntSrchOl;
+          oEltTabCntSrcOl.innerHTML = sTabCntSrcOl;
         }
-        //Clicking on TabCntSrchOl-links, first highlight
-        Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
+        //Clicking on TabCntSrcOl-links, first highlight
+        Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrcOl a')).forEach(function (oEltIn, nIndex, array) {
           fEventLink(oEltIn);
         });
       }
     });
-    oEltTabCntSrchOl.id = 'idTabCntSrchOl';
-    oEltTabCntSrchOl.innerHTML = sTabCntSrchOl;
-    oEltTabCntSrchDiv.appendChild(oEltTabCntSrchP);
-    oEltTabCntSrchDiv.appendChild(oEltTabCntSrchIpt);
-    oEltTabCntSrchDiv.appendChild(oEltTabCntSrchOl);
-    oEltPginfTabCntDiv.appendChild(oEltTabCntSrchDiv);
+    oEltTabCntSrcOl.id = 'idTabCntSrcOl';
+    oEltTabCntSrcOl.innerHTML = sTabCntSrcOl;
+    oEltTabCntSrcDiv.appendChild(oEltTabCntSrcP);
+    oEltTabCntSrcDiv.appendChild(oEltTabCntSrcIpt);
+    oEltTabCntSrcDiv.appendChild(oEltTabCntSrcOl);
+    oEltPginfTabCntDiv.appendChild(oEltTabCntSrcDiv);
 
     //insert tab-cnr IN page-info-cnr
     oEltCnrMainPginfDiv.appendChild(oEltPginfTabCntDiv);
@@ -614,7 +507,7 @@ var oHitp = (function () {
     oEltPginfTabHeadersUl.id = 'idPginfTabHeadersUl';
     oEltPginfTabHeadersUl.innerHTML =
       '<li class="clsTabActive"><a href="#idTabCntTocDiv">Page-ToC</a></li>' +
-      '<li><a href="#idTabCntSrchDiv">Search</a></li>';
+      '<li><a href="#idTabCntSrcDiv">Search</a></li>';
     oEltCnrMainPginfDiv.insertBefore(oEltPginfTabHeadersUl, oEltCnrMainPginfDiv.firstChild);
 
     //insert page-path-elt IN page-info-cnr
@@ -702,7 +595,6 @@ var oHitp = (function () {
       oEltCnrPreviewDiv.style.display = 'none'; //remove popup
       oEltCnrSiteDiv.style.display = 'none'; //remove site-content
       oEltCnrWidthDiv.style.display = 'none'; //remove width-content
-      fCnrTocShow();
 
       /* find id of enclosing SECTION, this is-stored on toc */
       sIdScn = '#' + oEltScn.id;
@@ -816,14 +708,12 @@ var oHitp = (function () {
         //Show content of active tab
         sIdTabActive = document.querySelector('.clsTabActive a').getAttribute('href').substring(1);
         document.getElementById(sIdTabActive).style.display = 'block';
-        if (sIdTabActive === 'idTabCntSrchDiv') {
-          //on TabCntSrch focus input-element
-          oEltTabCntSrchIpt.focus();
+        if (sIdTabActive === 'idTabCntSrcDiv') {
+          oEltTabCntSrcIpt.focus();
         }
         //return false;
       });
     });
-    document.getElementById('idTabCntSrchDiv').style.display = 'none';
 
     //insert popup-container
     oEltCnrPreviewDiv.id = 'idCnrPreviewDiv';
@@ -860,36 +750,34 @@ var oHitp = (function () {
       } else {
         oEltCnrPreviewDiv.innerHTML = '';
         oXHR = new XMLHttpRequest();
-        oXHR.open('GET', sId1, true);
+        oXHR.open('GET', sId1, false);
         oXHR.send(null);
-        oXHR.onreadystatechange = function () {
-          if (oXHR.readyState === 4 && oXHR.status === 200) { //DONE, OK
-            if (sId2) {
-              //IF #fragment url, display only this element.
-              oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
-              oEltCnrPreviewDiv.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+        if (oXHR.status === 200) {
+          if (sId2) {
+            //IF #fragment url, display only this element.
+            oDoc = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html');
+            oEltCnrPreviewDiv.innerHTML = '<section>' + oDoc.getElementById(sId2).innerHTML + '</section>';
+          } else {
+            //IF link to a picture, display it, not its code.
+            if (sId1.match(/(png|jpg|gif)$/)) {
+              var oImg = new Image();
+              var nIW, nIH, nPW, nPH;
+              nPW = nWw / 2.2;
+              nPH = nWh * 0.4;
+              oImg.src = sId1;
+              oImg.addEventListener('load', function() {
+                nIW = oImg.width;
+                nIH = oImg.height;
+                if (nIH > nPH) {
+                  nIW = (nIW * nPH) / nIH;
+                  nIH = nPH;
+                }
+                oEltCnrPreviewDiv.innerHTML = '<p class="clsCenter"><img src="' + sId1
+                  + '" width="' + nIW
+                  + '" height="' + nIH + '" /></p>';
+              });
             } else {
-              //IF link to a picture, display it, not its code.
-              if (sId1.match(/(png|jpg|gif)$/)) {
-                var oImg = new Image();
-                var nIW, nIH, nPW, nPH;
-                nPW = nWw / 2.2;
-                nPH = nWh * 0.4;
-                oImg.src = sId1;
-                oImg.addEventListener('load', function() {
-                  nIW = oImg.width;
-                  nIH = oImg.height;
-                  if (nIH > nPH) {
-                    nIW = (nIW * nPH) / nIH;
-                    nIH = nPH;
-                  }
-                  oEltCnrPreviewDiv.innerHTML = '<p class="clsCenter"><img src="' + sId1
-                    + '" width="' + nIW
-                    + '" height="' + nIH + '" /></p>';
-                });
-              } else {
-                document.getElementById('idCnrPreviewDiv').innerHTML = oXHR.responseText;
-              }
+              document.getElementById('idCnrPreviewDiv').innerHTML = oXHR.responseText;
             }
           }
         }
@@ -949,8 +837,8 @@ var oHitp = (function () {
     document.getElementById('idCnrMainPgcntDiv').setAttribute('tabindex', -1);
     document.getElementById('idCnrMainPgcntDiv').focus();
 
-    //Clicking on PginfPathP-links and TabCntSrchOl-links, first highlight
-    Array.prototype.slice.call(document.querySelectorAll('#idPginfPathP a,#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
+    //Clicking on PginfPathP-links and TabCntSrcOl-links, first highlight
+    Array.prototype.slice.call(document.querySelectorAll('#idPginfPathP a,#idTabCntSrcOl a')).forEach(function (oEltIn, nIndex, array) {
       fEventLink(oEltIn);
     });
   };

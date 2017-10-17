@@ -1,5 +1,4 @@
 /*
- * version.16-0-2.2017-06-18 (tab width): hitp.css
  * version.16.2017-06-05.search (15-9): hitp.16.2017-06-05.css
  * version.15.2016-10-27.any-machine (14-14): hitp.15.2016-10-27.css
  * version.14.2016-06-09.title-content-tree (13): hitp.14.2016-06-09.css
@@ -452,10 +451,7 @@ span.clsQuote {
   text-indent: 0px;
 }
 
-ol, ul {
-  margin-left: 15px;
-  margin-right: 5px;
-}
+ol, ul {margin-right: 5px;}
 
 /* hide-class: a-element */
 a.clsHide {
@@ -534,16 +530,16 @@ a.clsClicked {
   padding-left: 3px;
   font-weight: bold;
 }
-#idTabCntSrchP {
+#idTabCntSrcP {
   margin: 5px 0px 5px 5px;
   padding-left: 3px;
   font-weight: bold;
 }
-#idTabCntSrchIpt {
+#idTabCntSrcIpt {
   border: 0.5px solid black;
   width: 100%;
 }
-#idTabCntSrchOl {
+#idTabCntSrcOl {
   margin: 10px 0px 5px -2px;
 }
 #idTocTri.clsTreeUl {
@@ -749,7 +745,7 @@ ul#idPginfTabHeadersUl li {
   margin-left: 3px;
   padding: 0;
   height: 26px;
-  width: 45%;
+  width: 106px;
   line-height: 26px;
   overflow: hidden;
 }
