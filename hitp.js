@@ -1,4 +1,5 @@
 /*
+ * version.16-5-0.2017-11-10: arrow keys in search.
  * version.16-4-2.2017-10-17: no type-ahead in search.
  * version.16-4-1.2017-06-23: greek search.
  * version.16-3-5.2017-06-18: type after type-ahead, title-help, cnrInf-width
@@ -60,8 +61,9 @@
 var oHitp = (function () {
 
   var oHitp = {
+    sVersion: 'hitp.js.16-5-0.2017-11-10: arrow keys in search',
     /** config variables */
-    nCfgTocWidth: 30, //% of window width
+    nCfgPageinfoWidth: 30, //% of window width
     /**
      * filSite-structure contains absolute urls, because we see it from many pages.
      * Then we must-know the-homepage of the-site and create different menus.
@@ -237,35 +239,35 @@ var oHitp = (function () {
     });
     document.getElementById('idRdbWidth0').addEventListener('click', function(oEvtIn) {
       fWidthPginf(0);
-      oHitp.nCfgTocWidth = 0;
+      oHitp.nCfgPageinfoWidth = 0;
     });
     document.getElementById('idRdbWidth10').addEventListener('click', function(oEvtIn) {
       fWidthPginf(10);
-      oHitp.nCfgTocWidth = 10;
+      oHitp.nCfgPageinfoWidth = 10;
     });
     document.getElementById('idRdbWidth20').addEventListener('click', function(oEvtIn) {
       fWidthPginf(20);
-      oHitp.nCfgTocWidth = 20;
+      oHitp.nCfgPageinfoWidth = 20;
     });
     document.getElementById('idRdbWidth25').addEventListener('click', function(oEvtIn) {
       fWidthPginf(25);
-      oHitp.nCfgTocWidth = 25;
+      oHitp.nCfgPageinfoWidth = 25;
     });
     document.getElementById('idRdbWidth30').addEventListener('click', function(oEvtIn) {
       fWidthPginf(30);
-      oHitp.nCfgTocWidth = 30;
+      oHitp.nCfgPageinfoWidth = 30;
     });
     document.getElementById('idRdbWidth40').addEventListener('click', function(oEvtIn) {
       fWidthPginf(40);
-      oHitp.nCfgTocWidth = 40;
+      oHitp.nCfgPageinfoWidth = 40;
     });
     document.getElementById('idRdbWidth50').addEventListener('click', function(oEvtIn) {
       fWidthPginf(50);
-      oHitp.nCfgTocWidth = 50;
+      oHitp.nCfgPageinfoWidth = 50;
     });
     document.getElementById('idRdbWidth100').addEventListener('click', function(oEvtIn) {
       fWidthPginf(100);
-      oHitp.nCfgTocWidth = 100;
+      oHitp.nCfgPageinfoWidth = 100;
     });
 
     //adds click event on input link elements
@@ -278,7 +280,8 @@ var oHitp = (function () {
           fCnrOntopRemove();
           location.href = oEltIn.href;
         } else {
-          oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked');
+          oHitp.oEltClicked.classList.remove('clsClicked',
+            'clsTtpShow', 'clsTriClicked');
           oHitp.oEltClicked = oEltIn;
           oEltIn.classList.add('clsClicked');
           fEvtPreview(oEvtIn);
@@ -439,21 +442,14 @@ var oHitp = (function () {
         aLit, //arry of texts of elements
         sLoc = '';
       if (oEvtIn.keyCode === 13) { //enter key
-        if (oEltTabCntSrchIpt.value.length > 0) {
-          //a whole name is typed, go this location
-          aLi = oEltTabCntSrchOl.getElementsByTagName('li');
-          for (var n = 0; n < aLi.length; n++) {
-            //<a class="clsPreviw" href="...">oEltTabCntSrchIpt.value</a>
-            sLoc = aLi[n].innerHTML;
-            if (sLoc.indexOf(oEltTabCntSrchIpt.value) !== -1) {
-              sLoc = sLoc.substring(sLoc.indexOf('href="')+6,
-                                    sLoc.lastIndexOf('"'));
-              break;
-            }
-          }
-          if (sLoc !== '') {
-            location.href = sLoc;
-          }
+        //go to highlighted item
+        aLi = oEltTabCntSrchOl.getElementsByClassName('clsClicked');
+        if (aLi.length > 0) {
+          //<a class="clsPreviw" href="...">concept-name</a>
+          sLoc = aLi[0].href;
+        }
+        if (sLoc !== '') {
+          location.href = sLoc;
         }
       }
     });
@@ -461,18 +457,47 @@ var oHitp = (function () {
     oEltTabCntSrchIpt.addEventListener('keyup', function (oEvtIn) {
       var
         sKey = oEvtIn.key;
-      if (sKey === 'Backspace' || sKey === 'Delete') {
-        fSuggest(false); //no typeahead
-      } else if (
+      if ((sKey === 'Backspace' ||
+          sKey === 'Delete' ||
           //https://unicode-table.com/en/blocks/
           sKey.match(/[\u0020-\u007E]/i) || //some basic-latin
           sKey.match(/[\u00A1-\u00FF]/i) || //some Latin-1 Supplement
           sKey.match(/[\u0100-\u017F]/i) || //Latin Extended-A
           sKey.match(/[\u0180-\u024F]/i) || //Latin Extended-B
-          sKey.match(/[\u0370-\u03FF]/i)    //Greek and Coptic
-        ) {
-        fSuggest(false); //typeahead
+          sKey.match(/[\u0370-\u03FF]/i)) &&   //Greek and Coptic
+          (oEvtIn.keyCode !== 40 &&
+           oEvtIn.keyCode !== 38 &&
+           oEvtIn.keyCode !== 34 &&
+           oEvtIn.keyCode !== 33 )) {
+        fSuggest(false); //no typeahead
+      } else if (oEvtIn.keyCode === 40) { //down arrow
+        aLi = oEltTabCntSrchOl.getElementsByTagName('li');
+        for (n = 0; n < aLi.length; n++) {
+          var oLi = aLi[n];
+          if (oLi.children[0].className.indexOf('clsClicked') > -1 &&
+              n+1 < aLi.length) {
+            oLi.children[0].classList.remove('clsClicked');
+            oEltCnrPreviewDiv.style.display = 'none';
+            oHitp.oEltClicked = aLi[n+1].children[0];
+            aLi[n+1].children[0].classList.add('clsClicked');
+            break;
+          }
+        }
+      } else if (oEvtIn.keyCode === 38) { //up arrow
+        aLi = oEltTabCntSrchOl.getElementsByTagName('li');
+        for (n = 0; n < aLi.length; n++) {
+          var oLi = aLi[n];
+          if (oLi.children[0].className.indexOf('clsClicked') > -1 &&
+              n-1 >= 0) {
+            oLi.children[0].classList.remove('clsClicked');
+            oEltCnrPreviewDiv.style.display = 'none';
+            oHitp.oEltClicked = aLi[n-1].children[0];
+            aLi[n-1].children[0].classList.add('clsClicked');
+            break;
+          }
+        }
       }
+
       function fSuggest(bAheadIn) {
         var
           //the-letters of namidx.X.json files
@@ -561,6 +586,11 @@ var oHitp = (function () {
                     oEltTabCntSrchIpt.setSelectionRange(nL, sLi.length);
                   }
                 }
+                if (aSuggestions.length > 0) {
+                  sLi = oEltTabCntSrchOl.getElementsByTagName('li')[0];
+                  sLi.children[0].classList.add('clsClicked');
+                  oHitp.oEltClicked = sLi.children[0];
+                }
                 //Clicking on TabCntSrchOl-links, first highlight
                 Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
                   fEventLink(oEltIn);
@@ -605,6 +635,37 @@ var oHitp = (function () {
         Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn, nIndex, array) {
           fEventLink(oEltIn);
         });
+      }
+    });
+    oEltTabCntSrchOl.addEventListener('keyup', function (oEvtIn) {
+      var
+        sKey = oEvtIn.key;
+      if (oEvtIn.keyCode === 40) { //down arrow
+        aLi = oEltTabCntSrchOl.getElementsByTagName('li');
+        for (n = 0; n < aLi.length; n++) {
+          var oLi = aLi[n];
+          if (oLi.children[0].className.indexOf('clsClicked') > -1 &&
+              n+1 < aLi.length) {
+            oLi.children[0].classList.remove('clsClicked');
+            oEltCnrPreviewDiv.style.display = 'none';
+            oHitp.oEltClicked = aLi[n+1].children[0];
+            aLi[n+1].children[0].classList.add('clsClicked');
+            break;
+          }
+        }
+      } else if (oEvtIn.keyCode === 38) { //up arrow
+        aLi = oEltTabCntSrchOl.getElementsByTagName('li');
+        for (n = 0; n < aLi.length; n++) {
+          var oLi = aLi[n];
+          if (oLi.children[0].className.indexOf('clsClicked') > -1 &&
+              n-1 >= 0) {
+            oLi.children[0].classList.remove('clsClicked');
+            oEltCnrPreviewDiv.style.display = 'none';
+            oHitp.oEltClicked = aLi[n-1].children[0];
+            aLi[n-1].children[0].classList.add('clsClicked');
+            break;
+          }
+        }
       }
     });
     oEltTabCntSrchOl.id = 'idTabCntSrchOl';
@@ -691,10 +752,10 @@ var oHitp = (function () {
       oEltCnrMainPgcntDiv.style.width = nWidthPgcnt + 'px';
       oEltCnrMainPgcntDiv.style.left = nWidthPginf + 'px';
     }
-    fWidthPginf(oHitp.nCfgTocWidth);
+    fWidthPginf(oHitp.nCfgPageinfoWidth);
     //needed for proper zoom
     window.addEventListener("resize", function () {
-      fWidthPginf(oHitp.nCfgTocWidth);
+      fWidthPginf(oHitp.nCfgPageinfoWidth);
     });
 
     //on MainPgcnt-cnr get-id, highlight toc, highlight links, remove popup, remove clicked link */
@@ -964,8 +1025,9 @@ var oHitp = (function () {
 
   /**
    * created: {2013-07-17}
-   * Returns a string html-ul-element that holds the-toc-tree with the-headings of the-page.
-   * ul id="idTocTri" class="clsTreeUl">
+   * Returns a string html-ul-element that holds
+   * the-toc-tree with the-headings of the-page.
+   * <ul id="idTocTri" class="clsTreeUl">
    *   <li><a class="clsPreview" href="#idHeader">SynAgonism</a>
    *     <ul>
    *       <li><a href="#heading">heading</a><li>
