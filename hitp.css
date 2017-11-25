@@ -1,5 +1,6 @@
 /*
- * version.16-0-3.2017-10-17: underline hovering links.
+* version.16-0-4.2017-11-25: ColorBg white.
+* version.16-0-3.2017-10-17: underline hovering links.
  * version.16-0-2.2017-06-18 (tab width): hitp.css
  * version.16.2017-06-05.search (15-9): hitp.16.2017-06-05.css
  * version.15.2016-10-27.any-machine (14-14): hitp.15.2016-10-27.css
@@ -679,9 +680,15 @@ a.clsClicked {
 
 /* class.COLOR */
 .clsColorBlue {color: #0000ff;}
-.clsColorBlueBg {background-color: #0000ff;}
+.clsColorBlueBg {
+  background-color: #0000ff;
+  color: white;
+}
 .clsColorGreen {color: #008000;}
-.clsColorGreenBg {background-color: #008000;}
+.clsColorGreenBg {
+  background-color: #008000;
+  color: white;
+}
 .clsColorRed {color: #ff0000;}
 .clsColorRedBg {background-color: #ff0000;}
 .clsColorYellow {color: #FFFF00;}
