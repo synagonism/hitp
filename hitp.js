@@ -1,4 +1,5 @@
 /*
+ * version.16-5-2.2018-01-23
  * version.16-5-1.2018-01-06: Đchain-network.
  * version.16-5-0.2017-11-10: arrow keys in search.
  * version.16-4-2.2017-10-17: no type-ahead in search.
@@ -139,7 +140,7 @@ var oHitp = (function () {
       sTabCntSrchOl =
         '<li>You can-search for a-structured-concept of Kaseluris.Nikos.1959 WORLDVIEW.</li>' +
         '<li>On 2018-01 his online-worldview contained ABOUT 5,000 structured-concepts with 12,000 names.</li>' +
-        '<li>The major concepts are-related to "<span class="clsColorRed">javascript</span>" and "<span class="clsColorRed">Đchain-network</span>".</li>' +
+        '<li>The major concepts are-related to "<span class="clsColorRed">javascript</span>" and "<span class="clsColorRed">chain-network (Đ-net)</span>".</li>' +
         '<li>Structured-concept-searching demonstrates THE-POWER of structured-concepts. Compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
         '<li><a class="clsPreview" href="../../../#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. His offline-worldview contains more than 100,000 of them. <a class="clsPreview" href="../../../#idSupport">Support him</a> to continue publishing.</li>' +
         '<li>This site uses 3 types of searching: <br>- Word-Site-Search from Site-Menu, <br>- Word-Page-Search by hitting Ctrl+F and <br>- Structured-Concept-Search here.</li>',
