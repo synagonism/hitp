@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>html5.id.toc.preview (hitp) webpage format</title>
+  <meta name="keywords" content="free book, ebook, title-value-pair, hitp-webpage, html5.id.toc.preview, synagonism">
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <link href="hitp.12.2016-01-24.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<header id="idHeader">
+  <p></p>
+  <h1 id="idHeaderH1">hitp-webpage
+    <br/>html5.id.toc.preview format with
+    <br/>HTML5, IDs, Table-of-Contents, Link-preview
+    </h1>
+</header>
+
+<section id="idDescription">
+  <h1 id="idDescriptionH1">Description
+    </h1>
+  <p id="idDescriptionP1"><span class="clsB">HITP (html5.id.toc.preview)</span> is a FORMAT (method) for publishing
+    WEBPAGES (digital-texts | ebooks) with these advantages:
+    <br/>1) <em>html5</em>: no need for special programs to read them, as all machines have the needed browser (= html reader). Also html5-elements structure the text for humans and machines.
+    <br/>2) <em>id</em>: anyone can refer to ANY PART of them, because all their html-elements have IDs.
+    <br/>3) <em>toc</em>: automatically created expandable table-of-contents makes reading easy.
+    <br/>4) <em>preview</em>: same domain <a class="clsPreview" href="#idPreview">link-preview</a> makes reading fast.
+    <br/>Knowledge of html is a prerequisite to read the rest of this page.
+    <a class="clsHide" href="#idDescriptionP1">¶</a></p>
+</section>
+
+<section id="idName">
+  <h1 id="idNameH1">Name
+    <a class="clsHide" href="#idNameH1">¶</a></h1>
+  <p id="idNameNam">_Name:
+    <br/>• nam.Html5IdTocPreview,
+    <br/>• generic-specific-pair--webpage, {2013.09.01}
+    <br/>• html5.id.toc.preview-webpage,
+    <br/>• html5.id.toc.preview-page,
+    <br/>• html5IdTocPreview-webpage,
+    <br/>• hitp-webpage,
+    <br/>• hitp-webpage-application,
+    <br/>• hitp-web-page,
+    <br/>• hitp-page,
+    <br/>• title-value-pair-webpage,
+    <a class="clsHide" href="#idNameNam">¶</a></p>
+  <p id="idNameAbb">_Abbreviation:
+    <br/>• nam.hitp,
+    <br/>• wpgHitp,
+    <br/>• hitp,
+    <br/>• hitpwpg,
+    <a class="clsHide" href="#idNameAbb">¶</a></p>
+</section>
+
+<section id="idBrowser">
+  <h1 id="idBrowserH1">Browser-compatibility
+    <a class="clsHide" href="#idBrowserH1">¶</a></h1>
+  <p id="idBrowserNam">_Name:
+    <br/>• hitp'browser,
+    <a class="clsHide" href="#idBrowserNam">¶</a></p>
+  <p id="idBrowserDes">_Description:
+    <br/>• Hitp is tested on modern {2016} browsers on win10: Chrome, Firefox, Safari, Edge, IE11.
+    <a class="clsHide" href="#idBrowserDes">¶</a></p>
+</section>
+
+<section id="idCode">
+  <h1 id="idCodeH1">Code
+    <a class="clsHide" href="#idCodeH1">¶</a></h1>
+  <p id="idCodeNam">_Name:
+    <br/>• hitp'code,
+    <a class="clsHide" href="#idCodeNam">¶</a></p>
+  <p id="idCodeDes">_Description:
+    <br/>The code it is written in 3 computer-languages, because it is a web application:
+    <br/>• <a class="clsPreview" href="#idCodeHml">html: for the structure of the information</a>,
+    <br/>• <a class="clsPreview" href="#idCodeCss">css: for its presentation</a>,
+    <br/>• <a class="clsPreview" href="#idCodeJs">JavaScript: for its processing</a>.
+    <a class="clsHide" href="#idCodeDes">¶</a></p>
+
+  <section id="idDl">
+  <h2 id="idDlH2">Download
+    <a class="clsHide" href="#idDlH2">¶</a></h2>
+  <p id="idDlNam">_Name:
+    <br/>• hitp'download,
+    <a class="clsHide" href="#idDlNam">¶</a></p>
+  <p id="idDlP1">_GitHub-site:
+    <br/>Since version.2014.08.05.10.valuenames I published the code on GitHub.
+    <br/>• <a href="https://github.com/synagonism/hitp/">https://github.com/synagonism/hitp/</a>.
+    <br/>
+    <br/>To use the online files, use the files on the-project-page on GitHub.
+    <br/>• <a href="https://synagonism.github.io/hitp/hitp.html">https://synagonism.github.io/hitp/hitp.html</a>.
+    <br/>• <a href="https://synagonism.github.io/hitp/hitp.css">https://synagonism.github.io/hitp/hitp.css</a>.
+    <br/>• <a href="https://synagonism.github.io/hitp/hitp.js">https://synagonism.github.io/hitp/hitp.js</a>.
+    <a class="clsHide" href="#idDlP1">¶</a></p>
+  <p id="idDlP1">_Synagonism-site:
+    <br/>• latest: <a href="hitp.html">hitp.html</a>, <a href="hitp.css">hitp.css</a>, <a href="hitp.js">hitp.js</a>.
+    <a class="clsHide" href="#idDlP1">¶</a></p>
+  </section>
+</section>
+
+<section id="idCodeHml">
+  <h1 id="idCodeHmlH1">Code.HTML
+    <a class="clsHide" href="#idCodeHmlH1">¶</a></h1>
+  <p id="idCodeHmlNam">_Name:
+    <br/>• hitp'html,
+    <br/>• hitp'code.html,
+    <a class="clsHide" href="#idCodeHmlNam">¶</a></p>
+  <p id="idCodeHmlDes">_Description:
+    <br/>Html defines the structure of a hitp webpage.
+    <a class="clsHide" href="#idCodeHmlDes">¶</a></p>
+
+  <section id="idHtml5">
+  <h2 id="idHtml5H2">HTML5
+    <a class="clsHide" href="#idHtml5H2">¶</a></h2>
+  <p id="idHtml5Nam">_Name:
+    <br/>• hitp'html5,
+    <a class="clsHide" href="#idHtml5Nam">¶</a></p>
+  <p id="idHtml5P1">We use HTML5-elements to create the structure of a hitp-page. Every hitp-page contains an ordered-set of <a class="clsPreview" href="#idHitptvp">title-value-pairs</a> which are implemented with 1 header, 1 optional footer, and many section html5-elements.
+    <br/>• The header-element is the first body-element with 1 h1-element that serves the title of the document.
+    <br/>• The optional footer-element is the before last element without a heading-element.
+    <br/>• Every section-element includes 1 heading-element and other non heading-elements, mainly p-elements. Also a section-element includes other sections-elements with ordered-headings in the form h1, h2, h3, ... The last section-element has a h1-element with content 'Meta Info'.
+    <a class="clsHide" href="#idHtml5P1">¶</a></p>
+  </section>
+
+  <section id="idHitpFileHml">
+  <h2 id="idHitpFileHmlH2">html-file
+    <a class="clsHide" href="#idHitpFileHmlH2">¶</a></h2>
+  <p id="idHitpFileHmlNam">_Name:
+    <br/>• hitp-doc,
+    <br/>• hitp'html-file,
+    <br/>• hitp'file,
+    <br/>• hitp-file,
+    <a class="clsHide" href="#idHitpFileHmlNam">¶</a></p>
+  <p id="idHitpFileHmlDes">_Description:
+    <br/>The body-html-element of this file contains the information we want to publish in a ORDERED-SET of '<a class="clsPreview" href="#idHitptvp">TITLE-VALUE-PAIRS</a>'.
+    <a class="clsHide" href="#idHitpFileHmlDes">¶</a></p>
+  </section>
+
+  <section id="idID">
+  <h2 id="idIDH2">IDs
+    <a class="clsHide" href="#idIDH2">¶</a></h2>
+  <p id="idIDNam">_Name:
+    <br/>• hitp'id,
+    <a class="clsHide" href="#idIDNam">¶</a></p>
+  <p id="idIDDes">_Description:
+    <br/>The core concept (and first motive) of our proposal is the addition of ID attributes on all elements of an HTML text.
+    <br/>For example:
+    <br/><code>&lt;h1 id="idXxxx"&gt;...
+    <br/>&lt;p id="idYyyy"&gt;...</code>
+    <br/>Now we can refer to any part of the document!!!
+    <a class="clsHide" href="#idIDDes">¶</a></p>
+  <p id="idIDP2">The IDs must be unique:
+    <br/>You can use as ID whatever you want.
+    <br/>We sugest to begin with "id" in order to be distinguished from other words in the text and do not contain spaces.
+    <br/>For example:
+    <br/><code>id, idHeader, idIndex-income, ...</code>
+    <a class="clsHide" href="#idIDP2">¶</a></p>
+  <p id="idIDP3"><strong>The IDs must be visible to the reader</strong>:
+    <br/>The reader, in order to refer to any part of the document, must know the ID of this part of the file.
+    <br/>This can be done by adding a hidden element in this part of the file that will be visible when the mouse is over this text.
+    <br/>But if this hidden-element is and a link-element, then the reader could copy the address of this part of the file from the address-bar of his browser.
+    <br/>Here is an examples of the simple code we have to add to reach our goal.
+    <br/><code>&lt;p id="idYyyy"&gt;...
+    <br/>&nbsp;&nbsp;&lt;a class="clsHide" href="#idYyyy"&gt;¶&lt;/a&gt;&lt;/p&gt;</code>
+    <br/>With this code, when the reader has the mouse over an HTML-element (a part text), at the end appears the ¶ symbol (the-id-link-symbol).
+    <br/>Clicking on this symbol, s|he can see the ID of this text and s|he can copy from the address-bar the address of this particular part of the text.
+    <br/>The paragraph you are reading now has the feature we are talking about and you can experiment with it.
+    <a class="clsHide" href="#idIDP3">¶</a></p>
+  <p id="idIDP4">ID Patterns:
+    <br/>If the author of a doc uses patterns to write the IDs of a text-file, it helps the reader to quickly identifies the parts of the file.
+    <br/>Examples:
+    <br/>- idA4 (article)
+    <br/>- idA4P2 (paragraph)
+    <br/>- idP2 (Part)
+    <br/>- idP2C2 (Chapter)
+    <br/>
+    <br/>NOTATION: the id of a heading is the id of its section-element plus H1, H2, etc.
+    <br/>This way we can link and preview the part of the doc with this heading.
+    <a class="clsHide" href="#idIDP4">¶</a></p>
+  </section>
+
+  <section id="idLink">
+  <h2 id="idLinkH2">Links
+    <a class="clsHide" href="#idLinkH2">¶</a></h2>
+  <p id="idLinkNam">_Name:
+    <br/>• hitp'link,
+    <a class="clsHide" href="#idLinkNam">¶</a></p>
+  <p id="idLinkDes">_Description:
+    <br/>By setting IDs in all elements of a text, we can refer to any part of a document.
+    <br/>Then we can use links in all places in a text we refer to another place inside a document or outside of it.
+    <br/>Law-texts are full of references.
+    <br/>Find the references it is difficult and sometimes impossible.
+    <br/>If the references are "one click away", then reading law will become easier.
+    <a class="clsHide" href="#idLinkDes">¶</a></p>
+  </section>
+
+  <section id="idMath">
+  <h2 id="idMathH2">Math formulas
+    <a class="clsHide" href="#idMathH2">¶</a></h2>
+  <p id="idMathNam">_Name:
+    <br/>• hitp'math,
+    <a class="clsHide" href="#idMathNam">¶</a></p>
+  <p id="idMathDes">_Description:
+    <br/>Using <a href="http://www.mathjax.org/">MathJax</a> we can have "beautiful math in all browsers". For example:
+    <span class="color-red">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow>
+        <mi>x</mi>
+        <mo>=</mo>
+        <mfrac>
+          <mrow>
+            <mo form="prefix">&#x2212;</mo>
+            <mi>b</mi>
+            <mo>
+              ±
+              <!--pm, PlusMinus, plusmn-->
+            </mo>
+            <msqrt>
+              <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+              </msup>
+              <mo>&#x2212;</mo>
+              <mn>4</mn>
+              <mo>
+                &#x2062;
+                <!--it, InvisibleTimes-->
+              </mo>
+              <mi>a</mi>
+              <mo>
+                &#x2062;
+                <!--it, InvisibleTimes-->
+              </mo>
+              <mi>c</mi>
+            </msqrt>
+          </mrow>
+          <mrow>
+            <mn>2</mn>
+            <mo>
+              &#x2062;
+              <!--it, InvisibleTimes-->
+            </mo>
+            <mi>a</mi>
+          </mrow>
+        </mfrac>
+      </mrow>
+    </math>
+    </span>
+    <br/>HOW:
+    <br/>1. we need to add the following code inside the head element:
+    <br/><code>&lt;script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;</code> and
+    <br/>2. create the math-code. An easy method is from the online site <a href="http://sharemath.com/">ShareMath</a>.
+    <a class="clsHide" href="#idMathDs">¶</a></p>
+  </section>
+</section>
+
+<section id="idCodeCss">
+  <h1 id="idCodeCssH1">Code.CSS
+    <a class="clsHide" href="#idCodeCssH1">¶</a></h1>
+  <p id="idCodeCssNam">_Name:
+    <br/>• hitp'css,
+    <br/>• hitp'code.css,
+    <a class="clsHide" href="#idCodeCssNam">¶</a></p>
+  <p id="idCodeCssDes">_Description:
+    <br/>CSSs separate content from presentation.
+    <br/>We use a <a href="hitp.css">css-file</a> for harmonization in the appearance of documents and for the-toc creation.
+    <br/>You need the following code to use it:
+    <br/><code>&lt;link href="http://your-domain/hitp/hitp.css" rel="stylesheet" type="text/css" /&gt;</code>
+    <br/>So, <a href="hitp.css">hitp.css</a> and <a href="hitp.js">hitp.js</a> is the code needed to create hitp pages, and is free (MIT license).
+    <a class="clsHide" href="#idCodeCssDes">¶</a></p>
+
+  <section id="idCssCls">
+  <h2 id="idCssClsH2">css-class
+    <a class="clsHide" href="#idCssClsH2">¶</a></h2>
+  <p id="idCssClsNam">_Name:
+    <br/>• hitp'css'class
+    <br/>• hitp'cls,
+    <a class="clsHide" href="#idCssClsNam">¶</a></p>
+  <p id="idCssClsDes">_Description:
+    <br/>Like the IDs, the name of all css-class begin with 'cls'.
+    <br/>Below is the code of the classes I am using.
+    <a class="clsHide" href="#idCssClsDes">¶</a></p>
+  <p id="idClsCenter">hitpcls.clsCenter {
+    <br/>&nbsp;&nbsp;text-align: center;
+    <br/>}
+    <a class="clsHide" href="#idClsCenter">¶</a></p>
+  <p id="idClsCenterBlock">hitpcls.clsCenterBlock {
+    <br/>&nbsp;&nbsp;display: block;
+    <br/>&nbsp;&nbsp;margin-left: auto;
+    <br/>&nbsp;&nbsp;margin-right: auto;
+    <br/>}
+    <a class="clsHide" href="#idClsCenterBlock">¶</a></p>
+  <p id="idClsCenterInline">hitpcls.clsCenterInline {
+    <br/>&nbsp;&nbsp;display: block;
+    <br/>&nbsp;&nbsp;text-align: center;
+    <br/>}
+    <a class="clsHide" href="#idClsCenterInline">¶</a></p>
+  <p id="idClsBtn">hitpcls.clsBtn {
+    <br/>&nbsp;&nbsp;border-radius: 5px;
+    <br/>&nbsp;&nbsp;font-size: 12px;
+    <br/>&nbsp;&nbsp;margin: 2px 0 5px 12px;
+    <br/>}
+    <a class="clsHide" href="#idClsBtn">¶</a></p>
+  <p id="idClsBtn">hitpcls.clsBtn:hover {
+    <br/>&nbsp;&nbsp;background: #e0f2f7;
+    <br/>&nbsp;&nbsp;color: red;
+    <br/>}
+    <a class="clsHide" href="#idClsBtn">¶</a></p>
+  <p id="idClsColorBlue">hitpcls.clsColorBlue {
+    <br/>&nbsp;&nbsp;color: #0000ff;
+    <br/>}
+    <a class="clsHide" href="#idClsColorBlue">¶</a></p>
+  <p id="idClsColorGreen">hitpcls.clsColorGreen {
+    <br/>&nbsp;&nbsp;color: #008000;
+    <br/>}
+    <a class="clsHide" href="#idClsColorGreen">¶</a></p>
+  <p id="idClsColorGreenBg">hitpcls.clsColorGreenBg {
+    <br/>&nbsp;&nbsp;background-color: #008000;
+    <br/>}
+    <a class="clsHide" href="#idClsColorGreenBg">¶</a></p>
+  <p id="idClsColorRed">hitpcls.clsColorRed {
+    <br/>&nbsp;&nbsp;color: #ff0000;
+    <br/>}
+    <a class="clsHide" href="#idClsColorRed">¶</a></p>
+  <p id="idClsColorYellow">hitpcls.clsColorYellow {
+    <br/>&nbsp;&nbsp;color: #FFFF00;
+    <br/>}
+    <a class="clsHide" href="#idClsColorYellow">¶</a></p>
+  <p id="idClsColorYellowBg">hitpcls.clsColorYellowBg {
+    <br/>&nbsp;&nbsp;background-color: #FFFF00;
+    <br/>}
+    <a class="clsHide" href="#idClsColorYellowBg">¶</a></p>
+  <p id="idClsEditor">hitpcls.clsEditor {
+    <br/>&nbsp;&nbsp;background: transparent;
+    <br/>&nbsp;&nbsp;color: #999999;
+    <br/>}
+    <a class="clsHide" href="#idClsEditor">¶</a></p>
+  <p id="idClsFontGrExt">hitpcls.clsFontGrExt {
+    <br/>&nbsp;&nbsp;font-family: "Palatino Linotype";
+    <br/>}
+    <a class="clsHide" href="#idClsFontGrExt">¶</a></p>
+  <p id="idClsFontGrMg">hitpcls.clsFontGrMg {
+    <br/>&nbsp;&nbsp;font-family: MgPolNewTimes;
+    <br/>&nbsp;&nbsp;font-size: 16px;
+    <br/>}
+    <a class="clsHide" href="#idClsFontGrMg">¶</a></p>
+  <p id="idClsFontSerif">hitpcls.clsFontSerif {
+    <br/>&nbsp;&nbsp;font-family: Serif, "Times New Roman", Georgia;
+    <br/>}
+    <a class="clsHide" href="#idClsFontSerif">¶</a></p>
+  <p id="idClsFontSansserif">hitpcls.clsFontSansserif {
+    <br/>&nbsp;&nbsp;font-family: SansSerif, "Microsoft Sans Serif", Arial, Dialog, Tahoma;
+    <br/>}
+    <a class="clsHide" href="#idClsFontSansserif">¶</a></p>
+  <p id="idClsFontMonospaced">hitpcls.clsFontMonospaced {
+    <br/>&nbsp;&nbsp;font-family: Monospaced, "Courier New", Courier;
+    <br/>}
+    <a class="clsHide" href="#idClsFontMonospaced">¶</a></p>
+  <p id="idClsFontScript">hitpcls.clsFontScript {
+    <br/>&nbsp;&nbsp;font-family: Script "Monotype Corsiva";
+    <br/>}
+    <a class="clsHide" href="#idClsFontScript">¶</a></p>
+  <p id="idClsFontDecorative">hitpcls.clsFontDecorative {
+    <br/>&nbsp;&nbsp;font-family: Wingdings;
+    <br/>}
+    <a class="clsHide" href="#idClsFontDecorative">¶</a></p>
+  <p id="idClsPagePb">hitpcls.clsPagePb {
+    <br/>&nbsp;&nbsp;display: block;
+    <br/>&nbsp;&nbsp;text-align: right;
+    <br/>&nbsp;&nbsp;color: green;
+    <br/>}
+    <a class="clsHide" href="#idClsPagePb">¶</a></p>
+  <p id="idClsHide">hitpcls.clsHide {
+    <br/>&nbsp;&nbsp;//misc attributes that hide id-link (¶) and expose it by hovering.
+    <br/>}
+    <a class="clsHide" href="#idClsHide">¶</a></p>
+  <p id="idClsSizeSmall">hitpcls.clsSizeSmall {
+    <br/>&nbsp;&nbsp;font-size: small;
+    <br/>}
+    <a class="clsHide" href="#idClsSizeSmall">¶</a></p>
+  <p id="idClsSizeSmallX">hitpcls.clsSizeSmallX {
+    <br/>&nbsp;&nbsp;font-size: x-small;
+    <br/>}
+    <a class="clsHide" href="#idClsSizeSmallX">¶</a></p>
+  <p id="idClsSizeMedium">hitpcls.clsSizeMedium {
+    <br/>&nbsp;&nbsp;font-size: large;
+    <br/>}
+    <a class="clsHide" href="#idClsSizeMedium">¶</a></p>
+  <p id="idClsSizeLarge">hitpcls.clsSizeLarge {
+    <br/>&nbsp;&nbsp;font-size: large;
+    <br/>&nbsp;&nbsp;font-weight: bold;
+    <br/>}
+    <a class="clsHide" href="#idClsSizeLarge">¶</a></p>
+  <p id="idClsSizeLargeX">hitpcls.clsSizeLargeX {
+    <br/>&nbsp;&nbsp;font-size: x-large;
+    <br/>&nbsp;&nbsp;font-weight: bold;
+    <br/>}
+    <a class="clsHide" href="#idClsSizeLargeX">¶</a></p>
+  <p id="idClsB">hitpcls.clsB {
+    <br/>&nbsp;&nbsp;font-weight: bold;
+    <br/>}
+    <a class="clsHide" href="#idClsB">¶</a></p>
+  <p id="idClsBU">hitpcls.clsBU {
+    <br/>&nbsp;&nbsp;font-weight: bold;
+    <br/>&nbsp;&nbsp;text-decoration: underline;
+    <br/>}
+    <a class="clsHide" href="#idClsBU">¶</a></p>
+  <p id="idClsU">hitpcls.clsU {
+    <br/>&nbsp;&nbsp;text-decoration: underline;
+    <br/>}
+    <a class="clsHide" href="#idClsU">¶</a></p>
+  </section>
+
+  <section id="idHitpFileCss">
+  <h2 id="idHitpFileCssH2">css-file
+    <a class="clsHide" href="#idHitpFileCssH2">¶</a></h2>
+  <p id="idHitpFileCssNam">_Name:
+    <br/>• hitp'css-file,
+    <br/>• hitp'file.css,
+    <a class="clsHide" href="#idHitpFileCssNam">¶</a></p>
+  <p id="idHitpFileCssDes">_Description:
+    <br/>You can <a class="clsPreview" href="#idDl">download</a> this file, or use the online one.
+    <a class="clsHide" href="#idHitpFileCssDes">¶</a></p>
+  </section>
+</section>
+
+<section id="idCodeJs">
+  <h1 id="idCodeJsH1">Code.JavaScript
+    <a class="clsHide" href="#idCodeJsH1">¶</a></h1>
+  <p id="idCodeJsP1">_Name:
+    <br/>• hitp'js,
+    <br/>• htip'code.JavaScript,
+    <br/>• hitp'code.js,
+    <a class="clsHide" href="#idCodeJsP1">¶</a></p>
+  <p id="idCodeJsP2">_Description:
+    <br/>JavaScript does the information processing on the page.
+    <br/>- creates the-toc and inserts into the page.
+    <br/>- makes the width of toc-container dynamic.
+    <br/>- adds preferences on the page.
+    <br/>- adds the site-structure.
+    <br/>- adds the page-path.
+    <br/>- ...
+    <a class="clsHide" href="#idCodeJsP2">¶</a></p>
+
+  <section id="idHitpFileJs">
+  <h2 id="idHitpFileJsH2">JavaScript-file
+    <a class="clsHide" href="#idHitpFileJsH2">¶</a></h2>
+  <p id="idHitpFileJsNam">_Name:
+    <br/>• hitp'js-file,
+    <br/>• hitp'file.js,
+    <a class="clsHide" href="#idHitpFileJsNam">¶</a></p>
+  <p id="idHitpFileJsDes">_Description:
+      <br/>You can <a class="clsPreview" href="#idDl">download</a> this file, or use the online one.
+    <a class="clsHide" href="#idHitpFileJsDes">¶</a></p>
+  </section>
+
+  <section id="idToc">
+  <h2 id="idTocH2">Table-of-Contents
+    <a class="clsHide" href="#idTocH2">¶</a></h2>
+  <p id="idTocNam">_Name:
+    <br/>• hitp'toc,
+    <br/>• hitp'toc-tree,
+    <a class="clsHide" href="#idTocNam">¶</a></p>
+  <p id="idTocDes">_Description:
+    <br/>When you are reading text on a computer screen you are losing your reading-position.
+    <br/>Hitp-webpages automatically create the table-of-contents tree (toc) of the-content of the-page and show your reading-position.
+    <br/>HOW: you need to add the following code inside the head element:
+    <br/><code>&lt;script src="http://your-domain/hitp/hitp.js">&lt;/script&gt;</code>
+    <br/>
+    <br/>The attributes of my toc (<a href="hitp.js">hitp.js</a>) are:
+    <br/>* It is expandable.
+    <br/>* There is two-way communication between the-toc and the-content.
+    <br/>- By clicking on the-toc, goes to that heading in the-content.
+    <br/>- By clicking|hovering on content, this content position is highlited in the-toc and its parents are only expanded, giving to the reader the big picture of the position s|he is reading.
+    <br/>Thus the-toc improves the readability of big articles.
+    <br/>* If the user needs more space for the-content, the splitbar has a button that closes|opens the-toc with one click.
+    <br/>* The splitter changes width.
+    <br/>
+    <br/>My previous approach was the creation of a Chrome extension, my <a href="https://chrome.google.com/webstore/detail/table-of-contents-crx/eeknhipceeelbgdbcmchicoaoalfdnhi">Table-of-contents-crx</a> which creates a toc on any page with headings only in Chrome.
+    <a class="clsHide" href="#idTocDes">¶</a></p>
+  </section>
+
+  <section id="idPreview">
+  <h2 id="idPreviewH2"><a class="clsPreview" href="#idEvn">Link preview</a> (popup)
+    <a class="clsHide" href="#idPreviewH2">¶</a></h2>
+  <p id="idPreviewNam">_Name:
+    <br/>• hitp'link-preview,
+    <br/>• hitp'popup,
+    <br/>• hitp'preview,
+    <a class="clsHide" href="#idPreviewNam">¶</a></p>
+  <p id="idPreviewDes">_Description:
+    <br/>Another functionality that facilitates reading is the addition of pop-ups (previews) on interal (same-origin)links with destination relatively small chunks of text.
+    <br/>This is espacially usefull for footnotes, abbreviations, definitions, index items, paragraphs etc.
+    <br/>
+    <br/>HOW: you only have to add the class 'clsPreview' on the links you want to trigger popups when the reader is hovering over them.
+    <br/><code>&lt;a class="clsPreview" href="#idPreview"&gt;link-preview&lt;/a&gt;</code>
+    <a class="clsHide" href="#idPreviewP1">¶</a></p>
+  </section>
+</section>
+
+<section id="idPageComp">
+  <h1 id="idPageCompH1">Page-components
+    <a class="clsHide" href="#idPageCompH1">¶</a></h1>
+  <p id="idPageCompNam">_Name:
+    <br/>• hitp'components,
+    <a class="clsHide" href="#idPageCompNam">¶</a></p>
+  <p id="idPageCompDes">Every hitp-webpage is comprised of:
+    <br/>• one <a class="clsPreview" href="#idHitpFileHml">html-file</a> with the main content,
+    <br/>• one <a class="clsPreview" href="#idHitpFileCss">css-file</a>,
+    <br/>• one <a class="clsPreview" href="#idHitpFileJs">js-file</a>,
+    <br/>• one <a class="clsPreview" href="#idHitpDir">optional directory</a> with all other needed files such as pictures, audio, video, css, etc.
+    <br/>The name of the directory is the same with the name of the html-file plus the '.files' extension.
+    <a class="clsHide" href="#idPageCompDes">¶</a></p>
+
+  <section id="idHitpDir">
+  <h2 id="idHitpDirH2">hitp directory
+    <a class="clsHide" href="#idHitpDirH2">¶</a></h2>
+  <p id="idHitpDirNam">_Name:
+    <br/>• hitp'dir,
+    <a class="clsHide" href="#idHitpDirNam">¶</a></p>
+  <p id="idHitpDirDes">_Description:
+    <br/>This directory contains all the extra files needed for the hitp-file.
+    <br/>Its name is the name of the hitp-file plus '.files'.
+    <a class="clsHide" href="#idHitpDirDes">¶</a></p>
+  </section>
+</section>
+
+<section id="idPagepath">
+  <h1 id="idPagepathH1">Page-path
+    <a class="clsHide" href="#idPagepathH1">¶</a></h2>
+  <p id="idPagepathNam">_Name:
+    <br/>• hitp'pagepath,
+    <br/>• hitp'page-path,
+    <a class="clsHide" href="#idPagepathNam">¶</a></p>
+  <p id="idPagepathDes">_Description:
+    <br/>By setting a paragraph with id "idMetaWebpage_path", the program sets its content as the first paragraph in the left toc-container, showing where the page fits in the site's-structure.
+    <br/>NOTE: If the document does not contain this paragraph, the program sets the title-element as page-path.
+    <br/>I put this paragraph as the last paragraph of the <a class="clsPreview" href="#idTvpMeta">meta-info--title-value-pair</a>.
+    <a class="clsHide" href="#idPagepathP1">¶</a></p>
+</section>
+
+<section id="idPageScr">
+  <h1 id="idPageScrH1">Page-structure
+    <a class="clsHide" href="#idPageScrH1">¶</a></h1>
+  <p id="idPageScrNam">_Name:
+    <br/>• hitp'page-structure,
+    <br/>• hitp'structure,
+    <a class="clsHide" href="#idPageScrNam">¶</a></p>
+  <p id="idPageScrDes">_Description:
+    <br/>The information we want to publish is an ORDERED-SET of '<a class="clsPreview" href="#idHitptvp">TITLE-VALUE-PAIRS</a>'.
+    <a class="clsHide" href="#idPageScrDes">¶</a></p>
+
+  <section id="idHitptvp">
+  <h2 id="idHitptvpH2">hitp title-value-pair
+    <a class="clsHide" href="#idHitptvpH2">¶</a></h2>
+  <p id="idHitptvpNam">_Name:
+    <br/>• hitp'title-value-pair,
+    <br/>• hitp-title-value-pair,
+    <br/>• title-value-pair,
+    <br/>• tvp,
+    <a class="clsHide" href="#idHitptvpNam">¶</a></p>
+  <p id="idHitptvpDes">_Description:
+    <br/>The information (content) of a hitp-page is structured for humans and machines.
+    <br/>The representation method I use I call it: 'title-value-pair' method.
+    <br/>Its name describes the methodology. All content is an ordered set of pairs that contain a <a class="clsPreview" href="#idHitpTitle">hitp-title</a> and a <a class="clsPreview" href="#idHitpValue">hitp-value</a>.
+    <a class="clsHide" href="#idHitptvpDes">¶</a></p>
+  <p id="idHitptvpP2">Implementation:
+    <br/>A hitp-title-value-pair is implemented with the section, header or footer html-elements.
+    <a class="clsHide" href="#idHitptvpP2">¶</a></p>
+  <p id="idHitptvpP3">Depth_level:
+    <br/>The title-value-pairs of a page create a tree-structure. Then each title-value-pair has a 'depth-level' value in this structure. The root has a depth-level of zero. The deepest node has a dept-level of 6 because we use heading-html elements.
+    <br/>PROPOSAL: Because many documents use deeper depth-level than six (even though I do not think it is a good practice) I proposed on 2010.10.24 in <a href="http://lists.w3.org/Archives/Public/public-html-comments/2010Oct/0027.html">public-html-comments@w3.org list</a> to use all the single-digit numbers 0-9 as html headings.
+    <a class="clsHide" href="#idHitptvpP3">¶</a></p>
+
+  <section id="idTvpHeader">
+  <h3 id="idTvpHeaderH3">header title-value-pair (required)
+    <a class="clsHide" href="#idTvpHeaderH3">¶</a></h3>
+  <p id="idTvpHeaderNam">_Name:
+    <br/>• hitp'header,
+    <br/>• hitp'header_pair,
+    <a class="clsHide" href="#idTvpHeaderNam">¶</a></p>
+  <p id="idTvpHeaderDes">_Description:
+    <br/>It is the first <a class="clsPreview" href="#idHitptvp">title-value-pair</a>.
+    <br/>It contains the title of the webpage.
+    <a class="clsHide" href="#idTvpHeaderDes">¶</a></p>
+  <p id="idTvpHeaderP1">Implementation:
+    <br/>It is a header html-element with parts one h1-element for the title.
+    <a class="clsHide" href="#idTvpHeaderP2">¶</a></p>
+  <p id="idTvpSectionP2">Depth_level:
+    <br/>0. This node is the ROOT in the tree-structure of the information published.
+    <a class="clsHide" href="#idTvpSectionP2">¶</a></p>
+  </section>
+
+  <section id="idTvpSection">
+  <h3 id="idTvpSectionH3">section title-value-pair (at least one)
+    <a class="clsHide" href="#idTvpSectionH3">¶</a></h3>
+  <p id="idTvpSectionNam">_Name:
+    <br/>• hitp'section,
+    <br/>• hitp'section_pair,
+    <a class="clsHide" href="#idTvpSectionNam">¶</a></p>
+  <p id="idTvpSectionDes">_Description:
+    <br/>These are the <a class="clsPreview" href="#idHitptvp">title-value-pairs</a> that contain mainly the published information.
+    <a class="clsHide" href="#idTvpSectionDes">¶</a></p>
+  <p id="idTvpSectionP2">Implementation:
+    <br/>It is a section html-element with parts ONE h-element for the title.
+    <br/>Its value can contains other section-tvps of lesser depth-level in a tree-structure.
+    <a class="clsHide" href="#idTvpSectionP2">¶</a></p>
+  <p id="idTvpSectionP3">Depth_level:
+    <br/>It is a number 1, 2, 3, 4, 5, 6 indicating the heading html-element we use for its title AND the depth-level in the tree-structure of the information published.
+    <a class="clsHide" href="#idTvpSectionP3">¶</a></p>
+  </section>
+
+  <section id="idTvpFooter">
+  <h3 id="idTvpFooterH3">footer title-value-pair (optional)
+    <a class="clsHide" href="#idTvpFooterH3">¶</a></h3>
+  <p id="idTvpFooterNam">_Name:
+    <br/>• hitp'footer,
+    <br/>• hitp'footer_pair,
+    <a class="clsHide" href="#idTvpFooterNam">¶</a></p>
+  <p id="idTvpFooterDes">_Description:
+    <br/>It needed sometimes as the last part of the information published.
+    <a class="clsHide" href="#idTvpFooterDes">¶</a></p>
+  <p id="idTvpFooterP2">Implementation:
+    <br/>It is a footer html-element.
+    <br/>EXCEPTION: It may have no <span class="clsPreview" id="#idHitpTitle">hitp-title</span>. Then it is assumed 'Footer'.
+    <a class="clsHide" href="#idTvpFooterP2">¶</a></p>
+  <p id="idTvpFooterP3">Depth_level:
+    <br/>1.
+    <a class="clsHide" href="#idTvpFooterP3">¶</a></p>
+  </section>
+
+  <section id="idTvpMeta">
+  <h3 id="idTvpMetaH3">meta-info title-value-pair (required)
+    <a class="clsHide" href="#idTvpMetaH3">¶</a></h3>
+  <p id="idNamTvpMeta">_Name:
+    <br/>• hitp'meta,
+    <br/>• hitp'meta_pair,
+    <a class="clsHide" href="#idTvpMetaNam">¶</a></p>
+  <p id="idTvpMetaDes">_Description:
+    <br/>Usually the last <a class="clsPreview" href="#idHitptvp">tvp</a> is meta-tvp with metadata about the hitp-webpage.
+    <a class="clsHide" href="#idTvpMetaDes">¶</a></p>
+  <p id="idTvpMetaP2">Implementation:
+    <br/>It is a section html-element.
+    <a class="clsHide" href="#idTvpMetaP2">¶</a></p>
+  <p id="idTvpMetaP3">Value:
+    <br/>• the author of the page.
+    <br/>• versioning info.
+    <br/>• page-path info.
+    <br/>• page visited info. etc.
+    <a class="clsHide" href="#idTvpMetaP3">¶</a></p>
+  <p id="idTvpFooterP4">Depth_level:
+    <br/>1.
+    <a class="clsHide" href="#idTvpMetaP4">¶</a></p>
+  </section>
+  </section>
+
+  <section id="idHitpTitle">
+  <h2 id="idHitpTitleH2">hitp-title
+    <a class="clsHide" href="#idHitpTitleH2">¶</a></h2>
+  <p id="idHitpTitleNam">_Name:
+    <br/>• hitp'title,
+    <a class="clsHide" href="#idHitpTitleNam">¶</a></p>
+  <p id="idHitpTitleDes">_Description:
+    <br/>A hitp-title is the 'name' (title) of a hitp-value-pair.
+    <br/>Denotes the type of information the <a class="clsPreview" href="#idHitpValue">hitp-value</a> contains. In other words, the hitp-title is some generic-information and a hitp-value is a specific or instance of the hitp-title.
+    <a class="clsHide" href="#idHitpTitleDes">¶</a></p>
+  <p id="idHitpTitleP2">Implementation:
+    <br/>A hitp-title is implemented as a heading html-element OR as text that ends with ':' in the FIRST line of a paragraph. (IF we set '_' in the begining of a term we can distinguish it from same terms inside 'hitp-values').
+    <a class="clsHide" href="#idHitpTitleP2">¶</a></p>
+  </section>
+
+  <section id="idHitpValue">
+  <h2 id="idHitpValueH2">hitp-value
+    <a class="clsHide" href="#idHitpValueH2">¶</a></h2>
+  <p id="idHitpValueNam">_Name:
+    <br/>• hitp'value,
+    <a class="clsHide" href="#idHitpValueNam">¶</a></p>
+  <p id="idHitpValueDes">_Description:
+    <br/>A hitp-value contains structured (like an html list or table) or unstructured information (like sentences or phrases of a natural-language).
+    <br/>Recursively, it can contains other ordered-sets of <a class="clsPreview" href="#idHitptvp">title-value-pairs</a>.
+    <a class="clsHide" href="#idHitpValueDes">¶</a></p>
+  <p id="idHitpValueP2">Implementation:
+    <br/>The main parts of hitp-values are html-paragraphs.
+    <br/>We can use and any other body-element except headings.
+    <br/>We can use div-elements to create substructures.
+    <a class="clsHide" href="#idHitpValueP1">¶</a></p>
+  </section>
+</section>
+
+<section id="idIndex">
+  <h1 id="idIndexH1">Index
+    <a class="clsHide" href="#idIndexH1">¶</a></h1>
+  <p id="idIndexNam">_Name:
+    <br/>• hitp'index,
+    <a class="clsHide" href="#idIndexNam">¶</a></p>
+  <p id="idIndexDes">_Description:
+    <br/>Html5.id.toc.preview-pages improve the functionality of the indexes of text-files because we have the capability to refer|link, from the index, to any part of the text (because we use IDs) and <a class="clsPreview" href="#idPreview">preview</a> these parts.
+    <a class="clsHide" href="#idIndexDes">¶</a></p>
+
+  <section id="idIndexCpt">
+  <h2 id="idIndexCptH2">Concept-Index
+    <a class="clsHide" href="#idIndexCptH2">¶</a></h2>
+  <p id="idIndexCptNam">_Name:
+    <br/>• hitp'concept-index,
+    <br/>• hitp'index.concept,
+    <a class="clsHide" href="#idIndexCptNam">¶</a></p>
+  <p id="idIndexCptDes">_Description:
+    <br/>Every text describes CONCEPTS.
+    <br/>We can create the concept-index of every text, which is another method to represent the SAME information with the text.
+    <br/>With a concept-index the READER can have direct access to the concept s|he is interesting and from there to any RELATED other concept.
+    <br/>If a concept-entry has the definition and the related attributes of the concept, the reader will understand quickly the text.
+    <br/>An example of html5IdTocPreview text with a concept-index is the <a class="clsPreview" href="../law/gr/s.2008.html#idIndexI">greek-constitution</a> (in greek).
+    <a class="clsHide" href="#idIndexCptDes">¶</a></p>
+  </section>
+
+  <section id="idIndexMdlCpt">
+  <h2 id="idIndexMdlCptH2">Concept-Model
+    <a class="clsHide" href="#idIndexMdlCptH2">¶</a></h2>
+  <p id="idIndexMdlCptNam">_Name:
+    <br/>• hitp'concept-model,
+    <br/>• hitp'modelConcept,
+    <a class="clsHide" href="#idIndexMdlCptNam">¶</a></p>
+  <p id="idIndexMdlCptDes">_Description:
+    <br/>Every text describes concepts and relations of concepts, which form a subjective MODEL (modelConcept) of reality.
+    <br/>More important than the-concept-index is the-modelConcept of the-text.
+    <br/>A crude example of a-modelConcept contains my hitp-page of <a class="clsPreview" href="../book/economy/keynes.1936.general-theory.html">the Keynes book 'The General Theory of Employment, Interest, and Money'</a>.
+    <a class="clsHide" href="#idIndexMdlCptDes">¶</a></p>
+  </section>
+
+  <section id="idIndexNam">
+  <h2 id="idIndexNamH2">Name-Index
+    <a class="clsHide" href="#idIndexNamH2">¶</a></h2>
+  <p id="idIndexNamNam">_Name:
+    <br/>• hitp'name-index,
+    <br/>• hitp'index.name,
+    <a class="clsHide" href="#idIndexNamNam">¶</a></p>
+  <p id="idIndexNamDes">_Description:
+    <br/>Βy setting as ID on each name|term-entry the pattern "idIndex-term", the reader will have very quick access to the entries.
+    <br/><a class="clsPreview" href="../standard/economy/un.sna.2008.html#idIndex-A">un.sna.2008.html</a> is an example with a name-index.
+    <a class="clsHide" href="#idIndexNamP1">¶</a></p>
+  </section>
+
+  <section id="idIndexWrd">
+  <h2 id="idIndexWrdH2">Word-Index
+    <a class="clsHide" href="#idIndexWrdH2">¶</a></h2>
+  <p id="idIndexWrdNam">_Name:
+    <br/>• hitp'index.word,
+    <br/>• hitp'word-index,
+    <a class="clsHide" href="#idIndexWrdNam">¶</a></p>
+  <p id="idIndexWrdDes">_Description:
+    <br/>The majority of programs today search a text for words and NOT names.
+    <br/>By pressing <span class="clsB">Ctrl+F or F3</span> you can search for words.
+    <a class="clsHide" href="#idIndexWrdDes">¶</a></p>
+  </section>
+</section>
+
+<section id="idLicense">
+  <h1 id="idLicenseH1">License
+    <a class="clsHide" href="#idLicenseH1">¶</a></h1>
+  <p id="idNam">_Name:
+    <br/>• hitp'license,
+    <a class="clsHide" href="#idNam">¶</a></p>
+  <p id="idLicenseDes">_Description:
+    <br/>This webpage's work is FREE under the creative commons <a href="http://creativecommons.org/licenses/by/3.0/">Attribution 3.0 Unported (CC BY 3.0)</a> license.
+    <br/>The computer-code is under the MIT license, you can find it on <a href="https://github.com/synagonism/hitp">GitHub</a>.
+    <a class="clsHide" href="#idLicenseDes">¶</a></p>
+</section>
+
+<section id="idProblem">
+  <h1 id="idProblemH1">Problem (issue)
+    <a class="clsHide" href="#idProblemH1">¶</a></h1>
+  <p id="idNam">_Name:
+    <br/>• hitp'issue,
+    <br/>• hitp'problem,
+    <a class="clsHide" href="#idNam">¶</a></p>
+  <p id="idProblemLink"><span class="clsB">Links</span> {2016.01.25}:
+    <br/>I implemented a custom event on clicking links, because of history problems in different browsers.
+    <br/>So Shift|Ctrl+click does not work.
+    <br />WORKAROUND: right click on a link and choose the command.
+    <a class="clsHide" href="#idProblemLink">¶</a></p>
+  <p id="idProblemP1"><span class="clsB">overflow-x:visible, overflow-y:auto</span> {2013.08.23}:
+    <br/>I needed this combination to display the site-menu, but I found that it does not work even in the new flexbox layout.
+    <br />WORKAROUND: hovering on the menu, it displays only the left navigation container.
+    <a class="clsHide" href="#idProblemP1">¶</a></p>
+  <p id="idProblemP2"><span class="clsB">:after psudo-element</span> {2013.08.23}:
+    <br />Inherits properties from its dependent element, like 'underline' which we cannot change.
+    <br />WORKAROUND: I hide it when I hover the main element, but have other problems.
+    <a class="clsHide" href="#idProblemP2">¶</a></p>
+
+  <section id="idProblemFfx">
+  <h2 id="idProblemFfxH2">Firefox
+    <a class="clsHide" href="#idProblemFfxH2">¶</a></h2>
+  <p id="idProblemFfxP1"><span class="clsB">location.href</span> {2013.08.16}:
+    <br/>FIXED
+    <br/>In contrast to Chrome, Firefox loses selected-text after setting value on 'location.href'.
+    <br/>WORKAROUND: first click to go to that location and then select-text from this location.
+    <a class="clsHide" href="#idProblemFfxP1">¶</a></p>
+  <p id="idProblemFfxP2"><span class="clsB">Back-Forward</span> {2013.08.16}:
+    <br/>FIXED
+    <br/>Clicking on buttons 'back', 'forward' shows the visited locations but does not go to that location.
+    <br/>WORKAROUND: click on the address-bar and hit enter.
+    <a class="clsHide" href="#idProblemFfxP2">¶</a></p>
+  </section>
+</section>
+
+<section id="idSiteScr">
+  <h1 id="idSiteScrH1">Site-structure
+    <a class="clsHide" href="#idSiteScrH1">¶</a></h1>
+  <p id="idSiteScrNam">_Name:
+    <br/>• hitp'site-structure,
+    <a class="clsHide" href="#idSiteScrNam">¶</a></p>
+  <p id="idSiteScrDes">_Description:
+    <br/>Every hitp-page, except of presenting its own structure, presents and its site-structure in a pull-down menu.
+    <br/>
+    <br/>HOW: You have to add ONCE in the root-directory of the site the file '<a href="../hitpmenu.html">hitpmenu.html</a>' with the site-structure in the form of an unordered-html-list.
+    <br/>Of cource, modifying this file, all the hitp-pages will present the changes.
+    <a class="clsHide" href="#idSiteScrP1">¶</a></p>
+</section>
+
+<section id="idSpc">
+  <h1 id="idSpcH1">Specific
+    <a class="clsHide" href="#idSpcH1">¶</a></h1>
+  <p id="idNam">_Name:
+    <br/>• hitp'example,
+    <br/>• hitp.specific,
+    <a class="clsHide" href="#idNam">¶</a></p>
+  <p id="idSpcP1">_SPECIFIC:
+    <br/>This site presents many examples with our proposal.
+    <br/>Actually I'm writing the site with this proposal.
+    <br/>Reading the code of these examples and seeing its behavior, is the best way to understand what really we are proposing.
+    <br/>• <a href="../book/">ebook-examples</a>.
+    <br/>• <a href="../law/index.en.html">law-examples</a>.
+    <br/>• <a href="../standard/">standard-examples</a>.
+    <br/>• <a href="https://synagonism.github.io/hitp/hitp.html">empty-page to edit</a> on GitHub project page.
+    <a class="clsHide" href="#idSpcP1">¶</a></p>
+</section>
+
+<section id="idEvn">
+  <h1 id="idEvnH1">EVOLUTION of proposal
+    <a class="clsHide" href="#idEvnH1">¶</a></h1>
+  <p id="idEvnNam">_Name:
+    <br/>• hitp'evolution,
+    <br/>• hitp.evolution,
+    <a class="clsHide" href="#idEvnNam">¶</a></p>
+  <p id="idEvnPara12d">{version.2016.01.24.12}: <span class="clsB">Toc-Icons</span>:
+    <br/>I changed the icons of the-toc-tree to images from characters, for compatibility.
+    <a class="clsHide" href="#idEvnPara12d">¶</a></p>
+  <p id="idEvnPara11d">{version.2015.10.26.11}: <span class="clsB">Preferences</span>:
+    <br />Users now can choose how they prefer to view hitp-pages:
+    <br/>- they can have or not the link-preview characteristic,
+    <br/>- they can see on the table-of-contents the position of the content they are reading by hovering or clicking on that content.
+    <a class="clsHide" href="#idEvnPara11d">¶</a></p>
+  <p id="idEvnPara10d">{version.2014.08.05.10}: <span class="clsB">TYPENAMES | VALUENAMES</span>:
+    <br />With 'valuename' I mean a NAME (identifier) of a VARIABLE (= a name-value pair), that denotes the VALUE (type) with which it is associated.
+    <br />Now ALL the custom names of my code are valuenames, with its FIRST-CHARACTER to denote its value|type:
+    <br />- aName denotes array.
+    <br />- bName denotes boolean.
+    <br />- fName denotes function.
+    <br />- nName denotes number.
+    <br />- oName denotes object.
+    <br />- rName denotes regular-expression.
+    <br />- sName denotes string.
+    <br />- xName denotes mixed-values.
+    <br /><span class="clsColorRed">This method is a SIMPLE method to make JavaScript a type language</span>!!! This way we increase the readability of the source code.
+    <br />I published my new code, with the MIT license (= do whatever you want, only mention my work), on GitHub at <a href="https://github.com/synagonism/hitp">https://github.com/synagonism/hitp</a>.
+    <a class="clsHide" href="#idEvnPara10d">¶</a></p>
+  <p id="idEvnPara9d">{version.2014.08.02.9}: <span class="clsB">NO jQuery</span>:
+    <br />I <span class="clsB">rewrote</span> the code, by removing jQuery. Everything now is vanilla JavaScript.
+    <br/>Fixed: preview popup location.
+    <a class="clsHide" href="#idEvnPara9d">¶</a></p>
+  <p id="idEvnPara8d">{version.2014.01.09.8}: <span class="clsB">Table-of-contents</span>:
+    <br/>Hovering a piece of text, you see its position on ToC. To see the address of the text you click on ¶.
+    <br/>With the previous functionality, you had to click on text to see its position.
+    <a class="clsHide" href="#idEvnPara8d">¶</a></p>
+  <p id="idEvnPara7d">{version.2013.11.06.7}: <span class="clsB">Tabs</span>:
+    <br/>The page-structure is set under a tab.
+    <a class="clsHide" href="#idEvnPara7d">¶</a></p>
+  <p id="idEvnPara6d">{version.2013.08.21.6}: <span class="clsB">Site-structure</span>:
+    <br/>Now each hitp-webpage presents and its site-structure except of its own structure.
+    <a class="clsHide" href="#idEvnPara6d">¶</a></p>
+  <p id="idEvnPara5d">{version.2013.07.15.5}: <span class="clsB">ToC Algorithm</span>:
+    <br/>I wrote a new smaller specific algorithm that creates the ToC of a hitp-page.
+    <br/>The previous was the one of <a href="https://chrome.google.com/webstore/detail/html5-outliner/afoibpobokebhgfnknfndkgemglggomo?hl=en">html5-outliner-chrome-extension</a>.
+    <br/>Also I enclosed the code in one literal object, the 'HITP'.
+    <br/>I allow gaps in headings like: h1, h2, h4 because existing docs use this pattern.
+    <a class="clsHide" href="#idEvnPara5d">¶</a></p>
+  <p id="idEvnPara4d">{version.2013.06.27.4}: <span class="clsB">Name</span>:
+    <br/>I change the name of the proposal from html5.id.toc to <span class="color-red">html5.id.toc.preview (= html5IdTocPreview)</span>
+    <br/>in order to include all its main attributes.
+    <br/>Abbreviation: ebkHitp, hitp.
+    <a class="clsHide" href="#idEvnPara4d">¶</a></p>
+  <p id="idEvnPara3d">{version.2013.04.14.3}: <span class="clsB"><a class="clsPreview" href="#idPreview">Link Preview</a></span>:
+    <br/>HTML5.ID.TOC.PREVIEW: Another feature that facilitates reading-productivity.
+    <a class="clsHide" href="#idEvnPara3d">¶</a></p>
+  <p id="idEvnPara2d">{version.2013.04.01.2}: <span class="clsB"><a href="#idToc">Table of Contents</a></span>:
+    <br/>HTML5.ID.ToC: Adding a few lines of javascript code the static-pages are becoming dynamic ('applications!') but this facilitates reading. This way the 'electronic-text' begins to have more advantantages than 'printed-text'. Other forms of 'electronic-text' which merely digitize printed-text are inferior to 'printed-text'.
+    <a class="clsHide" href="#idEvnPara2d">¶</a></p>
+  <p id="idEvnPara1d">{version.2011.02.17.1}: <span class="clsB">first publication</span>:
+    <br/>HTML5.ID: the goal of my first try was to show a simple method
+    of a text-format we can read in a ubiquitous web-browser
+    that anyone can REFER to any part of it. The main types of texts
+    I had in my mind were law-texts.
+    <a class="clsHide" href="#idEvnPara1d">¶</a></p>
+
+  <section id="idVersioning">
+  <h2 id="idVersioningH2">Versioning
+    <a class="clsHide" href="#idVersioningH2">¶</a></h2>
+  <p id="idNam">_Name:
+    <br/>• hitp'versioning,
+    <a class="clsHide" href="#idNam">¶</a></p>
+  <p id="idVersioningP1">_Description:
+    <br/>We can have a simple versioning paradigm on hitp-pages by setting the date on its file-name plus one or more numbers indicating how many times changes have occured, ie 'index.2013.05.15.3.html' (= version 3 of index.html on 2013.05.15).
+    <br/>Having and a file with only the file-name but with the LAST version we can always have access to the last version.
+    <br/>From internal links we can have access to previous dated versions.
+    <br/>As example look this file you are reading.
+    <br/>Evolution is a continuous entity.
+    <br/>Every author 'subjectively' desides when to call a page 'version'.
+    <br/>The last version can hold and minor changes we do not think important to hold records on them.
+    <a class="clsHide" href="#idVersioningDes">¶</a></p>
+  </section>
+</section>
+
+<footer id="idFooter">
+  <p id="idFooterP1">Contact:
+    <br/>• author: <a class="clsPreview" href="../#idAboutme">Kaseluris.Nikos.1959</a>.
+    <br/>• email:
+    <br/>&nbsp;&nbsp;<img src="../misc/img/mail.png" />
+    <br/>• twitter: @synagonism.
+    <a class="clsHide" href="#idFooterP1">¶</a></p>
+</footer>
+
+<section id="idMeta">
+  <h1 id="idMetaH1">Meta Info
+    <a class="clsHide" href="#idMetaH1">¶</a></h1>
+  <p id="idMetaVersion">VERSIONS:
+    <br/>• version.15.last.minor: <a href="index.html">index.html</a> (2016.01.25.15)
+    <br/>• version.15.last.minorNo: <a href="index.2016.01.25.15.html">index.2016.01.25.15.html</a> (content)
+    <br/>• version.14.previous: <a href="index.2013.08.23.14.html">index.2013.08.23.14.html</a> (site-structure)
+    <br/>• version.13.previous: <a href="index.2013.08.20.13.html">index.2013.08.20.13.html</a> (name webpage)
+    <br/>• version.12.previous: <a href="index.2013.06.29.12.html">index.2013.06.29.12.html</a> (new-dir-hitp)
+    <br/>• version.11.previous: <a href="../hit/index.2013.06.26.html">/hit/index.2013.06.26.html</a> (new-name)
+    <br/>• version.10.previous: <a href="../hit/index.2013.06.18.html">/hit/index.2013.06.18.html</a> (no-doc.ready)
+    <br/>• version.9.previous: <a href="../hit/index.2013.06.01.html">/hit/index.2013.06.01.html</a> (synagonism.net)
+    <br/>• version.8.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.05.29.html">/gym-eleous.ioa.sch.gr/textid/index.2013.05.29.html</a> (concept-index)
+    <br/>• version.7.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.05.15.html">/gym-eleous.ioa.sch.gr/textid/index.2013.05.15.html</a> (math)
+    <br/>• version.6.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.04.14.html">/gym-eleous.ioa.sch.gr/textid/index.2013.04.14.html</a> (link-preview)
+    <br/>• version.5.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.04.01.html">/gym-eleous.ioa.sch.gr/textid/index.2013.04.01.html</a> (toc)
+    <br/>• version.4.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.03.31.html">/gym-eleous.ioa.sch.gr/textid/index.2013.03.31.html</a> (counter)
+    <br/>• version.3.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.03.28.html">/gym-eleous.ioa.sch.gr/textid/index.2013.03.28.html</a> (¶ right)
+    <br/>• version.2.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.01.16.html">/gym-eleous.ioa.sch.gr/textid/index.2013.01.16.html</a>
+    <br/>• version.1.published: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2011.02.17.html">/gym-eleous.ioa.sch.gr/textid/index.2011.02.17.html</a>
+    <br/>• Created: 2011.02.15
+    <a class="clsHide" href="#idMetaVersion">¶</a></p>
+  <p id="idMetaCounter" class="center">This page was visited
+    <span class="color-red">
+    <script src="../program/counter/counter.php?page=hit.index"></script>
+    </span>
+    times since 2013.05.30.
+    <a class="clsHide" href="#idMetaCounter">¶</a></p>
+  <!-- the content of page-path paragraph is displayed as it is on top of toc -->
+  <p id="idMetaWebpage_path"><span class="clsB clsColorGreen">Page-path</span>:
+    hitp-webpage
+    ∈ <a class="clsPreview" href="../#idDescription">synagonism.net</a>
+    </p>
+</section>
+
+<section id="idSupport">
+  <h1 id="idSupportH1">Support</h1>
+  <p class="clsCenter">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- hitp -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-9193253694931657"
+         data-ad-slot="3037822120"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </p>
+</section>
+
+<section id="idComment">
+  <h1 id="idCommentH1">Comments</h1>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'synagonism';
+    var disqus_identifier = 'hitp';
+    var disqus_title = 'hitp';
+    var disqus_url = 'http://synagonism.net/hitp/index.html';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-19285371-5', 'synagonism.net');
+  ga('send', 'pageview');
+</script>
+<script src="hitp.12.2016-01-24.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+/*
+ * version: 2011.01.31
+ * style for id-HTML5-texts
+*/
+
+body {
+	background-color: #FFFFFA;
+	font-family: "Times New Roman", Dialog, Georgia, Times, serif;
+	font-size: 16px;
+}
+
+/*********** HEADING-ELEMENTS ***********************/
+header {
+	background-color: #F6FFFF;
+	border-top: 3px solid #000000;
+}
+
+header > h1 {
+	background-color: #CDEFFF;
+	border-top: 0px solid #000000;
+	color: #000000;
+	font-family: "Times New Roman", Georgia, Times, serif;
+	font-size: 26px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	margin-top: 12px;
+	padding: 0 0 10px 0; /*top right bottom left*/
+	text-align: center;
+}
+
+h1 {
+	background-color: #CDEFFF;
+	border-top: 2px solid #000000;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 3px;
+}
+
+h2 {
+	background-color: #F2F2F2;
+	border-top: 1px solid #424242;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 3px;
+}
+
+h3 {
+	background-color: #F2F2F2;
+	border-top: 1px solid #424242;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 15px;
+}
+
+h4 {
+	background-color: #F2F2F2;
+	border-top: 1px solid #424242;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 25px;
+}
+
+h5 {
+	background-color: #F2F2F2;
+	border-top: 1px solid #424242;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 35px;
+}
+
+h6 {
+	background-color: #F2F2F2;
+	border-top: 1px solid #424242;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 45px;
+	/*text-align: center;*/
+}
+
+p.h7 {
+	background-color: #F2F2F2;
+	border-top: 1px solid #424242;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 55px;
+	text-indent: 0px;
+}
+p.h8 {
+	background-color: #F2F2F2;
+	border-top: 1px solid #424242;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 65px;
+	text-indent: 0px;
+}
+
+/************ FOOTER-ELEMENTS ********************/
+
+footer {
+	background-color: #CDEFFF;
+	border-bottom: 3px solid #000000;
+	color: #000000;
+	font-family: serif;
+	font-size: 16px;
+	margin-left: 0px;
+}
+footer > p {
+	font-size: 16px;
+}
+footer > p.center {
+	font-size: 16px;
+	text-align: center;
+}
+footer > address {
+	font-size: 16px;
+}
+footer > table {
+	margin-left:auto;
+	margin-right:auto;
+}
+footer > td {
+	border: none!important;
+}
+
+
+/************ PARAGRAPH-ELEMENTS ********************/
+
+code {
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #98AFC7;
+	font-size: 14px;
+}
+
+p {
+	text-indent: -25px;
+	margin-left: 25px;
+}
+p.center {
+	text-align: center;
+	text-indent: 0px;
+}
+p.font12 {
+	font-size: 12px;
+}
+p.indent {
+	text-indent: 0px;
+	margin-left: 25px;
+}
+p.right {
+	text-align: right;
+}
+
+table {
+	border-collapse:collapse;
+	margin-left: 25px;
+	padding-left:5px;
+}
+
+td {
+	border: 1px solid black;
+	padding-left:5px;
+	white-space:wrap;
+}
+td.footer {
+	border: none;
+}
+td.center {
+	text-align: center;
+}
+td.clrBgTurq {
+	background-color: #00FFFF;/* Turquoise */
+	text-align: center;
+}
+td.noborder {
+	border: none;
+	padding-left:5px;
+	white-space:wrap;
+}
+
+
+/************* INLINE text-content ***************************/
+/* a, dfn, br, b, span  */
+
+span.attr-bu {
+	font-weight: bold;
+	text-decoration: underline;
+}
+span.u {
+	text-decoration: underline;
+}
+
+span.font-gr-ext {
+	font-family: "Palatino Linotype";
+}
+span.font-grmg {
+	font-family: MgPolNewTimes;
+	font-size: 16px;
+}
+span.font-serif {
+	font-family: Serif, "Times New Roman", Georgia;
+}
+span.font-sansserif {
+	font-family: SansSerif, "Microsoft Sans Serif", Arial, Dialog, Tahoma;
+}
+span.font-monospaced {
+	font-family: Monospaced, "Courier New", Courier;
+}
+span.font-script {
+	font-family: Script "Monotype Corsiva";
+}
+span.font-decorative {
+	font-family: Wingdings;
+}
+
+span.color-green-bg {
+	background-color: #008000; /* Green; */
+}
+span.color-red {
+	color: #FF0000;/* Red */
+}
+span.color-yellow-bg {
+	background-color: #FFFF00; /* Yellow; */
+}
+
+span.size-x-small {
+	font-size: x-small;
+}
+span.size-small {
+	font-size: small;
+}
+span.size-medium {
+	font-size: large;
+}
+span.size-large {
+	font-size: large;
+	font-weight: bold;
+}
+span.size-x-large {
+	font-size: x-large;
+	font-weight: bold;
+}
+
+span.source {
+	background-color: #F6E3CE;
+	font-size: 12px;
+}
+
+/* hide-class: a-element */
+h1 > a.hide,
+h2 > a.hide,
+h3 > a.hide,
+h4 > a.hide,
+h5 > a.hide,
+h6 > a.hide,
+p > a.hide,
+address > a.hide,
+span > a.hide
+{
+	display: none;
+}
+
+h1:hover  > a.hide,
+h2:hover  > a.hide,
+h3:hover  > a.hide,
+h4:hover  > a.hide,
+h5:hover  > a.hide,
+h6:hover  > a.hide,
+p:hover  > a.hide,
+address:hover  > a.hide,
+span:hover > a.hide
+{
+	display: inline;
+	color: gray;
+	text-decoration:none;
+}
+
+a:link { color: #0000FF }
+a:visited { color: #0000FF }
+
+

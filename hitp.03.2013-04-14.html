@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>HTML5.ID.ToC Text-Format</title>
+  <link href="hitp.03.2013-04-14.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+  <script src="hitp.03.2013-04-14.js"></script>
+  <script>
+    $(document).ready(function() {
+      funTocMake_toc();
+    });
+  </script>
+</head>
+<body>
+<header id="idHeader">
+  <h1 id="idHeaderH1">html5.id.toc
+    <br/>HTML5-Text with IDs and automated Table-of-Contents
+    <a class="hide" href="#idHeaderH1">¶</a></h1>
+  <p id="idHeaderH1P1">In this webpage we present a method of publishing HTML-text which
+    <br/>1) anyone can refer to ANY PART of it,
+    <br/>2) with an automatically created expandable table-of-contents and
+    <br/>3) link-previews for easy reading.
+    <a class="hide" href="#idHeaderH1P1">¶</a></p>
+</header>
+
+<section id="idProp">
+  <h1 id="idProp">The Proposal
+    <a class="hide" href="#idProp">¶</a></h1>
+
+  <section id="idPropID">
+    <h2 id="idPropID">The IDs
+      <a class="hide" href="#idPropID">¶</a></h2>
+    <p id="idPropIDP1">The core concept of our proposal is the addition of ID attributes on all elements of an HTML text.
+      <br/>For example:
+      <br/><code>&lt;h1 id="idXxxx"&gt;...
+      <br/>&lt;p id="idYyyy"&gt;...</code>
+      <br/>That's all. Now we can refer to any part of the document!!!
+      <a class="hide" href="#idPropIDP1">¶</a></p>
+    <p id="idPropIDP2">The IDs must be unique.
+      <br/>You can use as ID whatever you want.  We sugest to begin with "id" in order to be distinguished from other words in the text and do not contain spaces. For example:
+      <br/><code>idProp, idHeader, idIndex-income, ...</code>
+      <a class="hide" href="#idPropIDP2">¶</a></p>
+    <p id="idPropIDP3"><b>The IDs must be visible to the reader</b>.
+      <br/>The reader, in order to refer to any part of the document, must know the ID of this part of the file. This can be done by adding a hidden element in this part of the file that will be visible when the mouse is over this text. But if this hidden-element is and a link-element, then the reader could copy the address of this part of the file from the address-bar of his browser. Here are some examples of the simple code we have to add to reach our goal.
+      <br/><code>&lt;h1 id="idXxxx"&gt;...
+      <br/>&nbsp;&nbsp;&lt;a class="hide" href="#idXxxx"&gt;¶&lt;/a&gt;&lt;/h1&gt;</code>
+      <br/>or
+      <br/><code>&lt;p id="idYyyy"&gt;...
+      <br/>&nbsp;&nbsp;&lt;a class="hide" href="#idYyyy"&gt;¶&lt;/a&gt;&lt;/p&gt;</code>
+      <br/>With this code, when the reader has the mouse over an HTML-element (a part text), at the end appears the ¶ symbol. Putting the mouse over this symbol, s|he can see the ID of this text and clicking on this symbol he can copy from the address-bar the address of this particular part of the text.  The paragraph you are reading now has the feature we are talking about and you can experiment with it.
+      <br/><span class="style-u">NEW {2013.04.04}</span>: By clicking on a heading|paragraph goes to that element
+      and the reader sees the address. This is done with javascript code.
+      We could have and the "manual" way with the ¶ symbol in case the code
+      does not work in old browsers and also with the apperance of the this symbol the reader understands the functionality of the html-element.
+      <a class="hide" href="#idPropIDP3">¶</a></p>
+    <p id="idPropIDP4">ID Patterns.
+      <br/>If the author of a doc uses patterns to write the IDs of a text-file, it helps the reader to quickly identifies the parts of the file. Example:
+      <br/>- idA4 (article)
+      <br/>- idA4P2 (paragraph)
+      <br/>- idP2 (Part)
+      <br/>- idP2T1 (Title)
+      <br/>- idP2T1C2 (Chapter)
+      <br/>- idP2T1C2S2 (Section)
+      <a class="hide" href="#idPropIDP4">¶</a></p>
+  </section>
+
+  <section id="idPropToc">
+    <h2 id="idPropToc">The Table-of-Contents
+      <a class="hide" href="#idPropToc">¶</a></h2>
+    <p id="idPropTocP1">The next important feature an HTML-text must have is heading-elements that correctly represent the structure of the text.
+      <br/>Using javascript, today browsers can automatically create the table-of-contents (toc) of the text which facilitates navigating and understanding the text. You have 2 choices: to use the code of this page that creates the toc on any browser OR to use specific plugins of specific browsers that do the job.
+      <br/>
+      <br/>a) <span class="style-b">ToC on ANY browser</span>: you need to add the following code inside the head element:
+      <br/><code>&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"&gt;&lt;/script&gt;
+     <br/>&lt;script src="toc.js">&lt;/script&gt;
+     <br/>&lt;script>
+     <br/>&nbsp;&nbsp;$(document).ready(function() {
+     <br/>&nbsp;&nbsp;&nbsp;&nbsp;funTocMake_toc();
+     <br/>&nbsp;&nbsp;});
+     <br/>&lt;/script&gt;</code>
+     <br/>Also you must add the <a href="toc.js">toc.js</a> file in your directory or link it from this site.
+     <br/>The advantages of my toc are:
+     <br/>* It is expandable.
+     <br/>* There is two-way communication between the toc and the text.
+     <br/>- By clicking on the toc, goes to that heading and the user can copy the address of any section of an article.
+     <br/>- By clicking on a the text, in the toc is highlited this section and its parents are only expanded, giving to the reader the big picture of the position s|he is reading. Thus the toc improves the readability of big articles.
+     <br/>* If the user needs more space for the text, the splitbar has a button that closes|opens the toc with one click.
+     <br/>* The splitter changes width.
+     <br/>* By setting the "page-path" paragraph, as in this file at the end of the text, the javascript-code displays it at the begining of the toc. Thus the reader has always visible the position of the file in the structure of the site.
+     <br/>NOTE: the javascript code is FREE under the <a href="http://www.gnu.org/copyleft/lesser.html">LGPLv3 license</a>. I don't feel a js expert, I'm interesting in functionality. Please report improvements in the code.
+     <br/>
+      <br/>b) <span class="style-b">ToC on SPECIFIC browser</span>: I know these plugins:
+      <br/>* In Chrome, my <a href="https://chrome.google.com/webstore/detail/tableofcontents/eeknhipceeelbgdbcmchicoaoalfdnhi">TableOfContents</a> extension.
+      <br/>* In Firefox, the <a href="https://addons.mozilla.org/en-US/firefox/addon/7203/">HeadingsMap</a> add-on.
+      <a class="hide" href="#idPropTocP1">¶</a></p>
+  </section>
+
+  <section id="idPropHtml5">
+    <h2 id="idPropHtml5">HTML5
+      <a class="hide" href="#idPropHtml5">¶</a></h2>
+    <p id="idPropHtml5P1">HTML5 (not yet a final standard) introduced the &lt;section&gt; element. We are using it because shows more crearly the structure of text than the heading-elements alone.
+      <br/>NOTE: The proposed text-format works well AND without the section element. See <a href="index-sectionNo.html">this file</a> without the section element.
+      <a class="hide" href="#idPropHtml5P1">¶</a></p>
+  </section>
+
+  <section id="idPropCSS">
+    <h2 id="idPropCSS">The CSS
+      <a class="hide" href="#idProp">¶</a></h2>
+    <p id="idProp">CSSs separate content from presentation. We use a <a href="css.html5.id.toc.css">css-file</a> for harmonization in the appearance of documents and for the toc creation.
+      <br/>You must have this file (together with toc.js) in your directory or link to it.
+      <a class="hide" href="#idPropCSS">¶</a></p>
+  </section>
+
+  <section id="idPropLink">
+    <h2 id="idPropLink">The Links
+      <a class="hide" href="#idPropLink">¶</a></h2>
+    <p id="idPropLinkP1">By setting IDs in all elements of a text, we can refer to any part of a document. Then we can use links in all places in a text we refer to another place inside a document or outside of it. Law-texts are full of references. Find the references it is difficult and sometimes impossible. If the references are "one click away", then reading law will become easier.
+      <a class="hide" href="#idPropLinkP1">¶</a></p>
+  </section>
+
+  <section id="idPropIndex">
+    <h2 id="idPropIndex">The Index
+      <a class="hide" href="#idPropIndex">¶</a></h2>
+    <p id="idPropIndexP1">HTML5.ID.ToC-files (what we are proposing here) improve the functionality of the indexes of text-files.
+      <br/>First, by setting as ID on each index-entry the pattern "idIndex-term", the reader will have very quick access to the entries.
+      <br/>Second, by storing ALL the terms a text uses, the reader will understand the text easier.
+      <br/>Third, by setting the definition and related attributes of the concept of the term, the reader will understand quickly the text.
+      <br/><a href="SNA2008.html">SNA2008.html</a> is an example with an index.
+      <a class="hide" href="#idPropIndexP1">¶</a></p>
+  </section>
+
+  <section id="idPropPopup">
+    <h2 id="idPropPopup"><a class="popupTrigger" href="#idPropEvol">Link preview</a> (popup)
+      <a class="hide" href="#idPropPopup">¶</a></h2>
+    <p id="idPropPopupP1">Another functionality that facilitates reading
+    is the addition of pop-ups (previews) on interal links with destination
+    relatively small chunks of text. This is espacially usefull for
+    footnotes, abbreviations, definitions, index items, paragraphs etc.
+    <br/>HOW: you only have to add the class 'popupTrigger' on the links you want to trigger popups when the reader is hovering over them.
+      <a class="hide" href="#idPropPopupP1">¶</a></p>
+  </section>
+
+  <section id="idPropPagepath">
+    <h2 id="idPropPagepath">Page-path
+      <a class="hide" href="#idPropPagepath">¶</a></h2>
+    <p id="idPropPagepathP1">By setting a paragraph with id "idWebpage_path", the program sets its content as the first paragraph of the left splitter pane.
+      <br/>NOTE: If the document does not contain this paragraph, the program sets the title-element as page-path. I set this paragraph as the last paragraph of the document.
+      <a class="hide" href="#idPropPagepathP1">¶</a></p>
+  </section>
+
+  <section id="idPropVersioning">
+    <h2 id="idPropVersioning">Versioning
+      <a class="hide" href="#idPropVersioning">¶</a></h2>
+    <p id="idPropVersioningP1">We can have a simple versioning paradigm with static pages by setting the date on its file name. Having and a file without date but with the LAST version we can always have access to the last version. From internal links we can have access to previous dated versions. As example look this file.
+      <a class="hide" href="#idPropVersioningP1">¶</a></p>
+  </section>
+
+  <section id="idPropExample">
+    <h2 id="idPropExample">The Examples
+      <a class="hide" href="#idPropExample">¶</a></h2>
+    <p id="idPropExampleP1">The site presents many examples with our proposal. Reading their code is the best way to understand what really we are proposing.
+      <a class="hide" href="#idPropExampleP1">¶</a></p>
+  </section>
+
+  <section id="idPropEvol">
+    <h2 id="idPropEvol">Evolution of proposal
+      <a class="hide" href="#idPropEvol">¶</a></h2>
+    <p id="idPropEvolPara3d">{2013.04.14}: <a class="popupTrigger" href="#idPropPopup">Link Preview</a>:
+      <br/>Another feature that facilitates reading-productivity.
+      <a class="hide" href="#idPropEvolPara3d">¶</a></p>
+    <p id="idPropEvolPara2d">{2013.04.01}: <a href="#idPropToc">Table of Contents</a>:
+      <br/>HTML5.ID.ToC: Adding a few lines of javascript code the static-pages are becoming dynamic ('applications!') but this facilitates reading. This way the 'electronic-text' begins to have more advantantages than 'printed-text'. Other forms of 'electronic-text' which merely digitize printed-text are inferior to 'printed-text'.
+      <a class="hide" href="#idPropEvolPara2d">¶</a></p>
+    <p id="idPropEvolPara1d">{2011.02.17}: first publication:
+      <br/>HTML5-ID: the goal of my first try was to show a simple method
+      of a text-format we can read in a ubiquitous web-browser
+      that anyone can REFER to any part of it. The main types of texts
+      I had in my mind were law-texts.
+      <a class="hide" href="#idPropEvolPara1d">¶</a></p>
+  </section>
+
+  <section id="idPropLicense">
+    <h2 id="idPropLicense">License
+      <a class="hide" href="#idPropLicense">¶</a></h2>
+    <p id="idPropLicenseP1">This webpage's work is free under
+      <br/>the creative commons
+      <br/><a href="http://creativecommons.org/licenses/by/3.0/">Attribution 3.0 Unported (CC BY 3.0)</a> license.
+      <a class="hide" href="#idPropLicenseP1">¶</a></p>
+  </section>
+</section>
+
+<section id="idExamBook">
+  <h1 id="idExamBook">Examples: Books
+    <a class="hide" href="#idExamBook">¶</a></h1>
+  <p id="idExamBookPara1"><a href="../book/economy/keynes.1936.general-theory.html">Keynes. 1936. The General Theory of Employment, Interest, and Money</a>:
+    <br/>The classic book with footnote-preview.
+    <a class="hide" href="#idExamBookPara1">¶</a></p>
+</section>
+
+<section id="idExamLaw">
+  <h1 id="idExamLaw">Examples: Law-Text
+    <a class="hide" href="#idExamLaw">¶</a></h1>
+  <p id="idExamLawP1">see <a href="../law/index.en.html">law-page</a>.
+    <a class="hide" href="#idExamLawP1">¶</a></p>
+</section>
+
+<section id="idExamStan">
+  <h1 id="idExamStan">Examples: Standards-Text
+    <a class="hide" href="#idExamStan">¶</a></h1>
+
+  <section id="idExamStanEcon">
+    <h2 id="idExamStanEcon">Economy-Standard
+      <a class="hide" href="#idExamStanEcon">¶</a></h2>
+    <p id="idExamStanEconP1"><a href="SNA2008.html">UN.SNA.2008</a>:
+      <br/>The System of National Accounts (SNA) is the internationally agreed standard set of recommendations on how to compile measures of economic activity. The SNA describes a coherent, consistent and integrated set of macroeconomic accounts in the context of a set of internationally agreed concepts, definitions, classifications and accounting rules.(<a href="http://unstats.un.org/unsd/nationalaccount/sna.asp">http://unstats.un.org/unsd/nationalaccount/sna.asp</a>)
+      <br/>This example is a very big text whith about 6,500 paragraphs and 1,700 headings.
+      <a class="hide" href="#idExamStanEconP1">¶</a></p>
+  </section>
+
+  <section id="idExamStanInfoTech">
+    <h2 id="idExamStanInfoTech">InfoTech-Standard
+      <a class="hide" href="#idExamStanInfoTech">¶</a></h2>
+    <p id="idExamStanInfoTechP1">
+      <a class="hide" href="#idExamStanInfoTechP1">¶</a></p>
+  </section>
+</section>
+
+<footer id="idFooter">
+  <p id="idFooterP1">VERSIONS:
+    <br/>* version.last: <a href="index.html">index.html</a>
+    <br/>* version.this: <a href="index.2013.04.14.html">index.2013.04.14.html</a> (last - link-preview)
+    <br/>* version.previous: <a href="index.2013.04.01.html">index.2013.04.01.html</a> (toc)
+    <br/>* version.previous: <a href="index.2013.03.31.html">index.2013.03.31.html</a> (counter)
+    <br/>* version.previous: <a href="index.2013.03.28.html">index.2013.03.28.html</a> (¶ right)
+    <br/>* version.previous: <a href="index.2013.01.16.html">index.2013.01.16.html</a>
+    <br/>* version.published: <a href="index.2011.02.17.html">index.2011.02.17.html</a>
+    <br/>* Created: 2011.02.15
+    <a class="hide" href="#idFooterP1">¶</a></p>
+
+  <p id="idFooterP3">email: kaseluris.nikos at gmail.com
+    <br/>site: <a href="http://users.otenet.gr/~nikkas/">users.otenet.gr/~nikkas/</a>
+    <a class="hide" href="#idFooterP3">¶</a></p>
+
+  <p class="center">times visited since 2013.03.31:
+    <!-- hitwebcounter Code START -->
+    <a href="http://www.hitwebcounter.com/" target="_blank">
+    <img src="http://hitwebcounter.com/counter/counter.php?page=4876503&style=0008&nbdigits=9&type=page&initCount=0" title="" Alt="" border="0" >
+    </a></p>
+
+  <!-- the content of page-path paragraph is displayed as it is on top of toc -->
+  <p id="idWebpage_path" class="classTocExpand"><span class="style-b">Page-path</span>:
+    HTML5.ID.ToC text-format
+    ∈ <a href="http://gym-eleous.ioa.sch.gr/">gym-eleous.ioa.sch.gr</a>
+    </p>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-19754797-3']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</footer>
+</body>
+</html>

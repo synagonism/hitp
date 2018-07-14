@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>html5.id.toc.preview Free Digital-Book (hitp-ebook)</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="hitp.04.2013-06-27.js"></script>
+  <link href="hitp.04.2013-06-27.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<header id="idHeader">
+  <p></p>
+  <h1 id="idHeaderH1">hitp-ebook
+    <br/>html5.id.toc.preview free digital-book with
+    <br/>HTML5, IDs, Table-of-Contents, Link-preview
+    </h1>
+  <p id="idHeaderP1">_Description:
+    <br/>In this webpage we present a FORMAT (method) of publishing
+    HTML-TEXT (FREE | unprotected DIGITAL-BOOKS) with these advantages:
+    <br/>1) no need for special programs to read it. All machines have the needed browser (= html reader).
+    <br/>2) anyone can refer to ANY PART of it, because all html-elements have IDs.
+    <br/>3) automatically created expandable table-of-contents makes reading easy.
+    <br/>4) <a class="popupTrigger" href="#idPropPopup">link-preview</a> makes reading fast.
+    <a class="hide" href="#idHeaderP1">¶</a></p>
+</header>
+
+<section id="idPropName">
+  <h1 id="idPropNameH1">Name
+    <a class="hide" href="#idPropNameH1">¶</a></h1>
+  <p id="idPropNameP1">_Term.english:
+    <br/>• html5.id.toc.preview-ebook,
+    <br/>• html5.id.toc.preview-digital-book,
+    <br/>• html5IdTocPreview-ebook,
+    <br/>• hitp-digital-book,
+    <br/>• hitp-ebook,
+    <br/>• hitp-webpage,
+    <br/>• ebook.hitp,
+    <br/>• ebookHitp,
+    <a class="hide" href="#idPropNameP1">¶</a></p>
+  <p id="idPropNameP2">_Abbreviation:
+    <br/>• dbkHitp,
+    <br/>• ebkHitp,
+    <br/>• hitp,
+    <br/>• hitpebk,
+    <a class="hide" href="#idPropNameP2">¶</a></p>
+</section>
+
+<section id="idPropHtml5">
+  <h1 id="idPropHtml5H1">HTML5 (structure)
+    <a class="hide" href="#idPropHtml5H1">¶</a></h1>
+  <p id="idPropHtml5P1">We use HTML5-elements to create the structure of a hitp-doc. Every hitp-doc has 1 &lt;header&gt;-element, 1 optional &lt;footer&gt;-element, and many &lt;section&gt;-elements.
+    <br/>• The header-element is the first body-element with 1 h1-element that serves the title of the document.
+    <br/>• The optional footer-element is the before last element without a heading-element.
+    <br/>• Every section-element includes 1 heading-element and other non heading-elements, mainly html-paragraph-elements. Also a section-element includes other sections-elements with ordered-headings in the form h1, h2, h3, ... The last section-element has a h1-element with content 'Meta Info'.
+    <a class="hide" href="#idPropHtml5P1">¶</a></p>
+</section>
+
+<section id="idPropID">
+  <h1 id="idPropIDH1">IDs
+    <a class="hide" href="#idPropIDH1">¶</a></h1>
+  <p id="idPropIDP1">The core concept of our proposal is the addition of ID attributes on all elements of an HTML text.
+    <br/>For example:
+    <br/><code>&lt;h1 id="idXxxx"&gt;...
+    <br/>&lt;p id="idYyyy"&gt;...</code>
+    <br/>Now we can refer to any part of the document!!!
+    <a class="hide" href="#idPropIDP1">¶</a></p>
+  <p id="idPropIDP2">The IDs must be unique.
+    <br/>You can use as ID whatever you want.  We sugest to begin with "id" in order to be distinguished from other words in the text and do not contain spaces. For example:
+    <br/><code>idProp, idHeader, idIndex-income, ...</code>
+    <a class="hide" href="#idPropIDP2">¶</a></p>
+  <p id="idPropIDP3"><b>The IDs must be visible to the reader</b>.
+    <br/>The reader, in order to refer to any part of the document, must know the ID of this part of the file. This can be done by adding a hidden element in this part of the file that will be visible when the mouse is over this text. But if this hidden-element is and a link-element, then the reader could copy the address of this part of the file from the address-bar of his browser. Here are some examples of the simple code we have to add to reach our goal.
+    <br/><code>&lt;h1 id="idXxxx"&gt;...
+    <br/>&nbsp;&nbsp;&lt;a class="hide" href="#idXxxx"&gt;¶&lt;/a&gt;&lt;/h1&gt;</code>
+    <br/>or
+    <br/><code>&lt;p id="idYyyy"&gt;...
+    <br/>&nbsp;&nbsp;&lt;a class="hide" href="#idYyyy"&gt;¶&lt;/a&gt;&lt;/p&gt;</code>
+    <br/>With this code, when the reader has the mouse over an HTML-element (a part text), at the end appears the ¶ symbol. Putting the mouse over this symbol, s|he can see the ID of this text and clicking on this symbol he can copy from the address-bar the address of this particular part of the text.  The paragraph you are reading now has the feature we are talking about and you can experiment with it.
+    <br/><span class="style-u">NEW {2013.04.04}</span>: By clicking on a heading|paragraph goes to that element
+    and the reader sees the address. This is done with javascript code.
+    We could have and the "manual" way with the ¶ symbol in case the code
+    does not work in old browsers and also with the apperance of the this symbol the reader understands the functionality of the html-element.
+    <a class="hide" href="#idPropIDP3">¶</a></p>
+  <p id="idPropIDP4">ID Patterns.
+    <br/>If the author of a doc uses patterns to write the IDs of a text-file, it helps the reader to quickly identifies the parts of the file. Example:
+    <br/>- idA4 (article)
+    <br/>- idA4P2 (paragraph)
+    <br/>- idP2 (Part)
+    <br/>- idP2C2 (Chapter)
+    <br/>NOTATION: the id of a heading is the id of its section-element plus H1, H2, etc. This way we can link and preview the part of the doc with this heading.
+    <a class="hide" href="#idPropIDP4">¶</a></p>
+</section>
+
+<section id="idPropToc">
+  <h1 id="idPropTocH1">Table-of-Contents
+    <a class="hide" href="#idPropTocH1">¶</a></h1>
+  <p id="idPropTocP1">When you are reading text on a computer screen you are losing your reading-position.
+    <br/>Hitp-docs automatically create the table-of-contents (toc) of the text that shows your reading-position.
+    <br/>HOW: you need to add the following code inside the head element:
+    <br/><code>&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"&gt;&lt;/script&gt;
+    <br/>&lt;script src="http://synagonism.net/hitp/hitp.js">&lt;/script&gt;</code>
+    <br/>The attributes of my toc (<a href="http://synagonism.net/hitp/hitp.js">hitp.js</a>) are:
+    <br/>* It is expandable.
+    <br/>* There is two-way communication between the toc and the text.
+    <br/>- By clicking on the toc, goes to that heading and the user can copy the address of any section of an article.
+    <br/>- By clicking on a the text, in the toc is highlited this section and its parents are only expanded, giving to the reader the big picture of the position s|he is reading. Thus the toc improves the readability of big articles.
+    <br/>* If the user needs more space for the text, the splitbar has a button that closes|opens the toc with one click.
+    <br/>* The splitter changes width.
+    <br/>* By setting the "page-path" paragraph, as in this file at the end of the text, the javascript-code displays it at the begining of the toc. Thus the reader has always visible the position of the file in the structure of the site.
+    <br/>NOTE:
+    <br/>a) the javascript code is FREE under the <a href="http://www.gnu.org/copyleft/lesser.html">LGPLv3 license</a>. I don't feel a js expert, I'm interesting in functionality. Please report improvements in the code.
+    <br/>b) my previous approach was the creation of a Chrome extension, my <a href="https://chrome.google.com/webstore/detail/table-of-contents-crx/eeknhipceeelbgdbcmchicoaoalfdnhi">Table-of-contents-crx</a> which creates a toc on any page with heading only in Chrome.
+    <a class="hide" href="#idPropTocP1">¶</a></p>
+</section>
+
+<section id="idPropCSS">
+  <h1 id="idPropCSSH1">CSS
+    <a class="hide" href="#idPropH1">¶</a></h1>
+  <p id="idProp">CSSs separate content from presentation. We use a <a href="hitp.css">css-file</a> for harmonization in the appearance of documents and for the toc creation.
+    <br/>You must have this file (together with hitp.js) in a local directory or link to it online.
+    <a class="hide" href="#idPropCSS">¶</a></p>
+</section>
+
+<section id="idPropLink">
+  <h1 id="idPropLinkH1">Links
+    <a class="hide" href="#idPropLinkH1">¶</a></h1>
+  <p id="idPropLinkP1">By setting IDs in all elements of a text, we can refer to any part of a document. Then we can use links in all places in a text we refer to another place inside a document or outside of it. Law-texts are full of references. Find the references it is difficult and sometimes impossible. If the references are "one click away", then reading law will become easier.
+    <a class="hide" href="#idPropLinkP1">¶</a></p>
+</section>
+
+<section id="idPropIndex">
+  <h1 id="idPropIndexH1">Index
+    <a class="hide" href="#idPropIndexH1">¶</a></h1>
+  <p id="idPropIndexP1">Html5.id.toc.preview-files (what we are proposing here) improve the functionality of the indexes of text-files because we have the capability to refer|link, from the index, to any part of the text (because we use IDs) and <a class="popupTrigger" href="#idPropPopup">preview</a> these parts.
+    <a class="hide" href="#idPropIndexP1">¶</a></p>
+
+  <section id="idPropIndexCpt">
+  <h2 id="idPropIndexCptH2">Concept-Index
+    <a class="hide" href="#idPropIndexCptH2">¶</a></h2>
+  <p id="idPropIndexCptP1">Every text describes relations of CONCEPTS.
+    <br/>We can create the concept-index of every text, which is another method to represent the SAME information with the text.
+    <br/>With a concept-index the READER can have direct access to the concept s|he is interesting and from there to any RELATED other concept.
+    <br/>If a concept-entry has the definition and the related attributes of the concept, the reader will understand quickly the text.
+    <br/>An example of html5IdTocPreview text with a concept-index is the <a class="popupTrigger" href="http://synagonism.net/law/gr/s.2008.html#idIndexTH">greek-constitution</a> (in greek).
+    <a class="hide" href="#idPropIndexCptP1">¶</a></p>
+  </section>
+
+  <section id="idPropIndexName">
+  <h2 id="idPropIndexNameH2">Name-Index
+    <a class="hide" href="#idPropIndexNameH2">¶</a></h2>
+  <p id="idPropIndexNameP1">Βy setting as ID on each name|term-entry the pattern "idIndex-term", the reader will have very quick access to the entries.
+    <br/><a class="popupTrigger" href="../standard/economy/un.sna.2008.html#idIndex-A">un.sna.2008.html</a> is an example with a name-index.
+    <a class="hide" href="#idPropIndexNameP1">¶</a></p>
+  </section>
+</section>
+
+<section id="idPropPopup">
+  <h1 id="idPropPopupH1"><a class="popupTrigger" href="#idPropEvol">Link preview</a> (popup)
+    <a class="hide" href="#idPropPopupH1">¶</a></h1>
+  <p id="idPropPopupP1">Another functionality that facilitates reading
+    is the addition of pop-ups (previews) on interal links with destination
+    relatively small chunks of text. This is espacially usefull for
+    footnotes, abbreviations, definitions, index items, paragraphs etc.
+    <br/>HOW: you only have to add the class 'popupTrigger' on the links you want to trigger popups when the reader is hovering over them.
+    <br/><code>&lt;a class="popupTrigger" href="#idPropPopup"&gt;link-preview&lt;/a&gt;</code>
+    <a class="hide" href="#idPropPopupP1">¶</a></p>
+</section>
+
+<section id="idPropPagepath">
+  <h1 id="idPropPagepathH1">Page-path
+    <a class="hide" href="#idPropPagepathH1">¶</a></h1>
+  <p id="idPropPagepathP1">By setting a paragraph with id "idMetaWebpage_path", the program sets its content as the first paragraph of the left splitter pane.
+    <br/>NOTE: If the document does not contain this paragraph, the program sets the title-element as page-path. I set this paragraph as the last paragraph of the document.
+    <a class="hide" href="#idPropPagepathP1">¶</a></p>
+</section>
+
+<section id="idPropVersioning">
+  <h1 id="idPropVersioningH1">Versioning
+    <a class="hide" href="#idPropVersioningH1">¶</a></h1>
+  <p id="idPropVersioningP1">We can have a simple versioning paradigm with static pages by setting the date on its file name ie 'index.2013.05.15.html'.
+    <br/>Having and a file without date but with the LAST version we can always have access to the last version. From internal links we can have access to previous dated versions. As example look this file.
+    <a class="hide" href="#idPropVersioningP1">¶</a></p>
+</section>
+
+<section id="idPropMath">
+  <h1 id="idPropMathH1">Math formulas
+    <a class="hide" href="#idPropExampleH1">¶</a></h1>
+  <p id="idPropMathP1">Using <a href="http://www.mathjax.org/">MathJax</a> we can have "beautiful math in all browsers". For example:
+    <span class="color-red">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow>
+        <mi>x</mi>
+        <mo>=</mo>
+        <mfrac>
+          <mrow>
+            <mo form="prefix">&#x2212;</mo>
+            <mi>b</mi>
+            <mo>
+              ±
+              <!--pm, PlusMinus, plusmn-->
+            </mo>
+            <msqrt>
+              <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+              </msup>
+              <mo>&#x2212;</mo>
+              <mn>4</mn>
+              <mo>
+                &#x2062;
+                <!--it, InvisibleTimes-->
+              </mo>
+              <mi>a</mi>
+              <mo>
+                &#x2062;
+                <!--it, InvisibleTimes-->
+              </mo>
+              <mi>c</mi>
+            </msqrt>
+          </mrow>
+          <mrow>
+            <mn>2</mn>
+            <mo>
+              &#x2062;
+              <!--it, InvisibleTimes-->
+            </mo>
+            <mi>a</mi>
+          </mrow>
+        </mfrac>
+      </mrow>
+    </math>
+    </span>
+    <br/>HOW:
+    <br/>1. we need to add the following code inside the head element:
+    <br/><code>&lt;script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;</code> and
+    <br/>2. create the math-code. An easy method is from the online site <a href="http://sharemath.com/">ShareMath</a>.
+    <a class="hide" href="#idPropMathP1">¶</a></p>
+</section>
+
+<section id="idPropExample">
+  <h1 id="idPropExampleH1">Examples
+    <a class="hide" href="#idPropExampleH1">¶</a></h1>
+  <p id="idPropExampleP1">The site presents many examples with our proposal.
+    Actually I'm writing the site with this proposal.
+    Reading the code of these examples and seeing its behavior, is the best way to understand what really we are proposing.
+    <br/>• <a href="../book/">book-examples</a>.
+    <br/>• <a href="../law/index.en.html">law-examples</a>.
+    <br/>• <a href="../standard/">standard-examples</a>.
+    <a class="hide" href="#idPropExampleP1">¶</a></p>
+</section>
+
+<section id="idPropDl">
+  <h1 id="idPropDlH1">Download
+    <a class="hide" href="#idPropDlH1">¶</a></h2>
+  <p id="idPropDlP1">At the "Meta Info" section may exist the option to dowload the text in a zipped file. Unzip the file in a directory you want. Then double click the html file.
+    <a class="hide" href="#idPropDlP1">¶</a></p>
+  <p id="idPropDlP2">File structure:
+    <br/>The html5.id.toc.preview-format is comprised of:
+    <br/>1) an html-file with the text-content and
+    <br/>2) maybe a directory with all other, IF needed, files such as pictures, audio, video, css, etc. The name of the directory is the same with the name of the html-file plus the '.files' extension.
+    <br/>If there is a compressed file to download, then this includes and
+    online files needed for reading it.
+    <a class="hide" href="#idPropDlP2">¶</a></p>
+</section>
+
+<section id="idPropEvol">
+  <h1 id="idPropEvolH1">Evolution of proposal
+    <a class="hide" href="#idPropEvolH1">¶</a></h1>
+  <p id="idPropEvolPara5d">{version.2013.07.15.5}: ToC Algorithm:
+    <br/>I wrote a new smaller specific algorithm that creates the ToC of a hitp-doc.
+    <br/>The previous was the one of <a href="https://chrome.google.com/webstore/detail/html5-outliner/afoibpobokebhgfnknfndkgemglggomo?hl=en">html5-outliner-chrome-extension</a>.
+    <br/>Also I enclosed the code in one literal object, the 'HITP'.
+    <br/>I allow gaps in headings like: h1, h2, h4 because existing docs use this pattern.
+    <a class="hide" href="#idPropEvolPara5d">¶</a></p>
+  <p id="idPropEvolPara4d">{version.2013.06.27.4}: Name:
+    <br/>I change the name of the proposal from html5.id.toc to <span class="color-red">html5.id.toc.preview (= html5IdTocPreview)</span>
+    <br/>in order to include all its main attributes.
+    <br/>Abbreviation: ebkHitp, hitp.
+    <a class="hide" href="#idPropEvolPara4d">¶</a></p>
+  <p id="idPropEvolPara3d">{version.2013.04.14.3}: <a class="popupTrigger" href="#idPropPopup">Link Preview</a>:
+    <br/>HTML5.ID.TOC.PREVIEW: Another feature that facilitates reading-productivity.
+    <a class="hide" href="#idPropEvolPara3d">¶</a></p>
+  <p id="idPropEvolPara2d">{version.2013.04.01.2}: <a href="#idPropToc">Table of Contents</a>:
+    <br/>HTML5.ID.ToC: Adding a few lines of javascript code the static-pages are becoming dynamic ('applications!') but this facilitates reading. This way the 'electronic-text' begins to have more advantantages than 'printed-text'. Other forms of 'electronic-text' which merely digitize printed-text are inferior to 'printed-text'.
+    <a class="hide" href="#idPropEvolPara2d">¶</a></p>
+  <p id="idPropEvolPara1d">{version.2011.02.17.1}: first publication:
+    <br/>HTML5.ID: the goal of my first try was to show a simple method
+    of a text-format we can read in a ubiquitous web-browser
+    that anyone can REFER to any part of it. The main types of texts
+    I had in my mind were law-texts.
+    <a class="hide" href="#idPropEvolPara1d">¶</a></p>
+</section>
+
+<section id="idPropProblem">
+  <h1 id="idPropProblemH1">Problem (issue)
+    <a class="hide" href="#idPropProblemH1">¶</a></h1>
+
+  <section id="idPropProblemFfx">
+  <h2 id="idPropProblemFfxH2">Firefox
+    <a class="hide" href="#idPropProblemFfxH2">¶</a></h2>
+  <p id="idPropProblemFfxP1">location.href {2013.08.16}:
+    <br/>In contrast to Chrome, Firefox loses the selection after 'location.href' setting in a page.
+    <br/>WORKAROUND: first click to go to that location and then select from this location.
+    <a class="hide" href="#idPropProblemFfxP1">¶</a></p>
+  <p id="idPropProblemFfxP2">Back-Forward {2013.08.16}:
+    <br/>Clicking on buttons 'back', 'forward' shows the visited locations but does not go to that location.
+    <br/>WORKAROUND: click on the address-bar and hit enter.
+    <a class="hide" href="#idPropProblemFfxP2">¶</a></p>
+</section>
+
+<section id="idPropLicense">
+  <h1 id="idPropLicenseH1">License
+    <a class="hide" href="#idPropLicenseH1">¶</a></h1>
+  <p id="idPropLicenseP1">This webpage's work is FREE under
+    <br/>the creative commons
+    <br/><a href="http://creativecommons.org/licenses/by/3.0/">Attribution 3.0 Unported (CC BY 3.0)</a> license.
+    <a class="hide" href="#idPropLicenseP1">¶</a></p>
+</section>
+
+<footer id="idFooter">
+  <p id="idFooterP1">Contact:
+    <br/>• author: <a class="popupTrigger" href="http://synagonism.net/#idAboutme">Kaseluris.Nikos.1959</a>.
+    <br/>• email:
+    <br/>&nbsp;&nbsp;<img src="http://synagonism.net/misc/img/mail.png" />
+    <br/>• twitter: @synagonism.
+    <a class="hide" href="#idFooterP1">¶</a></p>
+</footer>
+
+<section id="idMeta">
+  <h1 id="idMetaH1">Meta Info
+    <a class="hide" href="#idMetaH1">¶</a></h1>
+  <p id="idMetaVersion">VERSIONS:
+    <br/>• version.last: <a href="index.html">index.html</a> (2013.06.29 minor 2013.08.19 new-dir-hitp)
+    <br/>• version.previous: <a href="../hit/index.2013.06.26.html">/hit/index.2013.06.26.html</a> (new-name)
+    <br/>• version.previous: <a href="../hit/index.2013.06.18.html">/hit/index.2013.06.18.html</a> (no-doc.ready)
+    <br/>• version.previous: <a href="../hit/index.2013.06.01.html">/hit/index.2013.06.01.html</a> (synagonism.net)
+    <br/>• version.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.05.29.html">/gym-eleous.ioa.sch.gr/textid/index.2013.05.29.html</a> (concept-index)
+    <br/>• version.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.05.15.html">/gym-eleous.ioa.sch.gr/textid/index.2013.05.15.html</a> (math)
+    <br/>• version.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.04.14.html">/gym-eleous.ioa.sch.gr/textid/index.2013.04.14.html</a> (link-preview)
+    <br/>• version.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.04.01.html">/gym-eleous.ioa.sch.gr/textid/index.2013.04.01.html</a> (toc)
+    <br/>• version.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.03.31.html">/gym-eleous.ioa.sch.gr/textid/index.2013.03.31.html</a> (counter)
+    <br/>• version.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.03.28.html">/gym-eleous.ioa.sch.gr/textid/index.2013.03.28.html</a> (¶ right)
+    <br/>• version.previous: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2013.01.16.html">/gym-eleous.ioa.sch.gr/textid/index.2013.01.16.html</a>
+    <br/>• version.published: <a href="http://gym-eleous.ioa.sch.gr/textid/index.2011.02.17.html">/gym-eleous.ioa.sch.gr/textid/index.2011.02.17.html</a>
+    <br/>• Created: 2011.02.15
+    <a class="hide" href="#idMetaVersion">¶</a></p>
+  <p id="idMetaCounter" class="center">This page was visited
+    <span class="color-red">
+    <script src="http://synagonism.net/program/counter/counter.php?page=hit.index"></script>
+    </span>
+    times since 2013.05.30.
+    <a class="hide" href="#idMetaCounter">¶</a></p>
+  <!-- the content of page-path paragraph is displayed as it is on top of toc -->
+  <p id="idMetaWebpage_path" class="classTocExpand"><span class="style-b color-green">Page-path</span>:
+    html5.id.toc.preview
+    ∈ <a class="popupTrigger" href="http://synagonism.net/#idHeader">synagonism.net</a>
+    </p>
+</section>
+
+<section id="idComment">
+  <h1 id="idCommentH1">Comments</h1>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'synagonism';
+    var disqus_identifier = 'hitp';
+    var disqus_title = 'hitp';
+    var disqus_url = 'http://synagonism.net/hitp/index.html';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-19285371-5', 'synagonism.net');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML5-ID Text-Format</title>
+  <link href="hitp.01.2011-02-17.css" rel="stylesheet" type="text/css"/>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-19754797-3']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+<body>
+<header id="idHeader">
+  <h1 id="idHeaderH1">HTML5 with IDs Text-Format</h1>
+  <p id="idHeaderH1P1">In this web-page we present a method of publishing HTML-text that basically anyone can refer to ANY PART of it.
+    <a class="hide" href="#idHeaderH1P1">¶</a></p>
+</header>
+
+<section id="idProposal">
+  <h1 id="idProposal">The Proposal
+    <a class="hide" href="#idProposal">¶</a></h1>
+
+  <section id="idProposalID">
+    <h2 id="idProposalID">The IDs
+      <a class="hide" href="#idProposalID">¶</a></h2>
+    <p id="idProposalIDP1">The core concept of our proposal is the addition of ID attributes on all elements of an HTML text.
+      <br/>For example:
+      <br/><code>&lt;h1 id="idXxxx"&gt;...&lt;/h1&gt;</code>
+      <br/>or
+      <br/><code>&lt;p id="idYyyy"&gt;...&lt;/p&gt;</code>
+      <br/>That's all. Now we can refer to any part of the document!!!
+      <a class="hide" href="#idProposalIDP1">¶</a></p>
+    <p id="idProposalIDP2">The IDs must be unique.
+      <br/>You can use as ID whatever you want.  We sugest to begin with "id" in order to be distinguished from other words in the text and do not contain spaces. For example:
+      <br/><code>idProposal, idHeader, idIndex-income, ...</code>
+      <a class="hide" href="#idProposalIDP2">¶</a></p>
+    <p id="idProposalIDP3"><b>The IDs must be visible to the reader</b>.
+      <br/>The reader, in order to refer to any part of the document, must know the ID of this part of the file. This can be done by adding a hidden element in this part of the file that will be visible when the mouse is over this text. But if this hidden-element is and a link-element, then the reader could copy the address of this part of the file from the address-bar of his browser. Here are some examples of the simple code we have to add to reach our goal.
+      <br/><code>&lt;h1 id="idXxxx"&gt;...
+      <br/>&nbsp;&nbsp;&lt;a class="hide" href="#idXxxx"&gt;¶&lt;/a&gt;&lt;/h1&gt;</code>
+      <br/>or
+      <br/><code>&lt;p id="idYyyy"&gt;...
+      <br/>&nbsp;&nbsp;&lt;a class="hide" href="#idYyyy"&gt;¶&lt;/a&gt;&lt;/p&gt;</code>
+      <br/>With this code, when the reader has the mouse over an HTML-element (a part text), at the end appears the ¶ symbol. Putting the mouse over this symbol, s|he can see the ID of this text and clicking on this symbol he can copy from the address-bar the address of this particular part of the text.  The paragraph you are reading now has the feature we are talking about and you can experiment with it.
+      <a class="hide" href="#idProposalIDP3">¶</a></p>
+    <p id="idProposalIDP4">ID Patterns.
+      <br/>If the author of a doc uses patterns to write the IDs of a text-file, it helps the reader to quickly identifies the parts of the file. Example:
+      <br/>- idA4 (article)
+      <br/>- idA4P2 (paragraph)
+      <br/>- idP2 (Part)
+      <br/>- idP2T1 (Title)
+      <br/>- idP2T1C2 (Chapter)
+      <br/>- idP2T1C2S2 (Section)
+      <a class="hide" href="#idProposalIDP4">¶</a></p>
+  </section>
+
+  <section id="idProposalHeading">
+    <h2 id="idProposalHeading">The Headings
+      <a class="hide" href="#idProposalHeading">¶</a></h2>
+    <p id="idProposalHeadingP1">The next important feature an HTML-text must have is heading-elements that correctly represent the structure of the text.
+      <br/>Browsers' blugins create automatically the table-of-contents (outline) of HTML-texts with headings and make the reading easier. Example:
+      <br/>In Chrome, the <a href="https://chrome.google.com/extensions/detail/eeknhipceeelbgdbcmchicoaoalfdnhi">TableOfContents</a> extension. TableOfContents also gives the "big-picture" of what you are reading when you click on a heading in the text.
+      <br/>In Firefox, the <a href="https://addons.mozilla.org/en-US/firefox/addon/7203/">HeadingsMap</a> add-on.
+      <a class="hide" href="#idProposalHeadingP1">¶</a></p>
+  </section>
+
+  <section id="idProposalHtml5">
+    <h2 id="idProposalHtml5">HTML5
+      <a class="hide" href="#idProposalHtml5">¶</a></h2>
+    <p id="idProposalHtml5P1">HTML5 (not yet a final standard) introduced the &lt;section&gt; element. We are using it because shows more crearly the structure of text than the heading-elements alone.
+      <a class="hide" href="#idProposalHtml5P1">¶</a></p>
+  </section>
+
+  <section id="idProposalCSS">
+    <h2 id="idProposalCSS">The CSS
+      <a class="hide" href="#idProposal">¶</a></h2>
+    <p id="idProposal">CSSs separate content from presentation. We use a <a href="css-html5-id.css">css</a> for harmonization in the appearance of documents and better control.
+      <a class="hide" href="#idProposalCSS">¶</a></p>
+  </section>
+
+  <section id="idProposalLink">
+    <h2 id="idProposalLink">The Links
+      <a class="hide" href="#idProposalLink">¶</a></h2>
+    <p id="idProposalLinkP1">By setting IDs in all elements of a text, we can refer to any part of a document. Then we can use links in all places in a text we refer to another place inside a document or outside of it. Law-texts are full of references. Find the references it is difficult and sometimes impossible. If the references are one "click" away, then reading law will become easier.
+      <a class="hide" href="#idProposalLinkP1">¶</a></p>
+  </section>
+
+  <section id="idProposalIndex">
+    <h2 id="idProposalIndex">The Index
+      <a class="hide" href="#idProposalIndex">¶</a></h2>
+    <p id="idProposalIndexP1">ID-HTML5-files (what we are proposing here) improve the functionality of the indexes of text-files.
+      <br/>First, by setting as ID on each index-entry the pattern "idIndex-term", the reader will have very quick access to the entries.
+      <br/>Second, by storing ALL the terms a text uses, the reader will understand the text easier.
+      <br/>Third, by setting the definition and related attributes of the concept of the term, the reader will understand quickly the text.
+      <br/><a href="SNA2008.html#idIndex-legal-or-social-entity">SNA2008.html</a> is an example with an index.
+      <a class="hide" href="#idProposalIndexP1">¶</a></p>
+  </section>
+
+  <section id="idProposalExample">
+    <h2 id="idProposalExample">The Examples
+      <a class="hide" href="#idProposalExample">¶</a></h2>
+    <p id="idProposalExampleP1">This website presents many examples with our proposal. Reading their code is the best way to understand what really we are proposing.
+      <a class="hide" href="#idProposalExampleP1">¶</a></p>
+  </section>
+</section>
+
+<section id="idLaw">
+  <h1 id="idLaw">Law-Text
+    <a class="hide" href="#idLaw">¶</a></h1>
+  <p>see <a href="../law/index.en.html">law-page</a>.</p>
+</section>
+
+<section id="idStandard">
+  <h1 id="idStandard">Standard-Text
+    <a class="hide" href="#idStandard">¶</a></h1>
+
+  <section id="idStandardEconomy">
+    <h2 id="idStandardEconomy">Economy-Standard
+      <a class="hide" href="#idStandardEconomy">¶</a></h2>
+    <p id="idStandardEconomy"><a href="SNA2008.html">UN-SNA-2008</a>:
+      <br/>The System of National Accounts (SNA) is the internationally agreed standard set of recommendations on how to compile measures of economic activity. The SNA describes a coherent, consistent and integrated set of macroeconomic accounts in the context of a set of internationally agreed concepts, definitions, classifications and accounting rules.(<a href="http://unstats.un.org/unsd/nationalaccount/sna.asp">http://unstats.un.org/unsd/nationalaccount/sna.asp</a>)
+      <a class="hide" href="#idStandardEconomy">¶</a></p>
+  </section>
+
+  <section id="idStandardInfoTech">
+    <h2 id="idStandardInfoTech">InfoTech-Standard
+      <a class="hide" href="#idStandardInfoTech">¶</a></h2>
+    <p id="idStandardInfoTech">
+      <a class="hide" href="#idStandardInfoTech">¶</a></p>
+  </section>
+</section>
+
+<footer id="idFooter">
+  <p id="idFooterP1">VERSIONS:
+    <br/>* version.last: <a href="index.html">index.html</a>
+    <br/>* version.this: <a href="index.2011.02.17.html">index.2011.02.17.html</a>
+    <br/>* version.published: <a href="index.2011.02.17.html">index.2011.02.17.html</a>
+    <br/>* Created: 2011.02.15
+    <a class="hide" href="#idFooterP1">¶</a></p>
+  <p id="idFooterP2">HomePage:
+    <br/>* <a href="http://gym-eleous.ioa.sch.gr/">http://gym-eleous.ioa.sch.gr/</a>
+    <a class="hide" href="#idFooterP2">¶</a></p>
+  <p id="idFooterP3">CurrentPage:
+    <br/>HTML5-ID-Text-Proposal of Eleousa-Ioannina-Gymnasium: http://gym-eleous.ioa.sch.gr/textid/.
+    <a class="hide" href="#idFooterP3">¶</a></p>
+  <p id="idFooterP4">email:
+    <br/>* kaseluris.nikos at gmail.com
+    <a class="hide" href="#idFooterP4">¶</a></p>
+  <p class="center">This file is best viewed with the
+    <a href="https://chrome.google.com/extensions/detail/eeknhipceeelbgdbcmchicoaoalfdnhi">TableOfContents</a> Chrome-extension.</p>
+</footer>
+</body>
+</html>
