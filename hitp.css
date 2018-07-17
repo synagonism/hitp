@@ -1,4 +1,5 @@
 /*
+* version.16-1.2018-07-17: clsHide span.
 * version.16-0-5.2018-04-02: clsI.
 * version.16-0-4.2017-11-25: ColorBg white.
 * version.16-0-3.2017-10-17: underline hovering links.
@@ -492,6 +493,9 @@ span > a.clsHide {
   display: inline-block;
   float: none;
   position: relative;
+  width: 14px;
+  height: 14px;
+  background: white;
 }
 span > a.clsHide.clsClickCnt:before {
   font: normal normal normal 14px/1 IcnFontAwesome;
@@ -499,7 +503,7 @@ span > a.clsHide.clsClickCnt:before {
   background: green;
   border-radius: 2px;
   padding: 2px;
-  margin-left: 14px;
+  margin-left: 22px;
 }
 span > a.clsHide.clsClicked:before {
   font: normal normal normal 14px/1 IcnFontAwesome;
@@ -507,7 +511,6 @@ span > a.clsHide.clsClicked:before {
   background: blue;
   border-radius: 2px;
   padding: 2px;
-  margin-left: 14px;
 }
 
 a:link {
