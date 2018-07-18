@@ -421,9 +421,9 @@ var oHitp = (function () {
     oEltTabCntTocNotP.innerHTML = '<span class="clsColorGreen clsB">Notes</span>:<br>' +
       'a) Clicking on CONTENT, shows its ToC position, the-links, the-address-link-icon <i class="clsFa clsFaLink clsImgLnkIcn"></i>, and removes ontop windows and highlights.<br>' +
       'b) Clicking on TITLE|Search-Icon, shows SEARCH-Tab.<br>' +
-      'e) Clicking on ADDRESS-LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
+      'c) Clicking on ADDRESS-LINK-ICON or on ToC, you see the-address of that text on address-bar.<br>' +
       'd) Clicking <span class="clsColorBlue">a-BLUE-LINK</span> shows a-preview.<br>' +
-      'f) SECOND-CLICK, usually, does the-events attached to components in-order-to work well on touch-screens.';
+      'e) SECOND-CLICK, usually, does the-events attached to components in-order-to work well on touch-screens.';
     oEltTabCntTocDiv.appendChild(oEltTabCntTocNotP);
     //insert TabCntToc in TabCnt
     oEltPginfTabCntDiv.id = 'idTabCntDiv';
