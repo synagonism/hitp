@@ -34,6 +34,7 @@
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-0-1.2018-09-15: home-icon',
       'hitp.js.17-0-0.2018-09-15: search-scalability',
       'hitp.js.16-5-2.2018-01-23',
       'hitp.js.16-5-1.2018-01-06: Đchain-network',
@@ -145,7 +146,7 @@
         oEltTopHomeIcnI = document.createElement('i')
     }
 
-    if (oHitp.aNamidxALL) {
+    if (oHitp.aNamidxRoot) {
       var
         oEltTopSearchIcnI = document.createElement('i'),
         oEltTabCntSrchDiv = document.createElement('div'),
@@ -240,7 +241,7 @@
       '</fieldset>'
     oEltCnrTopDiv.appendChild(oEltTopTitleP)
     oEltCnrTopDiv.appendChild(oEltTopWidthIcnI)
-    if (oHitp.aNamidxALL) {
+    if (oHitp.aNamidxRoot) {
       oEltCnrTopDiv.appendChild(oEltTopSearchIcnI)
       oEltTopTitleP.addEventListener('click', function () {
         fCnrOntopRemove()
@@ -266,7 +267,7 @@
       // Add active-class on second-child-element of PginfTabHeaders
       document.getElementById('idPginfTabHeadersUl')
         .childNodes[0].classList.add('clsTabActive')
-      if (oHitp.aNamidxALL) {
+      if (oHitp.aNamidxRoot) {
         // Hide tab-content from TabCntSrch
         document.getElementById('idTabCntSrchDiv').style.display = 'none'
       }
@@ -374,7 +375,8 @@
         if (oEltTopHomeIcnI.className.indexOf('clsClicked') > -1) {
           oEltTopHomeIcnI.classList.remove('clsClicked')
           oHitp.oEltClicked.classList.remove('clsTtpShow')
-        } else {
+          location.href = oHitp.sPathSite
+       } else {
           oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked')
           oHitp.oEltClicked = oEltTopHomeIcnI
           oEltTopHomeIcnI.classList.add('clsClicked', 'clsTtpShow')
@@ -468,8 +470,8 @@
 
     // insert TabHeaders IN page-info-cnr
     oEltPginfTabHeadersUl.id = 'idPginfTabHeadersUl'
-    // if aNamidxALL, search
-    if (oHitp.aNamidxALL) {
+    // if aNamidxRoot, search
+    if (oHitp.aNamidxRoot) {
       oEltPginfTabHeadersUl.innerHTML =
         '<li class="clsTabActive"><a href="#idTabCntTocDiv">page-Toc</a></li>' +
         '<li><a href="#idTabCntSrchDiv">search</a></li>'
@@ -489,7 +491,7 @@
     }
     oEltCnrMainPginfDiv.insertBefore(oEltPginfPathP, oEltCnrMainPginfDiv.firstChild)
 
-    if (oHitp.aNamidxALL) {
+    if (oHitp.aNamidxRoot) {
       // TabCntSrch
       oEltTabCntSrchDiv.id = 'idTabCntSrchDiv'
       oEltTabCntSrchDiv.setAttribute('class', 'clsTabCnt')
@@ -629,31 +631,31 @@
         } else if (sSrchInpt.length > 0) {
           console.log('>>> start: ' + sSrchInpt + ', ' + oHitp.sNamidx + ', ' + oHitp.sSrchCrnt + '..' + oHitp.sSrchNext)
           var bRest = true
-          for (var n = 1; n < oHitp.aNamidxALL.length; n++) {
+          for (var n = 1; n < oHitp.aNamidxRoot.length; n++) {
             // display quantities, for the-lag
             if (sLag === 'lagALL') {
               // search only letter not REST on all languages
 
-            } else if (oHitp.aNamidxALL[n][0].startsWith(sLag)) {
+            } else if (oHitp.aNamidxRoot[n][0].startsWith(sLag)) {
               // only selected language
-              if (oHitp.aNamidxALL[n][0] === sLag) {
-                nLag = n // index of lag in aNamidxALL ["lagEng",";English",143707],
-              } else if (oHitp.aNamidxALL[n][1] === sSrchLtr) {
+              if (oHitp.aNamidxRoot[n][0] === sLag) {
+                nLag = n // index of lag in aNamidxRoot ["lagEng",";English",143707],
+              } else if (oHitp.aNamidxRoot[n][1] === sSrchLtr) {
                 // found search-letter
-                oHitp.sSrchCrnt = oHitp.aNamidxALL[n][1]
-                if (!oHitp.aNamidxALL[n + 1] || oHitp.aNamidxALL[n + 1][1].startsWith(';')) {
+                oHitp.sSrchCrnt = oHitp.aNamidxRoot[n][1]
+                if (!oHitp.aNamidxRoot[n + 1] || oHitp.aNamidxRoot[n + 1][1].startsWith(';')) {
                   // last letter, if n+1 does not exist or is the-name of another lag
-                  oHitp.sSrchNext = oHitp.aNamidxALL[n][1]
+                  oHitp.sSrchNext = oHitp.aNamidxRoot[n][1]
                 } else {
-                  oHitp.sSrchNext = oHitp.aNamidxALL[n + 1][1]
+                  oHitp.sSrchNext = oHitp.aNamidxRoot[n + 1][1]
                 }
 
-                if (oHitp.aNamidxALL[n][0].endsWith('_0')) {
+                if (oHitp.aNamidxRoot[n][0].endsWith('_0')) {
                   // namidx is a-referenceNo
-                  fSSNamidxRefManage(oHitp.aNamidxALL[n][0])
+                  fSSNamidxRefManage(oHitp.aNamidxRoot[n][0])
                 } else {
                   // namidx is a-referenceNo
-                  fSSNamidxDisplay(oHitp.aNamidxALL[n][0])
+                  fSSNamidxDisplay(oHitp.aNamidxRoot[n][0])
                 }
                 bRest = false
                 break
@@ -661,7 +663,7 @@
             }
           }
           if (bRest) {
-            fSSNamidxDisplay(oHitp.aNamidxALL[nLag + 1][0])
+            fSSNamidxDisplay(oHitp.aNamidxRoot[nLag + 1][0])
           }
         } else {
           // sSrchInpt.length < 0
@@ -1007,16 +1009,16 @@
         nLag,
         sLag = oEltTabCntSrchSlt.options[oEltTabCntSrchSlt.selectedIndex].value
       if (sLag === 'lagALL') {
-        return oHitp.aNamidxALL[0][2].toLocaleString() + ' total NAMES'
+        return oHitp.aNamidxRoot[0][2].toLocaleString() + ' total NAMES'
       } else {
-        for (var n = 1; n < oHitp.aNamidxALL.length; n++) {
-          if (oHitp.aNamidxALL[n][0] === sLag) {
+        for (var n = 1; n < oHitp.aNamidxRoot.length; n++) {
+          if (oHitp.aNamidxRoot[n][0] === sLag) {
             nLag = n
             break
           }
         }
-        return oHitp.aNamidxALL[nLag][2].toLocaleString() + ' ' + oHitp.aNamidxALL[nLag][1].substring(1) +
-          ' / ' + oHitp.aNamidxALL[0][2].toLocaleString() + ' total NAMES'
+        return oHitp.aNamidxRoot[nLag][2].toLocaleString() + ' ' + oHitp.aNamidxRoot[nLag][1].substring(1) +
+          ' / ' + oHitp.aNamidxRoot[0][2].toLocaleString() + ' total NAMES'
       }
     }
 
@@ -1097,7 +1099,7 @@
         oEltCnrSiteDiv.style.display = 'none' // remove site-content
       }
       oEltCnrWidthDiv.style.display = 'none' // remove width-content
-      if (oHitp.aNamidxALL) {
+      if (oHitp.aNamidxRoot) {
         fCnrTocShow()
       }
 
@@ -1221,7 +1223,7 @@
         // return false;
       })
     })
-    if (oHitp.aNamidxALL) {
+    if (oHitp.aNamidxRoot) {
       document.getElementById('idTabCntSrchDiv').style.display = 'none'
     }
 
@@ -1660,7 +1662,7 @@
   })()
 
   document.addEventListener('DOMContentLoaded', function () {
-    // read aNamidxALL
+    // read aNamidxRoot
     var
       oConfig,
       oXHR,
@@ -1732,7 +1734,7 @@
     }
 
     function fNamidx() {
-      // find aNamidxALL
+      // find aNamidxRoot
       sNiRoot = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/namidx.root.json'
       oXHR = new XMLHttpRequest()
       oXHR.open('GET', sNiRoot, true)
@@ -1752,8 +1754,8 @@
               }
             }
           } else if (oXHR.status === 200) {
-            // oHitp.aNamidxALL contains namidx.root.json if exists
-            oHitp.aNamidxALL = JSON.parse(oXHR.responseText)
+            // oHitp.aNamidxRoot contains namidx.root.json if exists
+            oHitp.aNamidxRoot = JSON.parse(oXHR.responseText)
             oHitp.fContainersInsert()
             oHitp.oTreeUl.fTruCreate()
             // IF on idMetaWebpage_path paragraph we have and the clsTocExpand
