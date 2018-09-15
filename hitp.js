@@ -1765,7 +1765,6 @@
                 oHitp.oTreeUl.fTruExpandAll()
               }
             }
-            location.href = location.href
           }
         }
       }
