@@ -341,7 +341,14 @@
         if (oEltIn.className.indexOf('clsClicked') > -1) {
           oEltIn.classList.remove('clsClicked')
           fCnrOntopRemove()
-          location.href = oEltIn.href
+          console.log(">>>>>>>")
+          if (location.hash) {
+            setTimeout(function() {
+              location.href = location.hash
+            }, 5000)
+          } else {
+            location.href = oEltIn.href
+          }
         } else {
           oHitp.oEltClicked.classList.remove('clsClicked',
             'clsTtpShow', 'clsTriClicked')
