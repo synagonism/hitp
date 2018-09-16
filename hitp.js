@@ -377,7 +377,7 @@
           oEltTopHomeIcnI.classList.remove('clsClicked')
           oHitp.oEltClicked.classList.remove('clsTtpShow')
           location.href = oHitp.sPathSite
-       } else {
+        } else {
           oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked')
           oHitp.oEltClicked = oEltTopHomeIcnI
           oEltTopHomeIcnI.classList.add('clsClicked', 'clsTtpShow')
@@ -630,7 +630,7 @@
         if (sSSNamidxIn) {
           fSSNamidxDisplay(sSSNamidxIn)
         } else if (sSrchInpt.length > 0) {
-          console.log('>>> start: ' + sSrchInpt + ', ' + oHitp.sNamidx + ', ' + oHitp.sSrchCrnt + '..' + oHitp.sSrchNext)
+          // console.log('>>> start: ' + sSrchInpt + ', ' + oHitp.sNamidx + ', ' + oHitp.sSrchCrnt + '..' + oHitp.sSrchNext)
           var bRest = true
           for (var n = 1; n < oHitp.aNamidxRoot.length; n++) {
             // display quantities, for the-lag
@@ -678,7 +678,7 @@
          * INPUT: lagEng03si_0, lagEng03si_2_0
          */
         function fSSNamidxRefManage(sNamidxRefIn) {
-          console.log(sNamidxRefIn + ': RefManage')
+          // console.log(sNamidxRefIn + ': RefManage')
 
           if (oHitp.aSuggestions.length === 1 || oHitp.aSuggestions[0][0] !== ';' + sNamidxRefIn) {
             // read it
@@ -703,7 +703,6 @@
               }
             }
           } else if (oHitp.aSuggestions[0][0] === ';' + sNamidxRefIn) {
-            console.log('ref known')
             if (oHitp.aSuggestions[0][1].split('..')[0].substring(1).toUpperCase() === sSrchInpt.toUpperCase()) {
               fSSNamidxRefDisplay(sNamidxRefIn)
             } else {
@@ -746,7 +745,6 @@
          * INPUT: sNamidxRefIn: lagEng03si_0, ..
          */
         function fSSNamidxRefDisplay(sNamidxRefIn) {
-          console.log(sNamidxRefIn + ': RefDisplay')
           oHitp.sNamidx = sNamidxRefIn
           if (oHitp.aSuggestions[0][0] === ';' + sNamidxRefIn) {
             fSSNamidxRefDisplayRead()
@@ -807,7 +805,6 @@
          */
         function fSSNamidxDisplay(sNamidxIn) {
           oHitp.sNamidx = sNamidxIn
-          console.log(sNamidxIn + ': Display')
 
           if (sNamidxIn.endsWith('_0')) {
             // case: ref-namidx
@@ -816,7 +813,6 @@
             // case: refNo-namidx
             // IF sNamidxIn is different from last-read, get it
             if (!oHitp.aSuggestions || (oHitp.aSuggestions[0][0] !== ';' + sNamidxIn)) {
-              console.log('read ' + sNamidxIn)
               sNamidx_path = fSSNamidx_pathFind(sNamidxIn)
               sSuggestions = ''
               oXHR = new XMLHttpRequest()
@@ -871,7 +867,6 @@
               n = 0
               // console.log(new RegExp('^u\\+','i').test('U+0011')) // true
               sSrchInpt = fSSEscapeRs(sSrchInpt)
-              console.log(sSrchInpt)
               for (i = 1; i < oHitp.aSuggestions.length; i++) {
                 if (new RegExp('^' + sSrchInpt, 'i').test(oHitp.aSuggestions[i][0])) {
                   // IF n > 999 stop ?
@@ -1643,7 +1638,9 @@
         if (sIcls.indexOf('clsTriClicked') > -1) {
           oHitp.oEltClicked.classList.remove('clsTriClicked')
           oEltI.classList.remove('clsTriClicked')
-          if (oEltLi === oEltLiIn) oTreeUl.fTruToggleLi(oEltLiIn)
+          if (oEltLi === oEltLiIn) {
+            oTreeUl.fTruToggleLi(oEltLiIn)
+          }
           if (sIcls.indexOf('clsFaCrcExp') > -1) {
             oEltI.classList.remove('clsFaCrcExp')
             oEltI.classList.add('clsFaCrcCol')
@@ -1689,7 +1686,6 @@
         if (oXHR.readyState === 4) {
           if (oXHR.status === 404) {
             // no config
-            console.log('no config.json')
             fSitemenu()
           } else if (oXHR.status === 200) {
             oConfig = JSON.parse(oXHR.responseText)
@@ -1722,7 +1718,6 @@
           if (oXHR.readyState === 4) {
             if (oXHR.status === 404) {
               // no site-menu
-              console.log('no site-menu')
               fNamidx()
             } else if (oXHR.status === 200) {
               oHitp.oEltSitemenuUl = (new DOMParser()).parseFromString(oXHR.responseText, 'text/html')
@@ -1744,7 +1739,6 @@
         if (oXHR.readyState === 4) {
           if (oXHR.status === 404) {
             // no Mcs-search, file non found
-            console.log('no namidx.root.json')
             oHitp.fContainersInsert()
             oHitp.oTreeUl.fTruCreate()
             // IF on idMetaWebpage_path paragraph we have and the clsTocExpand
