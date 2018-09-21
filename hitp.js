@@ -30,10 +30,11 @@
  * SOFTWARE.
  */
 
-(function () {
+var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-2-0.2018-09-21: name-notation',
       'hitp.js.17-1-0.2018-09-16: location.hash',
       'hitp.js.17-0-1.2018-09-15: home-icon',
       'hitp.js.17-0-0.2018-09-15: search-scalability',
@@ -73,7 +74,7 @@
      * filSite-structure contains absolute urls, because we see it from many pages.
      * Then we must-know the-homepage of the-site and create different menus.
      */
-    sCfgHomeLocal: '/dWstSgmTest/',
+    sCfgHomeLocal: '/dWstSgm/',
 
     bEdge: navigator.userAgent.indexOf('Edge/') > -1,
     bFirefox: navigator.userAgent.indexOf('Firefox/') > -1,
@@ -160,6 +161,8 @@
         sPathNames,
         // localhost or online,
         sTabCntSrchOl =
+          '<li>SEE ' +
+            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/dirCor/FilMcs.Last.html#idMcsattNamcvn">name-notation--of-Mcs</a>.</li>' +
           '<li>TYPE a-name of ' +
             '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/dirCor/FilMcs.Last.html#idDescription">a-structured-concept-Mcs</a> of ' +
             '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/FilMcsw.Last.html#idDescription">Kaseluris.Nikos.1959-WORLDVIEW</a>.</li>' +
@@ -1665,6 +1668,7 @@
       oConfig,
       oXHR,
       sNiRoot
+
     if (location.hostname === '') {
       // no server, display only Toc
       oHitp.sPathSite = ''
@@ -1691,6 +1695,16 @@
             oConfig = JSON.parse(oXHR.responseText)
             if (oConfig.nCfgPageinfoWidth) {
               oHitp.nCfgPageinfoWidth = oConfig.nCfgPageinfoWidth
+            }
+            if (oConfig.sCfgHomeLocal) {
+              oHitp.sCfgHomeLocal = oConfig.sCfgHomeLocal
+              if (location.hostname === 'localhost') {
+                oHitp.sPathSite = location.origin + oHitp.sCfgHomeLocal
+                oHitp.sPathSitemenu = oHitp.sPathSite + 'filSite-structureLocal.html'
+              } else if (location.hostname.length > 1) {
+                oHitp.sPathSite = location.origin + '/'
+                oHitp.sPathSitemenu = oHitp.sPathSite + 'filSite-structure.html'
+              }
             }
             fSitemenu()
           }
