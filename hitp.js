@@ -7,7 +7,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2010-2018 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2010-2019 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * https:// synagonism.net/
  *
@@ -29,11 +29,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-3-0.2019-02-19.2019-03-05: main-name-searching',
       'hitp.js.17-2-1.2018-10-08: filMcs.last.html',
       'hitp.js.17-2-0.2018-09-21: name-notation',
       'hitp.js.17-1-0.2018-09-16: location.hash',
@@ -169,7 +169,7 @@ var oHitp = (function () {
             '<a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959-WORLDVIEW</a>.</li>' +
           '<li>the major concepts are-related to "<strong>char</strong>", ' +
             '"<strong>javascript</strong>" and ' +
-            '"<strong>chain-network (Đ-net)</strong>".</li>' +
+            '"<strong>chain-network</strong>".</li>' +
           '<li>structured-concept-searching demonstrates THE-POWER of structured-concepts.' +
             '<br>compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
           '<li><a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. ' +
@@ -424,7 +424,7 @@ var oHitp = (function () {
     oEltTabCntTocCpsBtn.setAttribute('class', 'clsBtn')
     oEltTabCntTocCpsBtn.addEventListener('click', function () {
       if (oEltTabCntTocCpsBtn.className.indexOf('clsClicked') > -1) {
-        oHitp.oTreeUl.fTruCollapseAll()
+        oHitp.oTreeUl.fTruTocCollapseAll()
         oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked')
       } else {
         oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked')
@@ -440,7 +440,7 @@ var oHitp = (function () {
     oEltTabCntTocExpBtn.setAttribute('class', 'clsBtn')
     oEltTabCntTocExpBtn.addEventListener('click', function () {
       if (oEltTabCntTocExpBtn.className.indexOf('clsClicked') > -1) {
-        oHitp.oTreeUl.fTruExpandAll()
+        oHitp.oTreeUl.fTruTocExpandAll()
         oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked')
       } else {
         oHitp.oEltClicked.classList.remove('clsClicked', 'clsTtpShow', 'clsTriClicked')
@@ -488,7 +488,7 @@ var oHitp = (function () {
 
     // insert page-path-elt IN page-info-cnr
     oEltPginfPathP.id = 'idPginfPathP'
-    oEltPginfPathP.setAttribute('title', '© 2010-2018 Kaseluris.Nikos.1959') // nnn
+    oEltPginfPathP.setAttribute('title', '© 2010-2019 Kaseluris.Nikos.1959') // nnn
     if (!document.getElementById('idMetaWebpage_path')) {
       oEltPginfPathP.innerHTML = 'Toc: ' + document.title
     } else {
@@ -555,7 +555,15 @@ var oHitp = (function () {
               oEltTabCntSrchIpt.value = a[0]
               fSearchSuggest(sNif)
             } else if (sLoc !== '') {
-              location.href = sLoc
+              var sTxt = aLi[0].text
+              if (sTxt.indexOf('!⇒') > 0) {
+                // found main-name, search for this
+                oEltTabCntSrchIpt.value = sTxt.substring(sTxt.indexOf('!⇒') + 2)
+                fSearchSuggest()
+              } else {
+                // go to name's address
+                location.href = sLoc
+              }
             }
           }
         } else if ((oEvtIn.code !== 'ArrowDown' && oEvtIn.code !== 'ArrowUp' &&
@@ -612,9 +620,9 @@ var oHitp = (function () {
       })
 
       /**
-       * DOING: suggests names of structured-concepts,
+       * doing: suggests names of structured-concepts,
        *   that BEGIN with input-search-string.
-       * INPUT:
+       * input: nothing string of namidx to search: lagEng03si_2_0, root, ...
        */
       function fSearchSuggest(sSSNamidxIn) {
         var
@@ -679,7 +687,8 @@ var oHitp = (function () {
         }
 
         /**
-         * INPUT: lagEng03si_0, lagEng03si_2_0
+         * doing: decide what to do with a-reference-namidx
+         * input: lagEng03si_0, lagEng03si_2_0
          */
         function fSSNamidxRefManage(sNamidxRefIn) {
           // console.log(sNamidxRefIn + ': RefManage')
@@ -743,10 +752,10 @@ var oHitp = (function () {
         }
 
         /**
-         * DOING: display names of a-reference-namidx,
+         * doing: display names of a-reference-namidx,
          *   make them clickable,
-         *   highlits first.
-         * INPUT: sNamidxRefIn: lagEng03si_0, ..
+         *   highligts first.
+         * input: sNamidxRefIn: lagEng03si_0, ..
          */
         function fSSNamidxRefDisplay(sNamidxRefIn) {
           oHitp.sNamidx = sNamidxRefIn
@@ -804,8 +813,8 @@ var oHitp = (function () {
         }
 
         /**
-         * display names of a-namidx
-         * sNamidxIn: lagEll01alfa, lagEng02bi, lagEng03si_0
+         * doing: display names of a-namidx
+         * input: sNamidxIn: lagEll01alfa, lagEng02bi, lagEng03si_0
          */
         function fSSNamidxDisplay(sNamidxIn) {
           oHitp.sNamidx = sNamidxIn
@@ -837,6 +846,12 @@ var oHitp = (function () {
             }
           } // refNo-namidx
 
+          /**
+           * doing: reads from aSuggestions the-names that match the-search-name,
+           *   formats them as preview-links,
+           *   adds the-eventlistener 'link-preview' on them and
+           *   highlights the-first.
+           */
           function fSSNamidxDisplayRead() {
             var n, i
             if (sSrchInpt.toUpperCase() === oHitp.sSrchCrnt.toUpperCase()) {
@@ -917,7 +932,7 @@ var oHitp = (function () {
         }
 
         /**
-         * INPUT: lagEng01ei, lagEll01alfa
+         * input: lagEng01ei, lagEll01alfa
          * output: site/dirMiwMcs/dirNamidx/dirLagEng/namidx.lagEng01ei.json
          */
         function fSSNamidx_pathFind(sNamidxIn) {
@@ -926,22 +941,34 @@ var oHitp = (function () {
         }
 
         /**
-         * adds preview-event on links in search-sugestions and
-         * adds its text on search-input
+         * doing: adds preview-event on links in search-sugestions and
+         *   adds its text on search-input
          */
         function fSSEvtPreview() {
           // clicking on TabCntSrchOl-links, first highlight
           Array.prototype.slice.call(document.querySelectorAll('#idTabCntSrchOl a')).forEach(function (oEltIn) {
-            fEvtLink(oEltIn)
-            oEltIn.addEventListener('click', function () {
-              oEltTabCntSrchIpt.value = oEltIn.innerHTML
-            })
+            var sTxt = oEltIn.innerHTML
+            if (sTxt.indexOf('!⇒') > 0) {
+              // found main-name
+              oEltIn.addEventListener('click', function (oEvtIn) {
+                // don't link, set main-name as search-name, search for this.
+                oEvtIn.preventDefault()
+                oEltTabCntSrchIpt.value = sTxt.substring(sTxt.indexOf('!⇒') + 2)
+                fSearchSuggest()
+              })
+            } else {
+              fEvtLink(oEltIn)
+              oEltIn.addEventListener('click', function () {
+                oEltTabCntSrchIpt.value = sTxt
+              })
+            }
           })
         }
 
         /**
-         * INPUT: a search-input string
-         * output: the same string escaped to use it as a-regexp without special chars.
+         * input: a-search-name string
+         * output: the same string escaped (for '+' '.' '|' '(' '*')
+         *   to use it as a-regexp without special chars.
          */
         function fSSEscapeRs(sIn) {
           if (sIn.indexOf('+') !== -1) {
@@ -1004,6 +1031,9 @@ var oHitp = (function () {
       oEltPginfTabCntDiv.appendChild(oEltTabCntSrchDiv)
     }
 
+    /**
+     * doing: returns the-text with the-number of names found in search-tab
+     */
     function fTabCntSrchPSetText() {
       var
         nLag,
@@ -1343,6 +1373,11 @@ var oHitp = (function () {
       })
     })
 
+    // clicking on PginfPathP-links and TabCntSrchOl-links, first highlight
+    Array.prototype.slice.call(document.querySelectorAll('#idPginfPathP a, #idTabCntSrchOl a')).forEach(function (oEltIn) {
+      fEvtLink(oEltIn)
+    })
+
     window.onhashchange = function () {
       location.href = location.hash
     }
@@ -1350,11 +1385,6 @@ var oHitp = (function () {
     // focus on right-div, Div can get the focus if it has tabindex attribute... on chrome
     document.getElementById('idCnrMainPgcntDiv').setAttribute('tabindex', -1)
     document.getElementById('idCnrMainPgcntDiv').focus()
-
-    // clicking on PginfPathP-links and TabCntSrchOl-links, first highlight
-    Array.prototype.slice.call(document.querySelectorAll('#idPginfPathP a, #idTabCntSrchOl a')).forEach(function (oEltIn) {
-      fEvtLink(oEltIn)
-    })
   }
 
   /**
@@ -1565,7 +1595,7 @@ var oHitp = (function () {
     }
 
     /** Makes the display-style: none. */
-    oTreeUl.fTruCollapseAll = function () {
+    oTreeUl.fTruTocCollapseAll = function () {
       var
         aSubnodes,
         aTocTriLI = document.getElementById('idTocTri').getElementsByTagName('li'),
@@ -1580,7 +1610,7 @@ var oHitp = (function () {
     }
 
     /** Makes the display-style: block. */
-    oTreeUl.fTruExpandAll = function () {
+    oTreeUl.fTruTocExpandAll = function () {
       var
         aSubnodes,
         aTocTriLI = document.getElementById('idTocTri').getElementsByTagName('li'),
@@ -1595,7 +1625,7 @@ var oHitp = (function () {
     }
 
     /** Expands the first children. */
-    oTreeUl.fTruExpandFirst = function () {
+    oTreeUl.fTruTocExpandFirst = function () {
       var aTocTriLI, aSubnodes
 
       aTocTriLI = document.getElementById('idTocTri').getElementsByTagName('li')
@@ -1612,7 +1642,7 @@ var oHitp = (function () {
     oTreeUl.fTruExpandParent = function (oEltAIn) {
       var oEltI, oEltUl
 
-      oHitp.oTreeUl.fTruCollapseAll()
+      oHitp.oTreeUl.fTruTocCollapseAll()
       // the parent of a-link-elm is li-elm with parent a ul-elm.
       oEltUl = oEltAIn.parentNode.parentNode
       while (oEltUl.tagName === 'UL') {
@@ -1663,6 +1693,15 @@ var oHitp = (function () {
     return oTreeUl
   })()
 
+  /**
+   * doing: reads the-config, site-menu, namidx.root files, if exist,
+   * and creates the-containers of the-page.
+   *
+   * The DOMContentLoaded event fires when the initial HTML document 
+   * has been completely loaded and parsed,
+   * WITHOUGHT waiting for stylesheets, images, and subframes to finish loading.
+   * A different event, load, should be used only to detect a fully-loaded page.
+   */
   document.addEventListener('DOMContentLoaded', function () {
     // read aNamidxRoot
     var
@@ -1683,6 +1722,7 @@ var oHitp = (function () {
     }
 
     if (oHitp.sPathSitemenu) {
+      // server found
       // read config
       oXHR = new XMLHttpRequest()
       oXHR.open('GET', oHitp.sPathSite + 'config.json', true)
@@ -1712,17 +1752,21 @@ var oHitp = (function () {
         }
       }
     } else {
+      // no server, display only Toc
       oHitp.fContainersInsert()
       oHitp.oTreeUl.fTruCreate()
       // IF on idMetaWebpage_path paragraph we have and the clsTocExpand
       // then the toc expands-all
       if (document.getElementById('idMetaWebpage_path')) {
         if (document.getElementById('idMetaWebpage_path').getAttribute('class') === 'clsTocExpand') {
-          oHitp.oTreeUl.fTruExpandAll()
+          oHitp.oTreeUl.fTruTocExpandAll()
         }
       }
     }
 
+    /**
+     * doing: reads the-site-menu, if exists, and creates the-containers of the-page.
+     */
     function fSitemenu() {
       // site-menu
       if (oHitp.sPathSitemenu) {
@@ -1744,6 +1788,9 @@ var oHitp = (function () {
       }
     }
 
+    /**
+     * doing: reads the-namidx.root-file, if exists, and creates the-containers of the-page.
+     */
     function fNamidx() {
       // find aNamidxRoot
       sNiRoot = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/namidx.root.json'
@@ -1753,14 +1800,14 @@ var oHitp = (function () {
       oXHR.onreadystatechange = function () {
         if (oXHR.readyState === 4) {
           if (oXHR.status === 404) {
-            // no Mcs-search, file non found
+            // no Mcs-search, file not found
             oHitp.fContainersInsert()
             oHitp.oTreeUl.fTruCreate()
             // IF on idMetaWebpage_path paragraph we have and the clsTocExpand
             // then the toc expands-all
             if (document.getElementById('idMetaWebpage_path')) {
               if (document.getElementById('idMetaWebpage_path').getAttribute('class') === 'clsTocExpand') {
-                oHitp.oTreeUl.fTruExpandAll()
+                oHitp.oTreeUl.fTruTocExpandAll()
               }
             }
             if (location.hash) {
@@ -1775,7 +1822,7 @@ var oHitp = (function () {
             // then the toc expands-all
             if (document.getElementById('idMetaWebpage_path')) {
               if (document.getElementById('idMetaWebpage_path').getAttribute('class') === 'clsTocExpand') {
-                oHitp.oTreeUl.fTruExpandAll()
+                oHitp.oTreeUl.fTruTocExpandAll()
               }
             }
             if (location.hash) {
