@@ -292,7 +292,7 @@ h4 {
   background: linear-gradient(to bottom, #f5f5f5, #fff);
   border-radius: 3px;
   padding: 3px 0 0 20px;
-  color: magenta;
+  color: #9400D3;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 18px;
   font-weight: bold;
@@ -874,7 +874,7 @@ ul#idPginfTabHeadersUl li.clsTabActive a:hover  {
 }
 .clsTreeUl > li > ul > li > ul > li > ul > li > ul > li,
 .clsTreeUl > li > ul > li > ul > li > ul > li > ul > li > a {
-  color: magenta !important;
+  color: #9400D3 !important;
 }
 .clsTreeUl > li > ul > li > ul > li > ul > li > ul > li > ul > li,
 .clsTreeUl > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
