@@ -33,7 +33,7 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
-      'hitp.js.17-4-0.2019-08-28: scrollTop'
+      'hitp.js.17-4-0.2019-08-28: scrollTop',
       'hitp.js.17-3-0.2019-02-19.2019-03-05: main-name-searching',
       'hitp.js.17-2-1.2018-10-08: filMcs.last.html',
       'hitp.js.17-2-0.2018-09-21: name-notation',
