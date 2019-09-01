@@ -33,6 +33,7 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-5-0.2019-09-01: langoKamo',
       'hitp.js.17-4-0.2019-08-28: scrollTop',
       'hitp.js.17-3-0.2019-02-19.2019-03-05: main-name-searching',
       'hitp.js.17-2-1.2018-10-08: filMcs.last.html',
@@ -504,10 +505,10 @@ var oHitp = (function () {
       oEltTabCntSrchLbl.innerHTML = 'language:'
       oEltTabCntSrchLbl.for = 'idTabCntSrchSlt'
       oEltTabCntSrchSlt.id = 'idTabCntSrchSlt'
-      var oEltTabCntSrchOpn1 = document.createElement('option')
-      oEltTabCntSrchOpn1.value = 'lagALL'
-      oEltTabCntSrchOpn1.text = 'ALL'
-      oEltTabCntSrchSlt.add(oEltTabCntSrchOpn1)
+      //var oEltTabCntSrchOpn1 = document.createElement('option')
+      //oEltTabCntSrchOpn1.value = 'lagALL'
+      //oEltTabCntSrchOpn1.text = 'ALL'
+      //oEltTabCntSrchSlt.add(oEltTabCntSrchOpn1)
       var oEltTabCntSrchOpn2 = document.createElement('option')
       oEltTabCntSrchOpn2.value = 'lagEng'
       oEltTabCntSrchOpn2.text = 'English (Eng)'
@@ -516,7 +517,11 @@ var oHitp = (function () {
       oEltTabCntSrchOpn3.value = 'lagEll'
       oEltTabCntSrchOpn3.text = 'Greek (Ell)'
       oEltTabCntSrchSlt.add(oEltTabCntSrchOpn3)
-      oEltTabCntSrchSlt.options[1].selected = true
+      var oEltTabCntSrchOpn4 = document.createElement('option')
+      oEltTabCntSrchOpn4.value = 'lagKmo'
+      oEltTabCntSrchOpn4.text = 'langoKamo (Kmo)'
+      oEltTabCntSrchSlt.add(oEltTabCntSrchOpn4)
+      oEltTabCntSrchSlt.options[0].selected = true
       oEltTabCntSrchP.id = 'idTabCntSrchP'
       oEltTabCntSrchP.setAttribute('class', 'clsCenter')
       oEltTabCntSrchP.innerHTML = fTabCntSrchPSetText()
