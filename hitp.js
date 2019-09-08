@@ -33,6 +33,7 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-6-0.2019-09-08: langoKomo-sensorial-concept',
       'hitp.js.17-5-0.2019-09-01: langoKamo',
       'hitp.js.17-4-0.2019-08-28: scrollTop',
       'hitp.js.17-3-0.2019-02-19.2019-03-05: main-name-searching',
@@ -167,16 +168,16 @@ var oHitp = (function () {
           '<li>SEE ' +
             '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/dirCor/filMcs.last.html#idMcsattNamcvn">name-notation--of-Mcs</a>.</li>' +
           '<li>TYPE a-name of ' +
-            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/dirCor/filMcs.last.html#idDescription">a-structured-concept-Mcs</a> of ' +
+            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/dirCor/filMcs.last.html#idDescription">a-sensorial-concept-Mcs</a> of ' +
             '<a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959-WORLDVIEW</a>.</li>' +
-          '<li>the major concepts are-related to "<strong>char</strong>", ' +
-            '"<strong>javascript</strong>" and ' +
-            '"<strong>chain-network</strong>".</li>' +
-          '<li>structured-concept-searching demonstrates THE-POWER of structured-concepts.' +
-            '<br>compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
-          '<li><a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on structured-concepts. ' +
-            '<br>his offline-worldview contains more than 100,000 structured-concepts.' +
-            '<br><a class="clsPreview" href="' + oHitp.sPathSite + '#idSupport">support him</a> to continue publishing.</li>' +
+          '<li>some important concepts are: "<strong>char</strong>", ' +
+            '"<strong>javascript</strong>", "<strong>human-language</strong>", ' +
+            '"<strong>chain-net</strong>", ...</li>' +
+          '<li>sensorial-concept-searching demonstrates THE-POWER of sensorial-concepts.' +
+            '<br>· compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
+          '<li><a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on sensorial-concepts. ' +
+            '<br>· his offline-worldview contains more than 100,000 sensorial-concepts.' +
+            '<br>· <a class="clsPreview" href="' + oHitp.sPathSite + '#idSupport">support him</a> to continue publishing.</li>' +
           '<li>this site uses 3 types of searching:' +
             '<br>- Word-Site-Search from Site-Menu,' +
             '<br>- Word-Page-Search by hitting Ctrl+F and' +
@@ -519,7 +520,7 @@ var oHitp = (function () {
       oEltTabCntSrchSlt.add(oEltTabCntSrchOpn3)
       var oEltTabCntSrchOpn4 = document.createElement('option')
       oEltTabCntSrchOpn4.value = 'lagKmo'
-      oEltTabCntSrchOpn4.text = 'langoKamo (Kmo)'
+      oEltTabCntSrchOpn4.text = 'Komo (Kmo)'
       oEltTabCntSrchSlt.add(oEltTabCntSrchOpn4)
       oEltTabCntSrchSlt.options[0].selected = true
       oEltTabCntSrchP.id = 'idTabCntSrchP'
@@ -626,7 +627,7 @@ var oHitp = (function () {
       })
 
       /**
-       * doing: suggests names of structured-concepts,
+       * doing: suggests names of sensorial-concepts,
        *   that BEGIN with input-search-string.
        * input: nothing string of namidx to search: lagEng03si_2_0, root, ...
        */
