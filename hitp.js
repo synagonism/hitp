@@ -33,6 +33,7 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-6-1.2019-09-09: search-info',
       'hitp.js.17-6-0.2019-09-08: langoKomo-sensorial-concept',
       'hitp.js.17-5-0.2019-09-01: langoKamo',
       'hitp.js.17-4-0.2019-08-28: scrollTop',
@@ -176,12 +177,11 @@ var oHitp = (function () {
           '<li>sensorial-concept-searching demonstrates THE-POWER of sensorial-concepts.' +
             '<br>· compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
           '<li><a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on sensorial-concepts. ' +
-            '<br>· his offline-worldview contains more than 100,000 sensorial-concepts.' +
             '<br>· <a class="clsPreview" href="' + oHitp.sPathSite + '#idSupport">support him</a> to continue publishing.</li>' +
           '<li>this site uses 3 types of searching:' +
-            '<br>- Word-Site-Search from Site-Menu,' +
-            '<br>- Word-Page-Search by hitting Ctrl+F and' +
-            '<br>- Structured-Concept-Search here.</li>'
+            '<br>- word--site-search from site-Menu,' +
+            '<br>- word--page-search by hitting Ctrl+F and' +
+            '<br>- sensorial-concept--search here.</li>'
 
       oHitp.aSuggestions = [[]]
       oHitp.sNamidx = 'root' // the-namidx-file to search first
