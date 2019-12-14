@@ -33,6 +33,7 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-6-2.2019-12-14: site-search',
       'hitp.js.17-6-1.2019-09-09: search-info',
       'hitp.js.17-6-0.2019-09-08: langoKomo-sensorial-concept',
       'hitp.js.17-5-0.2019-09-01: langoKamo',
@@ -188,7 +189,7 @@ var oHitp = (function () {
       oHitp.sSrchCrnt = '' // current search-index
       oHitp.sSrchNext = '' // next search-index
       sPathNames = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/'
-      oEltTopTitleP.setAttribute('title', 'clicking GREEN-TITLE shows search-tab, clicking CONTENT shows Toc-tab')
+      oEltTopTitleP.setAttribute('title', 'clicking GREEN-BAR shows search-tab, clicking CONTENT shows Toc-tab')
       oEltTopSearchIcnI.setAttribute('class', 'clsFa clsFaSearch clsTopIcn clsColorWhite clsFloatRight clsPosRight')
       oEltTopSearchIcnI.addEventListener('click', function () {
         fCnrOntopRemove()
@@ -482,7 +483,7 @@ var oHitp = (function () {
     if (oHitp.aNamidxRoot) {
       oEltPginfTabHeadersUl.innerHTML =
         '<li class="clsTabActive"><a href="#idTabCntTocDiv">page-Toc</a></li>' +
-        '<li><a href="#idTabCntSrchDiv">search</a></li>'
+        '<li><a href="#idTabCntSrchDiv">site-search</a></li>'
     } else {
       oEltPginfTabHeadersUl.innerHTML =
         '<li class="clsTabActive"><a href="#idTabCntTocDiv">page-Toc</a></li>'
