@@ -33,6 +33,7 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-7-0.2020-05-05: F2',
       'hitp.js.17-6-2.2019-12-14: site-search',
       'hitp.js.17-6-1.2019-09-09: search-info',
       'hitp.js.17-6-0.2019-09-08: langoKomo-sensorial-concept',
@@ -210,6 +211,13 @@ var oHitp = (function () {
         // on TabCntSrch focus input-element
         oEltTabCntSrchIpt.focus()
       }
+
+      window.addEventListener('keyup', function (oEvtIn) {
+        if (oEvtIn.key === 'F2') {
+          fCnrOntopRemove()
+          fCnrSearchShow()
+        }
+      })
     }
 
     oEltCnrTopDiv.id = 'idCnrTopDiv'
