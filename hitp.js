@@ -33,6 +33,7 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-7-2.2020-05-24: Greek search accents',
       'hitp.js.17-7-1.2020-05-05: F2, ctrl+F2',
       'hitp.js.17-6-2.2019-12-14: site-search',
       'hitp.js.17-6-1.2019-09-09: search-info',
@@ -665,6 +666,14 @@ var oHitp = (function () {
         oHitp.sNamidx = ''
         oHitp.sSrchCrnt = ''
         oHitp.sSrchNext = ''
+        //in Greek lag
+        if (sSrchLtr === 'Ά') {sSrchLtr = 'Α'}
+        if (sSrchLtr === 'Έ') {sSrchLtr = 'Ε'}
+        if (sSrchLtr === 'Ό') {sSrchLtr = 'Ο'}
+        if (sSrchLtr === 'Ώ') {sSrchLtr = 'Ω'}
+        if (sSrchLtr === 'Ί') {sSrchLtr = 'Ι'}
+        if (sSrchLtr === 'Ή') {sSrchLtr = 'Η'}
+        if (sSrchLtr === 'Ύ') {sSrchLtr = 'Υ'}
         if (sSSNamidxIn) {
           fSSNamidxDisplay(sSSNamidxIn)
         } else if (sSrchInpt.length > 0) {
