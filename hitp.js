@@ -7,7 +7,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2010-2019 Kaseluris.Nikos.1959 (synagonism)
+ * Copyright (c) 2010-2021 Kaseluris.Nikos.1959 (synagonism)
  * kaseluris.nikos@gmail.com
  * https:// synagonism.net/
  *
@@ -33,6 +33,9 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-7-5.2021-04-02: lagLang',
+      'hitp.js.17-7-4.2021-04-01: langoSinago-path',
+      'hitp.js.17-7-3.2021-01-04: langoSinago',
       'hitp.js.17-7-2.2020-05-24: Greek search accents',
       'hitp.js.17-7-1.2020-05-05: F2, ctrl+F2',
       'hitp.js.17-6-2.2019-12-14: site-search',
@@ -187,7 +190,7 @@ var oHitp = (function () {
             '<br>- sensorial-concept--search here.</li>'
 
       oHitp.aSuggestions = [[]]
-      oHitp.sNamidx = 'root' // the-namidx-file to search first
+      oHitp.sNamidx = 'lagRoot' // the-namidx-file to search first
       oHitp.sSrchCrnt = '' // current search-index
       oHitp.sSrchNext = '' // next search-index
       sPathNames = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/'
@@ -527,20 +530,20 @@ var oHitp = (function () {
       oEltTabCntSrchLbl.for = 'idTabCntSrchSlt'
       oEltTabCntSrchSlt.id = 'idTabCntSrchSlt'
       //var oEltTabCntSrchOpn1 = document.createElement('option')
-      //oEltTabCntSrchOpn1.value = 'lagALL'
+      //oEltTabCntSrchOpn1.value = 'lagAGGR'
       //oEltTabCntSrchOpn1.text = 'ALL'
       //oEltTabCntSrchSlt.add(oEltTabCntSrchOpn1)
       var oEltTabCntSrchOpn2 = document.createElement('option')
-      oEltTabCntSrchOpn2.value = 'lagEng'
-      oEltTabCntSrchOpn2.text = 'English (Eng)'
+      oEltTabCntSrchOpn2.value = 'lagEngl'
+      oEltTabCntSrchOpn2.text = 'English (Engl)'
       oEltTabCntSrchSlt.add(oEltTabCntSrchOpn2)
       var oEltTabCntSrchOpn3 = document.createElement('option')
-      oEltTabCntSrchOpn3.value = 'lagEll'
-      oEltTabCntSrchOpn3.text = 'Greek (Ell)'
+      oEltTabCntSrchOpn3.value = 'lagElln'
+      oEltTabCntSrchOpn3.text = 'Greek (Elln)'
       oEltTabCntSrchSlt.add(oEltTabCntSrchOpn3)
       var oEltTabCntSrchOpn4 = document.createElement('option')
-      oEltTabCntSrchOpn4.value = 'lagKmo'
-      oEltTabCntSrchOpn4.text = 'Komo (Kmo)'
+      oEltTabCntSrchOpn4.value = 'lagSngo'
+      oEltTabCntSrchOpn4.text = 'Sinago (Sngo)'
       oEltTabCntSrchSlt.add(oEltTabCntSrchOpn4)
       oEltTabCntSrchSlt.options[0].selected = true
       oEltTabCntSrchP.id = 'idTabCntSrchP'
@@ -554,7 +557,7 @@ var oHitp = (function () {
       oEltTabCntSrchSlt.addEventListener('change', function () {
         oEltTabCntSrchP.innerHTML = fTabCntSrchPSetText()
         oEltTabCntSrchOl.innerHTML = sTabCntSrchOl
-        oHitp.sNamidx = 'root'
+        oHitp.sNamidx = 'lagRoot'
         fSearchSuggest()
       })
       // on enter, go to concept
@@ -575,9 +578,9 @@ var oHitp = (function () {
               // li contains no a-element
               var
                 sI = aLi[0].innerHTML,
-                // char..chas : 126924 (lagEng03si_2_0),
+                // char..chas : 126924 (lagEngl03si_2_0),
                 sNif = sI.substring(sI.indexOf(' (lag') + 2, sI.lastIndexOf(')')),
-                // lagEng03si_2_0,
+                // lagEngl03si_2_0,
                 a = sI.substring(0, sI.indexOf(' ')).split('..')
               oEltTabCntSrchIpt.value = a[0]
               fSearchSuggest(sNif)
@@ -649,14 +652,14 @@ var oHitp = (function () {
       /**
        * doing: suggests names of sensorial-concepts,
        *   that BEGIN with input-search-string.
-       * input: nothing string of namidx to search: lagEng03si_2_0, root, ...
+       * input: nothing string of namidx to search: lagEngl03si_2_0, lagRoot, ...
        */
       function fSearchSuggest(sSSNamidxIn) {
         var
+          // number of lag name in lagRoot-namidx,
           nLag,
-          // number of lag name in root-namidx,
-          sLi,
           // text of first suggestion,
+          sLi,
           sLag = oEltTabCntSrchSlt.options[oEltTabCntSrchSlt.selectedIndex].value,
           sNamidx_path,
           sSrchInpt = oEltTabCntSrchIpt.value,
@@ -681,13 +684,13 @@ var oHitp = (function () {
           var bRest = true
           for (var n = 1; n < oHitp.aNamidxRoot.length; n++) {
             // display quantities, for the-lag
-            if (sLag === 'lagALL') {
-              // search only letter not REST on all languages
+            if (sLag === 'lagAGGR') {
+              // search only letter not letterNo on all languages
 
             } else if (oHitp.aNamidxRoot[n][0].startsWith(sLag)) {
               // only selected language
               if (oHitp.aNamidxRoot[n][0] === sLag) {
-                nLag = n // index of lag in aNamidxRoot ["lagEng",";English",143707],
+                nLag = n // index of lag in aNamidxRoot ["lagEngl",";English",143707],
               } else if (oHitp.aNamidxRoot[n][1] === sSrchLtr) {
                 // found search-letter
                 oHitp.sSrchCrnt = oHitp.aNamidxRoot[n][1]
@@ -718,12 +721,12 @@ var oHitp = (function () {
           // no input value, display this:
           oEltTabCntSrchOl.innerHTML = sTabCntSrchOl
           oEltTabCntSrchP.innerHTML = fTabCntSrchPSetText()
-          oHitp.sNamidx = 'root'
+          oHitp.sNamidx = 'lagRoot'
         }
 
         /**
          * doing: decide what to do with a-reference-namidx
-         * input: lagEng03si_0, lagEng03si_2_0
+         * input: lagEngl03si_0, lagEngl03si_2_0
          */
         function fSSNamidxRefManage(sNamidxRefIn) {
           // console.log(sNamidxRefIn + ': RefManage')
@@ -761,7 +764,7 @@ var oHitp = (function () {
           function fSSFindIdxinref() {
             // we have the-suggestions, find the-namidx of input-search
             for (var n = 2; n < oHitp.aSuggestions.length; n++) {
-              // ["lagEng03si_2_0","char..chas",126924],
+              // ["lagEngl03si_2_0","char..chas",126924],
               // IF sSrchInpt < index, THEN previous is our namidx
               if (sSrchInpt < oHitp.aSuggestions[n][1].split('..')[0]) {
                 oHitp.sNamidx = oHitp.aSuggestions[n - 1][0]
@@ -790,7 +793,7 @@ var oHitp = (function () {
          * doing: display names of a-reference-namidx,
          *   make them clickable,
          *   highligts first.
-         * input: sNamidxRefIn: lagEng03si_0, ..
+         * input: sNamidxRefIn: lagEngl03si_0, ..
          */
         function fSSNamidxRefDisplay(sNamidxRefIn) {
           oHitp.sNamidx = sNamidxRefIn
@@ -829,9 +832,9 @@ var oHitp = (function () {
               oEltIn.addEventListener('click', function () {
                 var
                   sIn = oEltIn.innerHTML,
-                  // char..chas : 126924 (lagEng03si_2_0),
+                  // char..chas : 126924 (lagEngl03si_2_0),
                   sNif = sIn.substring(sIn.indexOf('(') + 1, sIn.indexOf(')')),
-                  // lagEng03si_2_0,
+                  // lagEngl03si_2_0,
                   sIx = sIn.substring(0, sIn.indexOf(' ')),
                   // char..chas,
                   a = sIx.split('..')
@@ -849,7 +852,7 @@ var oHitp = (function () {
 
         /**
          * doing: display names of a-namidx
-         * input: sNamidxIn: lagEll01alfa, lagEng02bi, lagEng03si_0
+         * input: sNamidxIn: lagElln01alfa, lagEngl02bi, lagEngl03si_0
          */
         function fSSNamidxDisplay(sNamidxIn) {
           oHitp.sNamidx = sNamidxIn
@@ -967,11 +970,11 @@ var oHitp = (function () {
         }
 
         /**
-         * input: lagEng01ei, lagEll01alfa
-         * output: site/dirMiwMcs/dirNamidx/dirLagEng/namidx.lagEng01ei.json
+         * input: lagEngl01ei, lagElln01alfa
+         * output: site/dirMiwMcs/dirNamidx/dirLagEng/namidx.lagEngl01ei.json
          */
         function fSSNamidx_pathFind(sNamidxIn) {
-          return sPathNames + 'dirL' + sNamidxIn.substring(1, 6) +
+          return sPathNames + 'dirL' + sNamidxIn.substring(1, 7) +
                  '/namidx.' + sNamidxIn + '.json'
         }
 
@@ -1074,7 +1077,7 @@ var oHitp = (function () {
       var
         nLag,
         sLag = oEltTabCntSrchSlt.options[oEltTabCntSrchSlt.selectedIndex].value
-      if (sLag === 'lagALL') {
+      if (sLag === 'lagAGGR') {
         return oHitp.aNamidxRoot[0][2].toLocaleString() + ' total NAMES'
       } else {
         for (var n = 1; n < oHitp.aNamidxRoot.length; n++) {
@@ -1730,7 +1733,7 @@ var oHitp = (function () {
   })()
 
   /**
-   * doing: reads the-config, site-menu, namidx.root files, if exist,
+   * doing: reads the-config, site-menu, namidx.lagRoot files, if exist,
    * and creates the-containers of the-page.
    *
    * The DOMContentLoaded event fires when the initial HTML document 
@@ -1825,11 +1828,11 @@ var oHitp = (function () {
     }
 
     /**
-     * doing: reads the-namidx.root-file, if exists, and creates the-containers of the-page.
+     * doing: reads the-namidx.lagRoot-file, if exists, and creates the-containers of the-page.
      */
     function fNamidx() {
       // find aNamidxRoot
-      sNiRoot = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/namidx.root.json'
+      sNiRoot = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/namidx.lagRoot.json'
       oXHR = new XMLHttpRequest()
       oXHR.open('GET', sNiRoot, true)
       oXHR.send(null)
@@ -1850,7 +1853,7 @@ var oHitp = (function () {
               location.href = location.hash
             }
           } else if (oXHR.status === 200) {
-            // oHitp.aNamidxRoot contains namidx.root.json if exists
+            // oHitp.aNamidxRoot contains namidx.lagRoot.json if exists
             oHitp.aNamidxRoot = JSON.parse(oXHR.responseText)
             oHitp.fContainersInsert()
             oHitp.oTreeUl.fTruCreate()
