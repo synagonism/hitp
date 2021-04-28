@@ -33,6 +33,8 @@ var oHitp = (function () {
   var oHitp = {
     /** contains the-versions of hitp.js */
     aVersion: [
+      'hitp.js.17-7-7.2021-04-28: dirMcs',
+      'hitp.js.17-7-6.2021-04-02: dirMcs',
       'hitp.js.17-7-5.2021-04-02: lagLang',
       'hitp.js.17-7-4.2021-04-01: langoSinago-path',
       'hitp.js.17-7-3.2021-01-04: langoSinago',
@@ -173,16 +175,16 @@ var oHitp = (function () {
         // localhost or online,
         sTabCntSrchOl =
           '<li>SEE ' +
-            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/dirCor/filMcs.last.html#idMcsattNamcvn">name-notation--of-Mcs</a>.</li>' +
+            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMcs/dirCor/McsCor000002.last.html#idMcsattNamcvn">name-notation--of-Mcs</a>.</li>' +
           '<li>TYPE a-name of ' +
-            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/dirCor/filMcs.last.html#idDescription">a-sensorial-concept-Mcs</a> of ' +
-            '<a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959-WORLDVIEW</a>.</li>' +
+            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMcs/dirCor/McsCor000002.last.html#idOverview">a-sensorial-concept-Mcs</a> of ' +
+            '<a class="clsPreview" href="' + oHitp.sPathSite + 'dirMcs/dirHmn/McsHmn000003.last.html#idOverview">Kaseluris.Nikos.1959-WORLDVIEW</a>.</li>' +
           '<li>some important concepts are: "<strong>char</strong>", ' +
             '"<strong>javascript</strong>", "<strong>human-language</strong>", ' +
             '"<strong>chain-net</strong>", ...</li>' +
           '<li>sensorial-concept-searching demonstrates THE-POWER of sensorial-concepts.' +
             '<br>· compare them with Google-WORD-search and Wikipedia-TEXT-entries.</li>' +
-          '<li><a class="clsPreview" href="' + oHitp.sPathSite + '#idAboutme">Kaseluris.Nikos.1959</a> works more than 30 years on sensorial-concepts. ' +
+          '<li><a class="clsPreview" href="' + oHitp.sPathSite + 'dirMcs/dirHmn/McsHmn000003.last.html#idOverview">Kaseluris.Nikos.1959</a> works more than 30 years on sensorial-concepts. ' +
             '<br>· <a class="clsPreview" href="' + oHitp.sPathSite + '#idSupport">support him</a> to continue publishing.</li>' +
           '<li>this site uses 3 types of searching:' +
             '<br>- word--site-search from site-Menu,' +
@@ -193,7 +195,7 @@ var oHitp = (function () {
       oHitp.sNamidx = 'lagRoot' // the-namidx-file to search first
       oHitp.sSrchCrnt = '' // current search-index
       oHitp.sSrchNext = '' // next search-index
-      sPathNames = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/'
+      sPathNames = oHitp.sPathSite + 'dirMcs/dirNamidx/'
       oEltTopTitleP.setAttribute('title', 'clicking GREEN-BAR shows search-tab, clicking CONTENT shows Toc-tab')
       oEltTopSearchIcnI.setAttribute('class', 'clsFa clsFaSearch clsTopIcn clsColorWhite clsFloatRight clsPosRight')
       oEltTopSearchIcnI.addEventListener('click', function () {
@@ -898,7 +900,7 @@ var oHitp = (function () {
               for (i = 1; i < oHitp.aSuggestions.length; i++) {
                 n = n + 1
                 sSuggestions = sSuggestions +
-                  '<li><a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/' +
+                  '<li><a class="clsPreview" href="' + oHitp.sPathSite + 'dirMcs/' +
                   oHitp.aSuggestions[i][1] + '">' +
                   oHitp.aSuggestions[i][0]
                 if (!document.getElementById('idTabCntSrchChk').checked) {
@@ -929,7 +931,7 @@ var oHitp = (function () {
                   // IF n > 999 stop ?
                   n = n + 1
                   sSuggestions = sSuggestions +
-                    '<li><a class="clsPreview" href="' + oHitp.sPathSite + 'dirMiwMcs/' +
+                    '<li><a class="clsPreview" href="' + oHitp.sPathSite + 'dirMcs/' +
                     oHitp.aSuggestions[i][1] + '">' +
                     oHitp.aSuggestions[i][0]
                   if (!document.getElementById('idTabCntSrchChk').checked) {
@@ -971,7 +973,7 @@ var oHitp = (function () {
 
         /**
          * input: lagEngl01ei, lagElln01alfa
-         * output: site/dirMiwMcs/dirNamidx/dirLagEng/namidx.lagEngl01ei.json
+         * output: site/dirMcs/dirNamidx/dirLagEng/namidx.lagEngl01ei.json
          */
         function fSSNamidx_pathFind(sNamidxIn) {
           return sPathNames + 'dirL' + sNamidxIn.substring(1, 7) +
@@ -1832,7 +1834,7 @@ var oHitp = (function () {
      */
     function fNamidx() {
       // find aNamidxRoot
-      sNiRoot = oHitp.sPathSite + 'dirMiwMcs/dirNamidx/namidx.lagRoot.json'
+      sNiRoot = oHitp.sPathSite + 'dirMcs/dirNamidx/namidx.lagRoot.json'
       oXHR = new XMLHttpRequest()
       oXHR.open('GET', sNiRoot, true)
       oXHR.send(null)
