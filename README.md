@@ -1,20 +1,17 @@
-hitp-description
+HitpLago-description
 ====
-**hitp (html5.id.toc.preview)** is a FORMAT (method) of publishing WEBPAGES (digital-texts | ebooks) with these advantages:
+**HitpLago** is an html5.id.toc.preview WebApp text-document language for publishing title-content-tree documents with these advantages:
 
-1. **html5**: no need for special programs to read them, as all machines have the needed browser (= html reader). Also html5-elements structure the text for humans and machines.
-2. **id**: anyone can refer to ANY PART of them, because all their html-elements have IDs.
-3. **toc**: automatically created expandable table-of-contents makes reading easy. 
-4. **preview**: same domain link-preview makes reading fast. 
+1. **Html5**: no need for special programs to read them, as all machines have the needed browser (= html reader). Also html5-elements structure the text for humans and machines.
+2. **Id**: anyone can refer to ANY PART of them, because all their html-elements have IDs.
+3. **Toc**: automatically created expandable table-of-contents makes reading easy. 
+4. **Preview**: same domain link-preview makes reading fast. 
 
-hitp-documentation
+HitpLago-documentation
 ===
-http://synagonism.net/hitp/
+[https://synagonism.net/dirMcs/dirTchInf/McsTchInf000008.last.html](https://synagonism.net/dirMcs/dirTchInf/McsTchInf000008.last.html)
 
-hitp-project-page
-===
-http://synagonism.github.io/hitp/hitp.html
 
-hitp-license
+HitpLago-license
 ===
 MIT
