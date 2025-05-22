@@ -1,0 +1,17 @@
+[
+  [";lagEngl03si_2_0","char..chas",7,"2025-05-20","codepoint order"],
+  ["lagEngl03si_2_1","char..char.2",1],
+  ["lagEngl03si_2_2","char.2..char.7",0],
+  ["lagEngl03si_2_3","char.7..char.A",0],
+  ["lagEngl03si_2_4","char.A..char.G",0],
+  ["lagEngl03si_2_5","char.G..char.N",0],
+  ["lagEngl03si_2_6","char.N..char.U+0A",0],
+  ["lagEngl03si_2_7","char.U+0A..char.U+16",0],
+  ["lagEngl03si_2_8","char.U+16..char.U+2",0],
+  ["lagEngl03si_2_9","char.U+2..char.UA",0],
+  ["lagEngl03si_2_10","char.U+UA..char.l",0],
+  ["lagEngl03si_2_11","char.l..char.letter.A",0],
+  ["lagEngl03si_2_12","char.letter.A..char.m",0],
+  ["lagEngl03si_2_13","char.m..char.n",0],
+  ["lagEngl03si_2_14","char.n..chas",6]
+]

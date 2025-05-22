@@ -1,0 +1,66 @@
+//// COMMENT the-lines with '//'
+// contains the-files we want to index.
+
+//lagEngl;English
+//lagZhon;Chinese
+//lagElla;GreekAncient
+//lagElln;Greek
+
+//index.html
+dirLag/HitpLag000.last.html; Ancient Greek Grammar
+
+
+
+//Mcs000001.last.html
+
+//dirCor/McsCor000002.last.html; Mcs
+//dirCor/McsCor000003.last.html; entity
+//dirCor/McsCor000004.last.html; doing
+//dirCor/McsCor000005.last.html; relation
+//dirCor/McsCor000006.last.html; time
+//dirCor/McsCor000007.last.html; space
+
+//dirEdu/McsEdu000004.last.html
+//dirEdu/dirHitp/HitpEdu001.last.html
+
+//dirHlth/McsHlth000017.last.html
+
+//dirHmn/McsHmn000004.last.html
+
+//dirLag/McsLag000019.last.html
+//dirLag/McsLag000003.last.html
+//dirLag/McsLag000006.last.html
+//dirLag/McsLag000007.last.html; human-mind-language
+//dirLag/McsLag000008.last.html
+//dirLag/McsLag000009.last.html
+//dirLag/McsLag000010.last.html
+//dirLag/McsLag000011.last.html; English
+//dirLag/McsLag000012.last.html
+//dirLag/McsLag000014.last.html
+//dirLag/McsLag000018.last.html; Chinese
+//dirLag/McsLag000022.last.html; wordaryElla
+
+//dirNtr/McsNtr000016.last.html
+
+//dirOgm/McsOgm000012.last.html
+
+//dirStn/McsStn000027.last.html
+//dirStn/dirHitp/HitpStnEcon002.last.html
+//dirStn/dirHitp/HitpStnSoc000.last.html
+//dirStn/dirHitp/HitpStnStd001.last.html
+
+//dirStnlaw/McsStnlaw000005.last.html
+//dirStnlaw/dirHitp/HitpStnlawEld007.last.html
+//dirStnlaw/dirHitp/HitpStnlawEus004.last.html
+//dirStnlaw/dirHitp/HitpStnlawUsa001.last.html
+
+//dirTch/McsTch000004.last.html
+
+//dirTchCpgm/McsTchCpgm000004.last.html
+
+//dirTchInf/McsTchInf000034.last.html
+//dirTchInf/McsTchInf000009.last.html; McsHitp-lag
+//dirTchInf/McsTchInf000015.last.html; DeNet
+//dirTchInf/dirHitp/HitpTchInf002.last.html
+
+//dirTchInf/dirUcd/McsUcd000002.last.html

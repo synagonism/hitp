@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Γιάννενα</title>
+</head>
+<body>
+
+<h1>ΓΙΑΝΝΕΝΑ</h1>
+
+<h2>Περιγραφή</h2>
+<img src="https://voltamagazine.com/wp-content/uploads/2021/11/central-1.jpg" style="width:500px;height:300px;">
+<p>Τα Ιωάννινα, γνωστά και ως Γιάννενα ή Γιάννινα, είναι πόλη της Ηπείρου, έδρα του δήμου Ιωαννιτών και πρωτεύουσα της περιφερειακής ενότητας Ιωαννίνων. Επίσης, αποτελούν την έδρα και μεγαλύτερη πόλη της περιφέρειας Ηπείρου καθώς και της αποκεντρωμένης διοίκησης Ηπείρου – Δυτικής Μακεδονίας. Ο πληθυσμός της πόλης ανέρχεται στους 64.896 κατοίκους και του ευρύτερου μητροπολιτικού δήμου στους 113.978 σύμφωνα με την απογραφή του 2021.</p>
+
+<h2>Ισοτιμίες ευρώ</h2>
+
+  <p><strong>· ευρώ-€</strong>:
+    <br><input type="text" id="idInpt1" value="1" size="40">
+  </p>
+  <p><strong>· δραχμές-₯</strong>:
+    <br><input type="text" id="idInpt2" value="340.75" size="40">
+  </p>
+
+
+<h2>Σχετικά με την ιστοεφαρμογή</h2>
+<p>ΠΗΓΕΣ:
+<br>1) https://el.wikipedia.org/wiki/%CE%99%CF%89%CE%AC%CE%BD%CE%BD%CE%B9%CE%BD%CE%B1,
+<br>2) https://synagonism.net/dirMcs/dirEdu/dirHitp/HitpEdu000.last.html#idCigTaE4Hmldoc,
+<br>3) <a href="https://synagonism.net/dirMcs/dirEdu/dirHitp/HitpEdu000.files/etd.html">ιστοεφαρμογή ευρώ ⇔ δραχμές</a>,
+</p>
+
+<p>ΣΥΝΤΑΞΗ:
+<br>{2025} Γυμνάσιο Ελεούσας, όνομα επίθετο.
+</p>
+
+</body>
+
+<script>
+  // finds drachmas, given euros
+  document.getElementById('idInpt1').addEventListener('input', function(oEvtIn) {
+    document.getElementById('idInpt2').value = (oEvtIn.target.value * 340.75).toFixed(4)
+  })
+
+  // finds euros, given drachmas
+  document.getElementById('idInpt2').addEventListener('input', function(oEvtIn) {
+    document.getElementById('idInpt1').value = (document.getElementById('idInpt2').value / 340.75).toFixed(4)
+  })
+</script>
+</html>
