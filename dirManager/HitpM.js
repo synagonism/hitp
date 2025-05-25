@@ -1,5 +1,5 @@
 /*
- * HitpM.js - module McsHitp webpage-format code.
+ * HitpM.js - module HitpLago WebAppDoc format code.
  * The MIT License (MIT)
  *
  * Copyright (c) 2010-2025 Kaseluris.Nikos.1959 (hmnSngo)
@@ -28,7 +28,8 @@
 const
   // contains the-versions of HitpM.js
   aVersion = [
-    'HitpM.js.10-0-0.2025-05-10: Hitp only format',
+    'HitpM.js.20-0-1.2025-05-25: HitpName',
+    'HitpM.js.20-0-0.2025-05-10: Hitp only format',
     'mMcsh.js.19-18-0.2025-05-10: [ escaped for search',
     'mMcsh.js.19-17-0.2025-05-07: Hindi',
     'mMcsh.js.19-16-0.2025-04-30: Arabic',
@@ -55,23 +56,23 @@ const
     'mMcsh.js.19-2-0.2022-04-04: fSearchname',
     'mMcsh.js.19-1-0.2022-03-21: charRest-reference',
     'mMcsh.js.19-0-0.2022-03-20: Mcsh',
-    'HitpM.js.18-10-0.2022-03-19: phoneme-events',
-    'HitpM.js.18-9-1.2022-03-14: phonemes',
-    'HitpM.js.18-9-0.2022-01-30: codepoints',
-    'HitpM.js.18-8-1.2022-01-15: name-language',
-    'HitpM.js.18-8-0.2022-01-07: lagElla',
-    'HitpM.js.18-7-0.2021-12-31: lagEspo',
-    'HitpM.js.18-6-0.2021-11-25: popup on content',
-    'HitpM.js.18-5-1.2021-11-19: popup left',
-    'HitpM.js.18-5-0.2021-11-19: create treeUl on preview',
-    'HitpM.js.18-4-0.2021-11-17: Shift+1 codepoint',
-    'HitpM.js.18-3-1.2021-11-16: supplementary-chars',
-    'HitpM.js.18-3-0.2021-11-14: Chinese codepoints',
-    'HitpM.js.18-2-1.2021-11-10: index without ;',
-    'HitpM.js.18-2-0.2021-11-07: root-char sequence or not',
-    'HitpM.js.18-1-1.2021-08-13: // total NAMES',
-    'HitpM.js.18-1-0.2021-05-30: ctrl+F3',
-    'HitpM.js.18-0-0.2021-05-25: module',
+    'mHitp.js.18-10-0.2022-03-19: phoneme-events',
+    'mHitp.js.18-9-1.2022-03-14: phonemes',
+    'mHitp.js.18-9-0.2022-01-30: codepoints',
+    'mHitp.js.18-8-1.2022-01-15: name-language',
+    'mHitp.js.18-8-0.2022-01-07: lagElla',
+    'mHitp.js.18-7-0.2021-12-31: lagEspo',
+    'mHitp.js.18-6-0.2021-11-25: popup on content',
+    'mHitp.js.18-5-1.2021-11-19: popup left',
+    'mHitp.js.18-5-0.2021-11-19: create treeUl on preview',
+    'mHitp.js.18-4-0.2021-11-17: Shift+1 codepoint',
+    'mHitp.js.18-3-1.2021-11-16: supplementary-chars',
+    'mHitp.js.18-3-0.2021-11-14: Chinese codepoints',
+    'mHitp.js.18-2-1.2021-11-10: index without ;',
+    'mHitp.js.18-2-0.2021-11-07: root-char sequence or not',
+    'mHitp.js.18-1-1.2021-08-13: // total NAMES',
+    'mHitp.js.18-1-0.2021-05-30: ctrl+F3',
+    'mHitp.js.18-0-0.2021-05-25: module',
     'hitp.js.17-7-7.2021-04-28: dirMcs',
     'hitp.js.17-7-6.2021-04-02: dirMcs',
     'hitp.js.17-7-5.2021-04-02: lagLang',
@@ -138,7 +139,7 @@ let
   // Then we must-know the-homepage of the-site and create different menus.
   sIdxfile,
   // the-index-file to search first
-  sPathHitp = location.origin + '/',
+  sPathHitp,
   sIdxFrom,
   // current search-index
   sIdxTo,
@@ -212,7 +213,7 @@ let fContainersInsert = function () {
 
   // localhost or online,
   sTabCntSrchOl =
-    '<li>TYPE a-name in a-Hitp-file to find its location</li>'
+    '<li>TYPE a-HitpName in a-HitpDoc to find its location</li>'
 
   oEltCnrTopSearchIcnI = document.createElement('i')
   oEltTabCntSrchDiv = document.createElement('div')
@@ -2076,7 +2077,7 @@ let oTriUl = (function () {
 })()
 
 // read config
-await fetch(sPathHitp + 'HitpConfig.json')
+await fetch(location.origin + '/HitpConfig.json')
 .then(response => response.json())
 .then(oConfig => {
 	if (oConfig.nCfgPageinfoWidth) {
@@ -2090,6 +2091,7 @@ await fetch(sPathHitp + 'HitpConfig.json')
 .catch(sPathHitp="error")
 
 // read lagRoot
+console.log("HitpPath = " +sPathHitp)
 await fetch(sPathHitp + 'dirNamidx/namidx.lagRoot.json')
 .then(response => response.json())
 .then(data => aaNamidxfileRoot=data)
