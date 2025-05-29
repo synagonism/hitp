@@ -1,13 +1,14 @@
 //// COMMENT the-lines with '//'
-// contains the-files we want to index.
+// contains the-files and languages we want to index.
 
+// no language then all
 //lagEngl;English
 //lagZhon;Chinese
 //lagElla;GreekAncient
 //lagElln;Greek
 
 //index.html
-dirLag/HitpLag000.last.html; Ancient Greek Grammar
+dirMisc/HitpMisc000.last.html; example
 
 
 

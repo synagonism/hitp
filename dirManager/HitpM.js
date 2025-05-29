@@ -1121,6 +1121,7 @@ let fContainersInsert = function () {
         } else if (sSearchInput.endsWith(' ')) {
           // display exactly sSearchInput if ends in space
           n = 0
+          //console.log(aSuggestions)
           for (i = 1; i < aSuggestions.length; i++) {
             // suggest name
             // name'xxx = attribute of name
