@@ -8,7 +8,8 @@
 //lagElln;Greek
 
 //index.html
-dirMisc/HitpMisc000.last.html; example
+//dirMisc/HitpMisc000.last.html; example
+dirEdu/HitpEdu001.last.html; informatics
 
 
 
